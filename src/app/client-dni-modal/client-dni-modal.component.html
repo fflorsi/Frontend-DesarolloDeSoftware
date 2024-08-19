@@ -1,0 +1,14 @@
+<!-- client-dni-modal.component.html -->
+<div class="modal-header">
+    <h5 class="modal-title">Buscar Cliente</h5>
+    <button type="button" class="btn-close" aria-label="Close" (click)="activeModal.dismiss('Cross click')"></button>
+  </div>
+  <div class="modal-body">
+    <label for="dni">Ingrese el DNI del cliente:</label>
+    <input type="text" id="dni" [(ngModel)]="dni" class="form-control" />
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-secondary" (click)="activeModal.dismiss('cancel click')">Cancelar</button>
+    <button type="button" class="btn btn-primary" (click)="submit()">Buscar</button>
+    <button type="button" class="btn btn-info" (click)="viewAllPets()">Ver todas las mascotas</button>
+  </div>
