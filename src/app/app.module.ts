@@ -16,6 +16,10 @@ import { RouterModule } from '@angular/router';
 import {ClientDniModalComponent} from './client-dni-modal/client-dni-modal.component';
 import { ViewClientPetComponent } from './view-client-pet/view-client-pet.component';
 import { ViewAllPetComponent } from './view-all-pet/view-all-pet.component';
+import {ViewMedicalHistoriesComponent} from './view-medical-histories/view-medical-histories.component'
+import { MatPaginatorModule } from '@angular/material/paginator';
+import { MatTableModule } from '@angular/material/table';
+
 
 @NgModule({
   declarations: [
@@ -26,7 +30,8 @@ import { ViewAllPetComponent } from './view-all-pet/view-all-pet.component';
     EditPetComponent,
     ViewClientPetComponent,
     ClientDniModalComponent,
-    ViewAllPetComponent
+    ViewAllPetComponent,
+    ViewMedicalHistoriesComponent
   ],
   imports: [
     BrowserModule,
@@ -36,7 +41,9 @@ import { ViewAllPetComponent } from './view-all-pet/view-all-pet.component';
     RouterModule.forRoot([]),
     NgbModule,
     ToastrModule.forRoot(),
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    MatPaginatorModule,
+    MatTableModule
   ],
   providers: [ ],
   bootstrap: [AppComponent]
