@@ -6,6 +6,7 @@ import { HomeComponent } from './home/home.component';
 import { ViewPetComponent } from './view-pet/view-pet.component';
 import { ViewClientPetComponent } from './view-client-pet/view-client-pet.component';
 import {ViewAllPetComponent} from './view-all-pet/view-all-pet.component'
+import { ViewMedicalHistoriesComponent } from './view-medical-histories/view-medical-histories.component';
 
 
 
@@ -16,8 +17,9 @@ export const routes: Routes = [
     {path: 'AddPet', component: AddPetComponent},
     {path: 'EditPet/:petId', component: EditPetComponent},
     {path: 'ViewClientPet', component:ViewClientPetComponent},
-    {path: 'ViewAllPet', component: ViewAllPetComponent}
-
+    {path: 'ViewAllPet', component: ViewAllPetComponent},
+    
+    {path: 'ViewMedicalHistory/:petId', component: ViewMedicalHistoriesComponent}
 ];
 
 @NgModule({
