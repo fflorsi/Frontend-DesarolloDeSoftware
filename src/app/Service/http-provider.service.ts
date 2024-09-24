@@ -10,7 +10,8 @@ var httpLink = {
   deletePetById: apiUrl + 'api/pets',
   getPetDetailById: apiUrl + 'api/pets',
   savePet: apiUrl + 'api/pets',
-  getClientByDni: apiUrl + 'api/clients/by-dni'
+  getClientByDni: apiUrl + 'api/clients/by-dni',
+  getMedicalHistories: apiUrl + 'api/medicalHistory'
 }
 
 @Injectable({
@@ -57,4 +58,13 @@ export class HttpProviderService {
     });
     return this.http.get<any>(`${httpLink.getClientByDni}/${dni}`, { headers, observe: 'response' });
   }
+
+  public getMedicalHistories(model: any): Observable<any> {
+  const headers = new HttpHeaders({
+    'Content-Type': 'application/json'
+  });
+  console.log(`Fetching details for pet ID: ${model}`);
+  return this.http.get<any>(`${httpLink.getMedicalHistories}/${model}`, { headers });
+  }
 }
+
