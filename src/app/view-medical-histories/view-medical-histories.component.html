@@ -1,0 +1,58 @@
+<div *ngIf="!medicalHistory" class="no-mh fixed-size">
+  <p>No se han encontrado Datos</p>
+</div>
+
+<div *ngIf="medicalHistory" class="fixed-size">
+  <b>Historia Clínica</b>
+
+  <!-- Mostrar solo si hay vacunas -->
+  <div *ngIf="medicalHistory.vaccines?.length > 0">
+    <table class="vaccines-table">
+      <thead>
+        <tr>
+          <th>Vacunas</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let vaccine of medicalHistory.vaccines">
+          <td>{{vaccine}}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- Mostrar solo si hay observaciones -->
+  <div *ngIf="medicalHistory?.observations?.length > 0">
+    <div class="observations-container"> <!-- Contenedor para las observaciones -->
+      <table class="observations-table">
+        <thead>
+          <tr>
+            <th>Observación</th>
+            <th>Fecha</th>
+            <th>Profesional</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let observation of paginatedObservations">
+            <td>
+              <div class="observation-item">
+                <span>{{ observation.observation.length > 50 ? (observation.observation | slice:0:50) + '...' :
+                  observation.observation }}</span>
+                <a class="show-observation"><i class='fas fa-eye'></i></a>
+                <!-- Enlace para mostrar la observación completa -->
+              </div>
+            </td>
+            <td>{{observation.datePerformed}}</td>
+            <td>{{observation.name}}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- Paginador de Angular Material -->
+    <div class="paginator-container">
+      <mat-paginator [length]="totalObservations" [pageSize]="pageSize" (page)="onPageChange($event)"
+        aria-label="paginador"></mat-paginator>
+    </div>
+  </div>
+</div>
