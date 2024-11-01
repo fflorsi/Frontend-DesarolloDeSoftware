@@ -1,0 +1,25 @@
+<div class="row mt-1">
+<div class="col-lg-4 offset-lg-4">
+    <div class="card text-white bg-secondary mb-3" style="max-width: 25rem;">
+      <h5 class="card-title">{{ clientData.firstname }} {{ clientData.lastname }}</h5>
+      <h6 class="card-subtitle mb-2 text-muted">DNI: {{ clientData.dni }}</h6>
+      <div class="card-body">
+      <p class="card-text">
+        <strong>Dirección:</strong> {{ clientData.address }}<br>
+        <strong>Teléfono:</strong> {{ clientData.phone }}<br>
+        <strong>Email:</strong> {{ clientData.email }}<br>
+        <strong>Fecha de Nacimiento:</strong> {{ clientData.birthDate}}
+      </p>
+    </div>
+    <div class="row mt-2 text-center">
+        <div class="col lg-6">  
+            <button routerLink="/editClient/{{clientData.id}}" type="button" class="btn btn-info btn-sm" >Editar</button>
+        </div>
+        <div class="col lg-6">             
+            <button (click)="deleteClient(clientData.id!)" type="button" class="btn btn-danger btn-sm ms-2">Eliminar</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  </div>
+  

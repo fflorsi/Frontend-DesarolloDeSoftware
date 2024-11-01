@@ -1,0 +1,50 @@
+.wrapper {
+  max-width: 800px;
+  /* Ajusta el ancho del formulario */
+  margin: auto;
+  /* Centra el formulario en la página */
+  padding: 20px;
+  background-color: #f8f9fa;
+  /* Fondo claro */
+  border-radius: 5px;
+  /* Bordes redondeados */
+}
+.logoLogin {
+  display: block;
+  margin: 0 auto 20px;
+  /* Centra la imagen */
+  max-width: 100%;
+  /* Asegura que la imagen no sobrepase el contenedor */
+}
+
+h3 {
+  text-align: center;
+  /* Centra el título */
+  margin-bottom: 20px;
+  /* Espaciado inferior */
+}
+
+h4 {
+  font-size: 1.2rem;
+  /* Tamaño de fuente para los encabezados de sección */
+  margin-bottom: 15px;
+  /* Espaciado inferior */
+  color: #007bff;
+  /* Color del encabezado, puedes cambiarlo */
+}
+
+.back-button {
+  display: inline-block;
+  /* Mostrar como bloque en línea */
+  margin-top: 10px;
+  /* Espaciado superior */
+  color: #007bff;
+  /* Color del enlace */
+  text-decoration: none;
+  /* Sin subrayado */
+}
+
+.back-button:hover {
+  text-decoration: underline;
+  /* Subrayado al pasar el mouse */
+}
