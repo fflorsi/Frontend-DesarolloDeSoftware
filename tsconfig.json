@@ -5,7 +5,15 @@
     "module": "ES2022",
     "moduleResolution": "bundler",
     "sourceMap": true,
-    "outDir": "./dist",
+    "baseUrl":"./src",
+    "outDir": "./dist/out-tsc",
+    "paths": {
+    "@app/*": ["app/*"],
+    "@services/*": ["app/services/*"],
+    "@components/*": ["app/components/*"],
+    "@models/*": ["app/models/*"],
+    "@interfaces/*": ["app/interfaces/*"]
+  },
     "esModuleInterop": true,
     "forceConsistentCasingInFileNames": true,
     "strict": true,

@@ -7,6 +7,14 @@ import { ViewPetComponent } from './view-pet/view-pet.component';
 import { ViewClientPetComponent } from './view-client-pet/view-client-pet.component';
 import {ViewAllPetComponent} from './view-all-pet/view-all-pet.component'
 import { ViewMedicalHistoriesComponent } from './view-medical-histories/view-medical-histories.component';
+import { LoginComponent } from './componentsLogin/login/login.component';
+import { SignInComponent } from './componentsLogin/sign-in/sign-in.component';
+import { DashboardComponent } from './componentsLogin/dashboard/dashboard.component';
+import { AuthGuard } from './utils/auth.guard';
+import { NavbarComponent } from './componentsLogin/navbar/navbar.component';
+import { ListClientsComponent } from './componentsClient/list-clients/list-clients.component';
+import { AddEditClientComponent } from './componentsClient/add-edit-client/add-edit-client.component';
+import { DetailClientComponent } from './componentsClient/detail-client/detail-client.component';
 
 
 
@@ -19,7 +27,17 @@ export const routes: Routes = [
     {path: 'ViewClientPet', component:ViewClientPetComponent},
     {path: 'ViewAllPet', component: ViewAllPetComponent},
     
-    {path: 'ViewMedicalHistory/:petId', component: ViewMedicalHistoriesComponent}
+    {path: 'ViewMedicalHistory/:petId', component: ViewMedicalHistoriesComponent},
+
+    {path: 'login',component: LoginComponent },
+    {path: 'signIn', component: SignInComponent},
+    {path: 'dashboard', component: DashboardComponent,canActivate: [AuthGuard]},
+    {path: 'navbar', component: NavbarComponent},
+    {path: 'listClients', component: ListClientsComponent},
+    {path: 'addClient', component: AddEditClientComponent},
+    {path: 'editClient/:id', component: AddEditClientComponent},
+    {path: 'detailClient/:id',component: DetailClientComponent},
+    {path: '**', redirectTo: 'Home', pathMatch:'full'}
 ];
 
 @NgModule({
