@@ -29,6 +29,7 @@ import { ListClientsComponent } from 'app/componentsClient/list-clients/list-cli
 import { AddEditClientComponent } from 'app/componentsClient/add-edit-client/add-edit-client.component';
 import {ProgressBarComponent} from 'app/shared/progress-bar/progress-bar.component'
 import { DetailClientComponent } from 'app/componentsClient/detail-client/detail-client.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -64,6 +65,7 @@ import { DetailClientComponent } from 'app/componentsClient/detail-client/detail
     ToastrModule.forRoot(),
     BrowserAnimationsModule,
     MatPaginatorModule,
+    ReactiveFormsModule,
     MatTableModule
   ],
   providers: [{provide: HTTP_INTERCEPTORS, useClass: AddTokenInterceptor, multi: true }

@@ -12,7 +12,8 @@
     "@services/*": ["app/services/*"],
     "@components/*": ["app/components/*"],
     "@models/*": ["app/models/*"],
-    "@interfaces/*": ["app/interfaces/*"]
+    "@interfaces/*": ["app/interfaces/*"],
+    "types": ["node"]
   },
     "esModuleInterop": true,
     "forceConsistentCasingInFileNames": true,

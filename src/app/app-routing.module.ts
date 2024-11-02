@@ -15,6 +15,8 @@ import { NavbarComponent } from './componentsLogin/navbar/navbar.component';
 import { ListClientsComponent } from './componentsClient/list-clients/list-clients.component';
 import { AddEditClientComponent } from './componentsClient/add-edit-client/add-edit-client.component';
 import { DetailClientComponent } from './componentsClient/detail-client/detail-client.component';
+import { ListProductsComponent } from './componentsProduct/list-products/list-products.component';
+import { AddEditProductComponent } from './componentsProduct/add-edit-product/add-edit-product.component';
 
 
 
@@ -33,10 +35,16 @@ export const routes: Routes = [
     {path: 'signIn', component: SignInComponent},
     {path: 'dashboard', component: DashboardComponent,canActivate: [AuthGuard]},
     {path: 'navbar', component: NavbarComponent},
+    //Cliente
     {path: 'listClients', component: ListClientsComponent},
     {path: 'addClient', component: AddEditClientComponent},
     {path: 'editClient/:id', component: AddEditClientComponent},
     {path: 'detailClient/:id',component: DetailClientComponent},
+    //Producto
+    {path: 'listProducts', component: ListProductsComponent},
+    {path: 'addProduct', component:AddEditProductComponent},
+    {path: 'editProduct/:id', component: AddEditProductComponent},
+
     {path: '**', redirectTo: 'Home', pathMatch:'full'}
 ];
 
