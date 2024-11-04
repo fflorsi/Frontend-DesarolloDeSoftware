@@ -24,10 +24,8 @@ export class ViewMedicalHistoriesComponent implements OnInit {
   constructor(public httpProvider: HttpProviderService, private route: ActivatedRoute) { }
 
   ngOnInit(): void {
-    
     this.petId = this.route.snapshot.params['petId'];
     this.getMedicalHistories();
-
   }
 
   getMedicalHistories(): void {
@@ -38,10 +36,15 @@ export class ViewMedicalHistoriesComponent implements OnInit {
 
           // Verificar si existen las propiedades antes de asignar a la vista
           this.medicalHistory.vaccines = response.data.vaccines || [];
-          this.medicalHistory.observations = response.data.observations || [];
-
-          this.totalObservations = this.medicalHistory.observations.length;
-          this.updatePaginatedObservations();
+          
+          // Llamar a la API de observaciones usando el ID de la historia clínica
+          const medicalHistoryId = this.medicalHistory.id; // Asegúrate de que el ID está disponible
+          if (medicalHistoryId) {
+            this.getObservations(medicalHistoryId);
+          } else {
+            console.error('Clinical history ID is missing');
+            this.medicalHistory.observations = [];
+          }
 
           console.log('Medical history details:', this.medicalHistory);
         } else {
@@ -58,16 +61,43 @@ export class ViewMedicalHistoriesComponent implements OnInit {
       }
     });
   }
-   updatePaginatedObservations(): void {
-    const startIndex = this.pageIndex * this.pageSize;
-    const endIndex = startIndex + this.pageSize;
-    this.paginatedObservations = this.medicalHistory.observations.slice(startIndex, endIndex);
+
+  getObservations(medicalHistoryId: number): void {
+    this.httpProvider.getObservations(medicalHistoryId).subscribe({
+      next: (response: any) => {
+        if (response && response.data) {
+          this.medicalHistory.observations = response.data;
+          console.log(typeof(this.medicalHistory.observations))
+          console.log(this.medicalHistory.observations.length)
+          console.log(this.medicalHistory.observations)
+          this.totalObservations = this.medicalHistory.observations.length;
+          this.updatePaginatedObservations();
+        } else {
+          console.error('No observations found in response:', response);
+          this.medicalHistory.observations = [];
+        }
+      },
+      error: (error: any) => {
+        console.error('Error fetching observations', error);
+        this.medicalHistory.observations = []; // Establece como vacío si hay un error
+      },
+      complete: () => {
+        console.log('Fetch observations complete');
+        console.log(this.medicalHistory.observations)
+      }
+    });
   }
 
-   // Método que se ejecuta cuando se cambia la página
+  updatePaginatedObservations(): void {
+    const startIndex = this.pageIndex * this.pageSize;
+    const endIndex = startIndex + this.pageSize;
+    this.paginatedObservations = this.medicalHistory?.observations.slice(startIndex, endIndex) || [];
+  }
+
+  // Método que se ejecuta cuando se cambia la página
   onPageChange(event: PageEvent): void {
     this.pageIndex = event.pageIndex;
-    this.pageSize = event.pageSize;
+    this.pageSize = event.pageSize; // Aunque puedes mantenerlo fijo, aquí puedes hacer que sea variable si lo decides
     this.updatePaginatedObservations(); // Actualizar los datos de la tabla
   }
 }

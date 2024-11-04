@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { WebApiService } from './web-api.service';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { Pet } from '@app/interfaces/pet.js';
 
 var apiUrl = 'http://localhost:3000/';
 
@@ -11,7 +12,8 @@ var httpLink = {
   getPetDetailById: apiUrl + 'api/pets',
   savePet: apiUrl + 'api/pets',
   getClientByDni: apiUrl + 'api/clients/by-dni',
-  getMedicalHistories: apiUrl + 'api/medicalHistory'
+  getMedicalHistories: apiUrl + 'api/medicalHistory',
+  getObservations: apiUrl + 'api/observation/byMedicalHistory'
 }
 
 @Injectable({
@@ -37,12 +39,12 @@ export class HttpProviderService {
   }
 
 
-  public getPetDetailById(model: any): Observable<any> {
+  public getPetDetailById(id: number): Observable<Pet> {
     const headers = new HttpHeaders({
       'Content-Type': 'application/json'
     });
-    console.log(`Fetching details for pet ID: ${model}`);
-    return this.http.get<any>(`${httpLink.getPetDetailById}/${model}`, { headers });
+    console.log(`Fetching details for pet ID: ${id}`);
+    return this.http.get<Pet>(`${httpLink.getPetDetailById}/${id}`, { headers });
   }
 
   public savePet(model:any): Observable<any>{
@@ -65,6 +67,13 @@ export class HttpProviderService {
   });
   console.log(`Fetching details for pet ID: ${model}`);
   return this.http.get<any>(`${httpLink.getMedicalHistories}/${model}`, { headers });
+  }
+
+  public getObservations(medicalHistoryId: number): Observable<any> {
+  const headers = new HttpHeaders({
+  'Content-Type': 'application/json'
+  });
+  return this.http.get<any>(`${httpLink.getObservations}/${medicalHistoryId}`, { headers });
   }
 }
 
