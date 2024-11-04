@@ -3,6 +3,9 @@ import { ActivatedRoute } from '@angular/router';
 import { HttpProviderService } from '../Service/http-provider.service';
 import { MatPaginator } from '@angular/material/paginator';
 import { PageEvent } from '@angular/material/paginator';
+import { MatDialog } from '@angular/material/dialog';
+import { CreateObservationDialogComponent } from '../create-observation-dialog/create-observation-dialog.component';
+
 
 @Component({
   selector: 'medicalHistory',
@@ -20,8 +23,9 @@ export class ViewMedicalHistoriesComponent implements OnInit {
   totalObservations = 0; // Total de observaciones
 
   @ViewChild(MatPaginator) paginator!: MatPaginator; // Para acceder al paginator
+  isDialogOpen: any;
   
-  constructor(public httpProvider: HttpProviderService, private route: ActivatedRoute) { }
+  constructor(public httpProvider: HttpProviderService, private route: ActivatedRoute, public dialog: MatDialog) { }
 
   ngOnInit(): void {
     this.petId = this.route.snapshot.params['petId'];
@@ -100,4 +104,35 @@ export class ViewMedicalHistoriesComponent implements OnInit {
     this.pageSize = event.pageSize; // Aunque puedes mantenerlo fijo, aquí puedes hacer que sea variable si lo decides
     this.updatePaginatedObservations(); // Actualizar los datos de la tabla
   }
+
+openCreateObservationDialog(): void {
+  const dialogRef = this.dialog.open(CreateObservationDialogComponent, {
+    width: '400px',
+    height: 'auto',
+    disableClose: true,
+    panelClass: 'custom-dialog-container',
+    position: {
+      top: '-12%',
+      left: '80%'
+    },
+    data: {
+      medicalHistoryId: this.medicalHistory.id // Pasa el ID de la historia médica
+    }
+  });
+
+  dialogRef.afterClosed().subscribe(result => {
+    if (result) {
+      // Si se creó exitosamente la observación, actualiza la lista
+      const medicalHistoryId = this.medicalHistory.id;
+      this.getObservations(medicalHistoryId);
+    }
+  });
+
+  dialogRef.afterOpened().subscribe(() => {
+    const dialogContainer = document.querySelector('.custom-dialog-container') as HTMLElement;
+    if (dialogContainer) {
+      dialogContainer.style.transform = 'translate(-50%, -50%)';
+    }
+  });
+}
 }

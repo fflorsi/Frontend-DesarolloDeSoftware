@@ -13,7 +13,8 @@ var httpLink = {
   savePet: apiUrl + 'api/pets',
   getClientByDni: apiUrl + 'api/clients/by-dni',
   getMedicalHistories: apiUrl + 'api/medicalHistory',
-  getObservations: apiUrl + 'api/observation/byMedicalHistory'
+  getObservations: apiUrl + 'api/observation/byMedicalHistory',
+  saveObservation: apiUrl + 'api/observation'
 }
 
 @Injectable({
@@ -74,6 +75,10 @@ export class HttpProviderService {
   'Content-Type': 'application/json'
   });
   return this.http.get<any>(`${httpLink.getObservations}/${medicalHistoryId}`, { headers });
+  }
+
+  public createObservation(observationData: any) {
+  return this.http.post(httpLink.saveObservation, observationData);
   }
 }
 

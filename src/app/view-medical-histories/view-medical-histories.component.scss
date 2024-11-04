@@ -95,33 +95,36 @@
 }
 
 .observation-item {
-  position: relative;
-  /* Para permitir el posicionamiento absoluto del enlace */
   display: flex;
-  /* Usar flexbox para alinear el texto y el botón */
   justify-content: space-between;
-  /* Espacio entre el texto y el enlace */
   align-items: center;
-  /* Centrar verticalmente los elementos */
   padding: 8px;
-  /* Espaciado interno */
+  width: 100%;
+  /* Asegura que ocupe el ancho completo de la celda */
 }
 
-.show-observation {
-  position: absolute;
-  /* Posicionamiento absoluto */
-  right: 10px;
-  /* Ajusta el espaciado a la derecha */
-  top: 50%;
-  /* Centrar verticalmente respecto al contenedor */
-  transform: translateY(-50%);
-  /* Ajuste para centrar exactamente */
-  display: none;
-  /* Ocultar el enlace por defecto */
-}
+
 
 /* Mostrar el enlace solo al pasar el mouse sobre el contenedor de la observación */
-.observation-item:hover .show-observation {
-  display: inline-block;
-  /* Muestra el enlace al pasar el mouse */
+
+.observation-actions {
+  display: flex;
+  gap: 10px;
+  /* Espacio entre los botones */
+  align-items: center;
 }
+
+.observation-actions {
+  display: flex;
+  /* Aligns the buttons in a row */
+  gap: 10px;
+  /* Space between the buttons */
+  align-items: center;
+  /* Vertically centers the buttons */
+}
+
+.observation-actions a:hover {
+  background-color: #e9ecef;
+  /* Cambia el color al pasar el ratón */
+}
+

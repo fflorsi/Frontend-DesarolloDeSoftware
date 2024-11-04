@@ -38,12 +38,15 @@
               <div class="observation-item">
                 <span>{{ observation?.observation?.length > 50 ? (observation.observation | slice:0:50) + '...' :
                   observation.description }}</span>
-                <a class="show-observation"><i class='fas fa-eye'></i></a>
+                <div class="observation-actions">
+                  <a class="edit-observation"><i class="fas fa-edit"></i></a>
+                  <a class="show-observation"><i class="fas fa-eye"></i></a>
+                  <a class="delete-observation"><i class="fas fa-trash"></i></a>
+                </div>
               </div>
             </td>
-            <td>{{ observation.createdAt || 'Fecha no disponible' }}</td> <!-- Cambié a 'createdAt' -->
+            <td>{{ observation.createdAt || 'Fecha no disponible' }}</td>
             <td>{{ observation.professional || 'Profesional no disponible' }}</td>
-            <!-- Asegúrate de que esta propiedad sea correcta -->
           </tr>
         </tbody>
       </table>
@@ -59,3 +62,5 @@
     <p>No hay observaciones registradas.</p>
   </div>
 </div>
+
+<button id="new-observation" class="btn btn-primary" (click)="openCreateObservationDialog()">Nueva observación</button>

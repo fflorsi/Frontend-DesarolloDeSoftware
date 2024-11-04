@@ -30,6 +30,11 @@ import { AddEditClientComponent } from 'app/componentsClient/add-edit-client/add
 import {ProgressBarComponent} from 'app/shared/progress-bar/progress-bar.component'
 import { DetailClientComponent } from 'app/componentsClient/detail-client/detail-client.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { CreateObservationDialogComponent } from './create-observation-dialog/create-observation-dialog.component';
+import { MatDialogModule } from '@angular/material/dialog';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
+import { MatButtonModule } from '@angular/material/button';
 
 
 @NgModule({
@@ -53,7 +58,8 @@ import { ReactiveFormsModule } from '@angular/forms';
     AddEditClientComponent,
     ProgressBarComponent,
     ListClientsComponent,
-    DetailClientComponent
+    DetailClientComponent,
+    CreateObservationDialogComponent
   ],
   imports: [
     BrowserModule,
@@ -66,7 +72,11 @@ import { ReactiveFormsModule } from '@angular/forms';
     BrowserAnimationsModule,
     MatPaginatorModule,
     ReactiveFormsModule,
-    MatTableModule
+    MatTableModule,
+    MatDialogModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatButtonModule,
   ],
   providers: [{provide: HTTP_INTERCEPTORS, useClass: AddTokenInterceptor, multi: true }
   ],
