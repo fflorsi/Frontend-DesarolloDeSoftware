@@ -1,0 +1,36 @@
+:host {
+  display: block;
+}
+
+::ng-deep .mat-dialog-container {
+  position: relative;
+  z-index: 1100;
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+::ng-deep .mat-dialog-content {
+  margin: 20px 0;
+  max-height: 80vh;
+  overflow-y: auto;
+}
+
+::ng-deep .mat-dialog-actions {
+  justify-content: flex-end;
+  padding: 8px 0;
+}
+
+button {
+  padding: 8px 16px;
+  border-radius: 4px;
+  border: none;
+  background-color: #007bff;
+  color: white;
+  cursor: pointer;
+
+  &:hover {
+    background-color: #0056b3;
+  }
+}

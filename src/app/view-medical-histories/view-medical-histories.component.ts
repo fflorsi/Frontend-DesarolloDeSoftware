@@ -5,7 +5,9 @@ import { MatPaginator } from '@angular/material/paginator';
 import { PageEvent } from '@angular/material/paginator';
 import { MatDialog } from '@angular/material/dialog';
 import { CreateObservationDialogComponent } from '../create-observation-dialog/create-observation-dialog.component';
-
+import { ShowObservationDialogComponent } from '../show-observation-dialog/show-observation-dialog.component';
+import { EditObservationDialogComponent } from '@app/edit-observation-dialog-component/edit-observation-dialog-component.component';
+import { DeleteObservationDialogComponent } from '@app/delete-observation-dialog/delete-observation-dialog.component';
 
 @Component({
   selector: 'medicalHistory',
@@ -110,29 +112,101 @@ openCreateObservationDialog(): void {
     width: '400px',
     height: 'auto',
     disableClose: true,
-    panelClass: 'custom-dialog-container',
-    position: {
-      top: '-12%',
-      left: '80%'
-    },
+    panelClass: ['custom-dialog', 'centered-dialog'], // Añade estas clases
+    backdropClass: 'custom-backdrop',
+    // Elimina la propiedad position ya que queremos que esté centrado
     data: {
-      medicalHistoryId: this.medicalHistory.id // Pasa el ID de la historia médica
+      medicalHistoryId: this.medicalHistory.id
     }
   });
 
   dialogRef.afterClosed().subscribe(result => {
     if (result) {
-      // Si se creó exitosamente la observación, actualiza la lista
       const medicalHistoryId = this.medicalHistory.id;
       this.getObservations(medicalHistoryId);
     }
   });
+}
 
-  dialogRef.afterOpened().subscribe(() => {
-    const dialogContainer = document.querySelector('.custom-dialog-container') as HTMLElement;
-    if (dialogContainer) {
-      dialogContainer.style.transform = 'translate(-50%, -50%)';
+openShowObservationDialog(observation: any): void {
+  this.isDialogOpen = true;
+  const dialogRef = this.dialog.open(ShowObservationDialogComponent, {
+    width: '500px',
+    maxWidth: '90vw',
+    maxHeight: '90vh',
+    data: { observation },
+    disableClose: true,
+    autoFocus: true,
+    panelClass: ['custom-dialog', 'centered-dialog'],
+    backdropClass: 'custom-backdrop',
+    position: {
+      top: '0%',
+      left: '0%'
+    }
+  });
+
+  dialogRef.afterClosed().subscribe(() => {
+    this.isDialogOpen = false;
+  });
+}
+
+openEditObservationDialog(observation: any): void {
+    const dialogRef = this.dialog.open(EditObservationDialogComponent, {
+        width: '400px',
+        data: { observation },
+        disableClose: true,
+        autoFocus: true,
+        panelClass: ['custom-dialog', 'centered-dialog'],
+        backdropClass: 'custom-backdrop'
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+        if (result) {
+            this.httpProvider.updateObservation(result).subscribe({
+                next: (response: any) => {
+                    console.log('Observation updated successfully:', response);
+                    const medicalHistoryId = this.medicalHistory.id;
+                    this.getObservations(medicalHistoryId);
+                },
+                error: (error) => {
+                    console.error('Error updating observation:', error);
+                }
+            });
+        }
+    });
+}
+
+updateObservation(updatedObservation:any) {
+  // Implementa este método en tu servicio HTTP para actualizar la observación en el backend
+  return this.httpProvider.updateObservation(updatedObservation);
+}
+
+
+openDeleteObservationDialog(observation: any): void {
+  const dialogRef = this.dialog.open(DeleteObservationDialogComponent, {
+    width: '350px',
+    data: { observation },
+    panelClass: ['custom-dialog', 'centered-dialog'],
+    backdropClass: 'custom-backdrop'
+  });
+
+  dialogRef.afterClosed().subscribe(result => {
+    if (result) {
+      this.httpProvider.deleteObservation(observation.id).subscribe({
+        next: () => {
+          console.log('Observation deleted successfully');
+          // Actualizar la lista de observaciones
+          const medicalHistoryId = this.medicalHistory.id;
+          this.getObservations(medicalHistoryId);
+        },
+        error: (error) => {
+          console.error('Error deleting observation:', error);
+          // Aquí podrías agregar un mensaje de error para el usuario
+        }
+      });
     }
   });
 }
 }
+
+

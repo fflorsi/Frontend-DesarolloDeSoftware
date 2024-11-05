@@ -1,3 +1,6 @@
+
+
+
 <div *ngIf="!medicalHistory" class="no-mh fixed-size">
   <p>No se han encontrado Datos</p>
 </div>
@@ -27,21 +30,24 @@
       <table class="observations-table">
         <thead>
           <tr>
+            <th>Id</th>
             <th>Observación</th>
             <th>Fecha</th>
             <th>Profesional</th>
           </tr>
         </thead>
         <tbody>
-          <tr *ngFor="let observation of paginatedObservations">
+          <tr *ngFor="let observation of paginatedObservations" >
+            <td>{{observation.id}}</td>
             <td>
               <div class="observation-item">
-                <span>{{ observation?.observation?.length > 50 ? (observation.observation | slice:0:50) + '...' :
+
+                <span>{{ observation?.description?.length > 50 ? (observation.description | slice:0:20) + '...' :
                   observation.description }}</span>
                 <div class="observation-actions">
-                  <a class="edit-observation"><i class="fas fa-edit"></i></a>
-                  <a class="show-observation"><i class="fas fa-eye"></i></a>
-                  <a class="delete-observation"><i class="fas fa-trash"></i></a>
+                  <a class="edit-observation" (click)="openEditObservationDialog(observation)"><i class="fas fa-edit"></i></a>
+                  <a class="show-observation" (click)="openShowObservationDialog(observation)"><i class="fas fa-eye"></i></a>
+                  <a class="delete-observation" (click)="openDeleteObservationDialog(observation)"><i class="fas fa-trash"></i></a>
                 </div>
               </div>
             </td>
@@ -64,3 +70,5 @@
 </div>
 
 <button id="new-observation" class="btn btn-primary" (click)="openCreateObservationDialog()">Nueva observación</button>
+
+<div *ngIf="isDialogOpen" class="overlay"></div>

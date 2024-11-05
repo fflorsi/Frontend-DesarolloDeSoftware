@@ -1,0 +1,19 @@
+:host {
+  display: block;
+  width: 100%;
+  max-width: 400px;
+}
+
+mat-form-field {
+  width: 100%;
+  margin-bottom: 15px;
+}
+
+textarea {
+  min-height: 100px;
+}
+
+mat-dialog-actions {
+  display: flex;
+  justify-content: flex-end;
+}

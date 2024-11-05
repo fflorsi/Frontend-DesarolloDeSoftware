@@ -125,6 +125,31 @@
 
 .observation-actions a:hover {
   background-color: #e9ecef;
+  cursor: pointer;
   /* Cambia el color al pasar el ratón */
 }
 
+::ng-deep .centered-dialog .mat-dialog-container {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  max-width: 500px;
+  width: 100%;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+  background-color: #fff;
+}
+
+::ng-deep .custom-backdrop {
+  background-color: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(2px);
+}
+
+::ng-deep .custom-dialog {
+  position: fixed !important;
+  top: 50% !important;
+  left: 50% !important;
+  transform: translate(-50%, -50%) !important;
+}

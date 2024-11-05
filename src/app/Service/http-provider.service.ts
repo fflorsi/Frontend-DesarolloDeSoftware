@@ -14,7 +14,9 @@ var httpLink = {
   getClientByDni: apiUrl + 'api/clients/by-dni',
   getMedicalHistories: apiUrl + 'api/medicalHistory',
   getObservations: apiUrl + 'api/observation/byMedicalHistory',
-  saveObservation: apiUrl + 'api/observation'
+  saveObservation: apiUrl + 'api/observation',
+  updateObservation: apiUrl + 'api/observation',
+  deleteObservation: apiUrl + 'api/observation'
 }
 
 @Injectable({
@@ -80,5 +82,13 @@ export class HttpProviderService {
   public createObservation(observationData: any) {
   return this.http.post(httpLink.saveObservation, observationData);
   }
+
+  public updateObservation(observation: any): Observable<any> {
+  return this.http.put(`${httpLink.updateObservation}/${observation.id}`, observation)
+  }
+
+  public deleteObservation(observationId: number) {
+  return this.http.delete(`${httpLink.deleteObservation}/${observationId}`);
+}
 }
 

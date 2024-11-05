@@ -194,3 +194,14 @@ button.toast-close-button {
     margin-top: 70px;
 }
 
+.cdk-overlay-container {
+    z-index: 1000;
+}
+
+.cdk-global-overlay-wrapper {
+    z-index: 1000;
+}
+
+.mat-dialog-container {
+    z-index: 1001;
+}

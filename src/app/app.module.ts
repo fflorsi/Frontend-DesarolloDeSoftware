@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
@@ -35,6 +34,12 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
+import { ShowObservationDialogComponent } from './show-observation-dialog/show-observation-dialog.component';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatNativeDateModule } from '@angular/material/core';
+import { EditObservationDialogComponent } from './edit-observation-dialog-component/edit-observation-dialog-component.component';
+import { DeleteObservationDialogComponent } from './delete-observation-dialog/delete-observation-dialog.component';
+
 
 
 @NgModule({
@@ -59,7 +64,10 @@ import { MatButtonModule } from '@angular/material/button';
     ProgressBarComponent,
     ListClientsComponent,
     DetailClientComponent,
-    CreateObservationDialogComponent
+    CreateObservationDialogComponent,
+    ShowObservationDialogComponent,
+    EditObservationDialogComponent,
+    DeleteObservationDialogComponent
   ],
   imports: [
     BrowserModule,
@@ -77,6 +85,9 @@ import { MatButtonModule } from '@angular/material/button';
     MatFormFieldModule,
     MatInputModule,
     MatButtonModule,
+    MatDatepickerModule,
+    MatNativeDateModule
+
   ],
   providers: [{provide: HTTP_INTERCEPTORS, useClass: AddTokenInterceptor, multi: true }
   ],
