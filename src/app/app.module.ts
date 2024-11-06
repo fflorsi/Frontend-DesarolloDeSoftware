@@ -39,6 +39,8 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
 import { EditObservationDialogComponent } from './edit-observation-dialog-component/edit-observation-dialog-component.component';
 import { DeleteObservationDialogComponent } from './delete-observation-dialog/delete-observation-dialog.component';
+import { ListProductsComponent } from './componentsProduct/list-products/list-products.component';
+import { AddEditProductComponent } from './componentsProduct/add-edit-product/add-edit-product.component';
 
 
 
@@ -67,7 +69,9 @@ import { DeleteObservationDialogComponent } from './delete-observation-dialog/de
     CreateObservationDialogComponent,
     ShowObservationDialogComponent,
     EditObservationDialogComponent,
-    DeleteObservationDialogComponent
+    DeleteObservationDialogComponent,
+    ListProductsComponent,
+    AddEditProductComponent,
   ],
   imports: [
     BrowserModule,
