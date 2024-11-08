@@ -16,7 +16,11 @@ var httpLink = {
   getObservations: apiUrl + 'api/observation/byMedicalHistory',
   saveObservation: apiUrl + 'api/observation',
   updateObservation: apiUrl + 'api/observation',
-  deleteObservation: apiUrl + 'api/observation'
+  deleteObservation: apiUrl + 'api/observation',
+  getVaccines: apiUrl + 'api/vaccines',
+  addVaccine: apiUrl + 'api/vaccines',
+  updateVaccine: apiUrl + 'api/vaccines',
+  deleteVaccine: apiUrl + 'api/vaccines'
 }
 
 @Injectable({
@@ -89,6 +93,26 @@ export class HttpProviderService {
 
   public deleteObservation(observationId: number) {
   return this.http.delete(`${httpLink.deleteObservation}/${observationId}`);
-}
+  }
+
+  public getVaccines(): Observable<any> {
+  return this.http.get<any>(`${httpLink.getVaccines}`)
+  }
+
+  public getVaccine(id: number): Observable<any> {
+  return this.http.get(`${httpLink.getVaccines}/${id}`)
+  }
+
+  public addVaccine(vaccine: any): Observable<any> {
+  return this.http.post(`${httpLink.addVaccine}`,vaccine)
+  }
+
+  public updateVaccine(id: number, vaccine: any): Observable<any> {
+  return this.http.put(`${httpLink.updateVaccine}/${id}`,vaccine)
+  }
+
+  public deleteVaccine(id: number){
+  return this.http.delete(`${httpLink.deleteVaccine}/${id}`)
+  }
 }
 

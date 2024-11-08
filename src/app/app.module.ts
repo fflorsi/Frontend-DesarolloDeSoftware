@@ -41,6 +41,7 @@ import { EditObservationDialogComponent } from './edit-observation-dialog-compon
 import { DeleteObservationDialogComponent } from './delete-observation-dialog/delete-observation-dialog.component';
 import { ListProductsComponent } from './componentsProduct/list-products/list-products.component';
 import { AddEditProductComponent } from './componentsProduct/add-edit-product/add-edit-product.component';
+import { VaccineComponent } from './vaccine/vaccine.component';
 
 
 
@@ -72,6 +73,7 @@ import { AddEditProductComponent } from './componentsProduct/add-edit-product/ad
     DeleteObservationDialogComponent,
     ListProductsComponent,
     AddEditProductComponent,
+    VaccineComponent
   ],
   imports: [
     BrowserModule,

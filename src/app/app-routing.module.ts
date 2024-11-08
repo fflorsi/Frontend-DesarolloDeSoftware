@@ -17,6 +17,7 @@ import { AddEditClientComponent } from './componentsClient/add-edit-client/add-e
 import { DetailClientComponent } from './componentsClient/detail-client/detail-client.component';
 import { ListProductsComponent } from './componentsProduct/list-products/list-products.component';
 import { AddEditProductComponent } from './componentsProduct/add-edit-product/add-edit-product.component';
+import { VaccineComponent } from './vaccine/vaccine.component';
 
 
 
@@ -44,6 +45,7 @@ export const routes: Routes = [
     {path: 'listProducts', component: ListProductsComponent},
     {path: 'addProduct', component:AddEditProductComponent},
     {path: 'editProduct/:id', component: AddEditProductComponent},
+    {path: 'vaccines', component: VaccineComponent},
 
     {path: '**', redirectTo: 'Home', pathMatch:'full'}
 ];
