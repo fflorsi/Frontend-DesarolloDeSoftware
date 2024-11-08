@@ -1,14 +1,15 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import {ToastrService} from 'ngx-toastr';
 import { Product } from 'app/interfaces/product';
 import {ProductService} from 'app/services/product.service';
+
 
 @Component({
   selector: 'app-list-products',
   templateUrl: './list-products.component.html',
   styleUrl: './list-products.component.scss'
 })
-export class ListProductsComponent {
+export class ListProductsComponent implements OnInit {
 
   listProducts: Product[] = [];
   loading: boolean = false;

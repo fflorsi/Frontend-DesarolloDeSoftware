@@ -1,0 +1,13 @@
+<h2>Tu carrito</h2>
+<div *ngFor="let item of items; let i = index">
+  <p>{{ item.name }} - {{ item.price | currency }}</p>
+  <input type="number" [(ngModel)]="item.quantity" (change)="updateItemQuantity(i)" min="1" />
+  <button (click)="removeItem(i)">Eliminar</button>
+</div>
+<div *ngIf="items.length > 0">
+  <p>Total: {{ getTotal() | currency }}</p>
+  <button (click)="clearCart()">Vaciar Carrito</button>
+</div>
+<div *ngIf="items.length === 0">
+  <p>Tu carrito está vacío.</p>
+</div>

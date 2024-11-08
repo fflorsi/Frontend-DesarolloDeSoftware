@@ -42,6 +42,9 @@ import { DeleteObservationDialogComponent } from './delete-observation-dialog/de
 import { ListProductsComponent } from './componentsProduct/list-products/list-products.component';
 import { AddEditProductComponent } from './componentsProduct/add-edit-product/add-edit-product.component';
 import { VaccineComponent } from './vaccine/vaccine.component';
+import { CartComponent } from './componentsCart/cart/cart.component';
+import { ProductShopComponent } from './componentsCart/product-shop/product-shop.component';
+import { CheckoutComponent } from './componentsCart/checkout/checkout.component';
 
 
 
@@ -73,7 +76,10 @@ import { VaccineComponent } from './vaccine/vaccine.component';
     DeleteObservationDialogComponent,
     ListProductsComponent,
     AddEditProductComponent,
-    VaccineComponent
+    VaccineComponent,
+    CartComponent,
+    ProductShopComponent,
+    CheckoutComponent
   ],
   imports: [
     BrowserModule,

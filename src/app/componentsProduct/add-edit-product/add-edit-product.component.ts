@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
@@ -11,7 +11,7 @@ import { ProductService } from '@app/services/product.service';
   templateUrl: './add-edit-product.component.html',
   styleUrl: './add-edit-product.component.scss'
 })
-export class AddEditProductComponent {
+export class AddEditProductComponent implements OnInit {
   formProduct: FormGroup;
   loading: boolean = false;
   id: number;

@@ -18,6 +18,7 @@ import { DetailClientComponent } from './componentsClient/detail-client/detail-c
 import { ListProductsComponent } from './componentsProduct/list-products/list-products.component';
 import { AddEditProductComponent } from './componentsProduct/add-edit-product/add-edit-product.component';
 import { VaccineComponent } from './vaccine/vaccine.component';
+import { ProductShopComponent } from './componentsCart/product-shop/product-shop.component';
 
 
 
@@ -46,6 +47,9 @@ export const routes: Routes = [
     {path: 'addProduct', component:AddEditProductComponent},
     {path: 'editProduct/:id', component: AddEditProductComponent},
     {path: 'vaccines', component: VaccineComponent},
+
+    //Carrito
+    {path: 'productShop', component: ProductShopComponent},
 
     {path: '**', redirectTo: 'Home', pathMatch:'full'}
 ];
