@@ -1,8 +1,27 @@
-<div *ngFor="let item of items" class="cart-item">
-  <p>{{ item.name }} - {{ item.description }}</p>
-  <p>Precio: {{ item.price | currency: 'ARS' }} | Cantidad: {{ item.quantity || 1 }}</p>
-  <p>Subtotal: {{ item.price * (item.quantity || 1) | currency: 'ARS' }}</p>
-  <button (click)="deleteProduct(item.id)">Eliminar</button>
-</div>
-<p>Total: {{ total | currency: 'ARS' }}</p>
-<button (click)="cleanCart()">Vaciar Carrito</button>
+<div class="container mt-5">
+  <h2 class="text-center mb-4">Tu Carrito de Compras</h2>
+
+  <div *ngFor="let item of items" class="cart-item card mb-3">
+    <div class="card-body">
+      <div class="row">
+        <div class="col-md-8">
+          <h5 class="card-title">{{ item.name }}</h5>
+          <p class="card-text">{{ item.description }}</p>
+        </div>
+        <div class="col-md-4 text-md-right">
+          <p class="mb-2"><strong>Precio:</strong> {{ item.price | currency: 'ARS' }}</p>
+          <p class="mb-2"><strong>Cantidad:</strong> {{ item.quantity || 1 }}</p>
+          <p class="mb-2"><strong>Subtotal:</strong> {{ item.price * (item.quantity || 1) | currency: 'ARS' }}</p>
+          <button (click)="deleteProduct(item.id)" class="btn btn-danger">Eliminar</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="d-flex justify-content-between">
+    <h4><strong>Total: {{ total | currency: 'ARS' }}</strong></h4>
+    <div class="d-flex gap-3">
+      <button (click)="cleanCart()" class="btn btn-success">Realizar Compra</button>
+      <button (click)="cleanCart()" class="btn btn-warning">Vaciar Carrito</button>
+    </div>
+  </div>
