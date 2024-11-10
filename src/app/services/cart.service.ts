@@ -58,6 +58,20 @@ export class CartService {
     return this.items.reduce((total, item) => total + item.price * (item.quantity || 1), 0);
   }
 
+  updateQuantity(product: Product, newQuantity: number) {
+    const existingProduct = this.items.find(item => item.id === product.id);
+
+    if (existingProduct) {
+      existingProduct.quantity = newQuantity;
+      if (existingProduct.quantity > product.stock) {
+        existingProduct.quantity = product.stock; // Limitar al stock disponible
+        alert('Not enough stock available');
+      }
+      this.itemsSubject.next(this.items);
+      this.saveCart();
+    }
+  }
+
   private saveCart() {
     // Guardar el carrito en localStorage
     localStorage.setItem('cart', JSON.stringify(this.items));

@@ -29,4 +29,22 @@ export class CartComponent implements OnInit {
   cleanCart() {
     this._cartService.cleanCart();
   }
+
+  increaseQuantity(item: Product) {
+    const quantity = item.quantity || 1; 
+  
+    if (quantity < item.stock) {
+      this._cartService.updateQuantity(item, quantity + 1);
+    } else {
+      alert('No hay suficiente stock disponible');
+    }
+  }
+  
+  decreaseQuantity(item: Product) {
+    const quantity = item.quantity || 1; 
+  
+    if (quantity > 1) {
+      this._cartService.updateQuantity(item, quantity - 1);
+    }
+  }
 }

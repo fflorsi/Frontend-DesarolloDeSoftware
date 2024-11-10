@@ -1,27 +1,27 @@
-<div class="container mt-5">
-  <h2 class="text-center mb-4">Tu Carrito de Compras</h2>
-
-  <div *ngFor="let item of items" class="cart-item card mb-3">
-    <div class="card-body">
-      <div class="row">
-        <div class="col-md-8">
-          <h5 class="card-title">{{ item.name }}</h5>
-          <p class="card-text">{{ item.description }}</p>
-        </div>
-        <div class="col-md-4 text-md-right">
-          <p class="mb-2"><strong>Precio:</strong> {{ item.price | currency: 'ARS' }}</p>
-          <p class="mb-2"><strong>Cantidad:</strong> {{ item.quantity || 1 }}</p>
-          <p class="mb-2"><strong>Subtotal:</strong> {{ item.price * (item.quantity || 1) | currency: 'ARS' }}</p>
-          <button (click)="deleteProduct(item.id)" class="btn btn-danger">Eliminar</button>
-        </div>
+<div *ngFor="let item of items" class="cart-item card mb-3 p-3">
+  <div class="d-flex justify-content-between align-items-center">
+    <div>
+      <h5 class="card-title">{{ item.name }}</h5>
+      <p class="card-text">{{ item.description }}</p>
+      <p class="text-muted">Precio: {{ item.price | currency: 'ARS' }}</p>
+    </div>
+    <div class="d-flex flex-column align-items-end">
+      <p>Cantidad: {{ item.quantity || 1 }}</p>
+      <p>Subtotal: {{ item.price * (item.quantity || 1) | currency: 'ARS' }}</p>
+      <div class="quantity-control d-flex">
+        <button (click)="increaseQuantity(item)" class="btn btn-sm btn-primary mr-2">+</button>
+        <button (click)="decreaseQuantity(item)" class="btn btn-sm btn-primary">-</button>
       </div>
     </div>
   </div>
+  <button (click)="deleteProduct(item.id)" class="btn btn-danger btn-sm mt-2">Eliminar</button>
+</div>
 
-  <div class="d-flex justify-content-between">
-    <h4><strong>Total: {{ total | currency: 'ARS' }}</strong></h4>
-    <div class="d-flex gap-3">
-      <button (click)="cleanCart()" class="btn btn-success">Realizar Compra</button>
-      <button (click)="cleanCart()" class="btn btn-warning">Vaciar Carrito</button>
-    </div>
+<!-- Total y botones de acción -->
+<div class="d-flex justify-content-between mt-3">
+  <h4><strong>Total: {{ total | currency: 'ARS' }}</strong></h4>
+  <div>
+    <button (click)="cleanCart()" class="btn btn-warning btn-sm mr-3">Vaciar Carrito</button>
+    <button (click)="cleanCart()" class="btn btn-success btn-sm">Realizar Compra</button>
   </div>
+</div>
