@@ -3,5 +3,5 @@
     <p>{{ product.description }}</p>
     <p>Precio: {{ product.price | currency }}</p>
     <p>Categoría: {{ product.category }}</p>
-    <button (click)="addToCart(product)">Agregar al carrito</button>
+    <button (click)="addToCart(product)" aria-label="Agregar {{ product.name }} al carrito">Agregar al carrito</button>
   </div>

@@ -47,7 +47,6 @@ import { ProductShopComponent } from './componentsCart/product-shop/product-shop
 import { CheckoutComponent } from './componentsCart/checkout/checkout.component';
 
 
-
 @NgModule({
   declarations: [
     AppComponent,
@@ -98,7 +97,7 @@ import { CheckoutComponent } from './componentsCart/checkout/checkout.component'
     MatInputModule,
     MatButtonModule,
     MatDatepickerModule,
-    MatNativeDateModule
+    MatNativeDateModule,
 
   ],
   providers: [{provide: HTTP_INTERCEPTORS, useClass: AddTokenInterceptor, multi: true }

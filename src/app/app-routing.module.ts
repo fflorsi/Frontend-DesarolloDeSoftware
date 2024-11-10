@@ -19,6 +19,7 @@ import { ListProductsComponent } from './componentsProduct/list-products/list-pr
 import { AddEditProductComponent } from './componentsProduct/add-edit-product/add-edit-product.component';
 import { VaccineComponent } from './vaccine/vaccine.component';
 import { ProductShopComponent } from './componentsCart/product-shop/product-shop.component';
+import { CartComponent } from './componentsCart/cart/cart.component';
 
 
 
@@ -50,6 +51,7 @@ export const routes: Routes = [
 
     //Carrito
     {path: 'productShop', component: ProductShopComponent},
+    {path: 'cart', component: CartComponent},
 
     {path: '**', redirectTo: 'Home', pathMatch:'full'}
 ];
