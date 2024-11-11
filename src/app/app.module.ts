@@ -45,6 +45,7 @@ import { VaccineComponent } from './vaccine/vaccine.component';
 import { CartComponent } from './componentsCart/cart/cart.component';
 import { ProductShopComponent } from './componentsCart/product-shop/product-shop.component';
 import { CheckoutComponent } from './componentsCart/checkout/checkout.component';
+import { MenuAdminComponent } from './menu-admin/menu-admin.component';
 
 
 @NgModule({
@@ -78,7 +79,8 @@ import { CheckoutComponent } from './componentsCart/checkout/checkout.component'
     VaccineComponent,
     CartComponent,
     ProductShopComponent,
-    CheckoutComponent
+    CheckoutComponent,
+    MenuAdminComponent
   ],
   imports: [
     BrowserModule,

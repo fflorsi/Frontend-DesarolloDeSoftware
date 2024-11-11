@@ -21,6 +21,7 @@ import { VaccineComponent } from './vaccine/vaccine.component';
 import { ProductShopComponent } from './componentsCart/product-shop/product-shop.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { CartComponent } from './componentsCart/cart/cart.component';
+import { MenuAdminComponent } from './menu-admin/menu-admin.component';
 
 
 
@@ -54,6 +55,10 @@ export const routes: Routes = [
     //Carrito
     {path: 'productShop', component: ProductShopComponent},
     {path: 'cart', component: CartComponent},
+
+    //admin
+    {path: 'menuAdmin', component:MenuAdminComponent},
+
 
     { path: '**', component: PageNotFoundComponent }
 ];
