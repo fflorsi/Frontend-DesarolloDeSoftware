@@ -19,6 +19,8 @@ import { ListProductsComponent } from './componentsProduct/list-products/list-pr
 import { AddEditProductComponent } from './componentsProduct/add-edit-product/add-edit-product.component';
 import { VaccineComponent } from './vaccine/vaccine.component';
 import { ProductShopComponent } from './componentsCart/product-shop/product-shop.component';
+import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
+
 
 
 
@@ -51,7 +53,7 @@ export const routes: Routes = [
     //Carrito
     {path: 'productShop', component: ProductShopComponent},
 
-    {path: '**', redirectTo: 'Home', pathMatch:'full'}
+    { path: '**', component: PageNotFoundComponent }
 ];
 
 @NgModule({

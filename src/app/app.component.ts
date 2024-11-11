@@ -9,6 +9,8 @@ import { Router } from '@angular/router';
 export class AppComponent {
   menuOpen = false;
 
+  title = 'CRUDPET';
+
   constructor(private router: Router) { }
 
   HomeClick(){
@@ -17,5 +19,6 @@ export class AppComponent {
 
   toggleMenu() {
     this.menuOpen = !this.menuOpen;
+    
   }
 }
