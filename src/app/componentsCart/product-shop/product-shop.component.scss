@@ -1,0 +1,33 @@
+.product-card {
+    .card {
+      border: none;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+      transition: transform 0.3s ease;
+      
+      &:hover {
+        transform: translateY(-10px); /* Efecto de hover */
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+      }
+      
+      .card-title {
+        font-size: 1.25rem;
+        font-weight: bold;
+      }
+      
+      .card-text {
+        font-size: 1rem;
+        color: #6c757d;
+      }
+      
+      .card-footer {
+        background-color: #fff;
+        border-top: 1px solid #ddd;
+        padding: 1rem;
+      }
+      
+      .btn {
+        width: 100%; /* El botón ocupa todo el ancho del contenedor */
+      }
+    }
+  }
+  

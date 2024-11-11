@@ -30,6 +30,8 @@ loadProducts() {
   );
 }
 addToCart(product: Product) {
-  this._cartService.addToCart(product);
+  console.log('Producto recibido en el componente:', product);
+  this._cartService.addToCart(product); // Llamar al método corregido en el servicio
 }
+
 }

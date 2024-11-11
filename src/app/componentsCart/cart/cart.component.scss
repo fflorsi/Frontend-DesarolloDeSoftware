@@ -1,0 +1,46 @@
+.cart-item {
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    background-color: #f9f9f9;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+  
+  .cart-item:hover {
+    transform: scale(1.02);
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  .quantity-control button {
+    width: 40px;
+    height: 40px;
+    font-size: 1.2rem;
+  }
+  
+  .card-title {
+    font-size: 1.2rem;
+    font-weight: 600;
+  }
+  
+  .card-text {
+    font-size: 0.9rem;
+  }
+  
+  button {
+    width: 120px;
+    margin-right: 10px;
+  }
+
+  .quantity-control button {
+    width: 40px;
+    height: 40px;
+    font-size: 1.2rem;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .btn-sm {
+    padding: 8px 16px;
+  }
+  
