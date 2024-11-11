@@ -19,12 +19,9 @@ import { ListProductsComponent } from './componentsProduct/list-products/list-pr
 import { AddEditProductComponent } from './componentsProduct/add-edit-product/add-edit-product.component';
 import { VaccineComponent } from './vaccine/vaccine.component';
 import { ProductShopComponent } from './componentsCart/product-shop/product-shop.component';
-<<<<<<< HEAD
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
-
-=======
 import { CartComponent } from './componentsCart/cart/cart.component';
->>>>>>> 5b6d8488d4176f90769e86b75b1bdff6ed979af6
+
 
 
 
