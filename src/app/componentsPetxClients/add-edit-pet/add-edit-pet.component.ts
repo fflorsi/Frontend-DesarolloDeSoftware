@@ -87,7 +87,7 @@ export class AddEditPetComponent {
       this._petService.updatePet(this.id, pet).subscribe(() => {
         this.toastr.info(`La mascota ${pet.name} fue actualizada con éxito`, 'Mascota actualizada');
         this.loading = false;
-        this.router.navigate(['/listClients']);
+        this.router.navigate(['/listPets', this.clientId]);
       }, error => {
         this.loading = false;
         this.toastr.error('Error al actualizar la mascota', 'Error');
@@ -96,7 +96,7 @@ export class AddEditPetComponent {
       this._petService.savePet(pet).subscribe(() => {
         this.toastr.success(`La mascota ${pet.name} fue registrada con éxito`, 'Mascota registrada');
         this.loading = false;
-        this.router.navigate(['/listClients']);
+        this.router.navigate(['/listPets', this.clientId]);
       }, error => {
         this.loading = false;
         this.toastr.error('Error al registrar la mascota', 'Error');

@@ -40,7 +40,7 @@ export const routes: Routes = [
     {path: 'ViewClientPet', component:ViewClientPetComponent},
     {path: 'ViewAllPet', component: ViewAllPetComponent},
     {path:'addPet/:idClient', component:AddEditPetComponent},
-    {path:'editPet/:id',component:AddEditPetComponent},
+    {path: 'editPet/:id/:idClient', component: AddEditPetComponent},
     {path:'detailPet/:id',component:DetailPetComponent},
     
     {path: 'ViewMedicalHistory/:petId', component: ViewMedicalHistoriesComponent},

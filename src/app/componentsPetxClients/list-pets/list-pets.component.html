@@ -26,7 +26,7 @@
         <td>{{item.breed}}</td>
         <td>{{item.weight}}</td>
         <td>
-            <button routerLink="/editPet/{{item.id}}" type="button" class="btn btn-info btn-sm" >Editar</button>
+            <button routerLink="/editPet/{{item.id}}/{{clientData.id}}" type="button" class="btn btn-info btn-sm" >Editar</button>
             <button (click)="deletePet(item.id!)" type="button" class="btn btn-secondary btn-sm ms-2">Eliminar</button>
             <button routerLink="/detailPet/{{item.id}}" type="button" class="btn btn-outline-info btn-sm" >Detalle</button>
         </td>
