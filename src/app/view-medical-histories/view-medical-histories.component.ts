@@ -8,6 +8,7 @@ import { CreateObservationDialogComponent } from '../create-observation-dialog/c
 import { ShowObservationDialogComponent } from '../show-observation-dialog/show-observation-dialog.component';
 import { EditObservationDialogComponent } from '@app/edit-observation-dialog-component/edit-observation-dialog-component.component';
 import { DeleteObservationDialogComponent } from '@app/delete-observation-dialog/delete-observation-dialog.component';
+import { LinkVaccineDialogComponent } from '@app/link-vaccine-dialog/link-vaccine-dialog.component';
 
 @Component({
   selector: 'medicalHistory',
@@ -18,6 +19,8 @@ export class ViewMedicalHistoriesComponent implements OnInit {
   petId: any;
   medicalHistory: any | null = null; // Cambia 'any' a un tipo más específico si es posible
   paginatedObservations: any[] = []; // Array paginado de observaciones
+  paginatedVaccines: any[] = []; // Array paginado de vacunas
+  totalVaccines = 0; // Total de vacunas
 
   // Variables de paginación
   pageSize = 3; // Tamaño de página por defecto
@@ -41,7 +44,9 @@ export class ViewMedicalHistoriesComponent implements OnInit {
           this.medicalHistory = response.data;
 
           // Verificar si existen las propiedades antes de asignar a la vista
-          this.medicalHistory.vaccines = response.data.vaccines || [];
+          this.medicalHistory.vaccines = response.data.Vaccines || [];
+          this.totalVaccines = this.medicalHistory.vaccines.length;
+          this.updatePaginatedVaccines(); // Actualiza las vacunas paginadas
           
           // Llamar a la API de observaciones usando el ID de la historia clínica
           const medicalHistoryId = this.medicalHistory.id; // Asegúrate de que el ID está disponible
@@ -107,6 +112,31 @@ export class ViewMedicalHistoriesComponent implements OnInit {
     this.updatePaginatedObservations(); // Actualizar los datos de la tabla
   }
 
+  updatePaginatedVaccines(): void {
+    const startIndex = this.pageIndex * this.pageSize;
+    const endIndex = startIndex + this.pageSize;
+    this.paginatedVaccines = this.medicalHistory?.vaccines.slice(startIndex, endIndex) || [];
+}
+
+  onVaccinePageChange(event: PageEvent): void {
+    this.pageIndex = event.pageIndex;
+    this.pageSize = event.pageSize; // Aunque puedes mantenerlo fijo, aquí puedes hacer que sea variable si lo decides
+    this.updatePaginatedVaccines(); // Actualizar los datos de la tabla de vacunas
+  }  
+
+  openLinkVaccineDialog(): void {
+  const dialogRef = this.dialog.open(LinkVaccineDialogComponent, {
+    width: '400px',
+    data: { medicalHistoryId: this.medicalHistory.id }
+  });
+
+  dialogRef.afterClosed().subscribe(result => {
+    if (result) {
+      // Aquí puedes refrescar la lista de vacunas o la historia clínica si es necesario
+      this.getMedicalHistories(); // Por ejemplo, si quieres refrescar la historia clínica
+    }
+  });
+}
 openCreateObservationDialog(): void {
   const dialogRef = this.dialog.open(CreateObservationDialogComponent, {
     width: '400px',

@@ -114,5 +114,9 @@ export class HttpProviderService {
   public deleteVaccine(id: number){
   return this.http.delete(`${httpLink.deleteVaccine}/${id}`)
   }
+
+  public linkVaccineToMedicalHistory(medicalHistoryId: number, vaccineId: number) {
+  return this.http.post(`${httpLink.getMedicalHistories}/${medicalHistoryId}/vaccines`, { vaccineId });
+}
 }
 

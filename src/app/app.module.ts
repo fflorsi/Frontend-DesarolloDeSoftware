@@ -49,10 +49,12 @@ import { MenuAdminComponent } from './menu-admin/menu-admin.component';
 import { ListPetsComponent } from './componentsPetxClients/list-pets/list-pets.component';
 import { AddEditPetComponent } from './componentsPetxClients/add-edit-pet/add-edit-pet.component';
 import { DetailPetComponent } from './componentsPetxClients/detail-pet/detail-pet.component';
-
 import { ListFacilitiesComponent } from './componentsFacility/list-facilities/list-facilities.component';
 import { AddEditFacilityComponent } from './componentsFacility/add-edit-facility/add-edit-facility.component';
 import { DetailFacilityComponent } from './componentsFacility/detail-facility/detail-facility.component';
+import { MatListModule } from '@angular/material/list';
+import { LinkVaccineDialogComponent } from './link-vaccine-dialog/link-vaccine-dialog.component';
+import { MatCheckboxModule } from '@angular/material/checkbox';
 
 @NgModule({
   declarations: [
@@ -92,7 +94,8 @@ import { DetailFacilityComponent } from './componentsFacility/detail-facility/de
     DetailPetComponent,
     ListFacilitiesComponent,
     AddEditFacilityComponent,
-    DetailFacilityComponent
+    DetailFacilityComponent,
+    LinkVaccineDialogComponent
   ],
   imports: [
     BrowserModule,
@@ -112,6 +115,8 @@ import { DetailFacilityComponent } from './componentsFacility/detail-facility/de
     MatButtonModule,
     MatDatepickerModule,
     MatNativeDateModule,
+    MatListModule,
+    MatCheckboxModule
 
   ],
   providers: [{provide: HTTP_INTERCEPTORS, useClass: AddTokenInterceptor, multi: true }
