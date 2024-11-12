@@ -3,6 +3,8 @@ import {HttpClient, HttpHeaders} from '@angular/common/http';
 import { Observable } from 'rxjs';
 import {Pet} from '../interfaces/pet';
 
+
+
 @Injectable({
   providedIn: 'root'
 })
@@ -18,5 +20,9 @@ export class PetService {
 
   getPets(): Observable<Pet[]>{
     return this.http.get<Pet[]>(`${this.myAppUrl}${this.myApiUrl}`)
+  }
+
+  getPetsByClient(id:number,): Observable<Pet[]>{
+    return this.http.get<Pet[]>(`${this.myAppUrl}${this.myApiUrl}/by-client/${id}`)
   }
 }

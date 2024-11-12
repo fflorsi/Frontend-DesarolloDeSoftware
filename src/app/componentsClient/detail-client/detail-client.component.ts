@@ -7,7 +7,7 @@ import { ToastrService } from 'ngx-toastr';
 @Component({
   selector: 'app-detail-client',
   templateUrl: './detail-client.component.html',
-  styleUrls: ['./detail-client.component.scss'] // Corregido de styleUrl a styleUrls
+  styleUrls: ['./detail-client.component.scss'] 
 })
 export class DetailClientComponent {
   clientData!: Client;
@@ -21,9 +21,9 @@ export class DetailClientComponent {
   ngOnInit(): void {
     const clientId = Number(this.route.snapshot.paramMap.get('id'));
     this._clientService.getClientDetailById(clientId).subscribe(
-        (response: any) => {  // Usa `any` temporalmente para manejar `data`
+        (response: any) => {  
             this.clientData = response.data;  
-            console.log(this.clientData);  // Verifica la salida en consola
+            console.log(this.clientData);  
         },
         (error) => {
             console.error('Error fetching client data', error);

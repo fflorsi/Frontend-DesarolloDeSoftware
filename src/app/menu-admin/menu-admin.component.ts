@@ -6,5 +6,5 @@ import { Component } from '@angular/core';
   styleUrl: './menu-admin.component.scss'
 })
 export class MenuAdminComponent {
-
+  
 }

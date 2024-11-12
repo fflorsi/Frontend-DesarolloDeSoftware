@@ -46,6 +46,9 @@ import { CartComponent } from './componentsCart/cart/cart.component';
 import { ProductShopComponent } from './componentsCart/product-shop/product-shop.component';
 import { CheckoutComponent } from './componentsCart/checkout/checkout.component';
 import { MenuAdminComponent } from './menu-admin/menu-admin.component';
+import { ListPetsComponent } from './componentsPetxClients/list-pets/list-pets.component';
+import { AddEditPetComponent } from './componentsPetxClients/add-edit-pet/add-edit-pet.component';
+import { DetailPetComponent } from './componentsPetxClients/detail-pet/detail-pet.component';
 
 
 @NgModule({
@@ -80,7 +83,10 @@ import { MenuAdminComponent } from './menu-admin/menu-admin.component';
     CartComponent,
     ProductShopComponent,
     CheckoutComponent,
-    MenuAdminComponent
+    MenuAdminComponent,
+    ListPetsComponent,
+    AddEditPetComponent,
+    DetailPetComponent
   ],
   imports: [
     BrowserModule,

@@ -22,6 +22,7 @@ import { ProductShopComponent } from './componentsCart/product-shop/product-shop
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { CartComponent } from './componentsCart/cart/cart.component';
 import { MenuAdminComponent } from './menu-admin/menu-admin.component';
+import { ListPetsComponent } from './componentsPetxClients/list-pets/list-pets.component';
 
 
 
@@ -46,6 +47,7 @@ export const routes: Routes = [
     {path: 'addClient', component: AddEditClientComponent},
     {path: 'editClient/:id', component: AddEditClientComponent},
     {path: 'detailClient/:id',component: DetailClientComponent},
+    {path: 'listPets/:id', component: ListPetsComponent},
     //Producto
     {path: 'listProducts', component: ListProductsComponent},
     {path: 'addProduct', component:AddEditProductComponent},

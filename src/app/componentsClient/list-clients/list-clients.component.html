@@ -32,6 +32,9 @@
             <button (click)="deleteClient(item.id!)" type="button" class="btn btn-secondary btn-sm ms-2">Eliminar</button>
             <button routerLink="/detailClient/{{item.id}}" type="button" class="btn btn-outline-info btn-sm" >Detalle</button>
         </td>
+        <td>
+          <button routerLink="/listPets/{{item.id}}" type="button" class="btn btn-primary btn-sm ms-2">Ver Mascotas</button>
+        </td>
       </tr>
     </tbody>
   </table>
