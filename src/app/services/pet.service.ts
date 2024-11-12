@@ -18,11 +18,24 @@ export class PetService {
     this.myApiUrl = 'api/pets';
   }
 
-  getPets(): Observable<Pet[]>{
+  public getPets(): Observable<Pet[]>{
     return this.http.get<Pet[]>(`${this.myAppUrl}${this.myApiUrl}`)
   }
 
-  getPetsByClient(id:number,): Observable<Pet[]>{
+  public getPetsByClient(id:number,): Observable<Pet[]>{
     return this.http.get<Pet[]>(`${this.myAppUrl}${this.myApiUrl}/by-client/${id}`)
+  }
+
+  public getPetDetaillById(id:number):Observable<Pet>{
+    return this.http.get<Pet>(`${this.myAppUrl}${this.myApiUrl}/${id}`)
+  }
+
+  public updatePet(id: number, pet: Pet): Observable<any> {
+    return this.http.put<any>(`${this.myAppUrl}${this.myApiUrl}/${id}`, pet);
+  }
+
+  public savePet(pet: Pet): Observable<void> {
+    console.log(pet) 
+    return this.http.post<void>(`${this.myAppUrl}${this.myApiUrl}`, pet);
   }
 }

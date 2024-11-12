@@ -8,7 +8,7 @@ import { ToastrService } from 'ngx-toastr';
 @Component({
   selector: 'app-add-edit-client',
   templateUrl: './add-edit-client.component.html',
-  styleUrls: ['./add-edit-client.component.scss'] // Cambié `styleUrl` a `styleUrls`
+  styleUrls: ['./add-edit-client.component.scss'] 
 })
 export class AddEditClientComponent implements OnInit {
 

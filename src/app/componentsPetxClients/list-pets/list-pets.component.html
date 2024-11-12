@@ -1,10 +1,12 @@
 <app-progress-bar *ngIf="loading"></app-progress-bar>
 <div *ngIf="!loading" class="container">
-    <div class="title">
-        <h4>Listado de Mascotas de {{clientData.firstname}} {{clientData.lastname}}</h4>
-        <button type="button" class="btn btn-primary" routerLink="/addPet">Añadir nueva Mascota</button>
+    <div class="title d-flex justify-content-between align-items-center">
+        <h4>Listado de Mascotas de {{ clientData.firstname }} {{ clientData.lastname }}</h4>
+        <div class="ms-auto">
+            <button type="button" class="btn btn-primary me-2" routerLink="/addPet/{{clientData.id}}">Añadir nueva Mascota</button>
+            <button type="button" class="btn btn-secondary btn-sm" routerLink="/listClients">Regresar</button>
+        </div>
     </div>
-
 <table class="table table-hover">
     <thead>
       <tr>
@@ -13,7 +15,6 @@
         <th scope="col">Tipo</th>
         <th scope="col">Raza</th>
         <th scope="col">Peso</th>
-
         <th scope="col"></th>
       </tr>
     </thead>
@@ -32,6 +33,6 @@
       </tr>
     </tbody>
   </table>
-  <h5 *ngIf="listClients.length==0">No hay mascotas para mostrar</h5>
+  <h5 *ngIf="listPets.length==0">No hay mascotas para mostrar</h5>
 </div> 
 

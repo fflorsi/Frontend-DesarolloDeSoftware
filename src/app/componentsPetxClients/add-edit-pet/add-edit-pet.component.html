@@ -1,1 +1,41 @@
-<p>add-edit-pet works!</p>
+<app-progress-bar *ngIf="loading"></app-progress-bar>
+<div *ngIf="!loading" class="row mt-1">
+    <div class="col-lg-4 offset-lg-4">
+        <div class="card text-white bg-secondary mb-3" style="max-width: 25rem;">
+            <div class="card-header text-center">{{operacion}} Mascota</div>
+            <div class="card-body">
+                <form [formGroup]="formPet" (ngSubmit)="addPet()">
+                  <!-- Nombre de la Mascota -->
+                  <input formControlName="name" type="text" class="form-control" placeholder="Ingrese Nombre de la Mascota">
+                  <span *ngIf="formPet.get('name')?.hasError('required') && formPet.get('name')?.touched">El campo Nombre es <strong>requerido</strong></span>
+
+                  <!-- Fecha de Nacimiento -->
+                  <input formControlName="birthdate" type="date" class="form-control mt-2" placeholder="Ingrese Fecha de Nacimiento">
+                  <span *ngIf="formPet.get('birthdate')?.hasError('required') && formPet.get('birthdate')?.touched">El campo Fecha de Nacimiento es <strong>requerido</strong></span>
+
+                  <!-- Tipo de Mascota -->
+                  <input formControlName="type" type="number" class="form-control mt-2" placeholder="Ingrese Tipo de Mascota (1: Perro, 2: Gato, etc.)">
+                  <span *ngIf="formPet.get('type')?.hasError('required') && formPet.get('type')?.touched">El campo Tipo de Mascota es <strong>requerido</strong></span>
+
+                  <!-- Raza -->
+                  <input formControlName="breed" type="text" class="form-control mt-2" placeholder="Ingrese Raza">
+                  <span *ngIf="formPet.get('breed')?.hasError('required') && formPet.get('breed')?.touched">El campo Raza es <strong>requerido</strong></span>
+
+                  <!-- Peso -->
+                  <input formControlName="weight" type="number" class="form-control mt-2" placeholder="Ingrese Peso en kg">
+                  <span *ngIf="formPet.get('weight')?.hasError('required') && formPet.get('weight')?.touched">El campo Peso es <strong>requerido</strong></span>
+                  
+                  <!-- Botones de Acción -->
+                  <div class="row mt-2 text-center">
+                    <div class="col-lg-6">
+                        <button [disabled]="formPet.invalid" type="submit" class="btn btn-primary">Aceptar</button>
+                    </div>
+                    <div class="col-lg-6">
+                        <button type="button" class="btn btn-secondary" routerLink="/listPets">Volver</button>
+                    </div>
+                  </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

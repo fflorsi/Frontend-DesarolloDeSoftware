@@ -23,6 +23,8 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
 import { CartComponent } from './componentsCart/cart/cart.component';
 import { MenuAdminComponent } from './menu-admin/menu-admin.component';
 import { ListPetsComponent } from './componentsPetxClients/list-pets/list-pets.component';
+import { AddEditPetComponent } from './componentsPetxClients/add-edit-pet/add-edit-pet.component';
+import { DetailPetComponent } from './componentsPetxClients/detail-pet/detail-pet.component';
 
 
 
@@ -35,6 +37,9 @@ export const routes: Routes = [
     {path: 'EditPet/:petId', component: EditPetComponent},
     {path: 'ViewClientPet', component:ViewClientPetComponent},
     {path: 'ViewAllPet', component: ViewAllPetComponent},
+    {path:'addPet/:idClient', component:AddEditPetComponent},
+    {path:'editPet/:id',component:AddEditPetComponent},
+    {path:'detailPet/:id',component:DetailPetComponent},
     
     {path: 'ViewMedicalHistory/:petId', component: ViewMedicalHistoriesComponent},
 

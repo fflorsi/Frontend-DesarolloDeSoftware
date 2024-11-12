@@ -33,12 +33,13 @@ constructor(private _clientService: ClientService,
           console.error('Error fetching client data', error);
       }
   );
-  /*/this._petService.getPetsByClient(clientId).subscribe((response:any) =>{
+  this._petService.getPetsByClient(clientId).subscribe((response:any) =>{
       this.listPets = response.data;
+      console.log(this.listPets); 
       this.loading = false;
     }
 
-    )/*/
+    )
   }
 
 }
