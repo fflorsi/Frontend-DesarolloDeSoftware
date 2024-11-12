@@ -1,0 +1,15 @@
+<div class="container mt-1">
+    <div class="card">
+        <h5 class="card-title">{{ facilityData.name }}</h5>
+        <div class="card-body">
+            <p class="card-text">
+                <strong>Descripción:</strong> {{ facilityData.description }}<br>
+                <strong>Precio:</strong> {{ facilityData.price }}<br>
+            </p>
+        </div>
+        <div class="text-center">
+            <button routerLink="/editFacility/{{facilityData.id}}" type="button" class="btn btn-outline-primary btn-sm">Editar</button>
+            <button (click)="deleteFacility(facilityData.id!)" type="button" class="btn btn-outline-danger btn-sm ms-2">Eliminar</button>
+        </div>
+    </div>
+</div>

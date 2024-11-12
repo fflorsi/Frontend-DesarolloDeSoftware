@@ -23,7 +23,9 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
 import { CartComponent } from './componentsCart/cart/cart.component';
 import { MenuAdminComponent } from './menu-admin/menu-admin.component';
 import { ListPetsComponent } from './componentsPetxClients/list-pets/list-pets.component';
-
+import { ListFacilitiesComponent } from './componentsFacility/list-facilities/list-facilities.component';
+import { AddEditFacilityComponent } from './componentsFacility/add-edit-facility/add-edit-facility.component';
+import { DetailFacilityComponent } from './componentsFacility/detail-facility/detail-facility.component';
 
 
 
@@ -57,6 +59,12 @@ export const routes: Routes = [
     //Carrito
     {path: 'productShop', component: ProductShopComponent},
     {path: 'cart', component: CartComponent},
+
+    //servicios
+    {path: 'listFacilities', component: ListFacilitiesComponent},
+    {path: 'addFacility', component: AddEditFacilityComponent},
+    {path: 'editFacility/:id', component: AddEditFacilityComponent},
+    {path: 'detailFacility/:id', component: DetailFacilityComponent},
 
     //admin
     {path: 'menuAdmin', component:MenuAdminComponent},

@@ -50,6 +50,9 @@ import { ListPetsComponent } from './componentsPetxClients/list-pets/list-pets.c
 import { AddEditPetComponent } from './componentsPetxClients/add-edit-pet/add-edit-pet.component';
 import { DetailPetComponent } from './componentsPetxClients/detail-pet/detail-pet.component';
 
+import { ListFacilitiesComponent } from './componentsFacility/list-facilities/list-facilities.component';
+import { AddEditFacilityComponent } from './componentsFacility/add-edit-facility/add-edit-facility.component';
+import { DetailFacilityComponent } from './componentsFacility/detail-facility/detail-facility.component';
 
 @NgModule({
   declarations: [
@@ -86,7 +89,10 @@ import { DetailPetComponent } from './componentsPetxClients/detail-pet/detail-pe
     MenuAdminComponent,
     ListPetsComponent,
     AddEditPetComponent,
-    DetailPetComponent
+    DetailPetComponent,
+    ListFacilitiesComponent,
+    AddEditFacilityComponent,
+    DetailFacilityComponent
   ],
   imports: [
     BrowserModule,
