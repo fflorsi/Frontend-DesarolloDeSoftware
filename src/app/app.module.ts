@@ -59,7 +59,7 @@ import { ViewAllProfessionalComponent } from './view-all-professional/view-all-p
 import { AddProfessionalComponent } from './add-professional/add-professional.component';
 import { ViewProfessionalComponent } from './view-professional/view-professional.component';
 import { EditProfessionalComponent } from './edit-professional/edit-professional.component';
-import { Router } from 'express';
+import { FacilityShopComponent } from './componentsFacility/facility-shop/facility-shop.component';
 
 @NgModule({
   declarations: [
@@ -104,7 +104,8 @@ import { Router } from 'express';
     ViewAllProfessionalComponent,
     AddProfessionalComponent,
     ViewProfessionalComponent,
-    EditProfessionalComponent
+    EditProfessionalComponent,
+    FacilityShopComponent
   ],
   imports: [
     BrowserModule,

@@ -32,6 +32,7 @@ import { ViewAllProfessionalComponent } from './view-all-professional/view-all-p
 import {AddProfessionalComponent} from './add-professional/add-professional.component';
 import { ViewProfessionalComponent } from './view-professional/view-professional.component';
 import { EditProfessionalComponent } from './edit-professional/edit-professional.component';
+import { FacilityShopComponent } from './componentsFacility/facility-shop/facility-shop.component';
 
 
 
@@ -78,6 +79,7 @@ export const routes: Routes = [
     {path: 'addFacility', component: AddEditFacilityComponent},
     {path: 'editFacility/:id', component: AddEditFacilityComponent},
     {path: 'detailFacility/:id', component: DetailFacilityComponent},
+    {path: 'FacilityShop', component: FacilityShopComponent},
 
     //admin
     {path: 'menuAdmin', component:MenuAdminComponent},

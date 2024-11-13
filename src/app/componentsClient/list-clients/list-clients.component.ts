@@ -12,6 +12,7 @@ import { PageEvent, MatPaginator } from '@angular/material/paginator';
 })
 export class ListClientsComponent implements OnInit {
   listClients: Client[]=[];
+  filteredClients: Client[]=[];
   paginatedClients: Client[]=[];
   loading: boolean=false;
   pageEvent?: PageEvent;
@@ -63,11 +64,11 @@ export class ListClientsComponent implements OnInit {
     });
   }
 
-  filterClients(): void {
+  /*filterClients(): void {
     const term = this.searchTerm.toLowerCase();
     this.filteredClients = this.listClients.filter((client) =>
       client.firstname.toLowerCase().includes(term) ||
       client.lastname.toLowerCase().includes(term) // Filtra por nombre o apellido
     );
-  }
+  }*/
 }
