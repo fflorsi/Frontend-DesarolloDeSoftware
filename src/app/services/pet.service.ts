@@ -34,8 +34,7 @@ export class PetService {
     return this.http.put<any>(`${this.myAppUrl}${this.myApiUrl}/${id}`, pet);
   }
 
-  public savePet(pet: Pet): Observable<void> {
-    console.log(pet) 
+  public savePet(pet: Pet): Observable<void> { 
     return this.http.post<void>(`${this.myAppUrl}${this.myApiUrl}`, pet);
   }
 }

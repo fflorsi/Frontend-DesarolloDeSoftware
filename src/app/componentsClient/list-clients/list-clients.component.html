@@ -1,11 +1,22 @@
 <app-progress-bar *ngIf="loading"></app-progress-bar>
 <div *ngIf="!loading" class="container">
-    <div class="title">
-        <h4>Listado de Clientes</h4>
-        <button type="button" class="btn btn-primary" routerLink="/addClient">Añadir nuevo cliente</button>
-    </div>
+  <div class="title">
+    <h4>Listado de Clientes</h4>
+    <button type="button" class="btn btn-primary" routerLink="/addClient">Añadir nuevo cliente</button>
+  </div>
 
-<table class="table table-hover">
+  <!-- Campo de búsqueda -->
+  <div class="mb-3">
+    <input
+      type="text"
+      placeholder="Buscar cliente por nombre o apellido"
+      [(ngModel)]="searchTerm"
+      (input)="filterClients()"
+      class="form-control mb-3"
+    />
+  </div>
+
+  <table class="table table-hover">
     <thead>
       <tr>
         <th scope="col">DNI</th>
@@ -19,7 +30,8 @@
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let item of listClients" class="table-active">
+      <!-- Usa filteredClients en lugar de listClients -->
+      <tr *ngFor="let item of filteredClients" class="table-active">
         <td>{{item.dni}}</td>
         <td>{{item.firstname}}</td>
         <td>{{item.lastname}}</td>
@@ -28,9 +40,9 @@
         <td>{{item.email}}</td>
         <td>{{item.birthDate}}</td>
         <td>
-            <button routerLink="/editClient/{{item.id}}" type="button" class="btn btn-info btn-sm" >Editar</button>
-            <button (click)="deleteClient(item.id!)" type="button" class="btn btn-secondary btn-sm ms-2">Eliminar</button>
-            <button routerLink="/detailClient/{{item.id}}" type="button" class="btn btn-outline-info btn-sm" >Detalle</button>
+          <button routerLink="/editClient/{{item.id}}" type="button" class="btn btn-info btn-sm">Editar</button>
+          <button (click)="deleteClient(item.id!)" type="button" class="btn btn-secondary btn-sm ms-2">Eliminar</button>
+          <button routerLink="/detailClient/{{item.id}}" type="button" class="btn btn-outline-info btn-sm">Detalle</button>
         </td>
         <td>
           <button routerLink="/listPets/{{item.id}}" type="button" class="btn btn-primary btn-sm ms-2">Ver Mascotas</button>
@@ -38,5 +50,5 @@
       </tr>
     </tbody>
   </table>
-  <h5 *ngIf="listClients.length==0">No hay clientes para mostrar</h5>
-</div> 
+  <h5 *ngIf="filteredClients.length == 0">No hay clientes para mostrar</h5>
+</div>
