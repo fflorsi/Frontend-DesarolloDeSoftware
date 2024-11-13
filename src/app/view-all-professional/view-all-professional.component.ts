@@ -37,7 +37,7 @@ const MODALS: { [name: string]: Type<any> } = {
 })
 export class ViewAllProfessionalComponent implements OnInit {
   closeResult = '';
-  professionalList: Array<{ dni: string; lastname: string; name: string; adress: string; phone_number: string; mail: string; birthdate: string; id?: number }> = [];
+  professionalList: Array<{ dni: string; lastname: string; firstname: string; address: string; phone: string; email: string; birthDate: string; id?: number }> = [];
   professional: any;
   findProfessionalId: number | null = null;
 

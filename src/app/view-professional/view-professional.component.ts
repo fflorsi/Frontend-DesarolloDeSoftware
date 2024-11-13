@@ -25,6 +25,7 @@ export class ViewProfessionalComponent implements OnInit {
     console.log(this.professionalId);
     this.httpProvider.getProfessionalDetailById(this.professionalId).subscribe({
       next: (response: any) => {
+        // Aquí también hemos cambiado los campos según las modificaciones previas
         this.professionalDetail = response.data || response;
         console.log(this.professionalDetail);
       },
@@ -36,9 +37,7 @@ export class ViewProfessionalComponent implements OnInit {
 
   editProfessional(): void {
     this.httpProvider.getProfessionalDetailById(this.professionalId).subscribe({
-      
-    })
+      // Aquí puedes agregar la lógica de edición si es necesario
+    });
   }
 }
-
-

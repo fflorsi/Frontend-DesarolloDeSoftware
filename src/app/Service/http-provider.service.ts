@@ -161,11 +161,14 @@ export class HttpProviderService {
 
 
   public addProfessional(professionalData: any): Observable<any> {
+  console.log(professionalData);
   const headers = new HttpHeaders({
     'Content-Type': 'application/json'
   });
   return this.http.post(httpLink.saveProfessional, professionalData, { headers, observe: 'response' });
   }
+
+
 
   public getProfessionalDetailById(id: number): Observable<any> {
   const headers = new HttpHeaders({

@@ -3,7 +3,7 @@ import { NgForm } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { HttpProviderService } from '../Service/http-provider.service';
-import { Professional } from '@app/interfaces/professional';  
+import { Professional } from '@app/interfaces/professional';
 
 @Component({
   selector: 'app-edit-professional',
@@ -15,11 +15,11 @@ export class EditProfessionalComponent implements OnInit {
   editProfessionalForm = {
     dni: '',
     lastname: '',
-    name: '',
-    adress: '',
-    phone_number: '',
-    mail: '',
-    birthdate: '',
+    firstname: '',    
+    address: '',       
+    phone: '',         
+    email: '',         
+    birthDate: '',     
     id: null,
   }; 
   originalName: string = '';
@@ -42,7 +42,7 @@ export class EditProfessionalComponent implements OnInit {
       next: (response: any) => {
         if (response != null && response.data != null) {
           this.editProfessionalForm = response.data;
-          this.originalName = response.data.name;
+          this.originalName = response.data.firstname;  // Cambiado de 'name' a 'firstname'
           console.log('Professional details:', this.editProfessionalForm);
         } else {
           console.error('No data found in response:', response);
@@ -66,7 +66,6 @@ export class EditProfessionalComponent implements OnInit {
       this.EditProfessional(false); // Pasa 'false' si el formulario no es válido
     }
   }
-  
 
   EditProfessional(isValid: boolean) {
     this.isSubmitted = true;
@@ -122,9 +121,4 @@ export class EditProfessionalComponent implements OnInit {
       }
     });
   }
-  
-  
-  
-  
-  
 }

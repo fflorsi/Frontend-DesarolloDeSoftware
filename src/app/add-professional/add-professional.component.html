@@ -43,15 +43,15 @@
                         </div>
                     </div>
 
-                    <!-- Campo Name -->
+                    <!-- Campo firstName -->
                     <div class="form-group p-10 row">
                         <div class="col-sm-3">
-                            <label for="name" class="p-t-b-10">Nombre<span class="requiredStar">*</span></label>
+                            <label for="firstname" class="p-t-b-10">Nombre<span class="requiredStar">*</span></label>
                         </div>
                         <div class="col-sm-9">
-                            <input type="text" class="form-control" id="name" required maxlength="255" [(ngModel)]="addProfessionalForm.name" name="name" #name="ngModel">
-                            <div *ngIf="name.errors && isSubmitted" class="alert alert-danger validationError">
-                                <div [hidden]="!name.errors?.['required']">
+                            <input type="text" class="form-control" id="firstname" required maxlength="255" [(ngModel)]="addProfessionalForm.firstname" name="firstname" #firstname="ngModel">
+                            <div *ngIf="firstname.errors && isSubmitted" class="alert alert-danger validationError">
+                                <div [hidden]="!firstname.errors?.['required']">
                                     El nombre es obligatorio
                                 </div>
                             </div>
@@ -61,12 +61,12 @@
                     <!-- Campo Direccion -->
                     <div class="form-group p-10 row">
                         <div class="col-sm-3">
-                            <label for="adress" class="p-t-b-10">Dirección<span class="requiredStar">*</span></label>
+                            <label for="address" class="p-t-b-10">Dirección<span class="requiredStar">*</span></label>
                         </div>
                         <div class="col-sm-9">
-                            <textarea class="form-control" id="adress" required [(ngModel)]="addProfessionalForm.adress" name="adress" #adress="ngModel"></textarea>
-                            <div *ngIf="adress.errors && isSubmitted" class="alert alert-danger validationError">
-                                <div [hidden]="!adress.errors?.['required']">
+                            <textarea class="form-control" id="address" required [(ngModel)]="addProfessionalForm.address" name="address" #address="ngModel"></textarea>
+                            <div *ngIf="address.errors && isSubmitted" class="alert alert-danger validationError">
+                                <div [hidden]="!address.errors?.['required']">
                                     La dirección es obligatoria
                                 </div>
                             </div>
@@ -76,30 +76,30 @@
                     <!-- Campo Numero Telefónico -->
                     <div class="form-group p-10 row">
                         <div class="col-sm-3">
-                            <label for="phone_number" class="p-t-b-10">Número telefónico (Todo junto)<span class="requiredStar">*</span></label>
+                            <label for="phone" class="p-t-b-10">Número telefónico (Todo junto)<span class="requiredStar">*</span></label>
                         </div>
                         <div class="col-sm-9">
-                            <input type="tel" class="form-control" id="phone_number" required maxlength="20" [(ngModel)]="addProfessionalForm.phone_number" name="phone_number" #phone_number="ngModel">
-                            <div *ngIf="phone_number.errors && isSubmitted" class="alert alert-danger validationError">
-                                <div [hidden]="!phone_number.errors?.['required']">
+                            <input type="tel" class="form-control" id="phone" required maxlength="20" [(ngModel)]="addProfessionalForm.phone" name="phone" #phone="ngModel">
+                            <div *ngIf="phone.errors && isSubmitted" class="alert alert-danger validationError">
+                                <div [hidden]="!phone.errors?.['required']">
                                     El número telefónico es obligatorio
                                 </div>
                             </div>
                         </div>
                     </div>
 
-                    <!-- Campo Mail -->
+                    <!-- Campo eMail -->
                     <div class="form-group p-10 row">
                         <div class="col-sm-3">
-                            <label for="Mail" class="p-t-b-10">Correo electrónico<span class="requiredStar">*</span></label>
+                            <label for="email" class="p-t-b-10">Correo electrónico<span class="requiredStar">*</span></label>
                         </div>
                         <div class="col-sm-9">
-                            <input type="mail" class="form-control" id="mail" required maxlength="255" [(ngModel)]="addProfessionalForm.mail" name="mail" #mail="ngModel">
-                            <div *ngIf="mail.errors && isSubmitted" class="alert alert-danger validationError">
-                                <div [hidden]="!mail.errors?.['required']">
+                            <input type="email" class="form-control" id="email" required maxlength="255" [(ngModel)]="addProfessionalForm.email" name="email" #email="ngModel">
+                            <div *ngIf="email.errors && isSubmitted" class="alert alert-danger validationError">
+                                <div [hidden]="!email.errors?.['required']">
                                     El correo electrónico es obligatorio
                                 </div>
-                                <div [hidden]="!mail.errors?.['mail']">
+                                <div [hidden]="!email.errors?.['email']">
                                     Debe ingresar un correo electrónico válido
                                 </div>
                             </div>
@@ -109,12 +109,12 @@
                     <!-- Campo Fecha de Nacimiento -->
                     <div class="form-group p-10 row">
                         <div class="col-sm-3">
-                            <label for="Birbirthdatethdate" class="p-t-b-10">Fecha de Nacimiento<span class="requiredStar">*</span></label>
+                            <label for="birthDate" class="p-t-b-10">Fecha de Nacimiento<span class="requiredStar">*</span></label>
                         </div>
                         <div class="col-sm-9">
-                            <input type="date" class="form-control" id="birthdate" required [(ngModel)]="addProfessionalForm.birthdate" name="birthdate" #birthdate="ngModel">
-                            <div *ngIf="birthdate.errors && isSubmitted" class="alert alert-danger validationError">
-                                <div [hidden]="!birthdate.errors?.['required']">
+                            <input type="date" class="form-control" id="birthDate" required [(ngModel)]="addProfessionalForm.birthDate" name="birthDate" #birthDate="ngModel">
+                            <div *ngIf="birthDate.errors && isSubmitted" class="alert alert-danger validationError">
+                                <div [hidden]="!birthDate.errors?.['required']">
                                     La fecha de nacimiento es obligatoria
                                 </div>
                             </div>
@@ -130,4 +130,3 @@
         </div>
     </div>
 </div>
-

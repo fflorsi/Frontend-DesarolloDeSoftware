@@ -1,30 +1,28 @@
 <div class="header">
-    <h1 class="Pets">Detalle del Professional</h1>
-    <a href="#" routerLink="/viewAllProfessionals" class="btn btn-success back">
-      <i class='fas fa-arrow-circle-left'></i> Atras
-    </a>
-  </div>
-  <div class="container-xl">
-    <div class="card-container">
-      <div class="card">
-        <div class="card-body">
-          <h5 class="card-title">{{ professionalDetail?.lastname }}</h5>
-          <p class="card-text"><strong>Dni:</strong> {{ professionalDetail?.dni }}</p>
-          <p class="card-text"><strong>Apellido:</strong> {{ professionalDetail?.lastname }}</p>
-          <p class="card-text"><strong>Nombre:</strong> {{ professionalDetail?.name }}</p>
-          <p class="card-text"><strong>Dirección:</strong> {{ professionalDetail?.adress }}</p>
-          <p class="card-text"><strong>Numero telefónico:</strong> {{ professionalDetail?.phone_number }}</p>
-          <p class="card-text"><strong>Mail:</strong> {{ professionalDetail?.mail }}</p>
-          <p class="card-text"><strong>Id:</strong> {{ professionalDetail?.id }}</p>
-          <div class="button-group">
-            <a [routerLink]="['/EditProfessional', professionalDetail?.id]" class="btn btn-primary"><i class='fas fa-edit'></i> Editar</a>
-          </div>
-          <div class="button-group">
-          <div class="button-group">
+  <h1 class="Pets">Detalle del Profesional</h1>
+  <a href="#" routerLink="/viewAllProfessionals" class="btn btn-success back">
+    <i class='fas fa-arrow-circle-left'></i> Atrás
+  </a>
+</div>
+<div class="container-xl">
+  <div class="card-container">
+    <div class="card">
+      <div class="card-body">
+        <h5 class="card-title">{{ professionalDetail?.lastname }}</h5>
+        <p class="card-text"><strong>Dni:</strong> {{ professionalDetail?.dni }}</p>
+        <p class="card-text"><strong>Apellido:</strong> {{ professionalDetail?.lastname }}</p>
+        <p class="card-text"><strong>Nombre:</strong> {{ professionalDetail?.firstname }}</p> <!-- Cambiado de 'name' a 'firstname' -->
+        <p class="card-text"><strong>Dirección:</strong> {{ professionalDetail?.address }}</p> <!-- Cambiado de 'adress' a 'address' -->
+        <p class="card-text"><strong>Numero telefónico:</strong> {{ professionalDetail?.phone }}</p> <!-- Cambiado de 'phone_number' a 'phone' -->
+        <p class="card-text"><strong>Mail:</strong> {{ professionalDetail?.email }}</p> <!-- Cambiado de 'mail' a 'email' -->
+        <p class="card-text"><strong>Id:</strong> {{ professionalDetail?.id }}</p>
+        <div class="button-group">
+          <a [routerLink]="['/EditProfessional', professionalDetail?.id]" class="btn btn-primary"><i class='fas fa-edit'></i> Editar</a>
         </div>
       </div>
     </div>
-    <div *ngIf="!professionalDetail" class="no-pets">
-      <p>No se han encontrado Profesionales</p>
-    </div>
   </div>
+  <div *ngIf="!professionalDetail" class="no-pets">
+    <p>No se han encontrado Profesionales</p>
+  </div>
+</div>
