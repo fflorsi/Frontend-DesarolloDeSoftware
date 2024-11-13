@@ -55,6 +55,11 @@ import { DetailFacilityComponent } from './componentsFacility/detail-facility/de
 import { MatListModule } from '@angular/material/list';
 import { LinkVaccineDialogComponent } from './link-vaccine-dialog/link-vaccine-dialog.component';
 import { MatCheckboxModule } from '@angular/material/checkbox';
+import { ViewAllProfessionalComponent } from './view-all-professional/view-all-professional.component';
+import { AddProfessionalComponent } from './add-professional/add-professional.component';
+import { ViewProfessionalComponent } from './view-professional/view-professional.component';
+import { EditProfessionalComponent } from './edit-professional/edit-professional.component';
+import { Router } from 'express';
 
 @NgModule({
   declarations: [
@@ -95,7 +100,11 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
     ListFacilitiesComponent,
     AddEditFacilityComponent,
     DetailFacilityComponent,
-    LinkVaccineDialogComponent
+    LinkVaccineDialogComponent,
+    ViewAllProfessionalComponent,
+    AddProfessionalComponent,
+    ViewProfessionalComponent,
+    EditProfessionalComponent
   ],
   imports: [
     BrowserModule,

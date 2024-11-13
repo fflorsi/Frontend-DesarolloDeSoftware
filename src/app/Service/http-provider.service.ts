@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { Observable, tap } from 'rxjs';
 import { WebApiService } from './web-api.service';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Pet } from '@app/interfaces/pet.js';
@@ -20,7 +20,11 @@ var httpLink = {
   getVaccines: apiUrl + 'api/vaccines',
   addVaccine: apiUrl + 'api/vaccines',
   updateVaccine: apiUrl + 'api/vaccines',
-  deleteVaccine: apiUrl + 'api/vaccines'
+  deleteVaccine: apiUrl + 'api/vaccines',
+  getAllProfessional: apiUrl + 'api/professionals',
+  saveProfessional: apiUrl + 'api/professionals',
+  deleteProfessionalById: apiUrl + 'api/professionals',
+  getProfessionalDetailById: apiUrl + 'api/professionals'
 }
 
 @Injectable({
@@ -118,5 +122,59 @@ export class HttpProviderService {
   public linkVaccineToMedicalHistory(medicalHistoryId: number, vaccineId: number) {
   return this.http.post(`${httpLink.getMedicalHistories}/${medicalHistoryId}/vaccines`, { vaccineId });
 }
+
+  public getAllProfessional(): Observable<any> {
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json'
+    });
+    return this.http.get<any[]>(httpLink.getAllProfessional, { headers, observe: 'response' }).pipe(
+      tap((response: any) => {
+        console.log('Respuesta del backend para getAllProfessional:', response);
+      })
+    );
+  }
+
+
+  public deleteProfessionalById(id: number): Observable<any> {
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json'
+    });
+
+    return this.http.delete(`${httpLink.deleteProfessionalById}/${id}`, { headers, observe: 'response' }).pipe(
+      tap(response => {
+        console.log('Profesional eliminado:', response);
+      }),
+    );
+  }
+
+  public saveProfessional(model: any): Observable<any> {
+  const headers = new HttpHeaders({
+    'Content-Type': 'application/json'
+  });
+  
+  if (model.id) {
+    return this.http.put(`${httpLink.saveProfessional}/${model.id}`, model, { headers, observe: 'response' });
+  } else {
+    return this.http.post(httpLink.saveProfessional, model, { headers, observe: 'response' });
+  }
+  }
+
+
+  public addProfessional(professionalData: any): Observable<any> {
+  const headers = new HttpHeaders({
+    'Content-Type': 'application/json'
+  });
+  return this.http.post(httpLink.saveProfessional, professionalData, { headers, observe: 'response' });
+  }
+
+  public getProfessionalDetailById(id: number): Observable<any> {
+  const headers = new HttpHeaders({
+    'Content-Type': 'application/json'
+  });
+  console.log(`Fetching details for professional ID: ${id}`);
+  return this.http.get<any>(`${httpLink.getProfessionalDetailById}/${id}`, { headers }).pipe(
+    tap((response) => console.log('Respuesta de la API:', response)));
+  }
+
 }
 

@@ -1,6 +1,8 @@
 // client-dni-modal.component.ts
 import { Component } from '@angular/core';
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
+import { Router } from '@angular/router';
+
 
 @Component({
   selector: 'app-client-dni-modal',
@@ -10,7 +12,9 @@ import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 export class ClientDniModalComponent {
   dni: string = '';
 
-  constructor(public activeModal: NgbActiveModal) {}
+  constructor(
+    private router: Router,
+    public activeModal: NgbActiveModal) {}
 
   submit() {
     this.activeModal.close(this.dni);
@@ -19,4 +23,10 @@ export class ClientDniModalComponent {
   viewAllPets() {
     this.activeModal.close('viewAllPets');
   }
+
+  viewAllProfessionals() {
+    this.activeModal.close(); 
+    this.router.navigate(['/viewAllProfessionals']); // La única forma en la que lo pude hacer para que me redireccione a AllProfessionals
+  }
+
 }
