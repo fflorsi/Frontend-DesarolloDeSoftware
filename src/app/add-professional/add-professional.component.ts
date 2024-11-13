@@ -7,50 +7,57 @@ import { HttpProviderService } from '../Service/http-provider.service';
 @Component({
   selector: 'app-add-professional',
   templateUrl: './add-professional.component.html',
-  styleUrl: './add-professional.component.scss'
+  styleUrls: ['./add-professional.component.scss'] // Corregí el nombre del archivo de estilo a "styleUrls"
 })
-
 export class AddProfessionalComponent implements OnInit {
+  // Iniciamos el formulario con los valores por defecto
   addProfessionalForm: professionalForm = new professionalForm();
 
-  @ViewChild("professionalForm")
-  professionalForm!: NgForm;
+  // Declaramos una referencia al formulario con el ViewChild
+  @ViewChild('professionalForm') professionalForm!: NgForm;
+
+  // Bandera para saber si el formulario ha sido enviado
   isSubmitted: boolean = false;
+
   constructor(private router: Router, private httpProvider: HttpProviderService, private toastr: ToastrService) { }
 
   ngOnInit(): void { }
 
-  AddProfessional(isValid:boolean) {
-    this.isSubmitted = true; //verifica que el formulario ha sido enviado
-    if (isValid) { //si isvalid es true llama al metodo addProfessional del servicio HTTP
-      this.httpProvider.addProfessional(this.addProfessionalForm).subscribe(async data => {
-        if (data != null && data.body != null) {
+  // Método que se llama al enviar el formulario
+  AddProfessional(isValid: boolean) {
+    this.isSubmitted = true; // Marcamos que el formulario ha sido enviado
+    
+    if (isValid) { // Si el formulario es válido, realizamos la solicitud HTTP
+      this.httpProvider.addProfessional(this.addProfessionalForm).subscribe(
+        async data => {
           if (data != null && data.body != null) {
-            var resultData = data.body;
+            const resultData = data.body;
             this.router.navigate(['/viewAllProfessionals']);
-            this.toastr.success('Profesional creado correctamente')
+            this.toastr.success('Profesional creado correctamente');
             if (resultData != null && resultData.isSuccess) {
-              this.toastr.success(resultData.message); 
+              this.toastr.success(resultData.message);
             }
           }
-        }
-      },
+        },
         async error => {
+          // Si ocurre un error, mostramos el mensaje y redirigimos
           this.toastr.error(error.message);
           setTimeout(() => {
             this.router.navigate(['/Home']);
           }, 500);
-        });
+        }
+      );
     }
   }
 }
 
+// Definimos la estructura del formulario
 export class professionalForm {
-  dni: string = "";
-  lastname: string = "";
-  name: string = "";
-  adress: string = "";
-  phone_number: string = "";
-  mail: string = "";
-  birthdate: string = "";
+  dni: string = '';
+  lastname: string = '';
+  firstname: string = '';
+  address: string = '';
+  phone: string = '';
+  email: string = '';
+  birthDate: string = '';
 }

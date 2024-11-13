@@ -1,36 +1,36 @@
 <div class="header">
-    <h1 class="Professionals">Profesionales</h1>
-    <p>Lista de todos los profesionales</p>
+  <h1 class="Professionals">Profesionales</h1>
+  <p>Lista de todos los profesionales</p>
+</div>
+<div class="actions-container">
+  <div class="actions">
+    <a href="#" [routerLink]="['/AddProfessional']" class="btn btn-primary"><i class='fas fa-plus'></i> Agregar Profesional</a>
   </div>
-  <div class="actions-container">
-    <div class="actions">
-      <a href="#" [routerLink]="['/AddProfessional']" class="btn btn-primary"><i class='fas fa-plus'></i> Agregar Profesional</a>
-    </div>
-  </div>
-  <div class="container-xl">
-  </div>
-    <div class="container-xl">    
-    <div class="card-container">
-      <div class="card" *ngFor="let professional of professionalList" (click)="viewProfessional(professional.id)">
-        <div class="card-body">
-          <h5 class="card-title">{{ professional.lastname }}</h5>
-          <p class="card-text"><strong>dni:</strong> {{ professional.dni }}</p>
-          <p class="card-text"><strong>Apellido:</strong> {{ professional.lastname }}</p>
-          <p class="card-text"><strong>Nombre:</strong> {{ professional.name }}</p>
-          <p class="card-text"><strong>Direccion:</strong> {{ professional.adress }}</p> 
-          <p class="card-text"><strong>Teléfono:</strong> {{ professional.phone_number }} </p> 
-          <p class="card-text"><strong>Correo electrónico:</strong> {{ professional.mail }} </p> 
-          <p class="card-text"><strong>Fecha de nacimiento:</strong> {{ professional.birthdate }} </p> 
-          <p class="card-text"><strong>Id:</strong> {{ professional.id }} </p> 
-          <div class="actions">
-            <a href="#" [routerLink]="['/ViewProfessional/', professional.id]" class="btn btn-primary"><i class='fas fa-eye'></i> Ver</a>
-          </div>
+</div>
+<div class="container-xl">
+</div>
+<div class="container-xl">    
+  <div class="card-container">
+    <div class="card" *ngFor="let professional of professionalList" (click)="viewProfessional(professional.id)">
+      <div class="card-body">
+        <h5 class="card-title">{{ professional.lastname }}</h5>
+        <p class="card-text"><strong>DNI:</strong> {{ professional.dni }}</p>
+        <p class="card-text"><strong>Apellido:</strong> {{ professional.lastname }}</p>
+        <p class="card-text"><strong>Nombre:</strong> {{ professional.firstname }}</p>
+        <p class="card-text"><strong>Dirección:</strong> {{ professional.address }}</p> 
+        <p class="card-text"><strong>Teléfono:</strong> {{ professional.phone }} </p> 
+        <p class="card-text"><strong>Correo electrónico:</strong> {{ professional.email }} </p> 
+        <p class="card-text"><strong>Fecha de nacimiento:</strong> {{ professional.birthDate }} </p> 
+        <p class="card-text"><strong>ID:</strong> {{ professional.id }} </p> 
+        <div class="actions">
+          <a href="#" [routerLink]="['/ViewProfessional/', professional.id]" class="btn btn-primary"><i class='fas fa-eye'></i> Ver</a>
         </div>
       </div>
-      <div *ngIf="professionalList.length === 0" class="no-pets">No se han encontrado Profesionales</div>
-      <div class="busqueda_profesional">
-        <input type="number" [(ngModel)]="findProfessionalId" placeholder="Ingrese el ID del profesional" class="form-control" />
-        <button class="btn btn-primary" (click)="findProfessional()">Buscar Profesional</button>
-      </div>      
     </div>
+    <div *ngIf="professionalList.length === 0" class="no-pets">No se han encontrado Profesionales</div>
+    <div class="busqueda_profesional">
+      <input type="number" [(ngModel)]="findProfessionalId" placeholder="Ingrese el ID del profesional" class="form-control" />
+      <button class="btn btn-primary" (click)="findProfessional()">Buscar Profesional</button>
+    </div>      
   </div>
+</div>

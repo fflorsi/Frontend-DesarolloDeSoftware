@@ -1,10 +1,10 @@
 export interface Professional {
     dni: string,
     lastname: string,
-    name: string,
-    adress: string, 
-    phone_number: string,
-    mail: string,
-    birthdate: string,
+    firstname: string,
+    address: string, 
+    phone: string,
+    email: string,
+    birthDate: string,
     id?: number,
 }
