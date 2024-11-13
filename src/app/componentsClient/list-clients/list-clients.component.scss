@@ -1,5 +1,82 @@
-.title{
-    margin-top: 10px;
+/* Estilos generales */
+.table td {
+    font-family: 'Inter', sans-serif;
+    background-color: #ffffff ;
+    padding: 20px;
+    box-shadow: none !important;
+}
+
+/* Contenedor principal */
+.container {
+    max-width:100%;
+    margin: 0 auto;
+    padding: 40px;
+    background-color: #ffffff;
+    border-radius: 8px;
+}
+
+.title {
     display: flex;
     justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    
+    
 }
+.title h4{
+    font-family: 'Inter', sans-serif;
+    font-weight: bold;
+}
+
+.actions {
+    display: none;
+}
+
+
+
+.btn{
+    border: none;
+    color: white;
+    font-family: 'Inter', sans-serif;
+    margin: 5px;
+    background-color: #4c4152;
+}
+
+.btn-info{
+    background-color: #4c4152;
+}
+.btn-secondary{
+    background-color: #c23131;
+    
+}
+.table tbody tr:hover .actions{
+    display: inline-block;
+}
+
+
+
+.table th, .table td {
+    border-collapse: collapse;
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+    font-family: 'Inter', sans-serif;
+}
+
+.table th {
+    background-color: #f1f1f1;
+    color: #333;
+}
+
+
+
+/* Mensaje de no datos */
+.no-data {
+    font-family: 'Inter', sans-serif;
+    text-align: center;
+    color: #999;
+    margin-top: 20px;
+}
+
+/* Estilos para el paginator */
+

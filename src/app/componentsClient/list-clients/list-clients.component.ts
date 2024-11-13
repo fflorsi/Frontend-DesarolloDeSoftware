@@ -1,7 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import {ToastrService} from 'ngx-toastr';
 import { Client } from 'app/interfaces/client';
 import {ClientService} from 'app/services/client.service'
+import { PageEvent, MatPaginator } from '@angular/material/paginator';
+
 
 @Component({
   selector: 'app-list-clients',
@@ -10,7 +12,12 @@ import {ClientService} from 'app/services/client.service'
 })
 export class ListClientsComponent implements OnInit {
   listClients: Client[]=[];
+  paginatedClients: Client[]=[];
   loading: boolean=false;
+  pageEvent?: PageEvent;
+
+  @ViewChild(MatPaginator) paginator!: MatPaginator;
+
 
   constructor(private _clientService: ClientService, private toastr: ToastrService){}
 
@@ -27,6 +34,20 @@ export class ListClientsComponent implements OnInit {
       this.loading = false;
     })
   }
+
+  setPaginatedClients() {
+    const startIndex = this.paginator.pageIndex * this.paginator.pageSize;
+    const endIndex = startIndex + this.paginator.pageSize;
+    this.paginatedClients = this.listClients.slice(startIndex, endIndex);
+  }
+
+  handlePageEvent(event: PageEvent) {
+    this.pageEvent = event;
+    this.paginator.pageIndex = event.pageIndex;
+    this.paginator.pageSize = event.pageSize;
+    this.setPaginatedClients();
+  }
+
 
   deleteClient(id: number){
     this.loading=true;

@@ -2,7 +2,9 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh; /* Centra verticalmente */
+    height: 70vh; /* Centra verticalmente */
+    font-family: 'Inter', sans-serif;
+
 }
 
 .card {
@@ -17,6 +19,7 @@
 .card-title {
     font-size: 1.5rem; /* Tamaño de fuente */
     margin-bottom: 10px; /* Espacio debajo del título */
+    font-weight: bold;
 }
 
 .card-text {

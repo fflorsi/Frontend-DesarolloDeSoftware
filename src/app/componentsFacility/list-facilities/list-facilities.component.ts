@@ -48,7 +48,7 @@ export class ListFacilitiesComponent implements OnInit{
   }
 
   deleteFacility(id: number) {
-    const confirmed = window.confirm('¿Estás seguro de que deseas eliminar esta instalación?');
+    const confirmed = window.confirm('¿Estás seguro de que deseas eliminar este servicio?');
     if (confirmed) {
       this.loading = true;
       this._facilityService.deleteFacilityById(id).subscribe(() => {
