@@ -1,0 +1,96 @@
+<div class="header">
+    <h1 class="Professionals">Editar Profesional</h1>
+    <a>Actualiza o borra los datos del profesional</a>
+  </div>
+  
+  <div class="editup-container">
+    <div class="right-container">
+      <form #professionalForm="ngForm" (ngSubmit)="onSubmit(professionalForm)">
+        <div class="set">
+          <div class="professionals-dni">
+            <label for="professionals-dni">dni</label>
+            <input id="professionals-dni" type="text" value="{{ editProfessionalForm.dni }}" required maxlength="255" [(ngModel)]="editProfessionalForm.dni" name="dni" #dni="ngModel">
+            <div *ngIf="dni.errors && isSubmitted" class="alert alert-danger validationError">
+              <div [hidden]="!dni.errors?.['required']">
+                Dni is required
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="set">
+          <div class="professionals-lastname">
+            <label for="professionals-lastname">Lastname</label>
+            <input id="professionals-lastname" type="text" value="{{ editProfessionalForm.lastname }}" required maxlength="255" [(ngModel)]="editProfessionalForm.lastname" name="lastname" #lastname="ngModel">
+            <div *ngIf="lastname.errors && isSubmitted" class="alert alert-danger validationError">
+              <div [hidden]="!lastname.errors?.['required']">
+                Lastname is required
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="set">
+          <div class="professionals-Name">
+            <label for="professionals-Name">Name</label>
+            <input id="professionals-Name" type="text" value="{{editProfessionalForm.name}}" required maxlength="255" [(ngModel)]="editProfessionalForm.name" name="name" #name="ngModel">
+            <div *ngIf="name.errors && isSubmitted" class="alert alert-danger validationError">
+              <div [hidden]="!name.errors?.['required']">
+                Name is required
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="set">
+          <div class="professionals-adress">
+            <label for="professionals-adress">Address</label>
+            <input id="professionals-adress" type="text" value="{{editProfessionalForm.adress}}" required maxlength="255" [(ngModel)]="editProfessionalForm.adress" name="adress" #adress="ngModel">
+            <div *ngIf="adress.errors && isSubmitted" class="alert alert-danger validationError">
+              <div [hidden]="!adress.errors?.['required']">
+                Address is required
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="set">
+          <div class="professionals-phone_number">
+            <label for="pet-phone_number">Numero telefónico</label>
+            <input id="pet-phone_number" type="text" value="{{editProfessionalForm.phone_number}}" required maxlength="15" [(ngModel)]="editProfessionalForm.phone_number" name="phone_number" #phone_number="ngModel">
+            <div *ngIf="phone_number.errors && isSubmitted" class="alert alert-danger validationError">
+              <div [hidden]="!phone_number.errors?.['required']">
+                Debe ingresar el número telefónico
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="set">
+          <div class="professionals-mail">
+            <label for="professionals-mail">Correo Electrónico</label>
+            <input id="professionals-mail" type="mail" value="{{editProfessionalForm.mail}}" required maxlength="255" [(ngModel)]="editProfessionalForm.mail" name="mail" #mail="ngModel">
+            <div *ngIf="mail.errors && isSubmitted" class="alert alert-danger validationError">
+              <div [hidden]="!mail.errors?.['required']">
+                El correo electrónico es requerido
+              </div>
+              <div [hidden]="!mail.errors?.['mail']">
+                Debe ingresar un correo electrónico válido
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="set">
+          <div class="professionals-birthdate">
+            <label for="professionals-birthdate">Fecha de Nacimiento</label>
+            <input id="professionals-birthdate" type="date" value="{{editProfessionalForm.birthdate}}" required [(ngModel)]="editProfessionalForm.birthdate" name="birthdate" #birthdate="ngModel">
+            <div *ngIf="birthdate.errors && isSubmitted" class="alert alert-danger validationError">
+              <div [hidden]="!birthdate.errors?.['required']">
+                Fecha de nacimiento es requerida
+              </div>
+            </div>
+          </div>
+        </div>
+        <a href="#" *ngIf="editProfessionalForm.id" [routerLink]="['/ViewProfessional', editProfessionalForm.id]" class="btn btn-success back">
+          <i class="fas fa-arrow-circle-left"></i> Atras
+        </a>
+        <button id="Enviar" class="btn btn-primary" type="submit"><i class='fas fa-arrow-circle-up'></i>Enviar</button>
+      </form>
+      <button id="Eliminar" class="btn btn-danger" (click)="confirmDelete()"><i class='fas fa-trash-alt'></i>Eliminar</button>
+    </div>
+  </div>

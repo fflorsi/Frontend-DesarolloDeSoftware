@@ -94,6 +94,16 @@
   /* Espaciado entre la tabla y el paginador */
 }
 
+.mat-paginator .mat-icon-button:hover .mat-button-wrapper {
+  visibility: hidden;
+  /* Oculta el texto al pasar el cursor */
+}
+
+.mat-paginator .mat-icon-button:hover {
+  color: inherit;
+  /* Mantiene el color del icono */
+}
+
 .observation-item {
   display: flex;
   justify-content: space-between;

@@ -28,6 +28,10 @@ import { DetailPetComponent } from './componentsPetxClients/detail-pet/detail-pe
 import { ListFacilitiesComponent } from './componentsFacility/list-facilities/list-facilities.component';
 import { AddEditFacilityComponent } from './componentsFacility/add-edit-facility/add-edit-facility.component';
 import { DetailFacilityComponent } from './componentsFacility/detail-facility/detail-facility.component';
+import { ViewAllProfessionalComponent } from './view-all-professional/view-all-professional.component';
+import {AddProfessionalComponent} from './add-professional/add-professional.component';
+import { ViewProfessionalComponent } from './view-professional/view-professional.component';
+import { EditProfessionalComponent } from './edit-professional/edit-professional.component';
 
 
 
@@ -42,6 +46,10 @@ export const routes: Routes = [
     {path:'addPet/:idClient', component:AddEditPetComponent},
     {path: 'editPet/:id/:idClient', component: AddEditPetComponent},
     {path:'detailPet/:id',component:DetailPetComponent},
+    {path: 'ViewProfessional/:id', component: ViewProfessionalComponent},
+    {path: 'viewAllProfessionals', component: ViewAllProfessionalComponent},
+    {path: 'AddProfessional', component: AddProfessionalComponent},
+    {path: 'EditProfessional/:id', component: EditProfessionalComponent},
     
     {path: 'ViewMedicalHistory/:petId', component: ViewMedicalHistoriesComponent},
 

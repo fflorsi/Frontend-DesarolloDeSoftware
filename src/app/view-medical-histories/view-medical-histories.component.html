@@ -1,6 +1,3 @@
-
-
-
 <div *ngIf="!medicalHistory" class="no-mh fixed-size">
   <p>No se han encontrado Datos</p>
 </div>
@@ -9,20 +6,27 @@
   <b>Historia Clínica</b>
 
   <!-- Mostrar vacunas solo si hay -->
-  <div *ngIf="medicalHistory?.vaccines?.length > 0">
-    <table class="vaccines-table">
-      <thead>
-        <tr>
-          <th>Vacunas</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr *ngFor="let vaccine of medicalHistory.vaccines">
-          <td>{{ vaccine }}</td>
-        </tr>
-      </tbody>
-    </table>
+<div *ngIf="medicalHistory?.Vaccines?.length > 0">
+  <table class="vaccines-table">
+    <thead>
+      <tr>
+        <th>Vacunas</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let vaccine of paginatedVaccines">
+        <td>{{ vaccine.name }}</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="paginator-container">
+    <mat-paginator [length]="totalVaccines" [pageSize]="pageSize" (page)="onVaccinePageChange($event)"
+      aria-label="paginador de vacunas"></mat-paginator>
   </div>
+</div>
+
+<button id="link-vaccine" class="btn btn-primary" (click)="openLinkVaccineDialog()">Vincular Vacuna</button>
 
   <!-- Mostrar observaciones solo si hay -->
   <div *ngIf="medicalHistory?.observations?.length > 0">
