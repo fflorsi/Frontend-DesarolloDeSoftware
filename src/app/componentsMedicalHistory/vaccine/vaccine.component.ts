@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpProviderService } from '../../Service/http-provider.service'; // Asegúrate de importar el servicio correcto
 
+
 @Component({
   selector: 'app-vaccine',
   templateUrl: './vaccine.component.html',
@@ -11,7 +12,8 @@ export class VaccineComponent implements OnInit {
   selectedVaccine: any = null;
   newVaccine: any = { name: '' };
 
-  constructor(private httpProviderService: HttpProviderService) { }
+  constructor(private httpProviderService: HttpProviderService
+  ) { }
 
   ngOnInit(): void {
     this.loadVaccines();
@@ -27,6 +29,7 @@ export class VaccineComponent implements OnInit {
     this.httpProviderService.addVaccine(this.newVaccine).subscribe(vaccine => {
       this.vaccines.push(vaccine);
       this.newVaccine = { name: '' }; // Reset input
+      window.location.reload();
     });
   }
 
@@ -42,8 +45,10 @@ updateVaccine(): void {
         this.vaccines[index] = updatedVaccine; // Actualiza la vacuna en la lista
       }
       this.selectedVaccine = null; // Resetea la selección
+      window.location.reload();
     }, error => {
       console.error('Error al actualizar la vacuna:', error);
+
     });
   }
 }
@@ -51,6 +56,7 @@ updateVaccine(): void {
   deleteVaccine(id: number): void {
     this.httpProviderService.deleteVaccine(id).subscribe(() => {
       this.vaccines = this.vaccines.filter(v => v.id !== id);
+      window.location.reload();
     });
   }
 }
