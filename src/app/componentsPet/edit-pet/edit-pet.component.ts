@@ -55,7 +55,7 @@ export class EditPetComponent implements OnInit {
             type: data.type,
             breed: data.breed,
             weight: data.weight,
-            client_id: data.client_id,
+            client_id: data.clientId,
           });
         },
         error: (err) => {
@@ -75,7 +75,7 @@ savePet() {
     type: this.formPet.value.type,
     breed: this.formPet.value.breed,
     weight: this.formPet.value.weight,
-    client_id: this.formPet.value.client_id
+    client_id: this.formPet.value.clientId
   };
   this.loading = true;
   this._petService.savePet(pet).subscribe(() => {
