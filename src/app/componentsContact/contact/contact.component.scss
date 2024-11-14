@@ -1,0 +1,49 @@
+/* Estilos generales */
+.contact-container {
+    max-width: 100%;
+    margin: 0 auto;
+    padding: 40px;
+    border-radius: 8px;
+    font-family: 'Inter', sans-serif;
+}
+
+.contact-container label {
+    display: block;
+    margin-bottom: 10px;
+    font-weight: bold;
+}
+
+.contact-container input,
+.contact-container textarea {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-family: 'Inter', sans-serif;
+}
+
+.contact-container button {
+    border: none;
+    color: white;
+    font-family: 'Inter', sans-serif;
+    padding: 10px 15px;
+    background-color: #4c4152;
+    cursor: pointer;
+    border-radius: 4px;
+}
+
+.contact-container button[disabled] {
+    background-color: #ccc;
+    cursor: not-allowed;
+}
+
+.contact-container .success {
+    color: green;
+    font-family: 'Inter', sans-serif;
+}
+
+.contact-container .error {
+    color: red;
+    font-family: 'Inter', sans-serif;
+}

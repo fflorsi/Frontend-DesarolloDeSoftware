@@ -36,6 +36,7 @@ import { FacilityShopComponent } from './componentsFacility/facility-shop/facili
 import { ListFutureAppointmentsComponent } from './componentsAppointment/list-future-appointments/list-future-appointments.component';
 import { NewAppointmentComponent } from './componentsAppointment/new-appointment/new-appointment.component';
 import { ListAppointmentsComponent } from './componentsAppointment/list-appointments/list-appointments.component';
+import { ContactComponent } from './componentsContact/contact/contact.component';
 
 
 
@@ -92,6 +93,8 @@ export const routes: Routes = [
     //admin
     {path: 'menuAdmin', component:MenuAdminComponent},
 
+    //Contacto
+    {path: 'contact', component: ContactComponent},
 
     { path: '**', component: PageNotFoundComponent }
 ];
