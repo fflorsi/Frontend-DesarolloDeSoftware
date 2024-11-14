@@ -142,7 +142,7 @@ openCreateObservationDialog(): void {
     width: '400px',
     height: 'auto',
     disableClose: true,
-    panelClass: ['custom-dialog', 'centered-dialog'], // Añade estas clases
+    panelClass: ['custom-dialog', 'centered-dialog'], 
     backdropClass: 'custom-backdrop',
     // Elimina la propiedad position ya que queremos que esté centrado
     data: {

@@ -55,33 +55,8 @@ export class AppointmentService {
   }
 
   // Método para obtener los turnos futuros con sus detalles
-  /*/getFutureAppointmentsWithDetails(): Observable<any[]> {
+  getFutureAppointmentsWithDetails(): Observable<any[]> {
     return this.http.get<Appointment[]>(`${this.myAppUrl}${this.myApiUrl}/future`)
-    .pipe(
-      switchMap(appointments => {
-        const petRequests = appointments.map(appointment =>
-          this._petService.getPetDetaillById(appointment.petId).pipe(
-            map(pet => ({ ...appointment, pet }))
-          )
-        );
-
-        const professionalRequests = appointments.map(appointment =>
-          this._professionalService.getProfessionalDetailById(appointment.professionalId).pipe(
-            map(professional => ({ ...appointment, professional }))
-          )
-        );
-
-        const facilityRequests = appointments.map(appointment =>
-          this._facilityService.getFacilityById(appointment.facilityId).pipe(
-            map(facility => ({ ...appointment, facility }))
-          )
-        );
-
-        return forkJoin([...petRequests, ...professionalRequests, ...facilityRequests]).pipe(
-          map(results => results)
-        );
-      })
-    );
-  }/*/
+  }
 }
 
