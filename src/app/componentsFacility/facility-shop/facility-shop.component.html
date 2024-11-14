@@ -2,6 +2,7 @@
 <div class="header">
     <h1 class="title">Servicios</h1>
     <p class="subtitle">Encuentra aquí todos los servicios que podemos hacer por tu mascota</p>
+    <input type="text" [(ngModel)]="searchTerm" (input)="filterFacilities()" placeholder="Buscar por nombre" />
 </div>
 
 

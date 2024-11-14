@@ -38,4 +38,9 @@ public deleteFacilityById(id: number): Observable<void>{
 //editar un servicio
 public updateFacility(id: number, facility: Facility): Observable<any>{
     return this.http.put<any>(`${this.myAppUrl}${this.myApiUrl}/${id}`, facility);}
+
+
+searchFacilitiesByName(name: string): Observable<Facility[]> {
+    return this.http.get<Facility[]>(`${this.myAppUrl}api/facilities/search?name=${name}`);
+}
 }

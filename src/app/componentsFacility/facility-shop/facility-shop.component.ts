@@ -17,7 +17,7 @@ export class FacilityShopComponent implements OnInit {
     pageIndex: 0,
     pageSize: 6
   };
-  pageEvent?: PageEvent;
+  searchTerm: string = ''; // Nuevo campo para el término de búsqueda
 
   constructor(private _facilityService: FacilityService, private toastr: ToastrService) { }
 
@@ -29,10 +29,10 @@ export class FacilityShopComponent implements OnInit {
     this.loading = true;
 
     this._facilityService.getFacilities().subscribe((response: any) => {
-      console.log('Respuesta del servidor:', response); // Para ver la estructura completa
-      this.listFacilities = response.data; // Accede al array a través de response.data
+      console.log('Respuesta del servidor:', response);
+      this.listFacilities = response.data;
       this.loading = false;
-      this.setPaginatedFacilities(); // Llama a setPaginatedFacilities después de actualizar listFacilities
+      this.setPaginatedFacilities();
     });
   }
 
@@ -43,9 +43,19 @@ export class FacilityShopComponent implements OnInit {
   }
 
   handlePageEvent(event: PageEvent) {
-    this.pageEvent = event;
     this.paginator.pageIndex = event.pageIndex;
     this.paginator.pageSize = event.pageSize;
     this.setPaginatedFacilities();
+  }
+
+  filterFacilities() {
+    // Llama al servicio para buscar facilities por nombre
+    this._facilityService.searchFacilitiesByName(this.searchTerm).subscribe((response: any) => {
+      this.listFacilities = response.data;
+      this.setPaginatedFacilities(); // Actualiza la paginación
+      this.paginator.pageIndex = 0; // Resetea el índice de la página
+    }, error => {
+      console.error('Error al buscar facilities:', error);
+    });
   }
 }
