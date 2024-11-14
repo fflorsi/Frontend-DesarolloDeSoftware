@@ -2,7 +2,7 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
-import { HttpProviderService } from '../Service/http-provider.service';
+import { HttpProviderService } from '../../Service/http-provider.service';
 
 @Component({
   selector: 'app-add-professional',

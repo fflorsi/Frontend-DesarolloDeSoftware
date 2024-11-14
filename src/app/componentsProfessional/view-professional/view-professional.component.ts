@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { HttpProviderService } from '../Service/http-provider.service';
+import { HttpProviderService } from '../../Service/http-provider.service';
 import { Professional } from '@app/interfaces/professional';
 import { RouterLink } from '@angular/router';
 

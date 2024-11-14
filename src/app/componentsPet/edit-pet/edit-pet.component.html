@@ -1,0 +1,78 @@
+<div class="header">
+  <h1 class="Pets">Editar Mascota</h1>
+  <a>Asegurate de que tu mascota tenga el mejor cuidado</a>
+</div>
+
+<div class="editup-container">
+  <div class="right-container">
+    <form #petForm="ngForm" (ngSubmit)="onSubmit()">
+      <div class="set">
+        <div class="pets-name">
+          <label for="pets-name">Name</label>
+          <input id="pets-name" type="text" value="{{ editPetForm.name }}" required maxlength="255" [(ngModel)]="editPetForm.name" name="Name" #Name="ngModel">
+          <div *ngIf="Name.errors && isSubmitted" class="alert alert-danger validationError">
+            <div [hidden]="!Name.errors?.['required']">
+              Name is required
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="set">
+        <div class="pets-age">
+          <label for="pets-age">Edad</label>
+          <input id="pets-age" type="number" value="{{ editPetForm.age }}" required min="0" [(ngModel)]="editPetForm.age" name="Age" #Age="ngModel">
+          <div *ngIf="Age.errors && isSubmitted" class="alert alert-danger validationError">
+            <div [hidden]="!Age.errors?.['required']">
+              Age is required
+            </div>
+            <div [hidden]="!Age.errors?.['min']">
+              Age must be a positive number
+            </div>
+            <div *ngIf="editPetForm.Age > originalAge && isSubmitted" class="alert alert-danger validationError">
+              Age cannot be less than the original age
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="set">
+        <div class="pets-type">
+          <label for="pets-type">Type</label>
+          <input id="pets-type" type="text" value="{{editPetForm.type}}" required [(ngModel)]="editPetForm.type" name="Type" #Type="ngModel">
+          <div *ngIf="Type.errors && isSubmitted" class="alert alert-danger validationError">
+            <div [hidden]="!Type.errors?.['required']">
+              Type is required
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="set">
+        <div class="pets-breed">
+          <label for="pets-breed">Breed</label>
+          <input id="pets-breed" type="text" value="{{editPetForm.breed}}" required [(ngModel)]="editPetForm.breed" name="Breed" #Breed="ngModel">
+          <div *ngIf="Breed.errors && isSubmitted" class="alert alert-danger validationError">
+            <div [hidden]="!Breed.errors?.['required']">
+              Breed is required
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="set">
+        <div class="pets-weight">
+          <label for="pet-weight">Peso en kg</label>
+          <input id="pet-weight" type="number" value="{{editPetForm.weight}}" required min="1" [(ngModel)]="editPetForm.weight" name="Weight" #Weight="ngModel">
+          <div *ngIf="Weight.errors && isSubmitted" class="alert alert-danger validationError">
+            <div [hidden]="!Weight.errors?.['required']">
+              Debe ingresar el peso
+            </div>
+            <div [hidden]="!Weight.errors?.['min']">
+                El peso debe ser mayor a 0
+            </div>
+          </div>
+        </div>
+      </div>
+      <a href="#" [routerLink]="['/ViewPet/', editPetForm.id]" class="btn btn-success back"><i class='fas fa-arrow-circle-left'></i>Atras</a>
+      <button id="Enviar" class="btn btn-primary" type="submit"><i class='fas fa-arrow-circle-up'></i>Enviar</button>
+    </form>
+    <button id="Eliminar" class="btn btn-danger" (click)="confirmDelete()"><i class='fas fa-trash-alt'></i>Eliminar</button>
+  </div>
+</div>

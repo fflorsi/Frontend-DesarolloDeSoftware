@@ -1,11 +1,11 @@
 import { RouterModule, Routes } from '@angular/router';
 import { NgModule } from '@angular/core';
-import { AddPetComponent } from './add-pet/add-pet.component';
-import { EditPetComponent } from './edit-pet/edit-pet.component';
+import { AddPetComponent } from './componentsPet/add-pet/add-pet.component';
+import { EditPetComponent } from './componentsPet/edit-pet/edit-pet.component';
 import { HomeComponent } from './home/home.component';
-import { ViewPetComponent } from './view-pet/view-pet.component';
+import { ViewPetComponent } from './componentsPet/view-pet/view-pet.component';
 import { ViewClientPetComponent } from './view-client-pet/view-client-pet.component';
-import {ViewAllPetComponent} from './view-all-pet/view-all-pet.component'
+import {ViewAllPetComponent} from './componentsPet/view-all-pet/view-all-pet.component'
 import { ViewMedicalHistoriesComponent } from './view-medical-histories/view-medical-histories.component';
 import { LoginComponent } from './componentsLogin/login/login.component';
 import { SignInComponent } from './componentsLogin/sign-in/sign-in.component';
@@ -28,9 +28,9 @@ import { DetailPetComponent } from './componentsPetxClients/detail-pet/detail-pe
 import { ListFacilitiesComponent } from './componentsFacility/list-facilities/list-facilities.component';
 import { AddEditFacilityComponent } from './componentsFacility/add-edit-facility/add-edit-facility.component';
 import { DetailFacilityComponent } from './componentsFacility/detail-facility/detail-facility.component';
-import { ViewAllProfessionalComponent } from './view-all-professional/view-all-professional.component';
-import {AddProfessionalComponent} from './add-professional/add-professional.component';
-import { ViewProfessionalComponent } from './view-professional/view-professional.component';
+import { ViewAllProfessionalComponent } from './componentsProfessional/view-all-professional/view-all-professional.component';
+import {AddProfessionalComponent} from './componentsProfessional/add-professional/add-professional.component';
+import { ViewProfessionalComponent } from './componentsProfessional/view-professional/view-professional.component';
 import { EditProfessionalComponent } from './edit-professional/edit-professional.component';
 import { FacilityShopComponent } from './componentsFacility/facility-shop/facility-shop.component';
 import { ListFutureAppointmentsComponent } from './componentsAppointment/list-future-appointments/list-future-appointments.component';

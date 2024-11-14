@@ -2,7 +2,7 @@ import { Component, OnInit, Type } from '@angular/core';
 import { Router } from '@angular/router';
 import { NgbModal, NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 import { ToastrService } from 'ngx-toastr';
-import { HttpProviderService } from '../Service/http-provider.service';
+import { HttpProviderService } from '../../Service/http-provider.service';
 
 @Component({
   selector: 'ng-modal-confirm',
