@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AppointmentService } from '@app/services/appointment.service';
 import { Appointment } from '@app/interfaces/appointment';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-list-future-appointments',
@@ -8,18 +9,18 @@ import { Appointment } from '@app/interfaces/appointment';
   styleUrl: './list-future-appointments.component.scss'
 })
 export class ListFutureAppointmentsComponent implements OnInit {
-  appointments: any[] = []; // Aquí almacenaremos los turnos con detalles
-  loading: boolean = true;  // Para mostrar un indicador de carga
+  appointments: Appointment[] = []; 
+  loading: boolean = true;  
 
-  constructor(private _appointmentService: AppointmentService) {}
+  constructor(private _appointmentService: AppointmentService, private router: Router) {}
 
   ngOnInit(): void {
-    console.log("p")
+
     this.getFutureAppointments();
   }
 
   getFutureAppointments(): void {
-    this._appointmentService.getAllAppointmentsWithDetails().subscribe(
+    this._appointmentService.getFutureAppointments().subscribe(
         data => {
           console.log(data)
           this.appointments = data;
@@ -34,13 +35,30 @@ export class ListFutureAppointmentsComponent implements OnInit {
 
   // Método para cancelar un turno
   cancelAppointment(id: number): void {
-    console.log(`Cancelando el turno con ID: ${id}`);
+    const newState = 'cancelled';  // Estado de "cancelado"
+    this._appointmentService.updateAppointmentState(id, newState).subscribe({
+      next: (response) => {
+        console.log(`Turno cancelado correctamente.`);
+        this.getFutureAppointments();
+      },
+      error: (error) => {
+        console.error(`Error al cancelar el turno con ID ${id}:`, error);
+      }
+    });
   }
-
+  
   // Método para marcar un turno como recibido
-  markAsReceived(id: number): void {
-    console.log(`Marcando el turno con ID: ${id} como recibido`);
-    // Aquí puedes implementar la lógica para marcar el turno como recibido
+  markAsDone(id: number): void {
+    const newState = 'done';  // Estado de "recibido"
+    this._appointmentService.updateAppointmentState(id, newState).subscribe({
+      next: (response) => {
+        console.log(`Turno recibido correctamente.`);
+        this.getFutureAppointments();
+      },
+      error: (error) => {
+        console.error(`Error al marcar el turno con ID ${id} como recibido:`, error);
+      }
+    });
   }
 }
 

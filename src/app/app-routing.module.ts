@@ -34,6 +34,8 @@ import { ViewProfessionalComponent } from './componentsProfessional/view-profess
 import { EditProfessionalComponent } from './edit-professional/edit-professional.component';
 import { FacilityShopComponent } from './componentsFacility/facility-shop/facility-shop.component';
 import { ListFutureAppointmentsComponent } from './componentsAppointment/list-future-appointments/list-future-appointments.component';
+import { NewAppointmentComponent } from './componentsAppointment/new-appointment/new-appointment.component';
+import { ListAppointmentsComponent } from './componentsAppointment/list-appointments/list-appointments.component';
 
 
 
@@ -84,6 +86,8 @@ export const routes: Routes = [
 
     //Turnos
     {path: 'listFutureAppointments', component: ListFutureAppointmentsComponent},
+    {path:'newAppointment/:id',component: NewAppointmentComponent},
+    {path: 'listAllAppointments', component: ListAppointmentsComponent},
 
     //admin
     {path: 'menuAdmin', component:MenuAdminComponent},
