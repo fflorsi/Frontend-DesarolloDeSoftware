@@ -60,6 +60,7 @@ import { AddProfessionalComponent } from './add-professional/add-professional.co
 import { ViewProfessionalComponent } from './view-professional/view-professional.component';
 import { EditProfessionalComponent } from './edit-professional/edit-professional.component';
 import { FacilityShopComponent } from './componentsFacility/facility-shop/facility-shop.component';
+import { ListFutureAppointmentsComponent } from './componentsAppointment/list-future-appointments/list-future-appointments.component';
 
 @NgModule({
   declarations: [
@@ -105,7 +106,8 @@ import { FacilityShopComponent } from './componentsFacility/facility-shop/facili
     AddProfessionalComponent,
     ViewProfessionalComponent,
     EditProfessionalComponent,
-    FacilityShopComponent
+    FacilityShopComponent,
+    ListFutureAppointmentsComponent
   ],
   imports: [
     BrowserModule,

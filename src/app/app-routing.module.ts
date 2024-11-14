@@ -33,6 +33,7 @@ import {AddProfessionalComponent} from './add-professional/add-professional.comp
 import { ViewProfessionalComponent } from './view-professional/view-professional.component';
 import { EditProfessionalComponent } from './edit-professional/edit-professional.component';
 import { FacilityShopComponent } from './componentsFacility/facility-shop/facility-shop.component';
+import { ListFutureAppointmentsComponent } from './componentsAppointment/list-future-appointments/list-future-appointments.component';
 
 
 
@@ -80,6 +81,9 @@ export const routes: Routes = [
     {path: 'editFacility/:id', component: AddEditFacilityComponent},
     {path: 'detailFacility/:id', component: DetailFacilityComponent},
     {path: 'FacilityShop', component: FacilityShopComponent},
+
+    //Turnos
+    {path: 'listFutureAppointments', component: ListFutureAppointmentsComponent},
 
     //admin
     {path: 'menuAdmin', component:MenuAdminComponent},
