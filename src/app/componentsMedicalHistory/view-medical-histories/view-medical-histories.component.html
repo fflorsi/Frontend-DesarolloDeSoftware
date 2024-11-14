@@ -1,4 +1,3 @@
-<<<<<<< HEAD:src/app/view-medical-histories/view-medical-histories.component.html
 <div *ngIf="!medicalHistory" class="no-mh fixed-size">
   <p>No se han encontrado Datos</p>
 </div>
@@ -7,30 +6,26 @@
   <b>Historia Clínica</b>
 
   <!-- Mostrar vacunas solo si hay -->
-<div *ngIf="medicalHistory?.Vaccines?.length > 0">
-  <table class="vaccines-table">
-    <thead>
-      <tr>
-        <th>Vacunas</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr *ngFor="let vaccine of paginatedVaccines">
-        <td>{{ vaccine.name }} <a class="unlink-vaccine" (click)="unlinkVaccine(medicalHistory.id, vaccine.id)">
-          <i class="fas fa-trash"></i>
-        </a>
-        </td>
-      </tr>
-    </tbody>
-  </table>
-
-  <div class="paginator-container">
-    <mat-paginator [length]="totalVaccines" [pageSize]="pageSize" (page)="onVaccinePageChange($event)"
-      aria-label="paginador de vacunas"></mat-paginator>
+  <div *ngIf="medicalHistory?.Vaccines?.length > 0">
+    <table class="vaccines-table">
+      <thead>
+        <tr>
+          <th>Vacunas</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let vaccine of paginatedVaccines">
+          <td>{{ vaccine.name }} <a class="unlink-vaccine" (click)="unlinkVaccine(medicalHistory.id, vaccine.id)">
+            <i class="fas fa-trash"></i></a></td>
+        </tr>
+      </tbody>
+    </table>
+    <div class="paginator-container">
+      <mat-paginator [length]="totalVaccines" [pageSize]="pageSize" (page)="onVaccinePageChange($event)" aria-label="paginador de vacunas"></mat-paginator>
+    </div>
   </div>
-</div>
 
-<button id="link-vaccine" class="btn btn-primary" (click)="openLinkVaccineDialog()">Vincular Vacuna</button>
+  <button id="link-vaccine" class="btn btn-primary" (click)="openLinkVaccineDialog()">Vincular Vacuna</button>
 
   <!-- Mostrar observaciones solo si hay -->
   <div *ngIf="medicalHistory?.observations?.length > 0">
@@ -45,13 +40,11 @@
           </tr>
         </thead>
         <tbody>
-          <tr *ngFor="let observation of paginatedObservations" >
+          <tr *ngFor="let observation of paginatedObservations">
             <td>{{observation.id}}</td>
             <td>
               <div class="observation-item">
-
-                <span>{{ observation?.description?.length > 50 ? (observation.description | slice:0:20) + '...' :
-                  observation.description }}</span>
+                <span>{{ observation?.description?.length > 50 ? (observation.description | slice:0:20) + '...' : observation.description }}</span>
                 <div class="observation-actions">
                   <a class="edit-observation" (click)="openEditObservationDialog(observation)"><i class="fas fa-edit"></i></a>
                   <a class="show-observation" (click)="openShowObservationDialog(observation)"><i class="fas fa-eye"></i></a>
@@ -65,10 +58,8 @@
         </tbody>
       </table>
     </div>
-
     <div class="paginator-container">
-      <mat-paginator [length]="totalObservations" [pageSize]="pageSize" (page)="onPageChange($event)"
-        aria-label="paginador"></mat-paginator>
+      <mat-paginator [length]="totalObservations" [pageSize]="pageSize" (page)="onPageChange($event)" aria-label="paginador"></mat-paginator>
     </div>
   </div>
 
@@ -78,84 +69,3 @@
 </div>
 
 <button id="new-observation" class="btn btn-primary" (click)="openCreateObservationDialog()">Nueva observación</button>
-
-=======
-<div *ngIf="!medicalHistory" class="no-mh fixed-size">
-  <p>No se han encontrado Datos</p>
-</div>
-
-<div *ngIf="medicalHistory" class="fixed-size">
-  <b>Historia Clínica</b>
-
-  <!-- Mostrar vacunas solo si hay -->
-<div *ngIf="medicalHistory?.Vaccines?.length > 0">
-  <table class="vaccines-table">
-    <thead>
-      <tr>
-        <th>Vacunas</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr *ngFor="let vaccine of paginatedVaccines">
-        <td>{{ vaccine.name }}</td>
-      </tr>
-    </tbody>
-  </table>
-
-  <div class="paginator-container">
-    <mat-paginator [length]="totalVaccines" [pageSize]="pageSize" (page)="onVaccinePageChange($event)"
-      aria-label="paginador de vacunas"></mat-paginator>
-  </div>
-</div>
-
-<button id="link-vaccine" class="btn btn-primary" (click)="openLinkVaccineDialog()">Vincular Vacuna</button>
-
-  <!-- Mostrar observaciones solo si hay -->
-  <div *ngIf="medicalHistory?.observations?.length > 0">
-    <div class="observations-container">
-      <table class="observations-table">
-        <thead>
-          <tr>
-            <th>Id</th>
-            <th>Observación</th>
-            <th>Fecha</th>
-            <th>Profesional</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr *ngFor="let observation of paginatedObservations" >
-            <td>{{observation.id}}</td>
-            <td>
-              <div class="observation-item">
-
-                <span>{{ observation?.description?.length > 50 ? (observation.description | slice:0:20) + '...' :
-                  observation.description }}</span>
-                <div class="observation-actions">
-                  <a class="edit-observation" (click)="openEditObservationDialog(observation)"><i class="fas fa-edit"></i></a>
-                  <a class="show-observation" (click)="openShowObservationDialog(observation)"><i class="fas fa-eye"></i></a>
-                  <a class="delete-observation" (click)="openDeleteObservationDialog(observation)"><i class="fas fa-trash"></i></a>
-                </div>
-              </div>
-            </td>
-            <td>{{ observation.createdAt || 'Fecha no disponible' }}</td>
-            <td>{{ observation.professional || 'Profesional no disponible' }}</td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
-
-    <div class="paginator-container">
-      <mat-paginator [length]="totalObservations" [pageSize]="pageSize" (page)="onPageChange($event)"
-        aria-label="paginador"></mat-paginator>
-    </div>
-  </div>
-
-  <div *ngIf="medicalHistory?.observations?.length === 0" class="no-observations">
-    <p>No hay observaciones registradas.</p>
-  </div>
-</div>
-
-<button id="new-observation" class="btn btn-primary" (click)="openCreateObservationDialog()">Nueva observación</button>
-
->>>>>>> 7241c485514894947016fd49928fd5b162264925:src/app/componentsMedicalHistory/view-medical-histories/view-medical-histories.component.html
-<div *ngIf="isDialogOpen" class="overlay"></div>
