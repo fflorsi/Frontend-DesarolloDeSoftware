@@ -6,7 +6,7 @@ import { HomeComponent } from './home/home.component';
 import { ViewPetComponent } from './componentsPet/view-pet/view-pet.component';
 import { ViewClientPetComponent } from './view-client-pet/view-client-pet.component';
 import {ViewAllPetComponent} from './componentsPet/view-all-pet/view-all-pet.component'
-import { ViewMedicalHistoriesComponent } from './view-medical-histories/view-medical-histories.component';
+import { ViewMedicalHistoriesComponent } from './componentsMedicalHistory/view-medical-histories/view-medical-histories.component';
 import { LoginComponent } from './componentsLogin/login/login.component';
 import { SignInComponent } from './componentsLogin/sign-in/sign-in.component';
 import { DashboardComponent } from './componentsLogin/dashboard/dashboard.component';
@@ -17,7 +17,7 @@ import { AddEditClientComponent } from './componentsClient/add-edit-client/add-e
 import { DetailClientComponent } from './componentsClient/detail-client/detail-client.component';
 import { ListProductsComponent } from './componentsProduct/list-products/list-products.component';
 import { AddEditProductComponent } from './componentsProduct/add-edit-product/add-edit-product.component';
-import { VaccineComponent } from './vaccine/vaccine.component';
+import { VaccineComponent } from './componentsMedicalHistory/vaccine/vaccine.component';
 import { ProductShopComponent } from './componentsCart/product-shop/product-shop.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { CartComponent } from './componentsCart/cart/cart.component';
@@ -31,7 +31,7 @@ import { DetailFacilityComponent } from './componentsFacility/detail-facility/de
 import { ViewAllProfessionalComponent } from './componentsProfessional/view-all-professional/view-all-professional.component';
 import {AddProfessionalComponent} from './componentsProfessional/add-professional/add-professional.component';
 import { ViewProfessionalComponent } from './componentsProfessional/view-professional/view-professional.component';
-import { EditProfessionalComponent } from './edit-professional/edit-professional.component';
+import { EditProfessionalComponent } from './componentsProfessional/edit-professional/edit-professional.component';
 import { FacilityShopComponent } from './componentsFacility/facility-shop/facility-shop.component';
 import { ListFutureAppointmentsComponent } from './componentsAppointment/list-future-appointments/list-future-appointments.component';
 import { NewAppointmentComponent } from './componentsAppointment/new-appointment/new-appointment.component';

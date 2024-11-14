@@ -1,36 +1,45 @@
-<div class="header">
-  <h1 class="Professionals">Profesionales</h1>
-  <p>Lista de todos los profesionales</p>
-</div>
-<div class="actions-container">
-  <div class="actions">
-    <a href="#" [routerLink]="['/AddProfessional']" class="btn btn-primary"><i class='fas fa-plus'></i> Agregar Profesional</a>
+<app-progress-bar *ngIf="loading"></app-progress-bar>
+<div *ngIf="!loading" class="container">
+  <div class="title">
+    <h4>Listado de Profesionales</h4>
+    <button type="button" class="btn btn-primary" routerLink="/AddProfessional">Añadir Profesional</button>
   </div>
-</div>
-<div class="container-xl">
-</div>
-<div class="container-xl">    
-  <div class="card-container">
-    <div class="card" *ngFor="let professional of professionalList" (click)="viewProfessional(professional.id)">
-      <div class="card-body">
-        <h5 class="card-title">{{ professional.lastname }}</h5>
-        <p class="card-text"><strong>DNI:</strong> {{ professional.dni }}</p>
-        <p class="card-text"><strong>Apellido:</strong> {{ professional.lastname }}</p>
-        <p class="card-text"><strong>Nombre:</strong> {{ professional.firstname }}</p>
-        <p class="card-text"><strong>Dirección:</strong> {{ professional.address }}</p> 
-        <p class="card-text"><strong>Teléfono:</strong> {{ professional.phone }} </p> 
-        <p class="card-text"><strong>Correo electrónico:</strong> {{ professional.email }} </p> 
-        <p class="card-text"><strong>Fecha de nacimiento:</strong> {{ professional.birthDate }} </p> 
-        <p class="card-text"><strong>ID:</strong> {{ professional.id }} </p> 
-        <div class="actions">
-          <a href="#" [routerLink]="['/ViewProfessional/', professional.id]" class="btn btn-primary"><i class='fas fa-eye'></i> Ver</a>
-        </div>
-      </div>
-    </div>
-    <div *ngIf="professionalList.length === 0" class="no-pets">No se han encontrado Profesionales</div>
-    <div class="busqueda_profesional">
-      <input type="number" [(ngModel)]="findProfessionalId" placeholder="Ingrese el ID del profesional" class="form-control" />
-      <button class="btn btn-primary" (click)="findProfessional()">Buscar Profesional</button>
-    </div>      
-  </div>
+
+  <table class="table">
+    <thead>
+      <tr>
+        <th scope="col">DNI</th>
+        <th scope="col">Apellido</th>
+        <th scope="col">Nombre</th>
+        <th scope="col">Dirección</th>
+        <th scope="col">Teléfono</th>
+        <th scope="col">Correo electrónico</th>
+        <th scope="col">Fecha de nacimiento</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let professional of professionalList" class="table-active">
+        <td>{{ professional.dni }}
+          <span class="actions">
+            <button routerLink="/ViewProfessional/{{ professional.id }}" type="button" class="btn btn-info btn-sm">
+              <i class="fas fa-info-circle"></i>
+            </button>
+            <button routerLink="/EditProfessional/{{ professional.id }}" type="button" class="btn btn-info btn-sm ms-2">
+              <i class="fas fa-edit"></i>
+            </button>
+            <button (click)="deleteProfessional(professional.id!)" type="button" class="btn btn-secondary btn-sm ms-2">
+              <i class="fas fa-trash"></i>
+            </button>
+          </span>
+        </td>
+        <td>{{ professional.lastname }}</td>
+        <td>{{ professional.firstname }}</td>
+        <td>{{ professional.address }}</td>
+        <td>{{ professional.phone }}</td>
+        <td>{{ professional.email }}</td>
+        <td>{{ professional.birthDate | date:'shortDate' }}</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 *ngIf="professionalList.length == 0">No se han encontrado Profesionales</h5>
 </div>

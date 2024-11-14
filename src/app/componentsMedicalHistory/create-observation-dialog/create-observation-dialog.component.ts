@@ -1,6 +1,6 @@
 import { Component, Inject } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
-import { HttpProviderService } from '../Service/http-provider.service';
+import { HttpProviderService } from '../../Service/http-provider.service';
 
 @Component({
   selector: 'app-create-observation-dialog',

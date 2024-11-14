@@ -3,7 +3,7 @@ import {ToastrService} from 'ngx-toastr';
 import { Client } from 'app/interfaces/client';
 import {ClientService} from 'app/services/client.service'
 import { PageEvent, MatPaginator } from '@angular/material/paginator';
-
+import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 
 @Component({
   selector: 'app-list-clients',
@@ -16,6 +16,8 @@ export class ListClientsComponent implements OnInit {
   paginatedClients: Client[]=[];
   loading: boolean=false;
   pageEvent?: PageEvent;
+  searchQuery: string = '';
+
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
 
@@ -70,5 +72,33 @@ export class ListClientsComponent implements OnInit {
       client.firstname.toLowerCase().includes(term) ||
       client.lastname.toLowerCase().includes(term) // Filtra por nombre o apellido
     );
-  }*/
+  }*/ 
+
+    searchClientsbyDNS(searchQuery: string) {
+      if (this.searchQuery.trim() === '') {
+        this.getListClients(); // Cargar todos los clientes si la consulta está vacía
+        return;
+      }
+  
+      this.loading = true;
+      this._clientService.searchClientsbyDNS(searchQuery).subscribe((data: Client[]) => {
+        this.listClients = data;
+        console.log(data);// Actualizar la lista con los resultados de búsqueda
+        this.loading = false;
+      },  (error: HttpErrorResponse) => {
+        if (error.status === 404) {
+          console.error('Cliente no encontrado:', error.message);
+        } else {
+          console.error('Error al buscar clientes:', error);
+        }
+        this.loading = false
+      });
+    }
+
 }
+
+
+
+
+
+

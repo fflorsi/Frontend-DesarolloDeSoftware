@@ -3,10 +3,14 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { catchError, Observable, throwError } from 'rxjs';
 import { Client } from "../interfaces/client";
 
+
 @Injectable({
   providedIn: 'root'
 })
 export class ClientService {
+  searchClients(searchString: string) {
+    throw new Error('Method not implemented.');
+  }
   private myAppUrl: string;
   private myApiUrl: string;
 
@@ -46,4 +50,10 @@ export class ClientService {
   public updateClient(id: number, client: Client): Observable<any> {
     return this.http.put<any>(`${this.myAppUrl}${this.myApiUrl}/${id}`, client);
   }
+
+  public searchClientsbyDNS(a: string): Observable<Client[]> {
+    return this.http.get<Client[]>(`${this.myAppUrl}${this.myApiUrl}/${a}`);
+  }
+
 }
+

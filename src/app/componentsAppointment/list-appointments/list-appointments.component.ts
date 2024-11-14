@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { AppointmentService } from '@app/services/appointment.service';
 import { Appointment } from '@app/interfaces/appointment';
+import { PageEvent, MatPaginator } from '@angular/material/paginator';
 
 @Component({
   selector: 'app-list-appointments',
@@ -9,7 +10,11 @@ import { Appointment } from '@app/interfaces/appointment';
 })
 export class ListAppointmentsComponent implements OnInit {
   appointments: Appointment[] = []; 
+  paginatedAppointments: Appointment[] = [];
   loading: boolean = true;  
+  pageEvent?: PageEvent;
+
+  @ViewChild(MatPaginator) paginator!: MatPaginator;
 
   constructor(private _appointmentService: AppointmentService) {}
 
@@ -23,7 +28,8 @@ export class ListAppointmentsComponent implements OnInit {
         console.log(data);
         this.appointments = data;
         this.sortAppointmentsByDateTime(); 
-        this.loading = false;  
+        this.loading = false;
+        this.setPaginatedAppointments();  
       },
       error => {
         console.error('Error fetching future appointments', error);
@@ -36,5 +42,18 @@ export class ListAppointmentsComponent implements OnInit {
     this.appointments.sort((a, b) => {
       return new Date(a.dateTime).getTime() - new Date(b.dateTime).getTime();
     });
+  }
+
+  setPaginatedAppointments() {
+    const startIndex = this.paginator.pageIndex * this.paginator.pageSize;
+    const endIndex = startIndex + this.paginator.pageSize;
+    this.paginatedAppointments = this.appointments.slice(startIndex, endIndex);
+  }
+
+  handlePageEvent(event: PageEvent) {
+    this.pageEvent = event;
+    this.paginator.pageIndex = event.pageIndex;
+    this.paginator.pageSize = event.pageSize;
+    this.setPaginatedAppointments();
   }
 }

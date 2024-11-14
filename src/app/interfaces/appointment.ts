@@ -15,4 +15,5 @@ export interface Appointment {
     name: string;
   };
   dateTime: Date
+  state:string
 }
