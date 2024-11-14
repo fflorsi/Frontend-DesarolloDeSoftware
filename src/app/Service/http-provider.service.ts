@@ -179,5 +179,8 @@ export class HttpProviderService {
     tap((response) => console.log('Respuesta de la API:', response)));
   }
 
+  unlinkVaccine(medicalHistoryId: number, vaccineId: number): Observable<any> {
+  return this.http.delete(`${httpLink.getMedicalHistories}/${medicalHistoryId}/vaccines/?vaccineId=${vaccineId}`);
+}
 }
 

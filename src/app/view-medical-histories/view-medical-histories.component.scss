@@ -163,3 +163,15 @@
   left: 50% !important;
   transform: translate(-50%, -50%) !important;
 }
+
+.vaccines-table td {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.unlink-vaccine {
+  margin-left: auto;
+  background-color: #e9ecef;
+  cursor: pointer;
+}

@@ -17,7 +17,7 @@ import { LinkVaccineDialogComponent } from '@app/link-vaccine-dialog/link-vaccin
 })
 export class ViewMedicalHistoriesComponent implements OnInit {
   petId: any;
-  medicalHistory: any | null = null; // Cambia 'any' a un tipo más específico si es posible
+  medicalHistory: any | null = null;
   paginatedObservations: any[] = []; // Array paginado de observaciones
   paginatedVaccines: any[] = []; // Array paginado de vacunas
   totalVaccines = 0; // Total de vacunas
@@ -43,13 +43,10 @@ export class ViewMedicalHistoriesComponent implements OnInit {
         if (response && response.data) {
           this.medicalHistory = response.data;
 
-          // Verificar si existen las propiedades antes de asignar a la vista
           this.medicalHistory.vaccines = response.data.Vaccines || [];
           this.totalVaccines = this.medicalHistory.vaccines.length;
-          this.updatePaginatedVaccines(); // Actualiza las vacunas paginadas
-          
-          // Llamar a la API de observaciones usando el ID de la historia clínica
-          const medicalHistoryId = this.medicalHistory.id; // Asegúrate de que el ID está disponible
+          this.updatePaginatedVaccines(); 
+          const medicalHistoryId = this.medicalHistory.id; 
           if (medicalHistoryId) {
             this.getObservations(medicalHistoryId);
           } else {
@@ -60,12 +57,12 @@ export class ViewMedicalHistoriesComponent implements OnInit {
           console.log('Medical history details:', this.medicalHistory);
         } else {
           console.error('No data found in response:', response);
-          this.medicalHistory = null; // Asegúrate de establecerlo como null si no hay datos
+          this.medicalHistory = null; 
         }
       },
       error: (error: any) => {
         console.error('Error fetching medical history details', error);
-        this.medicalHistory = null; // Establece como null si hay un error
+        this.medicalHistory = null; 
       },
       complete: () => {
         console.log('Fetch medical history details complete');
@@ -90,7 +87,7 @@ export class ViewMedicalHistoriesComponent implements OnInit {
       },
       error: (error: any) => {
         console.error('Error fetching observations', error);
-        this.medicalHistory.observations = []; // Establece como vacío si hay un error
+        this.medicalHistory.observations = []; 
       },
       complete: () => {
         console.log('Fetch observations complete');
@@ -108,8 +105,8 @@ export class ViewMedicalHistoriesComponent implements OnInit {
   // Método que se ejecuta cuando se cambia la página
   onPageChange(event: PageEvent): void {
     this.pageIndex = event.pageIndex;
-    this.pageSize = event.pageSize; // Aunque puedes mantenerlo fijo, aquí puedes hacer que sea variable si lo decides
-    this.updatePaginatedObservations(); // Actualizar los datos de la tabla
+    this.pageSize = event.pageSize; 
+    this.updatePaginatedObservations(); 
   }
 
   updatePaginatedVaccines(): void {
@@ -120,8 +117,8 @@ export class ViewMedicalHistoriesComponent implements OnInit {
 
   onVaccinePageChange(event: PageEvent): void {
     this.pageIndex = event.pageIndex;
-    this.pageSize = event.pageSize; // Aunque puedes mantenerlo fijo, aquí puedes hacer que sea variable si lo decides
-    this.updatePaginatedVaccines(); // Actualizar los datos de la tabla de vacunas
+    this.pageSize = event.pageSize; 
+    this.updatePaginatedVaccines(); 
   }  
 
   openLinkVaccineDialog(): void {
@@ -132,8 +129,7 @@ export class ViewMedicalHistoriesComponent implements OnInit {
 
   dialogRef.afterClosed().subscribe(result => {
     if (result) {
-      // Aquí puedes refrescar la lista de vacunas o la historia clínica si es necesario
-      this.getMedicalHistories(); // Por ejemplo, si quieres refrescar la historia clínica
+      this.getMedicalHistories();
     }
   });
 }
@@ -142,9 +138,8 @@ openCreateObservationDialog(): void {
     width: '400px',
     height: 'auto',
     disableClose: true,
-    panelClass: ['custom-dialog', 'centered-dialog'], // Añade estas clases
+    panelClass: ['custom-dialog', 'centered-dialog'],
     backdropClass: 'custom-backdrop',
-    // Elimina la propiedad position ya que queremos que esté centrado
     data: {
       medicalHistoryId: this.medicalHistory.id
     }
@@ -207,7 +202,6 @@ openEditObservationDialog(observation: any): void {
 }
 
 updateObservation(updatedObservation:any) {
-  // Implementa este método en tu servicio HTTP para actualizar la observación en el backend
   return this.httpProvider.updateObservation(updatedObservation);
 }
 
@@ -225,18 +219,29 @@ openDeleteObservationDialog(observation: any): void {
       this.httpProvider.deleteObservation(observation.id).subscribe({
         next: () => {
           console.log('Observation deleted successfully');
-          // Actualizar la lista de observaciones
           const medicalHistoryId = this.medicalHistory.id;
           this.getObservations(medicalHistoryId);
         },
         error: (error) => {
           console.error('Error deleting observation:', error);
-          // Aquí podrías agregar un mensaje de error para el usuario
         }
       });
     }
   });
 }
+
+unlinkVaccine(medicalHistoryId: number, vaccineId: number): void {
+  this.httpProvider.unlinkVaccine(medicalHistoryId, vaccineId).subscribe({
+    next: (response: any) => {
+      console.log('Vaccine unlinked successfully:', response);
+      this.getMedicalHistories();
+    },
+    error: (error) => {
+      console.error('Error unlinking vaccine:', error);
+    }
+  });
+}
+
 }
 
 
