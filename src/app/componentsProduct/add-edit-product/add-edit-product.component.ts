@@ -27,8 +27,8 @@ export class AddEditProductComponent implements OnInit {
     this.formProduct = this.fb.group({
       name: ['', Validators.required],
       description: ['', Validators.required],
-      price: [Validators.required, Validators.pattern("^[0-9]+(\\.[0-9]+)?$")],
-      stock: [Validators.required, Validators.pattern("^[0-9]*$")],
+      price: ['', [Validators.required, Validators.pattern("^[0-9]+(\\.[0-9]+)?$")]],
+      stock: ['', [Validators.required, Validators.pattern("^[0-9]*$")]],
       category: ['', Validators.required],
     });
 
