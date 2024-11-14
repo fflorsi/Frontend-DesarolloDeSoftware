@@ -26,7 +26,7 @@ export class PetService {
     return this.http.get<Pet[]>(`${this.myAppUrl}${this.myApiUrl}/by-client/${id}`)
   }
 
-  public getPetDetaillById(id:number):Observable<Pet>{
+  public getPetDetailById(id:number):Observable<Pet>{
     return this.http.get<Pet>(`${this.myAppUrl}${this.myApiUrl}/${id}`)
   }
 
@@ -36,5 +36,9 @@ export class PetService {
 
   public savePet(pet: Pet): Observable<void> { 
     return this.http.post<void>(`${this.myAppUrl}${this.myApiUrl}`, pet);
+  }
+
+  public deletePetById(id: number): Observable<void> {
+    return this.http.delete<void>(`${this.myAppUrl}${this.myApiUrl}/${id}`);
   }
 }

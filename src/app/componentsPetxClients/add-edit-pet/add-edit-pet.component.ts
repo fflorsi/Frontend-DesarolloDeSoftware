@@ -47,7 +47,7 @@ export class AddEditPetComponent {
 
   getPet(id: number) {
     this.loading = true;
-    this._petService.getPetDetaillById(id).subscribe({
+    this._petService.getPetDetailById(id).subscribe({
       next: (response: any) => {
         const data = response.data;
         this.loading = false;

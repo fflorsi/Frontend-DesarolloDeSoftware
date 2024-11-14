@@ -1,24 +1,45 @@
-<div class="header">
-  <h1 class="Pets">Mascotas</h1>
-  <p>Lista de todas las mascotas</p>
-</div>
-<div class="actions">
-  <a href="#" [routerLink]="['/AddPet']" class="btn btn-primary"><i class='fas fa-plus'></i> Agregar Mascota</a>
-</div>
-<div class="container-xl">
-  <div class="card-container">
-    <div class="card" *ngFor="let pet of petList" (click)="viewPet(pet.id)">
-      <div class="card-body">
-        <h5 class="card-title">{{ pet.name }}</h5>
-        <p class="card-text"><strong>Edad:</strong> {{ pet.age }}</p>
-        <p class="card-text"><strong>Tipo:</strong> {{ pet.type }}</p>
-        <p class="card-text"><strong>Raza:</strong> {{ pet.breed }}</p>
-        <p class="card-text"><strong>Peso:</strong> {{ pet.weight }} kg </p>
-        <div class="actions">
-          <a href="#" [routerLink]="['/ViewPet/', pet.id]" class="btn btn-primary"><i class='fas fa-eye'></i> Ver</a>
-        </div>
-      </div>
-    </div>
-    <div *ngIf="petList.length == 0" class="no-pets">No se han encontrado Mascotas</div>
+<app-progress-bar *ngIf="loading"></app-progress-bar>
+<div *ngIf="!loading" class="container">
+  <div class="title">
+    <h4>Listado de Mascotas</h4>
   </div>
+
+  <table class="table">
+    <thead>
+      <tr>
+        <th scope="col">Nombre</th>
+        <th scope="col">Fecha de Nacimiento</th>
+        <th scope="col">Tipo</th>
+        <th scope="col">Raza</th>
+        <th scope="col">Peso (kg)</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let pet of petList" class="table-active">
+        <td>{{ pet.name }}
+          <span class="actions">
+            
+            <button routerLink="/EditPet/{{pet.id}}" type="button" class="btn btn-info btn-sm">
+              <i class="fas fa-edit"></i>
+            </button>
+            <button (click)="deletePet(pet.id!)" type="button" class="btn btn-secondary btn-sm ms-2">
+              <i class="fas fa-trash"></i>
+            </button>
+            <button routerLink="/ViewPet/{{ pet.id }}" type="button" class="btn btn-info btn-sm">
+              <i class="fas fa-info-circle"></i>
+            </button>
+
+
+          </span>
+        </td>
+        <td>{{ pet.birthdate | date:'shortDate' }}</td>
+        <td>{{ pet.type }}</td>
+        <td>{{ pet.breed }}</td>
+        <td>{{ pet.weight }} kg</td>
+
+        
+      </tr>
+    </tbody>
+  </table>
+  <h5 *ngIf="petList.length == 0">No se han encontrado Mascotas</h5>
 </div>

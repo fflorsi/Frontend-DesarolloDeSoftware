@@ -1,8 +1,9 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
-import { NgForm } from '@angular/forms';
+import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
-import { HttpProviderService } from '../../Service/http-provider.service';
+import { Pet } from '@app/interfaces/pet';
+import { PetService } from '@app/services/pet.service';
 
 @Component({
   selector: 'app-edit-pet',
@@ -10,101 +11,80 @@ import { HttpProviderService } from '../../Service/http-provider.service';
   styleUrls: ['./edit-pet.component.scss']
 })
 export class EditPetComponent implements OnInit {
-  petId: any;
-  editPetForm: any = [];
-  originalAge: number = 0;
+  formPet: FormGroup;
+  loading = true;
+  operacion: string = 'Editar';
+  id: number;
 
-  @ViewChild("petForm")
-  petForm!: NgForm;
-
-  isSubmitted: boolean = false;
-
-  constructor(private toastr: ToastrService, private route: ActivatedRoute, private router: Router,
-    private httpProvider: HttpProviderService) { }
+  constructor(
+    private fb: FormBuilder,
+    private _petService: PetService,
+    private toastr: ToastrService,
+    private router: Router,
+    private aRouter: ActivatedRoute
+  ) {
+    this.formPet = this.fb.group({
+      name: ['', Validators.required],
+      birthdate: ['', Validators.required],
+      type: ['', Validators.required],
+      breed: ['', Validators.required],
+      weight: ['', Validators.required],
+      client_id: [{ value: '', disabled: true }] // Deshabilitar el campo
+    });
+    this.id = aRouter.snapshot.paramMap.get('id') ? Number(aRouter.snapshot.paramMap.get('id')) : 0;  
+  }
 
   ngOnInit(): void {
-    this.petId = this.route.snapshot.params['petId'];
-    this.getPetDetailById();
+    console.log(this.id);
+    if (this.id !== 0) {
+      this.operacion = 'Editar';
+      this.getPetDetail(this.id);
   }
+}
 
-  getPetDetailById(): void {
-    this.httpProvider.getPetDetailById(this.petId).subscribe({
+  getPetDetail(id: number) {
+    this.loading = true;
+    this._petService.getPetDetailById(this.id).subscribe({
       next: (response: any) => {
-        if (response != null && response.data != null) {
-          this.editPetForm = response.data;
-          this.originalAge = response.data.age;
-          console.log('Pet details:', this.editPetForm);
-        } else {
-          console.error('No data found in response:', response);
-        }
-      },
-      error: (error: any) => {
-        console.error('Error fetching pet details', error);
-      },
-      complete: () => {
-        console.log('Fetch pet details complete');
-      }
-    });
-  }
-
-  onSubmit() {
-    this.EditPet(this.petForm.valid);
-  }
-
-  EditPet(isValid: any) {
-    this.isSubmitted = true;
-    if (isValid) {
-      this.httpProvider.savePet(this.editPetForm).subscribe({
-        next: async (data: any) => {
-          if (data != null && data.body != null) {
-            var resultData = data.body;
-            if (resultData != null && resultData.isSuccess) {
-              this.toastr.success(resultData.message);
-              console.log('Redirigiendo a Home después de editar...');
-              setTimeout(() => {
-                this.router.navigate(['/Home']);
-              }, 1000);
-            }
-          }
+          const data = response.data;
+          console.log('Datos de la mascota:', data);
+          this.loading = false;
+          this.formPet.setValue({
+            name: data.name,
+            birthdate: data.birthdate,
+            type: data.type,
+            breed: data.breed,
+            weight: data.weight,
+            client_id: data.client_id,
+          });
         },
-        error: async (error: any) => {
-          this.toastr.error(error.message);
-          console.log('Redirigiendo a Home después de error en edición...');
-          setTimeout(() => {
-            this.router.navigate(['/Home']);
-          }, 1000);
+        error: (err) => {
+          this.toastr.error('Error al obtener el detalle de la mascota', 'Error');
         }
       });
     }
+savePet() {
+  if (this.formPet.invalid) {
+    this.toastr.error('Por favor, complete todos los campos requeridos', 'Formulario inválido');
+    return;
   }
 
-  confirmDelete() {
-    if (confirm('¿Está seguro de que desea eliminar esta mascota?')) {
-      this.deletePet();
-    }
-  }
-
-  deletePet() {
-    this.httpProvider.deletePetById(this.editPetForm).subscribe({
-      next: async (data: any) => {
-        if (data != null && data.body != null) {
-          var resultData = data.body;
-          if (resultData != null && resultData.isSuccess) {
-            this.toastr.success(resultData.message);
-            console.log('Redirigiendo a Home después de eliminar...');
-            setTimeout(() => {
-              this.router.navigate(['/Home']);
-            }, 1000);
-          }
-        }
-      },
-      error: async (error: any) => {
-        this.toastr.error(error.message);
-        console.log('Redirigiendo a Home después de error en eliminación...');
-        setTimeout(() => {
-          this.router.navigate(['/Home']);
-        }, 1000);
-      }
+  const pet: Pet = {
+    name: this.formPet.value.name,
+    birthdate: this.formPet.value.birthdate,
+    type: this.formPet.value.type,
+    breed: this.formPet.value.breed,
+    weight: this.formPet.value.weight,
+    client_id: this.formPet.value.client_id
+  };
+  this.loading = true;
+  this._petService.savePet(pet).subscribe(() => {
+      this.toastr.success(`La mascota ${pet.name} fue actualizada con éxito`, 'Mascota registrada');
+      this.loading = false;
+      this.router.navigate(['/ViewAllPets']);
     });
   }
 }
+
+
+  
