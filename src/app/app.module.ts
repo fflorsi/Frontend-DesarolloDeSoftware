@@ -64,6 +64,8 @@ import { ListFutureAppointmentsComponent } from './componentsAppointment/list-fu
 import { NewAppointmentComponent } from './componentsAppointment/new-appointment/new-appointment.component';
 import { ListAppointmentsComponent } from './componentsAppointment/list-appointments/list-appointments.component';
 
+
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -110,8 +112,7 @@ import { ListAppointmentsComponent } from './componentsAppointment/list-appointm
     EditProfessionalComponent,
     FacilityShopComponent,
     ListFutureAppointmentsComponent,
-    NewAppointmentComponent,
-    ListAppointmentsComponent
+    AppComponent
   ],
   imports: [
     BrowserModule,
@@ -132,7 +133,10 @@ import { ListAppointmentsComponent } from './componentsAppointment/list-appointm
     MatDatepickerModule,
     MatNativeDateModule,
     MatListModule,
-    MatCheckboxModule
+    MatCheckboxModule,
+    BrowserModule,
+    FormsModule,
+    HttpClientModule
 
   ],
   providers: [{provide: HTTP_INTERCEPTORS, useClass: AddTokenInterceptor, multi: true }
