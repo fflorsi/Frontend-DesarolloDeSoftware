@@ -62,6 +62,8 @@ import { EditProfessionalComponent } from './edit-professional/edit-professional
 import { FacilityShopComponent } from './componentsFacility/facility-shop/facility-shop.component';
 import { ListFutureAppointmentsComponent } from './componentsAppointment/list-future-appointments/list-future-appointments.component';
 
+
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -107,7 +109,8 @@ import { ListFutureAppointmentsComponent } from './componentsAppointment/list-fu
     ViewProfessionalComponent,
     EditProfessionalComponent,
     FacilityShopComponent,
-    ListFutureAppointmentsComponent
+    ListFutureAppointmentsComponent,
+    AppComponent
   ],
   imports: [
     BrowserModule,
@@ -128,7 +131,10 @@ import { ListFutureAppointmentsComponent } from './componentsAppointment/list-fu
     MatDatepickerModule,
     MatNativeDateModule,
     MatListModule,
-    MatCheckboxModule
+    MatCheckboxModule,
+    BrowserModule,
+    FormsModule,
+    HttpClientModule
 
   ],
   providers: [{provide: HTTP_INTERCEPTORS, useClass: AddTokenInterceptor, multi: true }

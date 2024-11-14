@@ -80,3 +80,25 @@
 
 /* Estilos para el paginator */
 
+.search-input {
+    padding: 10px;
+    font-size: 16px;
+    font-family: 'Inter', sans-serif;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    width: 300px; /* Ajusta el ancho según tus necesidades */
+}
+.search-button {
+    padding: 10px 15px;
+    font-size: 16px;
+    margin-left: 10px;
+    border: none;
+    font-family: 'Inter', sans-serif;
+    border-radius: 4px;
+    background-color: #4c4152;
+    color: white;
+    cursor: pointer;
+}
+.search-button:hover {
+    background-color: #4c4152;
+}
