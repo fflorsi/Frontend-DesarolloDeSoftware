@@ -124,16 +124,17 @@ export class ViewMedicalHistoriesComponent implements OnInit {
     this.updatePaginatedVaccines(); // Actualizar los datos de la tabla de vacunas
   }  
 
-  openLinkVaccineDialog(): void {
+openLinkVaccineDialog(): void {
   const dialogRef = this.dialog.open(LinkVaccineDialogComponent, {
     width: '400px',
-    data: { medicalHistoryId: this.medicalHistory.id }
+    data: { medicalHistoryId: this.medicalHistory.id },
+    panelClass: ['custom-dialog', 'centered-dialog'], // Asegúrate de incluir estas clases
+    backdropClass: 'custom-backdrop'
   });
 
   dialogRef.afterClosed().subscribe(result => {
     if (result) {
-      // Aquí puedes refrescar la lista de vacunas o la historia clínica si es necesario
-      this.getMedicalHistories(); // Por ejemplo, si quieres refrescar la historia clínica
+      this.getMedicalHistories(); // Refrescar la historia clínica si es necesario
     }
   });
 }
