@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { AppointmentService } from '@app/services/appointment.service';
 import { Appointment } from '@app/interfaces/appointment';
 import { Router } from '@angular/router';
+import { response } from 'express';
 
 @Component({
   selector: 'app-list-future-appointments',
@@ -10,7 +11,9 @@ import { Router } from '@angular/router';
 })
 export class ListFutureAppointmentsComponent implements OnInit {
   appointments: Appointment[] = []; 
-  loading: boolean = true;  
+  loading: boolean = true;
+  petId!:number |undefined
+  appointment!:Appointment
 
   constructor(private _appointmentService: AppointmentService, private router: Router) {}
 
@@ -49,11 +52,17 @@ export class ListFutureAppointmentsComponent implements OnInit {
   
   // Método para marcar un turno como recibido
   markAsDone(id: number): void {
+    /*/this._appointmentService.getAppointmentById(id).subscribe({
+      next:(response:any) =>{
+        this.appointment= response.data
+      }
+    })/*/
     const newState = 'done';  // Estado de "recibido"
     this._appointmentService.updateAppointmentState(id, newState).subscribe({
       next: (response) => {
         console.log(`Turno recibido correctamente.`);
-        this.getFutureAppointments();
+        //this.petId= this.appointment.pet?.id
+        //this.router.navigate(['/ViewPet/:petId'])
       },
       error: (error) => {
         console.error(`Error al marcar el turno con ID ${id} como recibido:`, error);
