@@ -66,6 +66,7 @@ import { ListAppointmentsComponent } from './componentsAppointment/list-appointm
 
 
 
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -82,11 +83,9 @@ import { ListAppointmentsComponent } from './componentsAppointment/list-appointm
     LoginComponent,
     DashboardComponent,
     NavbarComponent,
-    ClientDniModalComponent,
     ListClientsComponent,
     AddEditClientComponent,
     ProgressBarComponent,
-    ListClientsComponent,
     DetailClientComponent,
     CreateObservationDialogComponent,
     ShowObservationDialogComponent,
@@ -112,7 +111,8 @@ import { ListAppointmentsComponent } from './componentsAppointment/list-appointm
     EditProfessionalComponent,
     FacilityShopComponent,
     ListFutureAppointmentsComponent,
-    AppComponent
+    NewAppointmentComponent, 
+    ListAppointmentsComponent
   ],
   imports: [
     BrowserModule,
@@ -133,14 +133,11 @@ import { ListAppointmentsComponent } from './componentsAppointment/list-appointm
     MatDatepickerModule,
     MatNativeDateModule,
     MatListModule,
-    MatCheckboxModule,
-    BrowserModule,
-    FormsModule,
-    HttpClientModule
-
+    MatCheckboxModule
   ],
-  providers: [{provide: HTTP_INTERCEPTORS, useClass: AddTokenInterceptor, multi: true }
+  providers: [
+    { provide: HTTP_INTERCEPTORS, useClass: AddTokenInterceptor, multi: true }
   ],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {}
