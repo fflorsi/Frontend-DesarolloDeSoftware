@@ -1,15 +1,15 @@
 export interface OrderItem {
+  id?: number;  
+  quantity: number;
+  price: number;
+  product?: {
     id: number;
-    quantity: number;
-    price: number;
-    product?: {
-        id:number
-        name:string
-    } 
-  }
+    name: string;
+  };
+}
   
   export interface Order {
-    id: number;
+    id?: number;
     total: number;
     items: OrderItem[];
   }
