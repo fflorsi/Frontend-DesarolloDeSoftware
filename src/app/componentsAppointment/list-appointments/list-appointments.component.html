@@ -1,10 +1,10 @@
 <div class="container mt-5">
     <h2>Lista de Turnos</h2>
-    <div *ngIf="loading" class="spinner-border text-primary" role="status">
+    <!--<div *ngIf="loading" class="spinner-border text-primary" role="status">
       <span class="visually-hidden">Cargando...</span>
-    </div>
+    </div>-->
     
-    <table class="table mt-4" *ngIf="!loading">
+    <table class="table mt-4">
       <thead>
         <tr>
           <th scope="col">Mascota</th>
@@ -15,7 +15,7 @@
         </tr>
       </thead>
       <tbody>
-        <tr *ngFor="let appointment of appointments">
+        <tr *ngFor="let appointment of paginatedAppointments">
           <td>{{ appointment.Pet?.name }}</td>
           <td>{{ appointment.Professional?.firstname }} {{ appointment.professional?.lastname }}</td>
           <td>{{ appointment.Facility?.name }}</td>
@@ -26,5 +26,10 @@
         </tr>
       </tbody>
     </table>
+
+    <mat-paginator [length]="appointments.length" [pageSize]="7" showFirstLastButtons aria-label="Select page" (page)="handlePageEvent($event)">
+    </mat-paginator>
+
+    <h5 *ngIf="appointments.length == 0" class="no-data">No hay turnos para mostrar</h5>
   </div>
   
