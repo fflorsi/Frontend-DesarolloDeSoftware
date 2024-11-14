@@ -1,6 +1,6 @@
 import { Component, Inject } from '@angular/core';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
-import { HttpProviderService } from '../Service/http-provider.service';
+import { HttpProviderService } from '../../Service/http-provider.service';
 
 @Component({
   selector: 'app-link-vaccine-dialog',
