@@ -41,21 +41,23 @@
               </button>
               <button routerLink="/detailClient/{{item.id}}" type="button" class="btn btn-info btn-sm">
                 <i class="fas fa-info-circle"></i>
-              </button>
-            </span>
-          </td>
-          <td>{{item.firstname}}</td>
-          <td>{{item.lastname}}</td>
-          <td>{{item.address}}</td>
-          <td>{{item.phone}}</td>
-          <td>{{item.email}}</td>
-          <td>{{item.birthDate}}</td>
-          <td>
-          </td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
+            </button>
+        </span>
+        </td>
+        <td>{{item.firstname}}</td>
+        <td>{{item.lastname}}</td>
+        <td>{{item.address}}</td>
+        <td>{{item.phone}}</td>
+        <td>{{item.email}}</td>
+        <td>{{item.birthDate | date: 'shortDate'}}</td>
+        <td>
+          <button routerLink="/listPets/{{item.id}}" type="button" class="btn btn-primary btn-sm ms-2">Ver Mascotas</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 *ngIf="listClients.length==0">No hay clientes para mostrar</h5>
+</div> 
 </div>
 
 <!--no puedo poner el paginador por la barra de carga-->

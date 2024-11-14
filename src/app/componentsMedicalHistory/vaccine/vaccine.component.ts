@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { HttpProviderService } from '../Service/http-provider.service'; // Asegúrate de importar el servicio correcto
+import { HttpProviderService } from '../../Service/http-provider.service'; // Asegúrate de importar el servicio correcto
 
 @Component({
   selector: 'app-vaccine',

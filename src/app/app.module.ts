@@ -15,7 +15,7 @@ import { RouterModule } from '@angular/router';
 import {ClientDniModalComponent} from './client-dni-modal/client-dni-modal.component';
 import { ViewClientPetComponent } from './view-client-pet/view-client-pet.component';
 import { ViewAllPetComponent } from './componentsPet/view-all-pet/view-all-pet.component';
-import {ViewMedicalHistoriesComponent} from './view-medical-histories/view-medical-histories.component'
+import {ViewMedicalHistoriesComponent} from './componentsMedicalHistory/view-medical-histories/view-medical-histories.component'
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatTableModule } from '@angular/material/table';
 import { LoginComponent } from 'app/componentsLogin/login/login.component';
@@ -29,19 +29,19 @@ import { AddEditClientComponent } from 'app/componentsClient/add-edit-client/add
 import {ProgressBarComponent} from 'app/shared/progress-bar/progress-bar.component'
 import { DetailClientComponent } from 'app/componentsClient/detail-client/detail-client.component';
 import { ReactiveFormsModule } from '@angular/forms';
-import { CreateObservationDialogComponent } from './create-observation-dialog/create-observation-dialog.component';
+import { CreateObservationDialogComponent } from './componentsMedicalHistory/create-observation-dialog/create-observation-dialog.component';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
-import { ShowObservationDialogComponent } from './show-observation-dialog/show-observation-dialog.component';
+import { ShowObservationDialogComponent } from './componentsMedicalHistory/show-observation-dialog/show-observation-dialog.component';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
-import { EditObservationDialogComponent } from './edit-observation-dialog-component/edit-observation-dialog-component.component';
-import { DeleteObservationDialogComponent } from './delete-observation-dialog/delete-observation-dialog.component';
+import { EditObservationDialogComponent } from './componentsMedicalHistory/edit-observation-dialog-component/edit-observation-dialog-component.component';
+import { DeleteObservationDialogComponent } from './componentsMedicalHistory/delete-observation-dialog/delete-observation-dialog.component';
 import { ListProductsComponent } from './componentsProduct/list-products/list-products.component';
 import { AddEditProductComponent } from './componentsProduct/add-edit-product/add-edit-product.component';
-import { VaccineComponent } from './vaccine/vaccine.component';
+import { VaccineComponent } from './componentsMedicalHistory/vaccine/vaccine.component';
 import { CartComponent } from './componentsCart/cart/cart.component';
 import { ProductShopComponent } from './componentsCart/product-shop/product-shop.component';
 import { CheckoutComponent } from './componentsCart/checkout/checkout.component';
@@ -53,14 +53,16 @@ import { ListFacilitiesComponent } from './componentsFacility/list-facilities/li
 import { AddEditFacilityComponent } from './componentsFacility/add-edit-facility/add-edit-facility.component';
 import { DetailFacilityComponent } from './componentsFacility/detail-facility/detail-facility.component';
 import { MatListModule } from '@angular/material/list';
-import { LinkVaccineDialogComponent } from './link-vaccine-dialog/link-vaccine-dialog.component';
+import { LinkVaccineDialogComponent } from './componentsMedicalHistory/link-vaccine-dialog/link-vaccine-dialog.component';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { ViewAllProfessionalComponent } from './componentsProfessional/view-all-professional/view-all-professional.component';
 import { AddProfessionalComponent } from './componentsProfessional/add-professional/add-professional.component';
 import { ViewProfessionalComponent } from './componentsProfessional/view-professional/view-professional.component';
-import { EditProfessionalComponent } from './edit-professional/edit-professional.component';
+import { EditProfessionalComponent } from './componentsProfessional/edit-professional/edit-professional.component';
 import { FacilityShopComponent } from './componentsFacility/facility-shop/facility-shop.component';
 import { ListFutureAppointmentsComponent } from './componentsAppointment/list-future-appointments/list-future-appointments.component';
+import { NewAppointmentComponent } from './componentsAppointment/new-appointment/new-appointment.component';
+import { ListAppointmentsComponent } from './componentsAppointment/list-appointments/list-appointments.component';
 
 
 

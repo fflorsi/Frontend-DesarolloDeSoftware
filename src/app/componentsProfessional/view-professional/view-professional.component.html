@@ -1,28 +1,29 @@
-<div class="header">
-  <h1 class="Pets">Detalle del Profesional</h1>
-  <a href="#" routerLink="/viewAllProfessionals" class="btn btn-success back">
-    <i class='fas fa-arrow-circle-left'></i> Atrás
-  </a>
-</div>
-<div class="container-xl">
-  <div class="card-container">
+<div class="container mt-1">
+  <div class="row mt-1">
     <div class="card">
+      <h5 class="card-title">{{ professionalDetail?.firstname }} {{ professionalDetail?.lastname }}</h5>
+      <h6 class="card-subtitle">DNI: {{ professionalDetail?.dni }}</h6>
       <div class="card-body">
-        <h5 class="card-title">{{ professionalDetail?.lastname }}</h5>
-        <p class="card-text"><strong>Dni:</strong> {{ professionalDetail?.dni }}</p>
-        <p class="card-text"><strong>Apellido:</strong> {{ professionalDetail?.lastname }}</p>
-        <p class="card-text"><strong>Nombre:</strong> {{ professionalDetail?.firstname }}</p> <!-- Cambiado de 'name' a 'firstname' -->
-        <p class="card-text"><strong>Dirección:</strong> {{ professionalDetail?.address }}</p> <!-- Cambiado de 'adress' a 'address' -->
-        <p class="card-text"><strong>Numero telefónico:</strong> {{ professionalDetail?.phone }}</p> <!-- Cambiado de 'phone_number' a 'phone' -->
-        <p class="card-text"><strong>Mail:</strong> {{ professionalDetail?.email }}</p> <!-- Cambiado de 'mail' a 'email' -->
-        <p class="card-text"><strong>Id:</strong> {{ professionalDetail?.id }}</p>
-        <div class="button-group">
-          <a [routerLink]="['/EditProfessional', professionalDetail?.id]" class="btn btn-primary"><i class='fas fa-edit'></i> Editar</a>
+        <p class="card-text">
+          <strong>Dirección:</strong> {{ professionalDetail?.address }}<br>
+          <strong>Teléfono:</strong> {{ professionalDetail?.phone }}<br>
+          <strong>Email:</strong> {{ professionalDetail?.email }}<br>
+          <strong>Id:</strong> {{ professionalDetail?.id }}
+        </p>
+      </div>
+      <div class="row mt-2 text-center">
+        <div class="col lg-6">
+          <a [routerLink]="['/EditProfessional', professionalDetail?.id]" class="btn btn-info btn-sm">Editar</a>
+        </div>
+        <div class="col lg-6">
+          <a routerLink="/viewAllProfessionals" class="btn btn-success btn-sm ms-2">
+            Atrás
+          </a>
         </div>
       </div>
     </div>
   </div>
-  <div *ngIf="!professionalDetail" class="no-pets">
+  <div *ngIf="!professionalDetail" class="no-professionals">
     <p>No se han encontrado Profesionales</p>
   </div>
 </div>

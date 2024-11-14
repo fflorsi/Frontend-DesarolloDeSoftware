@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { HttpProviderService } from '../../Service/http-provider.service';
+import { ProfessionalService } from '@app/services/professional.service';
 import { Professional } from '@app/interfaces/professional';
-import { RouterLink } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-view-professional',
@@ -10,34 +10,31 @@ import { RouterLink } from '@angular/router';
   styleUrls: ['./view-professional.component.scss']
 })
 export class ViewProfessionalComponent implements OnInit {
+  professionalDetail!: Professional;
 
-  professionalId: any;
-  professionalDetail: Professional | null = null;
-
-  constructor(private route: ActivatedRoute, private httpProvider: HttpProviderService) { }
+  constructor(
+    private _professionalService: ProfessionalService,
+    private route: ActivatedRoute,
+    private toastr: ToastrService
+  ) {}
 
   ngOnInit(): void {
-    this.getProfessionalDetailById();
-  }
-
-  getProfessionalDetailById(): void {
-    this.professionalId = Number(this.route.snapshot.paramMap.get('id'));
-    console.log(this.professionalId);
-    this.httpProvider.getProfessionalDetailById(this.professionalId).subscribe({
-      next: (response: any) => {
-        // Aquí también hemos cambiado los campos según las modificaciones previas
-        this.professionalDetail = response.data || response;
+    const professionalId = Number(this.route.snapshot.paramMap.get('id'));
+    this._professionalService.getProfessionalDetailById(professionalId).subscribe(
+      (response: any) => {
+        this.professionalDetail = response.data;
         console.log(this.professionalDetail);
       },
-      error: (error) => {
+      (error) => {
         console.error('Error fetching professional data', error);
       }
-    });
+    );
   }
 
-  editProfessional(): void {
-    this.httpProvider.getProfessionalDetailById(this.professionalId).subscribe({
-      // Aquí puedes agregar la lógica de edición si es necesario
+  deleteProfessional(id: number) {
+    this._professionalService.deleteProfessionalById(id).subscribe(() => {
+      this.ngOnInit();
+      this.toastr.warning('El profesional fue eliminado con éxito', 'Profesional eliminado');
     });
   }
 }
