@@ -1,132 +1,54 @@
-<div class="container-xl">
-    <div class="table-responsive">
-        <div class="table-wrapper">
-            <div class="table-title">
-                <div class="row">
-                    <div class="col-sm-6">
-                        <h4><b>Nuevo Profesional</b></h4>
-                    </div>
-                    <div class="col-sm-6">
-                        <a href="#" routerLink="/Home" class="btn btn-success back"><i class='fas fa-arrow-circle-left'></i> Atras</a>
-                    </div>
-                </div>
-            </div>
-            <form #professionalForm="ngForm">
-                <div class="table-content">
-                    <!-- Campo dni -->
-                    <div class="form-group p-10 row">
-                        <div class="col-sm-3">
-                            <label for="dni" class="p-t-b-10">dni<span class="requiredStar">*</span></label>
-                        </div>
-                        <div class="col-sm-9">
-                            <input type="text" class="form-control" id="dni" required maxlength="20" [(ngModel)]="addProfessionalForm.dni" name="dni" #dni="ngModel">
-                            <div *ngIf="dni.errors && isSubmitted" class="alert alert-danger validationError">
-                                <div [hidden]="!dni.errors?.['required']">
-                                    El Dni es obligatorio
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+<app-progress-bar *ngIf="loading"></app-progress-bar>
+<div class="container">
+  <div *ngIf="!loading" class="row mt-1">
+    <div class="col-lg-4 offset-lg-4">
+      <h2>{{operacion}} Profesional</h2>
+      <form [formGroup]="formProfessional" (ngSubmit)="addProfessional()">
+        <!-- DNI -->
+        <label for="dni">DNI:</label>
+        <input formControlName="dni" type="text" class="form-control" placeholder="Ingrese DNI">
+        <span *ngIf="formProfessional.get('dni')?.hasError('required') && formProfessional.get('dni')?.touched">El campo DNI es <strong>requerido</strong></span>
 
-                    <!-- Campo Lastname -->
-                    <div class="form-group p-10 row">
-                        <div class="col-sm-3">
-                            <label for="lastname" class="p-t-b-10">Apellido<span class="requiredStar">*</span></label>
-                        </div>
-                        <div class="col-sm-9">
-                            <input type="text" class="form-control" id="lastname" required maxlength="255" [(ngModel)]="addProfessionalForm.lastname" name="lastname" #lastname="ngModel">
-                            <div *ngIf="lastname.errors && isSubmitted" class="alert alert-danger validationError">
-                                <div [hidden]="!lastname.errors?.['required']">
-                                    El apellido es obligatorio
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+        <!-- Nombre -->
+        <label for="firstname">Nombre:</label>
+        <input formControlName="firstname" type="text" class="form-control mt-2" placeholder="Ingrese nombre">
+        <span *ngIf="formProfessional.get('firstname')?.hasError('required') && formProfessional.get('firstname')?.touched">El campo Nombre es <strong>requerido</strong></span>
 
-                    <!-- Campo firstName -->
-                    <div class="form-group p-10 row">
-                        <div class="col-sm-3">
-                            <label for="firstname" class="p-t-b-10">Nombre<span class="requiredStar">*</span></label>
-                        </div>
-                        <div class="col-sm-9">
-                            <input type="text" class="form-control" id="firstname" required maxlength="255" [(ngModel)]="addProfessionalForm.firstname" name="firstname" #firstname="ngModel">
-                            <div *ngIf="firstname.errors && isSubmitted" class="alert alert-danger validationError">
-                                <div [hidden]="!firstname.errors?.['required']">
-                                    El nombre es obligatorio
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+        <!-- Apellido -->
+        <label for="lastname">Apellido:</label>
+        <input formControlName="lastname" type="text" class="form-control mt-2" placeholder="Ingrese Apellido">
+        <span *ngIf="formProfessional.get('lastname')?.hasError('required') && formProfessional.get('lastname')?.touched">El campo Apellido es <strong>requerido</strong></span>
 
-                    <!-- Campo Direccion -->
-                    <div class="form-group p-10 row">
-                        <div class="col-sm-3">
-                            <label for="address" class="p-t-b-10">Dirección<span class="requiredStar">*</span></label>
-                        </div>
-                        <div class="col-sm-9">
-                            <textarea class="form-control" id="address" required [(ngModel)]="addProfessionalForm.address" name="address" #address="ngModel"></textarea>
-                            <div *ngIf="address.errors && isSubmitted" class="alert alert-danger validationError">
-                                <div [hidden]="!address.errors?.['required']">
-                                    La dirección es obligatoria
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+        <!-- Dirección -->
+        <label for="address">Dirección:</label>
+        <input formControlName="address" type="text" class="form-control mt-2" placeholder="Ingrese Dirección">
+        <span *ngIf="formProfessional.get('address')?.hasError('required') && formProfessional.get('address')?.touched">El campo Dirección es <strong>requerido</strong></span>
 
-                    <!-- Campo Numero Telefónico -->
-                    <div class="form-group p-10 row">
-                        <div class="col-sm-3">
-                            <label for="phone" class="p-t-b-10">Número telefónico (Todo junto)<span class="requiredStar">*</span></label>
-                        </div>
-                        <div class="col-sm-9">
-                            <input type="tel" class="form-control" id="phone" required maxlength="20" [(ngModel)]="addProfessionalForm.phone" name="phone" #phone="ngModel">
-                            <div *ngIf="phone.errors && isSubmitted" class="alert alert-danger validationError">
-                                <div [hidden]="!phone.errors?.['required']">
-                                    El número telefónico es obligatorio
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+        <!-- Teléfono -->
+        <label for="phone">Teléfono:</label>
+        <input formControlName="phone" type="text" class="form-control mt-2" placeholder="Ingrese nro de Teléfono">
+        <span *ngIf="formProfessional.get('phone')?.hasError('required') && formProfessional.get('phone')?.touched">El campo nro de Teléfono es <strong>requerido</strong></span>
 
-                    <!-- Campo eMail -->
-                    <div class="form-group p-10 row">
-                        <div class="col-sm-3">
-                            <label for="email" class="p-t-b-10">Correo electrónico<span class="requiredStar">*</span></label>
-                        </div>
-                        <div class="col-sm-9">
-                            <input type="email" class="form-control" id="email" required maxlength="255" [(ngModel)]="addProfessionalForm.email" name="email" #email="ngModel">
-                            <div *ngIf="email.errors && isSubmitted" class="alert alert-danger validationError">
-                                <div [hidden]="!email.errors?.['required']">
-                                    El correo electrónico es obligatorio
-                                </div>
-                                <div [hidden]="!email.errors?.['email']">
-                                    Debe ingresar un correo electrónico válido
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+        <!-- Email -->
+        <label for="email">Correo:</label>
+        <input formControlName="email" type="text" class="form-control mt-2" placeholder="Ingrese Email">
+        <span *ngIf="formProfessional.get('email')?.hasError('required') && formProfessional.get('email')?.touched">El campo Email es <strong>requerido</strong></span>
 
-                    <!-- Campo Fecha de Nacimiento -->
-                    <div class="form-group p-10 row">
-                        <div class="col-sm-3">
-                            <label for="birthDate" class="p-t-b-10">Fecha de Nacimiento<span class="requiredStar">*</span></label>
-                        </div>
-                        <div class="col-sm-9">
-                            <input type="date" class="form-control" id="birthDate" required [(ngModel)]="addProfessionalForm.birthDate" name="birthDate" #birthDate="ngModel">
-                            <div *ngIf="birthDate.errors && isSubmitted" class="alert alert-danger validationError">
-                                <div [hidden]="!birthDate.errors?.['required']">
-                                    La fecha de nacimiento es obligatoria
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+        <!-- Fecha de Nacimiento -->
+        <label for="birthDate">Fecha de Nacimiento:</label>
+        <input formControlName="birthDate" type="date" class="form-control mt-2" placeholder="Ingrese Fecha de Nacimiento">
+        <span *ngIf="formProfessional.get('birthDate')?.hasError('required') && formProfessional.get('birthDate')?.touched">El campo Fecha de Nacimiento es <strong>requerido</strong></span>
 
-                <!-- Botón Enviar -->
-                <div class="table-footer">
-                    <button class="btn btn-success" (click)="AddProfessional(professionalForm.form.valid)">Registrar</button>
-                </div>
-            </form>
+        <!-- Botones de Acción -->
+        <div class="row mt-2 text-center">
+          <div class="col-lg-6">
+            <button [disabled]="formProfessional.invalid" type="submit" class="btn btn-primary">Aceptar</button>
+          </div>
+          <div class="col-lg-6">
+            <button type="button" class="btn btn-secondary" routerLink="/viewAllProfessionals">Volver</button>
+          </div>
         </div>
+      </form>
     </div>
+  </div>
 </div>

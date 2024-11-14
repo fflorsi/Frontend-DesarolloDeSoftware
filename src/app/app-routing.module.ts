@@ -31,7 +31,7 @@ import { DetailFacilityComponent } from './componentsFacility/detail-facility/de
 import { ViewAllProfessionalComponent } from './componentsProfessional/view-all-professional/view-all-professional.component';
 import {AddProfessionalComponent} from './componentsProfessional/add-professional/add-professional.component';
 import { ViewProfessionalComponent } from './componentsProfessional/view-professional/view-professional.component';
-import { EditProfessionalComponent } from './edit-professional/edit-professional.component';
+import { EditProfessionalComponent } from './componentsProfessional/edit-professional/edit-professional.component';
 import { FacilityShopComponent } from './componentsFacility/facility-shop/facility-shop.component';
 import { ListFutureAppointmentsComponent } from './componentsAppointment/list-future-appointments/list-future-appointments.component';
 import { NewAppointmentComponent } from './componentsAppointment/new-appointment/new-appointment.component';
