@@ -68,7 +68,6 @@ import { ListOrdersComponent } from './componentsOrder/list-orders/list-orders.c
 import { DetailOrderComponent } from './componentsOrder/detail-order/detail-order.component';
 
 
-
 @NgModule({
   declarations: [
     AppComponent,
