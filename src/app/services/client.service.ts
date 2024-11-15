@@ -51,8 +51,9 @@ export class ClientService {
     return this.http.put<any>(`${this.myAppUrl}${this.myApiUrl}/${id}`, client);
   }
 
-  public searchClientsbyDNS(a: string): Observable<Client[]> {
-    return this.http.get<Client[]>(`${this.myAppUrl}${this.myApiUrl}/${a}`);
+  public searchClientsbyDNS(searchString: string): Observable<Client[]> {
+    console.log(searchString)
+    return this.http.get<Client[]>(`${this.myAppUrl}${this.myApiUrl}/search/${searchString}`);
   }
 
 }

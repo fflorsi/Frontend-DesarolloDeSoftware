@@ -1,7 +1,7 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
-import {ToastrService} from 'ngx-toastr';
+import { Component, OnInit, AfterViewInit, ViewChild } from '@angular/core';
+import { ToastrService } from 'ngx-toastr';
 import { Client } from 'app/interfaces/client';
-import {ClientService} from 'app/services/client.service'
+import { ClientService } from 'app/services/client.service';
 import { PageEvent, MatPaginator } from '@angular/material/paginator';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 
@@ -10,22 +10,24 @@ import { HttpClient, HttpErrorResponse } from '@angular/common/http';
   templateUrl: './list-clients.component.html',
   styleUrls: ['./list-clients.component.scss']
 })
-export class ListClientsComponent implements OnInit {
-  listClients: Client[]=[];
-  filteredClients: Client[]=[];
-  paginatedClients: Client[]=[];
-  loading: boolean=false;
+export class ListClientsComponent implements OnInit, AfterViewInit {
+  listClients: Client[] = [];
+  filteredClients: Client[] = [];
+  paginatedClients: Client[] = [];
+  loading: boolean = false;
   pageEvent?: PageEvent;
   searchQuery: string = '';
 
-
   @ViewChild(MatPaginator) paginator!: MatPaginator;
-
 
   constructor(private _clientService: ClientService, private toastr: ToastrService) {}
 
   ngOnInit(): void {
     this.getListClients();
+  }
+
+  ngAfterViewInit(): void {
+    this.setPaginatedClients();
   }
 
   getListClients() {
@@ -34,8 +36,10 @@ export class ListClientsComponent implements OnInit {
       (response: any) => {
         console.log('Respuesta del servidor:', response);
         this.listClients = response.data;
+        console.log(this.listClients)
         this.filteredClients = this.listClients;
         this.loading = false;
+        this.setPaginatedClients();
       },
       error => {
         console.error("Error al cargar clientes:", error);
@@ -45,9 +49,11 @@ export class ListClientsComponent implements OnInit {
   }
 
   setPaginatedClients() {
-    const startIndex = this.paginator.pageIndex * this.paginator.pageSize;
-    const endIndex = startIndex + this.paginator.pageSize;
-    this.paginatedClients = this.listClients.slice(startIndex, endIndex);
+    if (this.paginator) {
+      const startIndex = this.paginator.pageIndex * this.paginator.pageSize;
+      const endIndex = startIndex + this.paginator.pageSize;
+      this.paginatedClients = this.listClients.slice(startIndex, endIndex);
+    }
   }
 
   handlePageEvent(event: PageEvent) {
@@ -57,48 +63,38 @@ export class ListClientsComponent implements OnInit {
     this.setPaginatedClients();
   }
 
-
-  deleteClient(id: number){
-    this.loading=true;
-    this._clientService.deleteClientById(id).subscribe(()=>{
+  deleteClient(id: number) {
+    this.loading = true;
+    this._clientService.deleteClientById(id).subscribe(() => {
       this.getListClients();
       this.toastr.warning('El cliente fue eliminado con éxito', 'Cliente eliminado');
     });
   }
 
-  /*filterClients(): void {
-    const term = this.searchTerm.toLowerCase();
-    this.filteredClients = this.listClients.filter((client) =>
-      client.firstname.toLowerCase().includes(term) ||
-      client.lastname.toLowerCase().includes(term) // Filtra por nombre o apellido
-    );
-  }*/ 
+  searchClientsbyDNS(searchQuery: string) {
+    if (this.searchQuery.trim() === '') {
+      this.getListClients(); 
+      return;
+    }
 
-    searchClientsbyDNS(searchQuery: string) {
-      if (this.searchQuery.trim() === '') {
-        this.getListClients(); // Cargar todos los clientes si la consulta está vacía
-        return;
-      }
-  
-      this.loading = true;
-      this._clientService.searchClientsbyDNS(searchQuery).subscribe((data: Client[]) => {
+    this.loading = true;
+    console.log(this.searchQuery);
+    this._clientService.searchClientsbyDNS(this.searchQuery).subscribe(
+      (data: Client[]) => {
         this.listClients = data;
-        console.log(data);// Actualizar la lista con los resultados de búsqueda
+        console.log(data);
+        this.filteredClients = data;
+        this.setPaginatedClients(); 
         this.loading = false;
-      },  (error: HttpErrorResponse) => {
+      },
+      (error: HttpErrorResponse) => {
         if (error.status === 404) {
           console.error('Cliente no encontrado:', error.message);
         } else {
           console.error('Error al buscar clientes:', error);
         }
-        this.loading = false
-      });
-    }
-
+        this.loading = false;
+      }
+    );
+  }
 }
-
-
-
-
-
-
