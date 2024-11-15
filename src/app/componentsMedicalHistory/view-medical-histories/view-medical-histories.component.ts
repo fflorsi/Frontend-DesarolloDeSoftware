@@ -124,20 +124,23 @@ export class ViewMedicalHistoriesComponent implements OnInit {
     this.updatePaginatedVaccines(); // Actualizar los datos de la tabla de vacunas
   }  
 
-openLinkVaccineDialog(): void {
-  const dialogRef = this.dialog.open(LinkVaccineDialogComponent, {
-    width: '400px',
-    data: { medicalHistoryId: this.medicalHistory.id },
-    panelClass: ['custom-dialog', 'centered-dialog'], // Asegúrate de incluir estas clases
-    backdropClass: 'custom-backdrop'
-  });
+  openLinkVaccineDialog(): void {
+    const dialogRef = this.dialog.open(LinkVaccineDialogComponent, {
+      width: '400px',
+      data: { medicalHistoryId: this.medicalHistory.id },
+      panelClass: 'custom-dialog', // Asegúrate de incluir esta clase
+      backdropClass: 'custom-backdrop',
+      disableClose: true // Esto deshabilita el cierre del modal al hacer clic fuera de él
+    });
+  
+    dialogRef.afterClosed().subscribe(result => {
+      if (result) {
+        this.getMedicalHistories(); // Refrescar la historia clínica si es necesario
+      }
+    });
+  }
 
-  dialogRef.afterClosed().subscribe(result => {
-    if (result) {
-      this.getMedicalHistories(); // Refrescar la historia clínica si es necesario
-    }
-  });
-}
+
 openCreateObservationDialog(): void {
   const dialogRef = this.dialog.open(CreateObservationDialogComponent, {
     width: '400px',

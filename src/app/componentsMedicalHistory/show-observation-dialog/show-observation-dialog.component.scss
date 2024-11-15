@@ -5,32 +5,52 @@
 ::ng-deep .mat-dialog-container {
   position: relative;
   z-index: 1100;
-  background-color: #fff;
+  background-color: #f8f9fa;
   padding: 20px;
   border-radius: 8px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  font-family: 'inter', sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 70vh; /* Centra verticalmente */
+  font-family: 'Inter', sans-serif;
 }
 
-::ng-deep .mat-dialog-content {
+mat-dialog-content {
   margin: 20px 0;
   max-height: 80vh;
   overflow-y: auto;
 }
 
-::ng-deep .mat-dialog-actions {
+mat-dialog-actions {
   justify-content: flex-end;
-  padding: 8px 0;
+  padding: 8px 10px;
+  color: white;
 }
 
 button {
-  padding: 8px 16px;
-  border-radius: 4px;
+  padding: 5px 10px;
+  border-radius: 11px;
   border: none;
-  background-color: #007bff;
-  color: white;
+  background-color: #4c4152;
   cursor: pointer;
 
   &:hover {
-    background-color: #0056b3;
+    background-color: #262029;
   }
+}
+
+h2{
+  font-family: 'inter', sans-serif;
+  font-size: 20px;
+  font-weight: 700;
+  padding: 10px;
+}
+
+p{
+  font-family: 'inter', sans-serif;
+  font-size: 16px;
+  padding: 10px;
+  z-index:   1;
 }

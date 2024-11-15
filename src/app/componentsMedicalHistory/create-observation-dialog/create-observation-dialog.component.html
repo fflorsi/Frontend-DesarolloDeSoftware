@@ -1,17 +1,17 @@
-<h2 mat-dialog-title>Crear Nueva Observación</h2>
+<h2>Crear Nueva Observación</h2>
 <mat-dialog-content>
-  <mat-form-field appearance="fill">
-    <mat-label>Observación</mat-label>
+  <mat-form-field class="form">
+    <label>Observación</label>
     <textarea matInput [(ngModel)]="observationText"></textarea>
   </mat-form-field>
 
 
-  <mat-form-field appearance="fill">
-    <mat-label>Profesional</mat-label>
+  <mat-form-field class="form">
+    <label>Profesional</label>
     <input matInput [(ngModel)]="professionalId">
   </mat-form-field>
 </mat-dialog-content>
-<mat-dialog-actions>
-  <button mat-button (click)="onCancel()">Cancelar</button>
-  <button mat-button (click)="onSubmit()" cdkFocusInitial>Crear</button>
+<mat-dialog-actions class="dialog-actions">
+  <button class="btn-cancel" mat-button (click)="onCancel()">Cancelar</button>
+  <button class="btn" mat-button (click)="onSubmit()" cdkFocusInitial>Crear</button>
 </mat-dialog-actions>

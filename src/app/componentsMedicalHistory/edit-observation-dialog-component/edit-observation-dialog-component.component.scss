@@ -4,16 +4,76 @@
   max-width: 400px;
 }
 
+textarea{
+  min-width: 100px;
+}
+
 mat-form-field {
   width: 100%;
   margin-bottom: 15px;
-}
-
-textarea {
-  min-height: 100px;
-}
-
-mat-dialog-actions {
   display: flex;
-  justify-content: flex-end;
+  padding: 20px;
+  flex-direction: column;
+  position: relative;
+}
+
+mat-datepicker-toggle{
+  width: 100%;
+  padding: 10px;
+  z-index: 1000;
+}
+.custom-datepicker {
+  z-index: 10000;
+  top:50%;
+  left:50%;
+  transform: translate(-50%, -50%); 
+}
+
+
+h2{
+  font-family: 'inter', sans-serif;
+  font-size: 20px;
+  font-weight: 700;
+  padding: 10px;
+}
+
+
+label{
+  font-family: 'inter', sans-serif;
+  font-size: 16px;
+  font-weight: 700;
+  padding: 10px;
+  z-index:   1;
+}
+
+.dialog-actions{
+  padding:10px;
+  justify-content: space-between;
+  color: white;
+}
+
+.btn, .btn-cancel{
+  border-radius: 11px;
+  padding:5px;
+}
+
+.btn{
+  
+  background-color: #3f51b5;
+  
+}
+
+.btn-cancel{
+  background-color: #f44336;
+  margin-right: 10px;
+}
+
+mat-dialog-content {
+  position: relative;
+  z-index: 10!important;
+}
+
+mat-dialog-container {
+  position: relative;
+  z-index: 10 !important;
 }

@@ -5,12 +5,11 @@ import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
   selector: 'app-show-observation-dialog',
   template: `
     <div class="observation-dialog">
-      <h2 mat-dialog-title>Detalles de la Observación</h2>
+      <h2>Detalles de la Observación</h2>
       <mat-dialog-content>
-        <p><strong>Descripción:</strong></p>
-        <p>{{ data.observation.description }}</p>
+        <p><strong>Descripción:</strong>{{ data.observation.description }}</p>
         <div class="observation-metadata">
-          <p><strong>Fecha:</strong> {{ data.observation.createdAt }}</p>
+          <p><strong>Fecha:</strong> {{ data.observation.createdAt | date:'shortDate'}}</p>
           <p><strong>Profesional:</strong> {{ data.observation.professional }}</p>
         </div>
       </mat-dialog-content>
