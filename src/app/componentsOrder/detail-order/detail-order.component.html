@@ -1,3 +1,5 @@
+
+<div class="order-details-container">
 <h2>Detalle del Pedido #{{ order?.id }}</h2>
 <hr class="separator">
 
@@ -6,7 +8,7 @@
 </div>
 
 <div *ngFor="let item of order?.items" class="items-in-order">
-  <img [src]="item?.product?.imageUrl" class="product-image" alt="Producto">
+  <img [src]="item?.product?.imageUrl || 'assets/top-view-pet-accessories-yllow.jpg'" class="product-image" alt="Producto">
   <div class="product-details">
     <p class="product-name">{{ item?.product?.name }}</p>
     <p class="product-quantity">Cantidad: {{ item?.quantity || 1 }}</p>
@@ -22,3 +24,4 @@
   </div>
 </div>
 <button class="btn btn-secondary" routerLink="/listOrders">Volver</button>
+</div>
