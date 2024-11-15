@@ -238,6 +238,18 @@ openDeleteObservationDialog(observation: any): void {
     }
   });
 }
+
+unlinkVaccine(medicalHistoryId: number, vaccineId: number): void {
+  this.httpProvider.unlinkVaccine(medicalHistoryId, vaccineId).subscribe({
+    next: (response: any) => {
+      console.log('Vaccine unlinked successfully:', response);
+      this.getMedicalHistories();
+    },
+    error: (error) => {
+      console.error('Error unlinking vaccine:', error);
+    }
+  });
+}
 }
 
 
