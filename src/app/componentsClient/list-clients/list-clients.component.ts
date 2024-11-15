@@ -50,9 +50,11 @@ export class ListClientsComponent implements OnInit, AfterViewInit {
 
   setPaginatedClients() {
     if (this.paginator) {
-      const startIndex = this.paginator.pageIndex * this.paginator.pageSize;
+      /*const startIndex = this.paginator.pageIndex * this.paginator.pageSize;
       const endIndex = startIndex + this.paginator.pageSize;
-      this.paginatedClients = this.listClients.slice(startIndex, endIndex);
+      this.paginatedClients = this.filteredClients.slice(startIndex, endIndex);*/
+      this.paginatedClients = this.filteredClients;
+      console.log('Clientes paginados:', this.paginatedClients);
     }
   }
 
@@ -83,8 +85,11 @@ export class ListClientsComponent implements OnInit, AfterViewInit {
       (data: Client[]) => {
         this.listClients = data;
         console.log(data);
-        this.filteredClients = data;
-        this.setPaginatedClients(); 
+        this.filteredClients = data; // Actualiza los clientes filtrados
+        if (this.paginator) {
+          this.paginator.pageIndex = 0; // Resetea el paginador
+        }
+        this.setPaginatedClients(); // Actualiza los clientes paginados
         this.loading = false;
       },
       (error: HttpErrorResponse) => {

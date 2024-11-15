@@ -1,25 +1,21 @@
 <app-progress-bar *ngIf="loading"></app-progress-bar>
-
 <div *ngIf="!loading">
   <div class="container">
     <div class="title">
       <h4>Listado de Clientes</h4>
       <button type="button" class="btn btn-primary" routerLink="/addClient">Añadir nuevo cliente</button>
     </div>
-
     <div class="search-container">
       <input 
         class="search-input"
         type="text"
         [(ngModel)]="searchQuery"
         (keyup.enter)="searchClientsbyDNS(searchQuery)"
-        placeholder="Buscar cliente"
+        placeholder="Buscar cliente "
       />
-      <button class="search-button" (click)="searchClientsbyDNS(searchQuery)">Buscar</button>
+      <button class="search-button" (click)="searchClientsbyDNS()">Buscar</button>
     </div>
-
-    <br>
-
+    <br> 
     <table class="table">
       <thead>
         <tr>
@@ -34,7 +30,7 @@
         </tr>
       </thead>
       <tbody>
-        <tr *ngFor="let item of paginatedClients">
+        <tr *ngFor="let item of listClients" class="table-active">
           <td>{{item.dni}}
             <span class="actions">
               <button routerLink="/editClient/{{item.id}}" type="button" class="btn btn-info btn-sm">
@@ -45,32 +41,23 @@
               </button>
               <button routerLink="/detailClient/{{item.id}}" type="button" class="btn btn-info btn-sm">
                 <i class="fas fa-info-circle"></i>
-              </button>
-            </span>
-          </td>
-          <td>{{item.firstname}}</td>
-          <td>{{item.lastname}}</td>
-          <td>{{item.address}}</td>
-          <td>{{item.phone}}</td>
-          <td>{{item.email}}</td>
-          <td>{{item.birthDate | date: 'shortDate'}}</td>
-          <td>
-            <button routerLink="/listPets/{{item.id}}" type="button" class="btn btn-primary btn-sm ms-2">Ver Mascotas</button>
-          </td>
-        </tr>
-      </tbody>
-    </table>
-
-    <!-- Mensaje cuando no hay clientes -->
-    <h5 *ngIf="paginatedClients.length === 0">No hay clientes para mostrar</h5>
-
-    <!-- Paginador -->
-    <mat-paginator
-      *ngIf="paginatedClients.length > 0"
-      [length]="filteredClients.length"
-      [pageSize]="10"
-      [pageIndex]="0"
-      (page)="handlePageEvent($event)">
-    </mat-paginator>
-  </div>
+            </button>
+        </span>
+        </td>
+        <td>{{item.firstname}}</td>
+        <td>{{item.lastname}}</td>
+        <td>{{item.address}}</td>
+        <td>{{item.phone}}</td>
+        <td>{{item.email}}</td>
+        <td>{{item.birthDate | date: 'shortDate'}}</td>
+        <td>
+          <button routerLink="/listPets/{{item.id}}" type="button" class="btn btn-primary btn-sm ms-2">Ver Mascotas</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 *ngIf="listClients.length==0">No hay clientes para mostrar</h5>
+</div> 
 </div>
+
+<!--no puedo poner el paginador por la barra de carga-->
