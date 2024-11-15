@@ -21,7 +21,7 @@ export class HomeComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.openClientDniModal();
+    //this.openClientDniModal();
   }
 
   openClientDniModal() {
