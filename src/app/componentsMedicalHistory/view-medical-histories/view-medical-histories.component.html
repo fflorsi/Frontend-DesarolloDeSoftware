@@ -53,7 +53,7 @@
               </div>
             </td>
             <td>{{ observation.createdAt | date: 'shortDate' || 'Fecha no disponible' }}</td>
-            <td>{{ observation.professional || 'Profesional no disponible' }}</td>
+            <td>{{ observation.professionalData?.lastname + ', ' + observation.professionalData?.firstname  || 'Profesional no disponible' }}</td>
           </tr>
         </tbody>
       </table>
