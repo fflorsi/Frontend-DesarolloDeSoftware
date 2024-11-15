@@ -2,7 +2,7 @@
   <p>No se han encontrado Datos</p>
 </div>
 
-<div *ngIf="medicalHistory" class="fixed-size">
+<div *ngIf="medicalHistory" class="container fixed-size">
   <b>Historia Clínica</b>
 
   <!-- Mostrar vacunas solo si hay -->
@@ -52,7 +52,7 @@
                 </div>
               </div>
             </td>
-            <td>{{ observation.createdAt || 'Fecha no disponible' }}</td>
+            <td>{{ observation.createdAt | date: 'shortDate' || 'Fecha no disponible' }}</td>
             <td>{{ observation.professional || 'Profesional no disponible' }}</td>
           </tr>
         </tbody>

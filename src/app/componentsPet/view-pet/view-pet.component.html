@@ -1,13 +1,10 @@
-<div class="header">
-  <h1 class="Pets">Detalle de Mascota</h1>
-  <a href="#" routerLink="/ViewAllPet" class="btn btn-success back"><i class='fas fa-arrow-circle-left'></i> Atras</a>
-</div>
+
 <div class="container-xl">
   <div class="card-container">
     <div class="card">
       <div class="card-body">
         <h5 class="card-title">{{ petDetail.name }}</h5>
-        <p class="card-text"><strong>Edad:</strong> {{ petDetail.age }}</p>
+        <p class="card-text"><strong>Fecha de nacimiento:</strong> {{ petDetail.birthdate | date:'short' }}</p>
         <p class="card-text"><strong>Tipo:</strong> {{ petDetail.type }}</p>
         <p class="card-text"><strong>Raza:</strong> {{ petDetail.breed }}</p>
         <p class="card-text"><strong>Peso:</strong> {{ petDetail.weight }} kg</p>
