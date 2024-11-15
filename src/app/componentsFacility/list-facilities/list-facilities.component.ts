@@ -14,6 +14,7 @@ export class ListFacilitiesComponent implements OnInit{
   paginatedFacilities: Facility[]=[];
   loading: boolean=false;
   pageEvent?: PageEvent;
+  searchTerm: string = ''
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
 
@@ -57,4 +58,15 @@ export class ListFacilitiesComponent implements OnInit{
       });
     }
   }
+
+  filterFacilities() {
+    // Llama al servicio para buscar facilities por nombre
+    this._facilityService.searchFacilitiesByName(this.searchTerm).subscribe((response: any) => {
+      this.listFacilities = response.data;
+      this.setPaginatedFacilities(); // Actualiza la paginación
+      this.paginator.pageIndex = 0; // Resetea el índice de la página
+    }, error => {
+      console.error('Error al buscar facilities:', error);
+    });
+  }  
 }
