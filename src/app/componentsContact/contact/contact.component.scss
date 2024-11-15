@@ -82,6 +82,19 @@
         width: 50%;
     }
 
+    .contactFormWrapper label{
+        font-size: 18px;
+        font-weight: 500;
+        margin-bottom: 10px;
+        color: #3f2e1f;
+    }
+    .contactFormWrapper h2{
+        font-size: 37px;
+        margin-bottom: 10px;
+        font-weight: bold;
+    }
+
+
     .contact-info{
         grid-row-gap: 32px;
         flex-direction: column;
@@ -124,6 +137,7 @@
         unicode-bidi: isolate;
 
     }
+
 
     .separator{
         width: 100%;
