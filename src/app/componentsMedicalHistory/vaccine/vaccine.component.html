@@ -26,11 +26,11 @@
   <h4>Gestión de Vacunas</h4>
 </div>
 <div class="container-">
-  <input [(ngModel)]="newVaccine.name" placeholder="Nombre de la vacuna" />
+  <input class="vaccine-button" [(ngModel)]="newVaccine.name" placeholder="Nombre de la vacuna" />
   <button type="button" class="btn btn-info" (click)="addVaccine()">Añadir nueva vacuna</button>
   <div *ngIf="selectedVaccine">
     <h2>Editar Vacuna</h2>
-    <input [(ngModel)]="selectedVaccine.name" placeholder="Nombre de la vacuna" />
+    <input class="vaccine-button" [(ngModel)]="selectedVaccine.name" placeholder="Nombre de la vacuna" />
     <button type="button" class="btn btn-info" (click)="updateVaccine()">Actualizar</button>
   </div>
 </div>
