@@ -1,0 +1,116 @@
+* {
+    box-sizing: border-box;
+  }
+  
+  h2 {
+    font-family: 'Inter', sans-serif;
+    font-size: 26px;
+    line-height: 46px;
+    color: #393939;
+    font-weight: 500;
+    letter-spacing: 0.45px;
+  }
+  
+  .order-details-container {
+    display: flex;
+    justify-content: center;
+    background-color: whitesmoke;
+    padding: 20px;
+  }
+  
+  .order-details {
+    background-color: #ffffff;
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    width: 60%;
+  }
+  
+  .order-date {
+    font-family: 'Inter', sans-serif;
+    font-size: 16px;
+    color: #7f7f7f;
+    margin-bottom: 20px;
+  }
+  
+  .items-in-order {
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px;
+    font-family: 'Inter', sans-serif;
+  }
+  
+  .product-image {
+    width: 110px;
+    height: 70px;
+    margin-right: 10px;
+  }
+  
+  .product-details {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+  }
+  
+  .product-name {
+    font-size: 16px;
+    line-height: 27px;
+    font-weight: bold;
+    color: #393939;
+  }
+  
+  .product-quantity,
+  .product-price {
+    font-size: 14px;
+    line-height: 20px;
+    font-weight: 400;
+    color: #7f7f7f;
+  }
+  
+  .order-total {
+    margin-top: 20px;
+  }
+  
+  .total-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .total-title {
+    font-family: 'Inter', sans-serif;
+    font-size: 16px;
+    line-height: 27px;
+    color: #7f7f7f;
+    font-weight: 400;
+  }
+  
+  .total {
+    font-size: 18px;
+    line-height: 27px;
+    font-weight: bold;
+    color: #257ae7;
+  }
+  
+  .btn {
+    border-radius: none;
+    border: none;
+    font-family: 'Inter', sans-serif;
+    font-size: 16px;
+    line-height: 27px;
+    color: white;
+    font-weight: 600;
+    padding: 10px;
+    margin-top: 20px;
+  }
+  
+  .btn-secondary {
+    background-color: #7666ca;
+  }
+  
+  .separator {
+    border: 0;
+    height: 4px;
+    background: #ddd;
+  }
+  

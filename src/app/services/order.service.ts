@@ -29,4 +29,9 @@ export class OrderService {
   getOrderById(id: number): Observable<Order> {
     return this.http.get<Order>(`${this.myAppUrl}${this.myApiUrl}/${id}`);
   }
+
+  // Obtener ganancias mensuales
+  getMonthlyEarnings(): Observable<{ earnings: number }> {
+    return this.http.get<{ earnings: number }>(`${this.myAppUrl}${this.myApiUrl}/monthly-earnings`);
+  }
 }

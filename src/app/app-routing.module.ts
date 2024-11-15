@@ -37,6 +37,8 @@ import { ListFutureAppointmentsComponent } from './componentsAppointment/list-fu
 import { NewAppointmentComponent } from './componentsAppointment/new-appointment/new-appointment.component';
 import { ListAppointmentsComponent } from './componentsAppointment/list-appointments/list-appointments.component';
 import { ContactComponent } from './componentsContact/contact/contact.component';
+import { ListOrdersComponent } from './componentsOrder/list-orders/list-orders.component';
+import { DetailOrderComponent } from './componentsOrder/detail-order/detail-order.component';
 
 
 
@@ -77,6 +79,8 @@ export const routes: Routes = [
     //Carrito
     {path: 'productShop', component: ProductShopComponent},
     {path: 'cart', component: CartComponent},
+    {path: 'listOrders', component: ListOrdersComponent},
+    { path: 'detailOrder/:id', component: DetailOrderComponent },
 
     //servicios
     {path: 'listFacilities', component: ListFacilitiesComponent},
