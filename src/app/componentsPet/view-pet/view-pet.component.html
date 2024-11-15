@@ -5,7 +5,7 @@
       <div class="card-body">
         <h5 class="card-title">{{ petDetail.name }}</h5>
         <p class="card-text"><strong>Fecha de nacimiento:</strong> {{ petDetail.birthdate | date:'short' }}</p>
-        <p class="card-text"><strong>Tipo:</strong> {{ petDetail.type }}</p>
+        <p class="card-text"><strong>Tipo:</strong> {{ petDetail.Type.name }}</p>
         <p class="card-text"><strong>Raza:</strong> {{ petDetail.breed }}</p>
         <p class="card-text"><strong>Peso:</strong> {{ petDetail.weight }} kg</p>
         <div class="button-group">
