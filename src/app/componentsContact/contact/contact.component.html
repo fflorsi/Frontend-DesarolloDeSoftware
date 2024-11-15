@@ -1,4 +1,36 @@
 <div class="contact-container">
+  <div class="contact-info">
+    <h2>Hablemos</h2>
+    <p>Pregúntanos sobre nuestros servicios, productos o reserva una cita para el aseo de tu mascota.</p>
+    <hr class="separator">
+    <div class="contact-link">
+      <a href="https://www.google.com/maps" class="contact-item">
+        <i class="fas fa-map-pin"></i>
+        <div>
+          <h3>Encontranos</h3>
+          <p class="text-contact-detail">Abrir google maps</p>
+        </div>
+      </a>
+      <a href="tel:+1600000000" class="contact-item">
+        <i class="fas fa-phone"></i>
+        <div>
+          <h3>LLamanos</h3>
+          <p class="text-contact-detail">+54 621 0000</p>
+        </div>
+      </a>
+      <a href="mailto:florenciadegiustitn@gmail.com" class="contact-item">
+        <i class="fas fa-envelope"></i>
+        <div>
+          <h3>Nuestro mail</h3>
+          <p class="text-contact-detail">hi&#64;petgrooming.com</p>
+        </div>
+      </a>
+    </div>
+    <hr class="separator">
+  </div>
+
+    <div class="contactFormWrapper">
+    <h2>Contactanos</h2>
     <form (ngSubmit)="sendEmail()" #contactForm="ngForm">
       <label for="name">Nombre:</label>
       <input type="text" id="name" name="user_name" ngModel required>
@@ -9,10 +41,11 @@
       <label for="message">Mensaje:</label>
       <textarea id="message" name="message" ngModel required></textarea>
   
-      <button type="submit" [disabled]="contactForm.invalid">Send</button>
+      <button type="submit" [disabled]="contactForm.invalid">Enviar Mensaje</button>
     </form>
   
     <p *ngIf="successMessage" class="success">{{ successMessage }}</p>
     <p *ngIf="errorMessage" class="error">{{ errorMessage }}</p>
+  </div>
   </div>
   

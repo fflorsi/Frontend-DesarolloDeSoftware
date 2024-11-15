@@ -25,12 +25,12 @@ export class ContactComponent {
 
     emailjs.send(serviceID, templateID, form, publicKey)
       .then((result: EmailJSResponseStatus) => {
-        this.successMessage = "Message sent successfully!";
+        this.successMessage = "El mensaje se ha enviado con éxito!";
         this.errorMessage = '';
         console.log(result.text);
       })
       .catch((error) => {
-        this.errorMessage = "Error sending message, please try again.";
+        this.errorMessage = "No pudimos enviar el mensaje, intenta de nuevo.";
         this.successMessage = '';
         console.error(error);
       });
