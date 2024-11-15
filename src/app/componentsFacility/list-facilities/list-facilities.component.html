@@ -3,7 +3,7 @@
         <h4>Listado de Servicios</h4>
         <button type="button" class="btn btn-primary" routerLink="/addFacility">Añadir nueva instalación</button>
     </div>
-    <input type="text" [(ngModel)]="searchTerm" (input)="filterFacilities()" placeholder="Buscar por nombre" />
+    <div class="search-container"><input class="search-input" type="text" [(ngModel)]="searchTerm" (input)="filterFacilities()" placeholder="Buscar por nombre" /></div>
 
     <table class="table">
         <thead>
