@@ -1,11 +1,37 @@
-# Backend-DesarrolloDeSoftware
+# Frontend - Desarrollo de Software
 
-En tablas.sql está todo el código para crear las tablas que tenemos hasta el momento
-Importante que TODOS creemos la db con las siguientes 4 lineas así tenemos el mismo nombre en la db, mismos routes y misma pool
+Este proyecto corresponde al frontend desarrollado como parte del curso de Desarrollo de Software. Está construido utilizando Angular.
 
-create database if not exists veterinaria;
-use veterinaria;
-create user if not exists dsw@'%' identified by 'dsw';
-grant select, update, insert, delete on veterinaria.* to dsw@'%';
+## Requisitos Previos
 
-//En tablas.sql ya está todo ese código.
+Antes de ejecutar este proyecto, asegúrate de tener instalados los siguientes programas en tu sistema:
+
+- [Node.js](https://nodejs.org/) (incluye npm)
+- [Angular CLI](https://angular.io/cli)
+
+## Instalación
+
+Sigue los siguientes pasos para clonar y ejecutar este proyecto en tu entorno local:
+
+1. Clona el repositorio:
+
+   ```bash
+   git clone https://github.com/fflorsi/Frontend-DesarolloDeSoftware.git
+   cd Frontend-DesarolloDeSoftware
+   
+2. Instala las dependencias necesarias:
+
+   ```bash
+   npm install
+
+## Ejecución
+
+1. Para iniciar el servidor de desarrollo, utiliza el siguiente comando:
+
+   ```bash
+   ng serve
+
+2. Abre tu navegador y navega a:
+
+   ```bash
+   http://localhost:4200/
