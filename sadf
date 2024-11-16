@@ -1,0 +1,59 @@
+[33mcommit 5cc30d90837ea77b941bbfd250703cc0396475a1[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mmain[m[33m, [m[1;31morigin/main[m[33m, [m[1;31morigin/HEAD[m[33m)[m
+Author: FacundoMunne <k50361@frro.utn.edu.ar>
+Date:   Thu Oct 31 21:35:10 2024 -0300
+
+    commit front munne
+
+[33mcommit 93f1ea0ef199c293f879c6a68c91a033fd1dbe54[m
+Author: David1889 <115087133+David1889@users.noreply.github.com>
+Date:   Tue Sep 24 14:17:40 2024 -0300
+
+    Update view-pet.component.html
+
+[33mcommit 3fe67935740ef8bd88390e6cc8240d9fa11e487d[m
+Author: David1889 <115087133+David1889@users.noreply.github.com>
+Date:   Tue Sep 24 14:16:22 2024 -0300
+
+    Update package.json
+
+[33mcommit 101244d11c9f14fe64f19c4df8f82ed0a8a18b9e[m
+Author: David1889 <115087133+David1889@users.noreply.github.com>
+Date:   Tue Sep 24 14:16:02 2024 -0300
+
+    Update app.module.ts
+
+[33mcommit 9754d5b3b1fe12915adea16bf3998245542cf6a3[m
+Author: David1889 <115087133+David1889@users.noreply.github.com>
+Date:   Tue Sep 24 14:15:33 2024 -0300
+
+    Update app-routing.module.ts
+
+[33mcommit 3a624db1c7e2ae7d6337e95011a23843ff20ad4f[m
+Author: David1889 <115087133+David1889@users.noreply.github.com>
+Date:   Tue Sep 24 14:15:00 2024 -0300
+
+    Update web-api.service.ts
+
+[33mcommit ed36320201274ba34fee175a6cc2d3409acbba6f[m
+Author: David1889 <115087133+David1889@users.noreply.github.com>
+Date:   Tue Sep 24 14:14:30 2024 -0300
+
+    Update http-provider.service.ts
+
+[33mcommit 1a1708ec9ba0b174f603c0e198abf8d236402c30[m
+Author: David1889 <115087133+David1889@users.noreply.github.com>
+Date:   Tue Sep 24 14:12:35 2024 -0300
+
+    Add files via upload
+
+[33mcommit 9d02b2c65a757dd325d7eff7a77be66aa436320c[m
+Author: Florsi <104874720+fflorsi@users.noreply.github.com>
+Date:   Mon Aug 19 17:51:20 2024 -0300
+
+    Add files via upload
+
+[33mcommit 14399a7d51c6a5f9f93d5c10044601e342afe5cf[m
+Author: Florsi <104874720+fflorsi@users.noreply.github.com>
+Date:   Mon Aug 19 17:47:33 2024 -0300
+
+    Initial commit

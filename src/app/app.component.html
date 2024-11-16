@@ -1,0 +1,36 @@
+<header id="header-sticky" class="header">
+  <div class="container">
+    <div class="header-content">
+      <!-- Logo Start (Icono al lado del texto) -->
+      <div class="logo">
+        <a href="/" class="logo-link">
+          <img src="assets/logo.png" alt="Logo" class="logo">
+        </a>
+      </div>
+      <!-- Navegación -->
+      <nav class="main-nav" [class.menu-open]="menuOpen">
+        <ul>
+          <li><a href="/">Inicio</a></li>
+          <li><a href="/listFutureAppointments">Lista de espera</a></li>
+          <li><a href="/FacilityShop">Servicios</a></li>
+          <li><a href="/menuAdmin">Menu Administrador</a></li>
+          <li><a href="/contact">Contactanos</a></li>
+          <a routerLink="/productShop">Tienda de Productos</a>
+          <a routerLink="/cart">Carrito</a>
+        </ul>
+      </nav>
+      <div class="menu-icon" (click)="toggleMenu()">
+        &#9776; 
+      </div>
+      <div class="nav-button-box">
+        <a class="wa-button w-button">3482-234-974</a>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- Footer -->
+ 
+
+
+<router-outlet></router-outlet>

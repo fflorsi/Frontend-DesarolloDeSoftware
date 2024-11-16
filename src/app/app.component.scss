@@ -1,0 +1,144 @@
+body {
+    font-family: 'inter', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #fAF9F6;
+}
+
+.header {
+    background-color: #fAF9F6;
+    left: 0;
+    top: 0;
+    right: 0;
+    z-index: 999;
+    padding-top: 20px;    
+    padding-bottom: 20px;
+}
+
+.logo {
+    width: 25vh; /* Ajusta el tamaño según sea necesario */
+    height: auto;
+    margin-right: 20px; /* Espacio entre el logo y otros elementos */
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.header-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+}
+
+.main-nav {
+    display: flex;
+    align-items: center; /* Alinea los elementos de la navegación verticalmente */
+}
+
+.main-nav ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    gap: 20px;
+    align-items: center; /* Alinea los elementos de la lista verticalmente */
+}
+
+.nav-button-box {
+    margin-left: 20px; /* Ajusta el margen para alinear el botón con los elementos de la lista */
+}
+
+.wa-button {
+    min-height: 42px; /* Reduce la altura mínima */
+    min-width: 115px; /* Reduce el ancho mínimo */
+    background-image: url('../assets/WAlogo.png'); 
+    background-color: #E6E3FA;
+    background-position: 20px; /* Ajusta la posición del logo */
+    background-repeat: no-repeat;
+    background-size: 18px;
+    padding: 12px 30px 12px 46px;
+    font-size: 14px; /* Ajusta el tamaño de la fuente para que coincida con .main-nav a */
+    font-weight: 600; /* Ajusta el peso de la fuente para que coincida con .main-nav a */
+    line-height: 20px;
+    border-radius: 909px; /* Mantiene el borde redondeado */
+    display: flex;
+    transition: background-color .2s, transform .2s, color .2s;
+    cursor: pointer;
+    text-decoration: none;    
+    display: inline-block;
+    gap: 10px; /* Añade un espacio entre el logo y el texto */
+    color: #3F3B57
+}
+
+
+.main-nav a {
+    color: #3F3B57;
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 14px; /* Asegura que el tamaño de la fuente sea el mismo que en .wa-button */
+}
+
+.menu-icon {
+    display: none;
+    font-size: 24px;
+    cursor: pointer;
+    position: absolute;
+    right:20px;
+    top: 30px;
+}
+
+@media (max-width: 768px) {
+    .main-nav {
+        display: none;
+        flex-direction: column;
+        width: 100%;
+        background-color: rgba(250, 249, 246, 0.95); /* Fondo semitransparente */
+        position: absolute;
+        top: 60px;
+        left: 0;
+        z-index: 1000;
+        padding: 20px; /* Espaciado interno */
+    }
+
+    .main-nav.menu-open {
+        display: flex;
+    }
+
+    .main-nav ul {
+        flex-direction: column;
+        gap: 10px; /* Espaciado entre elementos del menú */
+    }
+
+    .main-nav a {
+        padding: 10px 20px; /* Espaciado interno de los enlaces */
+        font-size: 16px; /* Tamaño de fuente más grande */
+        border-radius: 5px; /* Bordes redondeados */
+        transition: background-color 0.3s; /* Transición suave para el fondo */
+    }
+
+    .main-nav a:hover {
+        background-color: #E6E3FA; /* Fondo al pasar el mouse */
+    }
+
+    .menu-icon {
+        display: block;
+        top:20px;
+    }
+
+    .nav-button-box {
+        position: right;
+        top: 5px;
+        right: 0px;
+        padding: 10px 17px;
+    }
+
+    .wa-button {
+        display: none;
+    }
+}
