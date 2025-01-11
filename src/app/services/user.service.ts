@@ -4,6 +4,12 @@ import { User } from '../interfaces/user';
 import { Observable } from 'rxjs';
 import { Client } from 'app/interfaces/client'
 
+export interface LoginResponse {
+  msg: string;
+  token: string;
+  user: User;
+}
+
 
 @Injectable({
   providedIn: 'root'
@@ -22,12 +28,17 @@ export class UserService {
   }
 
  signInWithClient(user: User, client: Client): Observable<any> {
-    const body = { user, client }; // Combina los objetos user y client en un solo objeto
+    const body = { user, client }; 
     return this.http.post(`${this.myAppUrl}${this.myApiUrl}`, body);
 }
 
 
-  login(user: User): Observable<string>{
-      return this.http.post<string>(`${this.myAppUrl}${this.myApiUrl}/login`,user) 
+  login(user: User): Observable<LoginResponse>{
+      return this.http.post<LoginResponse>(`${this.myAppUrl}${this.myApiUrl}/login`,user) 
+  }
+
+  getUserByUsername(username: string): Observable<User> {
+    const params = { username }; 
+    return this.http.get<User>(`${this.myAppUrl}${this.myApiUrl}/getbyusername`, { params });
   }
 }

@@ -66,6 +66,9 @@ import { ListAppointmentsComponent } from './componentsAppointment/list-appointm
 import { ContactComponent } from './componentsContact/contact/contact.component';
 import { ListOrdersComponent } from './componentsOrder/list-orders/list-orders.component';
 import { DetailOrderComponent } from './componentsOrder/detail-order/detail-order.component';
+import { DashboardPrComponent } from './componentsLogin/dashboard-pr/dashboard-pr.component';
+import { PersonalInfoComponent } from './componentsUserClient/personal-info/personal-info.component';
+import { ClientPetsComponent } from './componentsUserClient/client-pets/client-pets.component';
 
 
 @NgModule({
@@ -116,7 +119,10 @@ import { DetailOrderComponent } from './componentsOrder/detail-order/detail-orde
     ListAppointmentsComponent,
     ContactComponent,
     ListOrdersComponent,
-    DetailOrderComponent
+    DetailOrderComponent,
+    DashboardPrComponent,
+    PersonalInfoComponent,
+    ClientPetsComponent
 
   ],
   imports: [

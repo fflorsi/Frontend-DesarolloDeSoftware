@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Professional } from '@app/interfaces/professional';
 import { ProfessionalService } from '@app/services/professional.service';
+import { response } from 'express';
 import { ToastrService } from 'ngx-toastr';
 
 @Component({
@@ -16,6 +17,7 @@ export class AddProfessionalComponent implements OnInit {
   loading: boolean = false;
   id: number;
   operacion: string = 'Añadir';
+  tempPassword: string = ''
 
   constructor(
     private fb: FormBuilder,
@@ -84,11 +86,30 @@ export class AddProfessionalComponent implements OnInit {
       birthDate: this.formProfessional.value.birthDate,
     };
 
+
     this.loading = true;
-      this._professionalService.saveProfessional(professional).subscribe(() => {
+    this._professionalService.saveProfessional(professional).subscribe(
+      response => {
+        console.log(response.message);
+        console.log(response.data);
+
         this.toastr.success(`El profesional ${professional.firstname} ${professional.lastname} fue registrado con éxito`, 'Profesional registrado');
+
+        // Mostrar la contraseña temporal en la interfaz de usuario
+        this.tempPassword = response.data.user.tempPassword;
+        this.toastr.info(`La contraseña temporal es: ${this.tempPassword}`, 'Información',{
+          timeOut: 5000
+        });
+
         this.loading = false;
         this.router.navigate(['/viewAllProfessionals']);
-      });
+      },
+      error => {
+        console.error('Error al crear el profesional:', error);
+        this.loading = false;
+        this.toastr.error('No se pudo crear el profesional', 'Error');
+      }
+    );
     }
+
   }

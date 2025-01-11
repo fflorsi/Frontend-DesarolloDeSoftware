@@ -39,6 +39,9 @@ import { ListAppointmentsComponent } from './componentsAppointment/list-appointm
 import { ContactComponent } from './componentsContact/contact/contact.component';
 import { ListOrdersComponent } from './componentsOrder/list-orders/list-orders.component';
 import { DetailOrderComponent } from './componentsOrder/detail-order/detail-order.component';
+import { DashboardPrComponent } from './componentsLogin/dashboard-pr/dashboard-pr.component';
+import { PersonalInfoComponent } from './componentsUserClient/personal-info/personal-info.component';
+import { ClientPetsComponent } from './componentsUserClient/client-pets/client-pets.component';
 
 
 
@@ -62,8 +65,30 @@ export const routes: Routes = [
 
     {path: 'login',component: LoginComponent },
     {path: 'signIn', component: SignInComponent},
-    {path: 'dashboard', component: DashboardComponent,canActivate: [AuthGuard]},
+    {
+        path: 'dashboard',
+        component: DashboardComponent,
+        canActivate: [AuthGuard],
+        data: { role: 'client' },
+        children: [
+          {
+            path: 'personal-info',
+            component: PersonalInfoComponent,
+            canActivate: [AuthGuard], 
+            data: { role: 'client' }
+          },
+          {
+            path: 'client-pets',
+            component: ClientPetsComponent,
+            canActivate: [AuthGuard],
+            data: { role: 'client' }
+          }
+        ]
+      },
+     {path: 'profesional-dashboard', component: DashboardPrComponent, canActivate: [AuthGuard], data: { role: 'professional' } },
     {path: 'navbar', component: NavbarComponent},
+
+
     //Cliente
     {path: 'listClients', component: ListClientsComponent},
     {path: 'addClient', component: AddEditClientComponent},
