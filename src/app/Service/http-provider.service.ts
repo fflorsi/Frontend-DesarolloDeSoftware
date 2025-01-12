@@ -182,5 +182,9 @@ export class HttpProviderService {
   unlinkVaccine(medicalHistoryId: number, vaccineId: number): Observable<any> {
   return this.http.delete(`${httpLink.getMedicalHistories}/${medicalHistoryId}/vaccines/?vaccineId=${vaccineId}`);
 }
+
+getProfessionals(): Observable<any> {
+  return this.http.get(httpLink.getAllProfessional); // Ajustar la URL según tu API
+}
 }
 

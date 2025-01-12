@@ -69,6 +69,7 @@ import { DetailOrderComponent } from './componentsOrder/detail-order/detail-orde
 import { DashboardPrComponent } from './componentsLogin/dashboard-pr/dashboard-pr.component';
 import { PersonalInfoComponent } from './componentsUserClient/personal-info/personal-info.component';
 import { ClientPetsComponent } from './componentsUserClient/client-pets/client-pets.component';
+import { MatExpansionModule } from '@angular/material/expansion';
 
 
 @NgModule({
@@ -144,7 +145,8 @@ import { ClientPetsComponent } from './componentsUserClient/client-pets/client-p
     MatDatepickerModule,
     MatNativeDateModule,
     MatListModule,
-    MatCheckboxModule
+    MatCheckboxModule,
+    MatExpansionModule 
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: AddTokenInterceptor, multi: true }

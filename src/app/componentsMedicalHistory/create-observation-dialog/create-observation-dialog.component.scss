@@ -42,3 +42,7 @@ h2{
     margin-right: 10px;
 }
 
+.professionals-list {
+    max-height: 150px; // Altura máxima para el scroll
+    overflow-y: auto; // Permitir scroll vertical
+}
