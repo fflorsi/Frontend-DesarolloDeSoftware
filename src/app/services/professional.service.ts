@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { catchError, Observable, throwError } from 'rxjs';
+import { map } from 'rxjs/operators';
 import { Professional } from "../interfaces/professional";
 
 @Injectable({
@@ -23,9 +24,10 @@ export class ProfessionalService {
      return this.http.delete<void>(`${this.myAppUrl}${this.myApiUrl}/${id}`);
    }
 
-   public saveProfessional(professional: Professional): Observable<void> {
-     return this.http.post<void>(`${this.myAppUrl}${this.myApiUrl}`, professional);
-   }
+   public saveProfessional(professional: Professional): Observable<{ message: string, data: any }> {
+    return this.http.post<{ message: string, data: any }>(`${this.myAppUrl}${this.myApiUrl}`, professional);
+}
+
 
     public getProfessionalDetailById(id: number): Observable<Professional> {
       return this.http.get<Professional>(`${this.myAppUrl}${this.myApiUrl}/${id}`);

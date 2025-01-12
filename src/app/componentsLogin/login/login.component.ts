@@ -2,9 +2,11 @@ import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { Router, RouterModule } from '@angular/router';
 import { User } from 'app/interfaces/user.js';
-import { UserService } from 'app/services/user.service';
+import { LoginResponse, UserService } from 'app/services/user.service';
 import { ToastrService } from 'ngx-toastr';
 import { ErrorService } from 'app/services/error.service';
+import { jwtDecode } from "jwt-decode";
+
 
 @Component({
   selector: 'app-login',
@@ -28,31 +30,43 @@ export class LoginComponent implements OnInit {
 
   }
 
-  login(){
-
-    if(this.username==''||this.password==''){
-      this.toastr.error('Todos los campos son obligatorios','Error');
+  login() {
+    if (this.username === '' || this.password === '') {
+      this.toastr.error('Todos los campos son obligatorios', 'Error');
       return;
     }
-
-    const user: User = {
-      username: this.username,
-      password: this.password
-    }
-    this.loading=true;
+  
+    const user: User = { username: this.username, password: this.password };
+    this.loading = true;
+  
     this._userService.login(user).subscribe({
-      next: (token) =>{
-        localStorage.setItem('token',token)
-        this.router.navigate(['/dashboard'])
-        
-        },
+      next: (response: LoginResponse) => {
+        const token = response.token;
+        localStorage.setItem('token', token);
+  
+        try {
+          const decodedToken = jwtDecode<any>(token);
+          const userRole = decodedToken.role;
+  
+          if (userRole === 'client') {
+            this.router.navigate(['/dashboard']);
+          } else if (userRole === 'professional') {
+            this.router.navigate(['/profesional-dashboard']);
+          } else {
+            this.router.navigate(['/unauthorized']);
+          }
+        } catch (error) {
+          console.error('Error al decodificar el token:', error);
+          this.toastr.error('Token inválido', 'Error');
+        }
+      },
       error: (e: HttpErrorResponse) => {
-          this._errorService.msjError(e);
-          this.loading=false;
-      }
-    })
+        this._errorService.msjError(e);
+        this.loading = false;
+      },
+    });
+  }
 
   }
 
   
-}
