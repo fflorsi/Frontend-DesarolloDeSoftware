@@ -68,40 +68,52 @@ export class AddEditPetComponent {
 
   addPet() {
     if (this.formPet.invalid) {
-      this.toastr.error('Por favor, complete todos los campos requeridos', 'Formulario inválido');
-      return;
+        this.toastr.error('Por favor, complete todos los campos requeridos', 'Formulario inválido');
+        return;
     }
     
     console.log('Datos enviados:', this.formPet.value);
     const pet: Pet = {
-      name: this.formPet.value.name,
-      birthdate: this.formPet.value.birthdate,
-      type: this.formPet.value.type,
-      breed: this.formPet.value.breed,
-      weight: this.formPet.value.weight,
-      client_id: this.clientId, 
+        name: this.formPet.value.name,
+        birthdate: this.formPet.value.birthdate,
+        type: this.formPet.value.type,
+        breed: this.formPet.value.breed,
+        weight: this.formPet.value.weight,
+        client_id: this.clientId, 
     };
     console.log(pet);
     this.loading = true;
     if (this.id !== 0) {
-      this._petService.updatePet(this.id, pet).subscribe(() => {
-        this.toastr.info(`La mascota ${pet.name} fue actualizada con éxito`, 'Mascota actualizada');
-        this.loading = false;
-        this.router.navigate(['/listPets', this.clientId]);
-      }, error => {
-        this.loading = false;
-        this.toastr.error('Error al actualizar la mascota', 'Error');
-      });
+        // Actualizar mascota existente
+        this._petService.updatePet(this.id, pet).subscribe(() => {
+            this.toastr.info(`La mascota ${pet.name} fue actualizada con éxito`, 'Mascota actualizada');
+            this.loading = false;
+            this.router.navigate(['/listPets', this.clientId]);
+        }, error => {
+            this.loading = false;
+            this.toastr.error('Error al actualizar la mascota', 'Error');
+        });
     } else {
-      this._petService.savePet(pet).subscribe(() => {
-        this.toastr.success(`La mascota ${pet.name} fue registrada con éxito`, 'Mascota registrada');
-        this.loading = false;
-        this.router.navigate(['/listPets', this.clientId]);
-      }, error => {
-        this.loading = false;
-        this.toastr.error('Error al registrar la mascota', 'Error');
-      });
+        // Crear nueva mascota
+        this._petService.savePet(pet).subscribe((response: any) => { // Asegúrate de que 'response' esté tipado
+            this.toastr.success(`La mascota ${pet.name} fue registrada con éxito`, 'Mascota registrada');
+            this.loading = false;
+            const newPetId = response.data.id; // Obtener el ID de la nueva mascota
+            this.createMedicalHistory(newPetId); // Llamar a createMedicalHistory con el ID
+            this.router.navigate(['/listPets', this.clientId]);
+        }, error => {
+            this.loading = false;
+            this.toastr.error('Error al registrar la mascota', 'Error');
+        });
     }
-  }
+}
+
+  createMedicalHistory(petId: number) {
+    this._petService.createMedicalHistory({ petId }).subscribe(() => {
+        this.toastr.success('Historia clínica creada con éxito', 'Éxito');
+    }, error => {
+        this.toastr.error('Error al crear la historia clínica', 'Error');
+    });
+}
 }
 

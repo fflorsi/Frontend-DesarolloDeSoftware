@@ -34,11 +34,15 @@ export class PetService {
     return this.http.put<any>(`${this.myAppUrl}${this.myApiUrl}/${id}`, pet);
   }
 
-  public savePet(pet: Pet): Observable<void> { 
-    return this.http.post<void>(`${this.myAppUrl}${this.myApiUrl}`, pet);
-  }
+  public savePet(pet: Pet): Observable<Pet> { 
+    return this.http.post<Pet>(`${this.myAppUrl}${this.myApiUrl}`, pet);
+}
 
   public deletePetById(id: number): Observable<void> {
     return this.http.delete<void>(`${this.myAppUrl}${this.myApiUrl}/${id}`);
+  }
+
+  public createMedicalHistory(medicalHistoryData: { petId: number }): Observable<any> {
+    return this.http.post(`${this.myAppUrl}api/medicalHistory`, medicalHistoryData);
   }
 }
