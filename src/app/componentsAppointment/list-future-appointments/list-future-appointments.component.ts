@@ -25,7 +25,6 @@ export class ListFutureAppointmentsComponent implements OnInit {
   getFutureAppointments(): void {
     this._appointmentService.getFutureAppointments().subscribe(
         data => {
-          console.log(data)
           this.appointments = data;
           this.loading = false;  
         },

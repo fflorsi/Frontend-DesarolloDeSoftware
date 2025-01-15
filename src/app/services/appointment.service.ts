@@ -58,5 +58,9 @@ export class AppointmentService {
   getFutureAppointmentsWithDetails(): Observable<any[]> {
     return this.http.get<Appointment[]>(`${this.myAppUrl}${this.myApiUrl}/future`)
   }
+
+  getFutureAppointmentsWithDetailsByClientId(clientId: number): Observable<any[]> {
+    return this.http.get<Appointment[]>(`${this.myAppUrl}${this.myApiUrl}/future/${clientId}`);
+}
 }
 

@@ -3,12 +3,43 @@
     <h2 class="mb-0">Información Personal</h2>
   </div>
   <div class="card-body">
-    <p><strong>DNI:</strong> {{ clientInfo.dni }}</p>
-    <p><strong>Nombre:</strong> {{ clientInfo.firstname }} {{ clientInfo.lastname }}</p>
-    <p><strong>Dirección:</strong> {{ clientInfo.address }}</p>
-    <p><strong>Teléfono:</strong> {{ clientInfo.phone }}</p>
-    <p><strong>Email:</strong> {{ clientInfo.email }}</p>
-    <p><strong>Fecha de nacimiento:</strong> {{ clientInfo.birthDate | date }}</p>
+    <form *ngIf="isEditing; else viewMode" (ngSubmit)="updateClientInfo()">
+      <div class="form-group">
+        <label for="firstname">Nombre</label>
+        <input id="firstname" class="form-control" [(ngModel)]="clientInfo.firstname" name="firstname" required>
+      </div>
+      <div class="form-group">
+        <label for="lastname">Apellido</label>
+        <input id="lastname" class="form-control" [(ngModel)]="clientInfo.lastname" name="lastname" required>
+      </div>
+      <div class="form-group">
+        <label for="address">Dirección</label>
+        <input id="address" class="form-control" [(ngModel)]="clientInfo.address" name="address">
+      </div>
+      <div class="form-group">
+        <label for="phone">Teléfono</label>
+        <input id="phone" class="form-control" [(ngModel)]="clientInfo.phone" name="phone">
+      </div>
+      <div class="form-group">
+        <label for="email">Email</label>
+        <input id="email" class="form-control" [(ngModel)]="clientInfo.email" name="email" type="email" required>
+      </div>
+      <div class="form-group">
+        <label for="birthDate">Fecha de nacimiento</label>
+        <input id="birthDate" class="form-control" [(ngModel)]="clientInfo.birthDate" name="birthDate" type="date">
+      </div>
+      <button type="submit" class="btn btn-primary mt-3">Guardar cambios</button>
+    </form>
+
+    <ng-template #viewMode>
+      <p><strong>DNI:</strong> {{ clientInfo.dni }}</p>
+      <p><strong>Nombre:</strong> {{ clientInfo.firstname }} {{ clientInfo.lastname }}</p>
+      <p><strong>Dirección:</strong> {{ clientInfo.address }}</p>
+      <p><strong>Teléfono:</strong> {{ clientInfo.phone }}</p>
+      <p><strong>Email:</strong> {{ clientInfo.email }}</p>
+      <p><strong>Fecha de nacimiento:</strong> {{ clientInfo.birthDate | date }}</p>
+      <button class="btn btn-warning" (click)="toggleEditMode()">Editar</button>
+    </ng-template>
   </div>
 </div>
 

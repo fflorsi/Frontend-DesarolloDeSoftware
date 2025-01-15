@@ -41,4 +41,14 @@ export class UserService {
     const params = { username }; 
     return this.http.get<User>(`${this.myAppUrl}${this.myApiUrl}/getbyusername`, { params });
   }
+
+  // Método para actualizar el nombre de usuario
+  updateUsername(id: number, newUsername: string): Observable<any> {
+    return this.http.post<any>(`${this.myAppUrl}${this.myApiUrl}/updateusername/${id}`, { username: newUsername });
+  }
+
+  // Método para actualizar la contraseña
+  updatePassword(id: number, newPassword: string): Observable<any> {
+    return this.http.post<any>(`${this.myAppUrl}${this.myApiUrl}/updatepassword/${id}`, { password: newPassword });
+  }
 }

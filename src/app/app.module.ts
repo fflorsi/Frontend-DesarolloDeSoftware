@@ -69,7 +69,9 @@ import { DetailOrderComponent } from './componentsOrder/detail-order/detail-orde
 import { DashboardPrComponent } from './componentsLogin/dashboard-pr/dashboard-pr.component';
 import { PersonalInfoComponent } from './componentsUserClient/personal-info/personal-info.component';
 import { ClientPetsComponent } from './componentsUserClient/client-pets/client-pets.component';
+import { ClientAppointmentComponent } from './componentsUserClient/client-appointments/client-appointments.component';
 import { MatExpansionModule } from '@angular/material/expansion';
+import { AccountSettingsComponent } from './componentsUserClient/account-settings/account-settings.component';
 
 
 @NgModule({
@@ -123,8 +125,9 @@ import { MatExpansionModule } from '@angular/material/expansion';
     DetailOrderComponent,
     DashboardPrComponent,
     PersonalInfoComponent,
-    ClientPetsComponent
-
+    ClientPetsComponent,
+    ClientAppointmentComponent,
+    AccountSettingsComponent
   ],
   imports: [
     BrowserModule,

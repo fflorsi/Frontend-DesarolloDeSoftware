@@ -18,7 +18,7 @@ import { Router } from '@angular/router';
 })
 export class NewAppointmentComponent implements OnInit {
   appointmentForm: FormGroup;
-  petId!: number;  // ID de la mascota
+  petId!: number;  
   professionals: Professional[] = [];
   facilities: Facility[] = [];
   pet!: Pet;

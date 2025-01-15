@@ -42,6 +42,8 @@ import { DetailOrderComponent } from './componentsOrder/detail-order/detail-orde
 import { DashboardPrComponent } from './componentsLogin/dashboard-pr/dashboard-pr.component';
 import { PersonalInfoComponent } from './componentsUserClient/personal-info/personal-info.component';
 import { ClientPetsComponent } from './componentsUserClient/client-pets/client-pets.component';
+import { ClientAppointmentComponent } from './componentsUserClient/client-appointments/client-appointments.component';
+import { AccountSettingsComponent } from './componentsUserClient/account-settings/account-settings.component';
 
 
 
@@ -82,6 +84,18 @@ export const routes: Routes = [
             component: ClientPetsComponent,
             canActivate: [AuthGuard],
             data: { role: 'client' }
+          },
+          {
+            path: 'client-appointments',
+            component: ClientAppointmentComponent,
+            canActivate: [AuthGuard],
+            data: {role: 'client'}
+          },
+          {
+            path: 'account-settings',
+            component: AccountSettingsComponent,
+            canActivate: [AuthGuard],
+            data: {role: 'client'}
           }
         ]
       },
