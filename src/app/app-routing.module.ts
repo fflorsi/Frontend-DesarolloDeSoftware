@@ -1,5 +1,5 @@
 import { RouterModule, Routes } from '@angular/router';
-import { NgModule } from '@angular/core';
+import { Component, NgModule } from '@angular/core';
 import { AddPetComponent } from './componentsPet/add-pet/add-pet.component';
 import { EditPetComponent } from './componentsPet/edit-pet/edit-pet.component';
 import { HomeComponent } from './home/home.component';
@@ -44,6 +44,10 @@ import { PersonalInfoComponent } from './componentsUserClient/personal-info/pers
 import { ClientPetsComponent } from './componentsUserClient/client-pets/client-pets.component';
 import { ClientAppointmentComponent } from './componentsUserClient/client-appointments/client-appointments.component';
 import { AccountSettingsComponent } from './componentsUserClient/account-settings/account-settings.component';
+import path from 'path';
+import { PersonalInfoPrComponent } from './componentsUserProf/personal-info-pr/personal-info-pr.component';
+import { AccountSettingsPrComponent } from './componentsUserProf/account-settings-pr/account-settings-pr.component';
+import { UpcomingAppointmentsComponent } from './componentsUserProf/upcoming-appointments/upcoming-appointments.component';
 
 
 
@@ -99,7 +103,35 @@ export const routes: Routes = [
           }
         ]
       },
-     {path: 'profesional-dashboard', component: DashboardPrComponent, canActivate: [AuthGuard], data: { role: 'professional' } },
+     {path: 'profesional-dashboard', component: DashboardPrComponent, canActivate: [AuthGuard], data: { role: 'professional' },
+      children:[{
+        path: 'personal-info-pr',
+        component: PersonalInfoPrComponent,
+        canActivate: [AuthGuard],
+        data: {role: 'professional'}
+      },
+      {
+        path: 'account-settings-pr',
+        component: AccountSettingsPrComponent,
+        canActivate: [AuthGuard],
+        data: {role: 'professional'}
+      },
+      {
+        path: 'upcoming-appointments',
+        component: UpcomingAppointmentsComponent,
+        canActivate: [AuthGuard],
+        data: {role: 'professional'}
+      },
+      {
+        path:'pets-medical-history',
+        component: ViewAllPetComponent,
+        canActivate: [AuthGuard],
+        data: {role:'professional'}
+      }
+      ]
+
+
+    },
     {path: 'navbar', component: NavbarComponent},
 
 

@@ -72,6 +72,9 @@ import { ClientPetsComponent } from './componentsUserClient/client-pets/client-p
 import { ClientAppointmentComponent } from './componentsUserClient/client-appointments/client-appointments.component';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { AccountSettingsComponent } from './componentsUserClient/account-settings/account-settings.component';
+import { PersonalInfoPrComponent } from './componentsUserProf/personal-info-pr/personal-info-pr.component';
+import { AccountSettingsPrComponent } from './componentsUserProf/account-settings-pr/account-settings-pr.component';
+import { UpcomingAppointmentsComponent } from './componentsUserProf/upcoming-appointments/upcoming-appointments.component';
 
 
 @NgModule({
@@ -127,7 +130,11 @@ import { AccountSettingsComponent } from './componentsUserClient/account-setting
     PersonalInfoComponent,
     ClientPetsComponent,
     ClientAppointmentComponent,
-    AccountSettingsComponent
+    AccountSettingsComponent,
+    PersonalInfoPrComponent,
+    AccountSettingsPrComponent,
+    UpcomingAppointmentsComponent
+
   ],
   imports: [
     BrowserModule,

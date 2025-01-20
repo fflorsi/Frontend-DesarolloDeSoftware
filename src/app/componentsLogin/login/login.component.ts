@@ -42,12 +42,13 @@ export class LoginComponent implements OnInit {
     this._userService.login(user).subscribe({
       next: (response: LoginResponse) => {
         const token = response.token;
-        localStorage.setItem('token', token);
+        localStorage.removeItem('authToken');
+        localStorage.setItem('authToken', token);
   
         try {
           const decodedToken = jwtDecode<any>(token);
           const userRole = decodedToken.role;
-  
+          console.log(userRole)
           if (userRole === 'client') {
             this.router.navigate(['/dashboard']);
           } else if (userRole === 'professional') {

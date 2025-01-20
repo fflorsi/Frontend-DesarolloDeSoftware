@@ -26,6 +26,11 @@
         <a class="wa-button w-button">3482-234-974</a>
       </div>
     </div>
+    <div class="login-button">
+      <a *ngIf="!isUserLoggedIn" routerLink="/login" class="login-btn">Iniciar sesión</a>      
+      <a *ngIf="isUserLoggedIn" [routerLink]="getDashboardLink()" class="login-btn">Dashboard</a>
+      <a *ngIf="isUserLoggedIn" (click)="logout()" class="logout-btn">Cerrar sesión</a>
+    </div>
   </div>
 </header>
 

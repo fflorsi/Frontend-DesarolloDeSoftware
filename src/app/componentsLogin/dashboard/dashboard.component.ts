@@ -13,14 +13,7 @@ export class DashboardComponent implements OnInit {
 
   constructor(private _petService: PetService) {}
 
-  ngOnInit(): void {
-    this.getPets();
-    
+  ngOnInit(): void {    
   }
 
-  getPets(){
-    this._petService.getPets().subscribe(data=>{
-    this.listPet= data;
-    })
-  }
 }
