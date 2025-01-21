@@ -1,0 +1,22 @@
+<div class="container-xl">
+    <div class="card-container">
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title">{{ petDetail.name }}</h5>
+          <p class="card-text"><strong>Fecha de nacimiento:</strong> {{ petDetail.birthdate | date:'short' }}</p>
+          <p class="card-text"><strong>Tipo:</strong> {{ petDetail.Type.name }}</p>
+          <p class="card-text"><strong>Raza:</strong> {{ petDetail.breed }}</p>
+          <p class="card-text"><strong>Peso:</strong> {{ petDetail.weight }} kg</p>
+          <div class="button-group">
+            <a [routerLink]="['/EditPet/', petDetail.id]" class="btn btn-primary"><i class='fas fa-edit'></i> Editar</a>        </div>
+        </div>
+      </div>
+  
+      <medicalHistory class ="medical-history"></medicalHistory>
+  
+    </div>
+    <div *ngIf="!petDetail" class="no-pets">
+      <p>No se han encontrado Mascotas</p>
+    </div>
+  </div>
+  

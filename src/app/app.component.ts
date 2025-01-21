@@ -22,16 +22,12 @@ export class AppComponent implements OnInit {
 
   // Verificar si el usuario está logueado y definir el rol
   checkUserLoginStatus() {
-    const token = localStorage.getItem('authToken');
-    console.log('Token:', token); // Verifica si el token existe
-  
+    const token = localStorage.getItem('authToken');  
     if (token) {
       this.isUserLoggedIn = true;
       try {
         // Decodificar el token
         const decodedToken: any = jwtDecode(token);
-        console.log('Decoded Token:', decodedToken); // Verifica cómo se ve el token decodificado
-  
         this.userRole = decodedToken.role || ''; // Guardamos el rol
       } catch (error) {
         console.error('Error al decodificar el token:', error);

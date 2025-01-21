@@ -75,6 +75,8 @@ import { AccountSettingsComponent } from './componentsUserClient/account-setting
 import { PersonalInfoPrComponent } from './componentsUserProf/personal-info-pr/personal-info-pr.component';
 import { AccountSettingsPrComponent } from './componentsUserProf/account-settings-pr/account-settings-pr.component';
 import { UpcomingAppointmentsComponent } from './componentsUserProf/upcoming-appointments/upcoming-appointments.component';
+import { PetsMedicalHistoryListComponent } from './componentsUserProf/pets-medical-history-list/pets-medical-history-list.component';
+import { ViewPetProComponent } from './componentsUserProf/view-pet-pro/view-pet-pro.component';
 
 
 @NgModule({
@@ -133,7 +135,9 @@ import { UpcomingAppointmentsComponent } from './componentsUserProf/upcoming-app
     AccountSettingsComponent,
     PersonalInfoPrComponent,
     AccountSettingsPrComponent,
-    UpcomingAppointmentsComponent
+    UpcomingAppointmentsComponent,
+    PetsMedicalHistoryListComponent,
+    ViewPetProComponent
 
   ],
   imports: [

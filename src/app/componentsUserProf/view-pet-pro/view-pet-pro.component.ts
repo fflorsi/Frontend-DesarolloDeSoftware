@@ -4,13 +4,11 @@ import { HttpProviderService } from '../../Service/http-provider.service';
 import { WebApiService } from '../../Service/web-api.service';
 
 @Component({
-  selector: 'app-view-pet',
-  templateUrl: './view-pet.component.html',
-  styleUrls: ['./view-pet.component.scss']
+  selector: 'app-view-pet-pro',
+  templateUrl: './view-pet-pro.component.html',
+  styleUrl: './view-pet-pro.component.scss'
 })
-
-export class ViewPetComponent implements OnInit {
-
+export class ViewPetProComponent {
   petId: any;
   petDetail : any= [];
    
@@ -32,12 +30,4 @@ export class ViewPetComponent implements OnInit {
             console.error('Error fetching client data', error);
         }
     });
-}
-
-
-  editPet(): void{
-    this.httpProvider.getPetDetailById(this.petId).subscribe({
-      
-    })
-  }
-}
+  }}

@@ -49,10 +49,14 @@ export class LoginComponent implements OnInit {
           const decodedToken = jwtDecode<any>(token);
           const userRole = decodedToken.role;
           console.log(userRole)
+          
+          // Redirigir según el rol del usuario
           if (userRole === 'client') {
             this.router.navigate(['/dashboard']);
           } else if (userRole === 'professional') {
             this.router.navigate(['/profesional-dashboard']);
+          } else if (userRole === 'admin') {
+            this.router.navigate(['/menuAdmin']); // Redirigir al dashboard de administrador
           } else {
             this.router.navigate(['/unauthorized']);
           }
@@ -68,6 +72,7 @@ export class LoginComponent implements OnInit {
     });
   }
 
-  }
+}
+
 
   

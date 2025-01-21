@@ -48,27 +48,17 @@ import path from 'path';
 import { PersonalInfoPrComponent } from './componentsUserProf/personal-info-pr/personal-info-pr.component';
 import { AccountSettingsPrComponent } from './componentsUserProf/account-settings-pr/account-settings-pr.component';
 import { UpcomingAppointmentsComponent } from './componentsUserProf/upcoming-appointments/upcoming-appointments.component';
+import { PetsMedicalHistoryListComponent } from './componentsUserProf/pets-medical-history-list/pets-medical-history-list.component';
+import { ViewPetProComponent } from './componentsUserProf/view-pet-pro/view-pet-pro.component';
 
 
 
 export const routes: Routes = [
     {path: '', redirectTo: 'Home', pathMatch: 'full'},
     {path: 'Home', component: HomeComponent},
-    {path: 'ViewPet/:petId', component: ViewPetComponent},
-    {path: 'AddPet', component: AddPetComponent},
-    {path: 'EditPet/:id', component: EditPetComponent},
-    {path: 'ViewClientPet', component:ViewClientPetComponent},
-    {path: 'ViewAllPet', component: ViewAllPetComponent},
-    {path:'addPet/:idClient', component:AddEditPetComponent},
-    {path: 'editPet/:id/:idClient', component: AddEditPetComponent},
-    {path:'detailPet/:id',component:DetailPetComponent},
-    {path: 'ViewProfessional/:id', component: ViewProfessionalComponent},
-    {path: 'viewAllProfessionals', component: ViewAllProfessionalComponent},
-    {path: 'AddProfessional', component: AddProfessionalComponent},
-    {path: 'EditProfessional/:id', component: EditProfessionalComponent},
     
-    {path: 'ViewMedicalHistory/:petId', component: ViewMedicalHistoriesComponent},
-
+    
+    
     {path: 'login',component: LoginComponent },
     {path: 'signIn', component: SignInComponent},
     {
@@ -123,10 +113,16 @@ export const routes: Routes = [
         data: {role: 'professional'}
       },
       {
-        path:'pets-medical-history',
-        component: ViewAllPetComponent,
+        path:'pets-medical-history-list',
+        component: PetsMedicalHistoryListComponent,
         canActivate: [AuthGuard],
         data: {role:'professional'}
+      },
+      {
+        path:'ViewPetPro/:petId',
+        component: ViewPetProComponent,
+        canActivate:[AuthGuard],
+        data:{role:'professional'}
       }
       ]
 
@@ -135,39 +131,64 @@ export const routes: Routes = [
     {path: 'navbar', component: NavbarComponent},
 
 
-    //Cliente
-    {path: 'listClients', component: ListClientsComponent},
-    {path: 'addClient', component: AddEditClientComponent},
-    {path: 'editClient/:id', component: AddEditClientComponent},
-    {path: 'detailClient/:id',component: DetailClientComponent},
-    {path: 'listPets/:id', component: ListPetsComponent},
-    //Producto
-    {path: 'listProducts', component: ListProductsComponent},
-    {path: 'addProduct', component:AddEditProductComponent},
-    {path: 'editProduct/:id', component: AddEditProductComponent},
-    {path: 'vaccines', component: VaccineComponent},
+    {
+      path: '',
+      canActivate: [AuthGuard],
+      data: { role: 'admin' },
+      children: [
+        // Cliente
+        { path: 'listClients', component: ListClientsComponent },
+        { path: 'addClient', component: AddEditClientComponent },
+        { path: 'editClient/:id', component: AddEditClientComponent },
+        { path: 'detailClient/:id', component: DetailClientComponent },
+        { path: 'listPets/:id', component: ListPetsComponent },
+  
+        // Mascota
+        { path: 'ViewPet/:petId', component: ViewPetComponent },
+        { path: 'AddPet', component: AddPetComponent },
+        { path: 'EditPet/:id', component: EditPetComponent },
+        { path: 'ViewClientPet', component: ViewClientPetComponent },
+        { path: 'ViewAllPet', component: ViewAllPetComponent },
+        { path: 'addPet/:idClient', component: AddEditPetComponent },
+        { path: 'editPet/:id/:idClient', component: AddEditPetComponent },
+        { path: 'detailPet/:id', component: DetailPetComponent },
+        { path: 'ViewMedicalHistory/:petId', component: ViewMedicalHistoriesComponent },
+  
+        // Profesional
+        { path: 'ViewProfessional/:id', component: ViewProfessionalComponent },
+        { path: 'viewAllProfessionals', component: ViewAllProfessionalComponent },
+        { path: 'AddProfessional', component: AddProfessionalComponent },
+        { path: 'EditProfessional/:id', component: EditProfessionalComponent },
+  
+        // Producto
+        { path: 'listProducts', component: ListProductsComponent },
+        { path: 'addProduct', component: AddEditProductComponent },
+        { path: 'editProduct/:id', component: AddEditProductComponent },
+        { path: 'vaccines', component: VaccineComponent },
+  
+        // Servicios
+        { path: 'listFacilities', component: ListFacilitiesComponent },
+        { path: 'addFacility', component: AddEditFacilityComponent },
+        { path: 'editFacility/:id', component: AddEditFacilityComponent },
+        { path: 'detailFacility/:id', component: DetailFacilityComponent },
+        { path: 'FacilityShop', component: FacilityShopComponent },
+  
+        // Turnos
+        { path: 'listFutureAppointments', component: ListFutureAppointmentsComponent },
+        { path: 'newAppointment/:id', component: NewAppointmentComponent },
+        { path: 'listAllAppointments', component: ListAppointmentsComponent },
+  
+        // Admin Menu
+        { path: 'menuAdmin', component: MenuAdminComponent },
+      ],
+    },
+
 
     //Carrito
     {path: 'productShop', component: ProductShopComponent},
     {path: 'cart', component: CartComponent},
     {path: 'listOrders', component: ListOrdersComponent},
     { path: 'detailOrder/:id', component: DetailOrderComponent },
-
-    //servicios
-    {path: 'listFacilities', component: ListFacilitiesComponent},
-    {path: 'addFacility', component: AddEditFacilityComponent},
-    {path: 'editFacility/:id', component: AddEditFacilityComponent},
-    {path: 'detailFacility/:id', component: DetailFacilityComponent},
-    {path: 'FacilityShop', component: FacilityShopComponent},
-
-    //Turnos
-    {path: 'listFutureAppointments', component: ListFutureAppointmentsComponent},
-    {path:'newAppointment/:id',component: NewAppointmentComponent},
-    {path: 'listAllAppointments', component: ListAppointmentsComponent},
-
-    //admin
-    {path: 'menuAdmin', component:MenuAdminComponent},
-
     //Contacto
     {path: 'contact', component: ContactComponent},
 

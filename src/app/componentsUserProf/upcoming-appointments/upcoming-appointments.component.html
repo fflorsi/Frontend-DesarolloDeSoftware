@@ -29,7 +29,7 @@
               <button class="btn btn-secondary btn-sm" (click)="cancelAppointment(appointment.id)">
                 <i class="fas fa-times"></i> Rechazar
               </button>
-              <button class="btn btn-success btn-sm" (click)="markAsDone(appointment.id)" [routerLink]="'/ViewPet/' + appointment.Pet?.id">
+              <button class="btn btn-success btn-sm" (click)="markAsDone(appointment.id)" [routerLink]="'/profesional-dashboard/ViewPetPro/' + appointment.Pet?.id">
               <i class="fas fa-check"></i> Marcar como Realizado
               </button>
   
