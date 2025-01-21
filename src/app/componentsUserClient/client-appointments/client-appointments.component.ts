@@ -47,7 +47,7 @@ export class ClientAppointmentComponent implements OnInit {
   }
 
   getClientIdFromToken(): number | undefined {
-      const token = localStorage.getItem('token');
+      const token = localStorage.getItem('authToken');
       if (token) {
         try {
           const decodedToken = jwtDecode<{ clientId?: number }>(token);

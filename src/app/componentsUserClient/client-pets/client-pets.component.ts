@@ -42,7 +42,8 @@ export class ClientPetsComponent implements OnInit {
   }
 
   getClientIdFromToken(): number | undefined {
-    const token = localStorage.getItem('token');
+    const token = localStorage.getItem('authToken');
+    console.log(token)
     if (token) {
       try {
         const decodedToken = jwtDecode<{ clientId?: number }>(token);

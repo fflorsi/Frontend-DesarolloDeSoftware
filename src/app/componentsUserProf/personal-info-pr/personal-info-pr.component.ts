@@ -25,7 +25,7 @@ export class PersonalInfoPrComponent implements OnInit {
   }
 
   getUsernameFromToken(): void {
-    const token = localStorage.getItem('token');
+    const token = localStorage.getItem('authToken');
     if (token) {
       const decodedToken = jwtDecode<any>(token);
       this.username = decodedToken.username;

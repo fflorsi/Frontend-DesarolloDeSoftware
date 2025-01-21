@@ -26,7 +26,7 @@ export class UpcomingAppointmentsComponent {
 
   // Decodifica el token para obtener el ID del profesional
   getProfessionalIdFromToken(): void {
-    const token = localStorage.getItem('token');
+    const token = localStorage.getItem('authToken');
     if (token) {
       const decodedToken: any = jwtDecode(token);
       console.log(decodedToken)
