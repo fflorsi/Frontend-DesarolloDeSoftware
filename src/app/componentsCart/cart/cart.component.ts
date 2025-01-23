@@ -1,21 +1,25 @@
 import { Component, OnInit } from '@angular/core';
 import { CartService } from '@app/services/cart.service';
 import { Product } from '@app/interfaces/product';
-import { OrderService } from '@app/services/order.service';  // Importamos el servicio de pedidos
-import { Order, OrderItem } from '@app/interfaces/order';  // Asegúrate de importar la interfaz Order
+import { OrderService } from '@app/services/order.service';
+import { jwtDecode } from 'jwt-decode';
+import { Order, OrderItem } from '@app/interfaces/order';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-cart',
   templateUrl: './cart.component.html',
-  styleUrl: './cart.component.scss'
+  styleUrls: ['./cart.component.scss']
 })
 export class CartComponent implements OnInit {
   items: Product[] = [];
   total: number = 0;
+  isUserLoggedIn: boolean = false; // Variable para verificar si el usuario está autenticado
 
   constructor(
     private _cartService: CartService,
-    private _orderService: OrderService  // Inyectamos el servicio de pedidos
+    private _orderService: OrderService,
+    private router: Router,
   ) {}
 
   ngOnInit() {
@@ -25,6 +29,28 @@ export class CartComponent implements OnInit {
       console.log('Productos en el carrito:', this.items);
       console.log('Total del carrito:', this.total);
     });
+
+    // Verificar si el usuario está logueado
+    this.checkUserLoginStatus();
+  }
+
+  // Método para verificar el estado de login del usuario
+  checkUserLoginStatus() {
+    const token = localStorage.getItem('authToken');
+    if (token) {
+      this.isUserLoggedIn = true;
+      try {
+        // Decodificar el token
+        const decodedToken: any = jwtDecode(token);
+        console.log('Decoded Token:', decodedToken);
+      } catch (error) {
+        console.error('Error al decodificar el token:', error);
+        this.isUserLoggedIn = false;
+      }
+    } else {
+      this.isUserLoggedIn = false;
+      console.log('No token found, user is not logged in');
+    }
   }
 
   deleteProduct(id: number) {
@@ -36,7 +62,7 @@ export class CartComponent implements OnInit {
   }
 
   increaseQuantity(item: Product) {
-    const quantity = item.quantity || 1; 
+    const quantity = item.quantity || 1;
   
     if (quantity < item.stock) {
       this._cartService.updateQuantity(item, quantity + 1);
@@ -44,39 +70,66 @@ export class CartComponent implements OnInit {
       alert('No hay suficiente stock disponible');
     }
   }
-  
+
   decreaseQuantity(item: Product) {
-    const quantity = item.quantity || 1; 
+    const quantity = item.quantity || 1;
   
     if (quantity > 1) {
       this._cartService.updateQuantity(item, quantity - 1);
     }
   }
 
-  // Método para realizar el pedido
+  getClientIdFromToken(): number | undefined {
+    const token = localStorage.getItem('authToken');
+    if (token) {
+      try {
+        const decodedToken = jwtDecode<{ clientId?: number }>(token);
+        return decodedToken.clientId;
+      } catch (error) {
+        console.error('Error al decodificar el token:', error);
+      }
+    } else {
+      console.error('Token no encontrado en localStorage.');
+    }
+    return undefined;
+  }
+
   checkout() {
+    if (!this.isUserLoggedIn) {
+      alert('Necesitas iniciar sesión para realizar la compra');
+      // Redirigir a la página de inicio de sesión
+      this.router.navigate(['/login']);  // Redirige a la ruta '/login'
+      return;
+    }
+  
+    const clientId = this.getClientIdFromToken();  // Obtener el clientId del token
+  
+    if (!clientId) {
+      alert('No se pudo obtener el cliente desde el token');
+      return;
+    }
+  
     const orderItems: OrderItem[] = this.items.map(item => ({
-      id: item.id || 0,  
-      quantity: item.quantity || 1,  
+      id: item.id || 0,
+      quantity: item.quantity || 1,
       price: item.price,
       product: {
-        id: item.id || 0,  
-        name: item.name || 'Unknown Product'  
+        id: item.id || 0,
+        name: item.name || 'Unknown Product'
       }
     }));
-
-    
+  
     const order: Order = {
       items: orderItems,
       total: this.total,
-
+      clientId: clientId,  
     };
-
+  
     this._orderService.createOrder(order).subscribe({
       next: (response) => {
         console.log('Pedido realizado con éxito', response);
         alert('Pedido realizado con éxito!');
-        this.cleanCart();  
+        this.cleanCart();
       },
       error: (error) => {
         console.error('Error al realizar el pedido', error);

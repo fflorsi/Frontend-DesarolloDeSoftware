@@ -50,6 +50,8 @@ import { AccountSettingsPrComponent } from './componentsUserProf/account-setting
 import { UpcomingAppointmentsComponent } from './componentsUserProf/upcoming-appointments/upcoming-appointments.component';
 import { PetsMedicalHistoryListComponent } from './componentsUserProf/pets-medical-history-list/pets-medical-history-list.component';
 import { ViewPetProComponent } from './componentsUserProf/view-pet-pro/view-pet-pro.component';
+import { ClientOrdersComponent } from './componentsUserClient/client-orders/client-orders.component';
+import { ClientOrdersDetailComponent } from './componentsUserClient/client-orders-detail/client-orders-detail.component';
 
 
 
@@ -90,6 +92,18 @@ export const routes: Routes = [
             component: AccountSettingsComponent,
             canActivate: [AuthGuard],
             data: {role: 'client'}
+          },
+          {
+            path: 'client-orders',
+            component: ClientOrdersComponent,
+            canActivate: [AuthGuard],
+            data: {role: 'client'}
+          },
+          {
+            path: 'client-orders/client-order-detail/:orderid',
+            component: ClientOrdersDetailComponent,
+            canActivate: [AuthGuard],
+            data:{role:'client'}
           }
         ]
       },
@@ -123,7 +137,7 @@ export const routes: Routes = [
         component: ViewPetProComponent,
         canActivate:[AuthGuard],
         data:{role:'professional'}
-      }
+      },
       ]
 
 

@@ -11,43 +11,36 @@ import { Client } from '@app/interfaces/client';
   styleUrls: ['./personal-info.component.scss']
 })
 export class PersonalInfoComponent implements OnInit {
-  username: string | null = null;
+  clientId: number | undefined = undefined;
   clientInfo: Client | null = null;
   isEditing: boolean = false; // Estado para controlar el modo de edición
 
   constructor(private userService: UserService, private clientService: ClientService) {}
 
   ngOnInit(): void {
-    this.getUsernameFromToken();
-    if (this.username) {
-      this.fetchUserAndClientInfo(this.username);
+    this.clientId= this.getClientIdFromToken();
+    if (this.clientId) {
+      this.fetchClientInfo(this.clientId);
     }
+
   }
 
-  getUsernameFromToken(): void {
-    const token = localStorage.getItem('token');
-    if (token) {
-      const decodedToken = jwtDecode<any>(token);
-      this.username = decodedToken.username;
-    } else {
-      console.error('Token no encontrado en localStorage.');
-    }
-  }
-
-  fetchUserAndClientInfo(username: string): void {
-    this.userService.getUserByUsername(username).subscribe({
-      next: (user) => {
-        if (user && user.id && user.clientId !== undefined) {
-          this.fetchClientInfo(user.clientId);
-        } else {
-          console.error('Usuario o clientId no encontrado.');
+  getClientIdFromToken(): number | undefined {
+      const token = localStorage.getItem('authToken');
+      console.log(token)
+      if (token) {
+        try {
+          const decodedToken = jwtDecode<{ clientId?: number }>(token);
+          console.log('Decoded Token:', decodedToken);  // Ver contenido del token
+          return decodedToken.clientId;
+        } catch (error) {
+          console.error('Error al decodificar el token:', error);
         }
-      },
-      error: (error) => {
-        console.error('Error al obtener la información del usuario:', error);
+      } else {
+        console.error('Token no encontrado en localStorage.');
       }
-    });
-  }
+      return undefined;
+    }
 
   fetchClientInfo(clientId: number): void {
     this.clientService.getClientDetailById(clientId).subscribe(

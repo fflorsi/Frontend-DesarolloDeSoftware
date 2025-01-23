@@ -46,8 +46,10 @@ export class AppComponent implements OnInit {
       return '/profesional-dashboard';  // Link al dashboard del profesional
     } else if (this.userRole === 'client') {
       return '/dashboard';  // Link al dashboard del cliente
+    } else if (this.userRole === 'admin'){
+      return 'menuAdmin'
     }
-    return '/';  // Si no está logueado, redirigir al inicio
+    return '/';  
   }
 
   logout() {

@@ -12,5 +12,7 @@ export interface OrderItem {
     id?: number;
     total: number;
     date?: Date;
+    clientId?:number;
     items: OrderItem[];
+    
   }

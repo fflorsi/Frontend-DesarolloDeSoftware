@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import {HttpClient, HttpHeaders} from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Order } from '@app/interfaces/order';
 
@@ -15,6 +15,7 @@ export class OrderService {
     this.myAppUrl = 'http://localhost:3000/';
     this.myApiUrl = 'api/orders';
   }
+
   // Crear un nuevo pedido
   createOrder(order: Order): Observable<{ message: string; order: Order }> {
     return this.http.post<{ message: string; order: Order }>(`${this.myAppUrl}${this.myApiUrl}`, order);
@@ -33,5 +34,13 @@ export class OrderService {
   // Obtener ganancias mensuales
   getMonthlyEarnings(): Observable<{ earnings: number }> {
     return this.http.get<{ earnings: number }>(`${this.myAppUrl}${this.myApiUrl}/monthly-earnings`);
+  }
+
+  getAllOrdersByClientId(clientId: number): Observable<Order[]> {
+    return this.http.get<Order[]>(`${this.myAppUrl}${this.myApiUrl}/clientorders/${clientId}`);
+  }
+
+  getMonthlyEarningsByClientId(clientId: number): Observable<{ earnings: number }> {
+    return this.http.get<{ earnings: number }>(`${this.myAppUrl}${this.myApiUrl}/clientearnings/${clientId}`);
   }
 }

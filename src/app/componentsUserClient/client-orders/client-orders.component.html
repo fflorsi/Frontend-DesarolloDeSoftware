@@ -1,0 +1,41 @@
+
+<app-progress-bar *ngIf="loading"></app-progress-bar>
+
+<div *ngIf="!loading" class="container mt-4">
+  <h2 class="text-center">Lista de Pedidos</h2>
+  
+  <div class="text-center mb-4">
+    <h4>Ganancias del Mes: ${{ monthlyEarnings | number: '1.2-2' }}</h4>
+  </div>
+  
+  <div *ngIf="orders.length > 0; else noOrders">
+    <table class="table table-striped table-bordered">
+      <thead class="table-dark">
+        <tr>
+          <th>ID Pedido</th>
+          <th>Total</th>
+          <th>Fecha</th>
+          <th>Acciones</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let order of orders">
+          <td>{{ order.id }}</td>
+          <td>${{ order.total | number: '1.2-2' }}</td>
+          <td>{{ order.date | date: 'short' }}</td>
+          <td>
+            <button 
+              class="btn btn-primary"
+              [routerLink]="['client-order-detail/', order.id]">
+              Ver Detalle
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <ng-template #noOrders>
+    <p class="text-center">No hay pedidos registrados.</p>
+  </ng-template>
+</div>
