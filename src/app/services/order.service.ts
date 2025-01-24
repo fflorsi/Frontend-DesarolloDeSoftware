@@ -21,6 +21,10 @@ export class OrderService {
     return this.http.post<{ message: string; order: Order }>(`${this.myAppUrl}${this.myApiUrl}`, order);
   }
 
+  createOrderTest(orderData:any): Observable<any>{
+    return this.http.post<any>('http://localhost:3000/api/payment/create', orderData)
+    }
+
   // Obtener todos los pedidos
   getAllOrders(): Observable<Order[]> {
     return this.http.get<Order[]>(`${this.myAppUrl}${this.myApiUrl}`);
@@ -42,5 +46,9 @@ export class OrderService {
 
   getMonthlyEarningsByClientId(clientId: number): Observable<{ earnings: number }> {
     return this.http.get<{ earnings: number }>(`${this.myAppUrl}${this.myApiUrl}/clientearnings/${clientId}`);
+  }
+
+  getPaymentStatus(paymentId: string): Observable<any> {
+    return this.http.get(`${this.myApiUrl}/status/${paymentId}`);
   }
 }

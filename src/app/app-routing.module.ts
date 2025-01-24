@@ -52,6 +52,7 @@ import { PetsMedicalHistoryListComponent } from './componentsUserProf/pets-medic
 import { ViewPetProComponent } from './componentsUserProf/view-pet-pro/view-pet-pro.component';
 import { ClientOrdersComponent } from './componentsUserClient/client-orders/client-orders.component';
 import { ClientOrdersDetailComponent } from './componentsUserClient/client-orders-detail/client-orders-detail.component';
+import { CheckoutComponent } from './componentsCart/checkout/checkout.component';
 
 
 
@@ -59,10 +60,11 @@ export const routes: Routes = [
     {path: '', redirectTo: 'Home', pathMatch: 'full'},
     {path: 'Home', component: HomeComponent},
     
-    
+    { path: 'FacilityShop', component: FacilityShopComponent },
     
     {path: 'login',component: LoginComponent },
     {path: 'signIn', component: SignInComponent},
+    {path: 'checkout', component: CheckoutComponent},
     {
         path: 'dashboard',
         component: DashboardComponent,
@@ -72,6 +74,12 @@ export const routes: Routes = [
           {
             path: 'personal-info',
             component: PersonalInfoComponent,
+            canActivate: [AuthGuard], 
+            data: { role: 'client' }
+          },
+          {
+            path: 'checkout',
+            component: CheckoutComponent,
             canActivate: [AuthGuard], 
             data: { role: 'client' }
           },
@@ -138,6 +146,11 @@ export const routes: Routes = [
         canActivate:[AuthGuard],
         data:{role:'professional'}
       },
+      { 
+        path: 'ViewMedicalHistory/:petId',
+        component: ViewMedicalHistoriesComponent,
+        canActivate:[AuthGuard],
+        data:{role:'professional'} }
       ]
 
 
@@ -185,7 +198,7 @@ export const routes: Routes = [
         { path: 'addFacility', component: AddEditFacilityComponent },
         { path: 'editFacility/:id', component: AddEditFacilityComponent },
         { path: 'detailFacility/:id', component: DetailFacilityComponent },
-        { path: 'FacilityShop', component: FacilityShopComponent },
+        
   
         // Turnos
         { path: 'listFutureAppointments', component: ListFutureAppointmentsComponent },

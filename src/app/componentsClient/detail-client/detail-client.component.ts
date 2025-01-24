@@ -29,6 +29,7 @@ export class DetailClientComponent {
             console.error('Error fetching client data', error);
         }
     );
+    console.log("Objeto cliente devuelto: ", this.clientData)
 }
 
   deleteClient(id: number) {

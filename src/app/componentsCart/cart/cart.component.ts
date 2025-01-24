@@ -5,6 +5,8 @@ import { OrderService } from '@app/services/order.service';
 import { jwtDecode } from 'jwt-decode';
 import { Order, OrderItem } from '@app/interfaces/order';
 import { Router } from '@angular/router';
+import { ClientService } from '@app/services/client.service';
+import { Client } from '@app/interfaces/client';
 
 @Component({
   selector: 'app-cart',
@@ -15,8 +17,10 @@ export class CartComponent implements OnInit {
   items: Product[] = [];
   total: number = 0;
   isUserLoggedIn: boolean = false; // Variable para verificar si el usuario está autenticado
+  clientInfo: Client | null = null;
 
   constructor(
+    private clientService: ClientService,
     private _cartService: CartService,
     private _orderService: OrderService,
     private router: Router,
@@ -39,6 +43,10 @@ export class CartComponent implements OnInit {
     const token = localStorage.getItem('authToken');
     if (token) {
       this.isUserLoggedIn = true;
+      const clientId= this.getClientIdFromToken();
+      if (clientId) {
+        this.fetchClientInfo(clientId);
+    }
       try {
         // Decodificar el token
         const decodedToken: any = jwtDecode(token);
@@ -52,6 +60,19 @@ export class CartComponent implements OnInit {
       console.log('No token found, user is not logged in');
     }
   }
+
+  fetchClientInfo(clientId: number): void {
+    this.clientService.getClientDetailById(clientId).subscribe(
+      (response: any) => {  
+        this.clientInfo = response.data; 
+        console.log("Objeto cliente devuelto en el carrito: ", this.clientInfo)
+      },
+      (error) => {
+        console.error('Error fetching client data', error);
+      }
+    );
+  }
+  
 
   deleteProduct(id: number) {
     this._cartService.deleteProduct(id);
@@ -137,4 +158,68 @@ export class CartComponent implements OnInit {
       }
     });
   }
+
+
+  checkoutTest(){
+    if (!this.isUserLoggedIn) {
+      alert('Necesitas iniciar sesión para realizar la compra');
+      // Redirigir a la página de inicio de sesión
+      this.router.navigate(['/login']);  // Redirige a la ruta '/login'
+      return;
+    }
+
+    const itemsToPay = this.items.map(item => ({
+    id: item.id?.toString() || "0",
+    title: item.name || "Producto Desconocido",
+    description: item.description || "Descripción no disponible",
+    category_id: item.category?.toString() || "0",
+    quantity: item.quantity || 1,
+    unit_price: item.price
+  }));
+    const orderData = {
+      payer: {
+        email: this.clientInfo?.email,
+        first_name: this.clientInfo?.firstname,
+        last_name: this.clientInfo?.lastname,
+        phone: {
+          area_code: "54",
+          number: this.clientInfo?.phone
+        },
+        address: {
+          street_name: this.clientInfo?.address,
+          street_number: "000",
+          zip_code: "2000",
+          city: "Rosario"
+        },
+        identification: {
+          type: "DNI",
+          number: this.clientInfo?.dni
+        }
+      },
+      itemsToPay: itemsToPay
+    }
+    this._orderService.createOrderTest(orderData).subscribe({
+    next: (response) => {
+      const url = response.url;
+      const paymentWindow = window.open(url);
+      if (paymentWindow) {
+        // Escuchar el evento de cierre de la ventana de pago
+        const interval = setInterval(() => {
+          if (paymentWindow.closed) {
+            clearInterval(interval);
+            // Redirigir a /checkout después de que se cierre la ventana de pago
+            this.router.navigate(['/checkout']);
+          }
+        }, 1000); // Verificar cada segundo si la ventana está cerrada
+      } else {
+        alert('Por favor, permite las ventanas emergentes para continuar con el pago.');
+      }
+    },
+    error: (error) => {
+      console.error('Error al realizar el pedido', error);
+      alert('Hubo un error al realizar el pedido');
+    }
+  });
+  }
 }
+

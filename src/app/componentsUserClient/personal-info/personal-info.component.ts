@@ -45,7 +45,8 @@ export class PersonalInfoComponent implements OnInit {
   fetchClientInfo(clientId: number): void {
     this.clientService.getClientDetailById(clientId).subscribe(
       (response: any) => {  
-        this.clientInfo = response.data;  
+        this.clientInfo = response.data; 
+        console.log("Objeto cliente devuelto: ", this.clientInfo)
       },
       (error) => {
         console.error('Error fetching client data', error);
