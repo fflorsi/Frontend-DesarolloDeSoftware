@@ -128,11 +128,11 @@ export class ClientPetsComponent implements OnInit {
       });
     } else {
       // Si estamos creando una nueva mascota
-      this.petService.savePet(pet).subscribe(() => {
-        this.toastr.success('Mascota registrada con éxito', 'Éxito');
-        this.getPetList();
-        this.formPet.reset();
+      this.petService.savePet(pet).subscribe((response: any) => { // Asegúrate de que 'response' esté tipado
+        this.toastr.success(`La mascota ${pet.name} fue registrada con éxito`, 'Mascota registrada');
         this.loading = false;
+        const newPetId = response.data.id;
+        this.createMedicalHistory(newPetId); 
       }, (error) => {
         this.toastr.error('Error al guardar la mascota', 'Error');
         this.loading = false;
@@ -161,4 +161,14 @@ export class ClientPetsComponent implements OnInit {
     this.petToEdit = null;
     this.formPet.reset();
   }
+
+
+
+  createMedicalHistory(petId: number) {
+    this.petService.createMedicalHistory({ petId }).subscribe(() => {
+        this.toastr.success('Historia clínica creada con éxito', 'Éxito');
+    }, error => {
+        this.toastr.error('Error al crear la historia clínica', 'Error');
+    });
+}
 }
