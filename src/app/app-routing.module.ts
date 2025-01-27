@@ -53,6 +53,8 @@ import { ViewPetProComponent } from './componentsUserProf/view-pet-pro/view-pet-
 import { ClientOrdersComponent } from './componentsUserClient/client-orders/client-orders.component';
 import { ClientOrdersDetailComponent } from './componentsUserClient/client-orders-detail/client-orders-detail.component';
 import { CheckoutComponent } from './componentsCart/checkout/checkout.component';
+import { MonthlyIncomeComponent } from './reportComponent/monthly-income/monthly-income.component';
+import { MostRequestedServiceComponent } from './reportComponent/most-requested-service/most-requested-service.component';
 
 
 
@@ -218,6 +220,10 @@ export const routes: Routes = [
     { path: 'detailOrder/:id', component: DetailOrderComponent },
     //Contacto
     {path: 'contact', component: ContactComponent},
+
+    //Reportes
+    {path: 'monthly-income', component: MonthlyIncomeComponent},
+    {path: 'most-requested-service', component: MostRequestedServiceComponent},
 
     { path: '**', component: PageNotFoundComponent }
 ];
