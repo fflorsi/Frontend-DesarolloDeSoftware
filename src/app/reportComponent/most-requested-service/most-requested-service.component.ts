@@ -8,7 +8,7 @@ Chart.register(CategoryScale, LinearScale, Title, Tooltip, Legend, BarController
 @Component({
   selector: 'app-most-requested-service',
   templateUrl: './most-requested-service.component.html',
-  styleUrls: ['./most-requested-service.component.scss'] // Corrige 'styleUrl' a 'styleUrls'
+  styleUrls: ['./most-requested-service.component.scss'] 
 })
 export class MostRequestedServiceComponent implements OnInit {
   services: any[] = [];
@@ -35,10 +35,10 @@ export class MostRequestedServiceComponent implements OnInit {
 
   // Crear gráfico con los datos recibidos
   createChart(data: any) {
-    const labels = data.map((item: any) => item.name);  // Nombre del servicio
-    const chartData = data.map((item: any) => item.totalAppointments);  // Total de turnos
+    const labels = data.map((item: any) => item.name);  
+    const chartData = data.map((item: any) => item.totalAppointments);  
 
-    this.chart = new Chart('chartCanvas', {
+    this.chart = new Chart('most-req-comp', {
       type: 'bar',  // Tipo de gráfico
       data: {
         labels: labels,

@@ -55,6 +55,10 @@ import { ClientOrdersDetailComponent } from './componentsUserClient/client-order
 import { CheckoutComponent } from './componentsCart/checkout/checkout.component';
 import { MonthlyIncomeComponent } from './reportComponent/monthly-income/monthly-income.component';
 import { MostRequestedServiceComponent } from './reportComponent/most-requested-service/most-requested-service.component';
+import { MostSoldProductsComponent } from './reportComponent/most-sold-products/most-sold-products.component';
+import { RegisteredClientsAndPetsComponent } from './reportComponent/registered-clients-and-pets/registered-clients-and-pets.component';
+import { MostActiveProfessionalsComponent } from './reportComponent/most-active-professionals/most-active-professionals.component';
+import { AdminReportsComponent } from './reportComponent/admin-reports/admin-reports.component';
 
 
 
@@ -224,6 +228,11 @@ export const routes: Routes = [
     //Reportes
     {path: 'monthly-income', component: MonthlyIncomeComponent},
     {path: 'most-requested-service', component: MostRequestedServiceComponent},
+    {path: 'most-sold-products', component: MostSoldProductsComponent},
+    {path: 'registered-clients-and-pets', component: RegisteredClientsAndPetsComponent},
+    {path: 'most-active-professionals', component: MostActiveProfessionalsComponent},
+
+    {path: 'admin-reports', component: AdminReportsComponent},
 
     { path: '**', component: PageNotFoundComponent }
 ];

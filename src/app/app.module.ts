@@ -79,6 +79,12 @@ import { PetsMedicalHistoryListComponent } from './componentsUserProf/pets-medic
 import { ViewPetProComponent } from './componentsUserProf/view-pet-pro/view-pet-pro.component';
 import { ClientOrdersComponent } from './componentsUserClient/client-orders/client-orders.component';
 import { ClientOrdersDetailComponent } from './componentsUserClient/client-orders-detail/client-orders-detail.component';
+import { MonthlyIncomeComponent } from './reportComponent/monthly-income/monthly-income.component';
+import { MostRequestedServiceComponent } from './reportComponent/most-requested-service/most-requested-service.component';
+import { MostSoldProductsComponent } from './reportComponent/most-sold-products/most-sold-products.component';
+import { RegisteredClientsAndPetsComponent } from './reportComponent/registered-clients-and-pets/registered-clients-and-pets.component';
+import { MostActiveProfessionalsComponent } from './reportComponent/most-active-professionals/most-active-professionals.component';
+import { AdminReportsComponent } from './reportComponent/admin-reports/admin-reports.component';
 
 
 @NgModule({
@@ -141,7 +147,13 @@ import { ClientOrdersDetailComponent } from './componentsUserClient/client-order
     PetsMedicalHistoryListComponent,
     ViewPetProComponent,
     ClientOrdersDetailComponent,
-    ClientOrdersComponent
+    ClientOrdersComponent,
+    MonthlyIncomeComponent,
+    MostRequestedServiceComponent,
+    MostSoldProductsComponent,
+    RegisteredClientsAndPetsComponent,
+    MostActiveProfessionalsComponent,
+    AdminReportsComponent
 
 
   ],
