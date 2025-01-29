@@ -52,4 +52,12 @@ export class ReportService {
   getMostActiveProfessionals(): Observable<MostActiveProfessionalsResponse> {
     return this.http.get<MostActiveProfessionalsResponse>(`${this.myAppUrl}${this.myApiUrl}/mostActiveProfessionals`);
   }
+
+  getAppointmentsByProfessional(professionalId: number): Observable<any[]> {
+    return this.http.get<any[]>(`${this.myAppUrl}${this.myApiUrl}/appointmentsByProfessional/${professionalId}`);
+  }
+
+  getMostAttendedFacilities(professionalId: number): Observable<any[]> {
+    return this.http.get<any[]>(`${this.myAppUrl}${this.myApiUrl}/mostAttendedFacilities/${professionalId}`);
+  }
 }

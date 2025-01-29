@@ -59,6 +59,9 @@ import { MostSoldProductsComponent } from './reportComponent/most-sold-products/
 import { RegisteredClientsAndPetsComponent } from './reportComponent/registered-clients-and-pets/registered-clients-and-pets.component';
 import { MostActiveProfessionalsComponent } from './reportComponent/most-active-professionals/most-active-professionals.component';
 import { AdminReportsComponent } from './reportComponent/admin-reports/admin-reports.component';
+import { AppointmentsByProfessionalComponent } from './reportComponent/appointments-by-professional/appointments-by-professional.component';
+import { MostAttendedFacilitiesComponent } from './reportComponent/most-attended-facilities/most-attended-facilities.component';
+import { ProfessionalReportsComponent } from './reportComponent/professional-reports/professional-reports.component';
 
 
 
@@ -156,7 +159,13 @@ export const routes: Routes = [
         path: 'ViewMedicalHistory/:petId',
         component: ViewMedicalHistoriesComponent,
         canActivate:[AuthGuard],
-        data:{role:'professional'} }
+        data:{role:'professional'} },
+        {path: 'professional-reports', 
+          component: ProfessionalReportsComponent,
+          canActivate: [AuthGuard],
+          data: {role: 'professional'}
+        },
+
       ]
 
 
@@ -210,7 +219,11 @@ export const routes: Routes = [
         { path: 'listFutureAppointments', component: ListFutureAppointmentsComponent },
         { path: 'newAppointment/:id', component: NewAppointmentComponent },
         { path: 'listAllAppointments', component: ListAppointmentsComponent },
-  
+        
+        //Reportes
+        {path: 'admin-reports', component: AdminReportsComponent},
+
+
         // Admin Menu
         { path: 'menuAdmin', component: MenuAdminComponent },
       ],
@@ -231,8 +244,9 @@ export const routes: Routes = [
     {path: 'most-sold-products', component: MostSoldProductsComponent},
     {path: 'registered-clients-and-pets', component: RegisteredClientsAndPetsComponent},
     {path: 'most-active-professionals', component: MostActiveProfessionalsComponent},
+    {path:'appoitments-by-professional', component: AppointmentsByProfessionalComponent},
+    {path: 'most-attended-facilities', component: MostAttendedFacilitiesComponent},
 
-    {path: 'admin-reports', component: AdminReportsComponent},
 
     { path: '**', component: PageNotFoundComponent }
 ];

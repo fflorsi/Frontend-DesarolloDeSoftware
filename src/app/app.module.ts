@@ -85,6 +85,10 @@ import { MostSoldProductsComponent } from './reportComponent/most-sold-products/
 import { RegisteredClientsAndPetsComponent } from './reportComponent/registered-clients-and-pets/registered-clients-and-pets.component';
 import { MostActiveProfessionalsComponent } from './reportComponent/most-active-professionals/most-active-professionals.component';
 import { AdminReportsComponent } from './reportComponent/admin-reports/admin-reports.component';
+import { AppointmentsByProfessionalComponent } from './reportComponent/appointments-by-professional/appointments-by-professional.component';
+import { MostAttendedFacilitiesComponent } from './reportComponent/most-attended-facilities/most-attended-facilities.component';
+import { ProfessionalReportsComponent } from './reportComponent/professional-reports/professional-reports.component';
+
 
 
 @NgModule({
@@ -153,7 +157,10 @@ import { AdminReportsComponent } from './reportComponent/admin-reports/admin-rep
     MostSoldProductsComponent,
     RegisteredClientsAndPetsComponent,
     MostActiveProfessionalsComponent,
-    AdminReportsComponent
+    AdminReportsComponent,
+    AppointmentsByProfessionalComponent,
+    MostAttendedFacilitiesComponent,
+    ProfessionalReportsComponent
 
 
   ],
