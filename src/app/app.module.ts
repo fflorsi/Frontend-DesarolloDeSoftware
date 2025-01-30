@@ -88,6 +88,10 @@ import { AdminReportsComponent } from './reportComponent/admin-reports/admin-rep
 import { AppointmentsByProfessionalComponent } from './reportComponent/appointments-by-professional/appointments-by-professional.component';
 import { MostAttendedFacilitiesComponent } from './reportComponent/most-attended-facilities/most-attended-facilities.component';
 import { ProfessionalReportsComponent } from './reportComponent/professional-reports/professional-reports.component';
+import { ClientMonthlySpendingComponent } from './reportComponent/client-monthly-spending/client-monthly-spending.component';
+import { ClientReportsComponent } from './reportComponent/client-reports/client-reports.component';
+import { MostUsedFacilitiesComponent } from './reportComponent/most-used-facilities/most-used-facilities.component';
+import { MostAttendedPetsComponent } from './reportComponent/most-attended-pets/most-attended-pets.component';
 
 
 
@@ -160,7 +164,12 @@ import { ProfessionalReportsComponent } from './reportComponent/professional-rep
     AdminReportsComponent,
     AppointmentsByProfessionalComponent,
     MostAttendedFacilitiesComponent,
-    ProfessionalReportsComponent
+    ProfessionalReportsComponent,
+    ClientMonthlySpendingComponent,
+    ClientReportsComponent,
+    MostActiveProfessionalsComponent,
+    MostUsedFacilitiesComponent,
+    MostAttendedPetsComponent
 
 
   ],

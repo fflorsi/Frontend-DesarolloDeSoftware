@@ -11,7 +11,7 @@ import { jwtDecode } from 'jwt-decode';
 export class MostAttendedFacilitiesComponent implements OnInit {
   professionalId!: number;
   chart: any;
-  facilitiesData: any[] = []; // Para almacenar las facilities más atendidas
+  facilitiesData: any[] = []; 
 
   constructor(private reportService: ReportService) { }
 
@@ -56,27 +56,33 @@ export class MostAttendedFacilitiesComponent implements OnInit {
           const facilityNames = this.facilitiesData.map((item: any) => item.Facility.name);
           const attendedCount = this.facilitiesData.map((item: any) => item.attendedCount);
   
-          // Crear el gráfico
+          // Eliminar el gráfico existente antes de crear uno nuevo
+          if (this.chart) {
+            this.chart.destroy();
+          }
+
           this.chart = new Chart(ctx, {
-            type: 'bar',
+            type: 'pie',  
             data: {
               labels: facilityNames,
               datasets: [{
                 label: 'Facilities Más Atendidas',
                 data: attendedCount,
-                backgroundColor: 'rgba(54, 162, 235, 0.2)',
-                borderColor: 'rgba(54, 162, 235, 1)',
-                borderWidth: 1
+                backgroundColor: ['#FF6384', '#36A2EB', '#FFCE56', '#4BC0C0', '#FF9F40'], // Colores personalizados
+                hoverBackgroundColor: ['#FF6384', '#36A2EB', '#FFCE56', '#4BC0C0', '#FF9F40']
               }]
             },
             options: {
               responsive: true,
               maintainAspectRatio: false,
-              scales: {
-                y: {
-                  beginAtZero: true
-                }
-              }
+              plugins: {
+                legend: {
+                  position: 'top',
+                },
+                tooltip: {
+                  enabled: true,
+                },
+              },
             }
           });
         } else {
@@ -87,6 +93,4 @@ export class MostAttendedFacilitiesComponent implements OnInit {
       }
     }, 0);  // 0 ms de delay
   }
-  
-  
 }

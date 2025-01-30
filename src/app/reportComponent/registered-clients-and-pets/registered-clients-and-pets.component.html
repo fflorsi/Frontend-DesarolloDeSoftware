@@ -1,8 +1,12 @@
 <div class="container">
-    <h2>Reporte de Clientes y Mascotas Registradas</h2>
-    <p>Total Clientes Registrados: {{ totalClients }}</p>
-    <p>Total Mascotas Registradas: {{ totalPets }}</p>
+  <h2>Reporte de Clientes y Mascotas Registradas</h2>
   
-    <canvas id="clientsPetsChart"></canvas> 
+  <div class="summary-stats">
+    <p><strong>Total Clientes Registrados:</strong> {{ totalClients }}</p>
+    <p><strong>Total Mascotas Registradas:</strong> {{ totalPets }}</p>
   </div>
   
+  <div class="chart-container">
+    <canvas id="clientsPetsChart" width="400" height="200"></canvas> 
+  </div>
+</div>

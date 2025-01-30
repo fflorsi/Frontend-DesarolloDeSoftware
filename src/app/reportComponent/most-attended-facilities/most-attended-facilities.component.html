@@ -1,10 +1,9 @@
 <div class="container">
-    <h2>Servicios más atendidos</h2>
-    <div *ngIf="facilitiesData.length > 0">
-      <canvas id="facilitiesChart" width="400" height="200"></canvas>
-    </div>
-    <div *ngIf="facilitiesData.length === 0">
-      <p>No se encontraron servicios atendidos.</p>
-    </div>
+  <h2>Servicios más atendidos</h2>
+  <div *ngIf="facilitiesData.length > 0">
+    <canvas id="facilitiesChart" width="300" height="300"></canvas>
   </div>
-  
+  <div *ngIf="facilitiesData.length === 0">
+    <p>No se encontraron servicios atendidos.</p>
+  </div>
+</div>

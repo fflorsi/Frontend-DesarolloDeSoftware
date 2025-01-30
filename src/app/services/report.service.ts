@@ -60,4 +60,16 @@ export class ReportService {
   getMostAttendedFacilities(professionalId: number): Observable<any[]> {
     return this.http.get<any[]>(`${this.myAppUrl}${this.myApiUrl}/mostAttendedFacilities/${professionalId}`);
   }
+
+  getMonthlySpending(clientId: number): Observable<any[]> {
+    return this.http.get<any[]>(`${this.myAppUrl}${this.myApiUrl}/monthlySpending/${clientId}`);
+  }
+
+  getMostUsedFacilitiesByClient(clientId: number): Observable<any[]> {
+    return this.http.get<any[]>(`${this.myAppUrl}${this.myApiUrl}/mostUsedFacilitiesByClient/${clientId}`);
+  }
+
+  getMostAttendedPets(clientId: number): Observable<any[]> {
+    return this.http.get<any[]>(`${this.myAppUrl}${this.myApiUrl}/mostAttendedPets/${clientId}`);
+  }
 }

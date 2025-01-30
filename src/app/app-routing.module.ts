@@ -62,6 +62,7 @@ import { AdminReportsComponent } from './reportComponent/admin-reports/admin-rep
 import { AppointmentsByProfessionalComponent } from './reportComponent/appointments-by-professional/appointments-by-professional.component';
 import { MostAttendedFacilitiesComponent } from './reportComponent/most-attended-facilities/most-attended-facilities.component';
 import { ProfessionalReportsComponent } from './reportComponent/professional-reports/professional-reports.component';
+import { ClientReportsComponent } from './reportComponent/client-reports/client-reports.component';
 
 
 
@@ -121,6 +122,12 @@ export const routes: Routes = [
             component: ClientOrdersDetailComponent,
             canActivate: [AuthGuard],
             data:{role:'client'}
+          },
+          {
+            path: 'client-reports',
+            component: ClientReportsComponent,
+            canActivate: [AuthGuard],
+            data: {role: 'client'}
           }
         ]
       },
@@ -237,16 +244,6 @@ export const routes: Routes = [
     { path: 'detailOrder/:id', component: DetailOrderComponent },
     //Contacto
     {path: 'contact', component: ContactComponent},
-
-    //Reportes
-    {path: 'monthly-income', component: MonthlyIncomeComponent},
-    {path: 'most-requested-service', component: MostRequestedServiceComponent},
-    {path: 'most-sold-products', component: MostSoldProductsComponent},
-    {path: 'registered-clients-and-pets', component: RegisteredClientsAndPetsComponent},
-    {path: 'most-active-professionals', component: MostActiveProfessionalsComponent},
-    {path:'appoitments-by-professional', component: AppointmentsByProfessionalComponent},
-    {path: 'most-attended-facilities', component: MostAttendedFacilitiesComponent},
-
 
     { path: '**', component: PageNotFoundComponent }
 ];

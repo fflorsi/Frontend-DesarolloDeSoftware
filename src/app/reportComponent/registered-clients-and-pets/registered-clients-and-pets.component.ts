@@ -11,7 +11,7 @@ interface MonthlyData {
 @Component({
   selector: 'app-registered-clients-and-pets',
   templateUrl: './registered-clients-and-pets.component.html',
-  styleUrls: ['./registered-clients-and-pets.component.css']
+  styleUrls: ['./registered-clients-and-pets.component.scss']
 })
 export class RegisteredClientsAndPetsComponent implements OnInit {
 
@@ -29,6 +29,7 @@ export class RegisteredClientsAndPetsComponent implements OnInit {
 
   getData(): void {
     this.reportService.getRegisteredClientsAndPets().subscribe((response) => {
+      console.log('Datos recibidos:', response);  // Verificar la respuesta
       this.totalClients = response.totalClients;
       this.totalPets = response.totalPets;
       this.monthlyData = response.monthlyData;
