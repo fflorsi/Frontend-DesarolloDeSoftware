@@ -63,12 +63,14 @@ import { AppointmentsByProfessionalComponent } from './reportComponent/appointme
 import { MostAttendedFacilitiesComponent } from './reportComponent/most-attended-facilities/most-attended-facilities.component';
 import { ProfessionalReportsComponent } from './reportComponent/professional-reports/professional-reports.component';
 import { ClientReportsComponent } from './reportComponent/client-reports/client-reports.component';
+import { InfoComponent } from './home/info/info.component';
 
 
 
 export const routes: Routes = [
     {path: '', redirectTo: 'Home', pathMatch: 'full'},
     {path: 'Home', component: HomeComponent},
+    {path: 'info', component: InfoComponent},
     
     { path: 'FacilityShop', component: FacilityShopComponent },
     
@@ -185,6 +187,9 @@ export const routes: Routes = [
       canActivate: [AuthGuard],
       data: { role: 'admin' },
       children: [
+
+        {path: 'info', component: InfoComponent},
+
         // Cliente
         { path: 'listClients', component: ListClientsComponent },
         { path: 'addClient', component: AddEditClientComponent },

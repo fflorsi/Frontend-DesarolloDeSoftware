@@ -92,6 +92,7 @@ import { ClientMonthlySpendingComponent } from './reportComponent/client-monthly
 import { ClientReportsComponent } from './reportComponent/client-reports/client-reports.component';
 import { MostUsedFacilitiesComponent } from './reportComponent/most-used-facilities/most-used-facilities.component';
 import { MostAttendedPetsComponent } from './reportComponent/most-attended-pets/most-attended-pets.component';
+import { InfoComponent } from './home/info/info.component';
 
 
 
@@ -169,7 +170,8 @@ import { MostAttendedPetsComponent } from './reportComponent/most-attended-pets/
     ClientReportsComponent,
     MostActiveProfessionalsComponent,
     MostUsedFacilitiesComponent,
-    MostAttendedPetsComponent
+    MostAttendedPetsComponent,
+    InfoComponent
 
 
   ],
