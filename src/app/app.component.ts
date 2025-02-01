@@ -66,4 +66,8 @@ export class AppComponent implements OnInit {
   HomeClick() {
     this.router.navigate(['Home']);
   }
+
+  hasRoute(route: string) {
+    return this.router.url.includes(route);
+  }
 }

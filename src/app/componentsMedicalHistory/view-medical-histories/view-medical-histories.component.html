@@ -61,6 +61,8 @@
     <div class="paginator-container">
       <mat-paginator [length]="totalObservations" [pageSize]="pageSize" (page)="onPageChange($event)" aria-label="paginador"></mat-paginator>
     </div>
+
+    <button id="new-observation" class="btn btn-primary" (click)="openCreateObservationDialog()">Nueva observación</button>
   </div>
 
   <div *ngIf="medicalHistory?.observations?.length === 0" class="no-observations">
@@ -68,4 +70,4 @@
   </div>
 </div>
 
-<button id="new-observation" class="btn btn-primary" (click)="openCreateObservationDialog()">Nueva observación</button>
+
