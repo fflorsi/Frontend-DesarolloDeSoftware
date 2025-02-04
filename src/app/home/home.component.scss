@@ -92,11 +92,28 @@
     right: 0%;
     margin-right: 10px;
     transition: transform 0.3s ease;
+    animation: moveArrow 2s linear infinite;
   }
   
   .button-arrow-box:hover {
     transform: translateY(10px) rotate(90deg);
   }
+
+  //como está dada vuelta no queda top y bottom si no left y right
+
+    @keyframes moveArrow {
+        0% {
+        background-position: center right;
+        }
+        50% {
+            background-position: center left;
+        }
+        100% {
+            background-position: center right;
+        }
+    }
+
+
 
 @media (min-width: 768px) {
     .hero-section {
