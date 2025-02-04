@@ -21,6 +21,19 @@ body {
     margin-right: 20px; /* Espacio entre el logo y otros elementos */
 }
 
+.cart-icon, .img {
+    height: auto;
+    width: 6vh;
+   
+}
+
+.login-button{
+    display: flex;
+    justify-content: space-between;
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
 .container {
     max-width: 1200px;
     margin: 0 auto;
@@ -92,6 +105,17 @@ body {
     right:20px;
     top: 30px;
 }
+
+
+.text:hover a{
+    color: #bab8c9;
+   
+}
+.current a{
+    color: #7666ca;
+}
+
+
 
 @media (max-width: 768px) {
     .main-nav {
