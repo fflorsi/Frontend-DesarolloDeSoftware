@@ -4,6 +4,19 @@
     padding: 50px 0;
     background-color: #e6e3fa;
     text-align: center;
+    animation: slideBackground 2s ease-in-out forwards;
+
+}
+
+@keyframes slideBackground {
+    0% {
+        background-color: transparent;
+        transform: translateX(100%);
+    }
+    100% {
+        background-color: #e6e3fa; /* Color de fondo final */
+        transform: translateX(0);
+    }
 }
 
 .header h1{
@@ -12,6 +25,7 @@
     font-size: 44px;
     height: 52px;
     font-weight:bold;
+    
 }
 
 .header p{
@@ -22,6 +36,11 @@
     margin-top: 20px;
     font-weight: 500;
 }
+
+
+
+
+
 
 .container {
     list-style: none;

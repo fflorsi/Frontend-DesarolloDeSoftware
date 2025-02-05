@@ -1,13 +1,27 @@
 .header{
     position: relative;
     padding: 59px 0 ;
-    background: #e6e3fa;
+    background: #a99bd4;
     text-align: center;
-    background-image: url("../../../assets/paw.png"); 
+    background-image: url("../../../assets/pawprint.png"); 
     background-repeat: no-repeat;
-    background-size: contain;
+    background-size: 70vh;
+    background-position: left;
+    animation: slideBackground 2s ease-in-out forwards;
+
     
+}
+
+@keyframes slideBackground {
+  0% {
     
+      background-color: #a99bd4;
+      transform: translateX(100%);
+  }
+  100% {
+      background-color: #a99bd4; /* Color de fondo final */
+      transform: translateX(0);
+  }
 }
 
 .header h2{
@@ -20,7 +34,7 @@
 
 .header h1{
   font-family: 'Inter', sans-serif;
-  color:#3f3b57;
+  color:#504a6d;
   font-size: 7.6vw;
   height: 7.6vw;
   font-weight:bold;
@@ -38,6 +52,7 @@
 *{
   box-sizing: border-box;
 }
+
 //
 .container {
     list-style: none;
@@ -73,6 +88,8 @@ li {
   display: flex;
   flex-direction: column;
   text-decoration: none;
+  border-radius: 10px;
+  
 }
 
 .card_overlay {

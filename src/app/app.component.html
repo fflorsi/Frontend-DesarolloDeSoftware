@@ -7,18 +7,47 @@
           <img src="assets/logo.png" alt="Logo" class="logo">
         </a>
       </div>
+
+
       <!-- Navegación -->
       <nav class="main-nav" [class.menu-open]="menuOpen">
         <ul>
-          <li class="text current"><a href="/">Inicio</a></li>
-          <li class="text"><a href="/FacilityShop">Servicios</a></li>
-          <li class="text"><a href="/contact">Contactanos</a></li>
-          <li class="text"><a routerLink="/productShop">Tienda de Productos</a></li>
+          <div *ngIf="hasRoute('Home')">
+            <li class="text current"><a href="/">Inicio</a></li>
+          </div>
+          <div *ngIf="!hasRoute('Home')">
+            <li class="text"><a href="/">Inicio</a></li>
+          </div>
+
+          <div *ngIf="hasRoute('FacilityShop')">
+            <li class="text current"><a href="/FacilityShop">Servicios</a></li>
+          </div>
+          <div *ngIf="!hasRoute('FacilityShop')">
+            <li class="text"><a href="/FacilityShop">Servicios</a></li>
+          </div>
+
+          <div *ngIf="hasRoute('contact')">
+            <li class="text current"><a href="/contact">Contactanos</a></li>
+          </div>
+          <div *ngIf="!hasRoute('contact')">
+            <li class="text"><a href="/contact">Contactanos</a></li>
+          </div>
+
+          <div *ngIf="hasRoute('productShop')">
+            <li class="text current"><a routerLink="/productShop">Tienda de Productos</a></li>
+          </div>
+
+          <div *ngIf="!hasRoute('productShop')">
+            <li class="text"><a routerLink="/productShop">Tienda de Productos</a></li>
+          </div>
+
           <a routerLink="/cart">
             <img src="assets/Cart.png" alt="Cart" class="cart-icon">
           </a>
         </ul>
       </nav>
+
+
       <div class="menu-icon" (click)="toggleMenu()">
         &#9776; 
       </div>
@@ -29,10 +58,10 @@
     <div class="login-button">
       
       <a *ngIf="!isUserLoggedIn" routerLink="/login" class="login-btn" >
-        <img class="img" src="assets/logout.png">
+        <img class="img" src="assets/login.png">
       </a>      
       <a *ngIf="isUserLoggedIn" [routerLink]="getDashboardLink()" class="login-btn">
-        <img class="img" src="assets/dashboard.png">
+        <img class="img" src="assets/dashboard-48.png">
       </a>
       <a *ngIf="isUserLoggedIn" (click)="logout()" class="logout-btn">
         <img class="img" src="assets/logout.png">
