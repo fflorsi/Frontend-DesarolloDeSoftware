@@ -1,0 +1,28 @@
+<h2>Crear Nueva Observación</h2>
+<mat-dialog-content>
+  <mat-form-field class="form">
+    <label>Observación</label>
+    <textarea matInput [(ngModel)]="observationText"></textarea>
+  </mat-form-field>
+
+<mat-expansion-panel [expanded]="isExpanded" (opened)="isExpanded = true" (closed)="isExpanded = false">
+  <mat-expansion-panel-header>
+    <mat-panel-title>
+      {{ professionalId ? (getProfessionalFullName(professionalId) || 'Profesionales') : 'Profesionales' }}
+    </mat-panel-title>
+  </mat-expansion-panel-header>
+
+  <div class="professionals-list">
+    <div *ngFor="let professional of professionals">
+      <button mat-button (click)="selectProfessional(professional.id); closeAccordion()">
+        {{ professional.firstname}} {{professional.lastname}}
+      </button>
+    </div>
+  </div>
+</mat-expansion-panel>
+
+</mat-dialog-content>
+<mat-dialog-actions class="dialog-actions">
+  <button class="btn-cancel" mat-button (click)="onCancel()">Cancelar</button>
+  <button class="btn" mat-button (click)="onSubmit()" cdkFocusInitial>Crear</button>
+</mat-dialog-actions>

@@ -1,0 +1,55 @@
+<div class="card mt-4">
+    <div class="card-header bg-info text-white">
+      <h2>Configuración de Cuenta</h2>
+    </div>
+    <div class="card-body">
+      <!-- Opción de cambiar Nombre de Usuario -->
+      <div *ngIf="isChangingUsername">
+        <h5>Cambiar Nombre de Usuario</h5>
+        <form (ngSubmit)="updateUsername()">
+          <div class="form-group">
+            <label for="newUsername">Nuevo Nombre de Usuario</label>
+            <input
+              type="text"
+              id="newUsername"
+              [(ngModel)]="newUsername"
+              name="newUsername"
+              class="form-control"
+              required
+            />
+          </div>
+          <button type="submit" class="btn btn-success mt-2">Guardar Cambios</button>
+        </form>
+      </div>
+  
+      <!-- Opción de cambiar Contraseña -->
+      <div *ngIf="isChangingPassword">
+        <h5>Cambiar Contraseña</h5>
+        <form (ngSubmit)="updatePassword()">
+          <div class="form-group">
+            <label for="newPassword">Nueva Contraseña</label>
+            <input
+              type="password"
+              id="newPassword"
+              [(ngModel)]="newPassword"
+              name="newPassword"
+              class="form-control"
+              required
+            />
+          </div>
+          <button type="submit" class="btn btn-success mt-2">Guardar Cambios</button>
+        </form>
+      </div>
+  
+      <!-- Opciones para elegir qué cambiar -->
+      <div class="mt-3">
+        <button (click)="toggleChange('username')" class="btn btn-primary mr-2">
+          Cambiar Nombre de Usuario
+        </button>
+        <button (click)="toggleChange('password')" class="btn btn-primary">
+          Cambiar Contraseña
+        </button>
+      </div>
+    </div>
+  </div>
+  

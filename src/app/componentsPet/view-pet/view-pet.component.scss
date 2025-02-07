@@ -1,0 +1,92 @@
+* {
+	box-sizing: border-box;
+}
+
+.btn 
+{
+    background-color: #3F3B57;
+    color: #f0f0f0;
+
+    outline: none;
+	width: 100%;
+	text-align: center;
+	display: block;
+	border: none;
+    padding: 20px;
+	cursor: pointer;
+    top: 0;
+	transition: 0.2s ease;
+    border-radius: 0 0 10px 10px;
+}
+
+.btn i{
+    color: #f0f0f0;
+    text-decoration: none;
+    text-emphasis-color: #e0e0e0;
+}
+
+.btn:hover {
+    background-color: #5D5D5D;
+}
+
+.container {
+    display: grid;
+    grid-template-columns: 0.4fr 1fr;
+    grid-gap: 0px;
+
+}
+
+.card {
+    width: 300px;
+	border-radius: 10px;
+	text-align: center;
+	display: grid;
+	grid-template-columns: 1fr;
+	grid-gap: 10px;
+	text-align: center; 
+    max-height: 400px;
+    padding: 0;
+    
+
+    .card-title{
+        margin: 10px 30px 15px;
+    }
+
+    .card-text, .card-info{
+        margin: 0 30px 10px;
+    }
+
+    
+}
+
+.card-title {
+    font: 700 24px/1.2 "Poppins", sans-serif;
+	margin-bottom: 10px;
+    text-transform: capitalize;
+}
+
+.card-text {
+    margin: 0 0 10px;
+    color: #777;
+    font-style: italic;
+    font-weight: 340;
+    text-transform: uppercase;
+    
+}
+
+.card-info{
+    text-transform: capitalize;
+
+}
+
+
+
+.no-pets {
+    font-size: 16px;
+    color: #5D5D5D;
+    text-align: center;
+    margin-top: 20px;
+}
+
+
+

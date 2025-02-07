@@ -1,0 +1,43 @@
+<div class="container mt-4">
+  <div class="row">
+    <!-- Dashboard Menu -->
+    <div class="col-md-3">
+      <nav class="list-group">
+        <a routerLink="personal-info" routerLinkActive="active"
+           class="list-group-item list-group-item-action">
+          Información Personal
+        </a>
+        <a routerLink="client-pets" routerLinkActive="active"
+           class="list-group-item list-group-item-action">
+          Mascotas
+        </a>
+        <a routerLink="client-appointments" routerLinkActive="active"
+           class="list-group-item list-group-item-action">
+          Turnos
+        </a>
+        <a routerLink="client-orders" routerLinkActive="active"
+           class="list-group-item list-group-item-action">
+          Pedidos
+        </a>
+        <a routerLink="client-reports" routerLinkActive="active"
+           class="list-group-item list-group-item-action">
+          Reportes
+        </a>
+        <a routerLink="account-settings" routerLinkActive="active"
+           class="list-group-item list-group-item-action">
+          Ajustes
+        </a>
+        
+      </nav>
+    </div>
+
+    <!-- Dashboard Content -->
+    <div class="col-md-9">
+      <div class="card">
+        <div class="card-body">
+          <router-outlet></router-outlet>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
