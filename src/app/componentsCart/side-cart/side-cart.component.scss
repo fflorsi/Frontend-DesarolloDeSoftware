@@ -1,0 +1,237 @@
+* {
+    box-sizing: border-box;
+}
+
+.total-wrapper{
+    display: none;
+}
+
+.total-wrapper.open {
+    background-color: rgba(0, 0, 0, 0.5);
+    inset: 0;
+    position: fixed;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+
+    width: 100%; // Asegura que ocupe toda la pantalla
+    height: 100%; 
+    z-index: 1001;
+    transition: transform 0.3s ease-in-out; 
+
+    overflow: hidden;
+}
+
+.sidecart-total {
+    background-color: #fff;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    min-width: 320px;
+    max-width: 480px;
+
+    height: 100%;
+    box-shadow: -2px 0 5px rgba(0, 0, 0, 0.5); 
+    animation: slideCart 0.3s ease-in-out forwards;
+    flex-grow: 1;
+    overflow: hidden;
+
+}
+
+.total-wrapper.open .sidecart-total {
+    transform: translateX(0); // Mueve el menú lateral a la vista cuando está abierto
+}
+
+@keyframes slideCart {
+    0% {
+        transform: translateX(100%);
+    }
+    100% {
+        transform: translateX(0);
+    }
+}
+
+.side-cart-header {
+    border-bottom: 1px solid #e6e6e6;
+    flex: none;
+    justify-content: space-between;
+    align-items: center;
+    display: flex;
+    position: relative;
+    padding: 16px 24px;
+
+    margin-top: 0;
+    margin-bottom: 0;
+}
+
+.img {
+    width: 1.5em;
+    height: 1.5em;
+    cursor: pointer;
+}
+
+.text-header {
+    font-size: 30px;
+    line-height: 44px;
+    font-weight: 600;
+    color: #393939;
+    font-family: 'inter', sans-serif;
+}
+
+.side-cart-empty {
+    display: flex;
+    flex-direction: column;
+    flex: 1; 
+    justify-content: center;
+    align-items: center;
+    padding-top: 100px;
+    padding-bottom: 100px;
+}
+
+.text {
+    font-family: 'inter', sans-serif;
+    font-size: 16px;
+    line-height: 27px;
+    color: #7f7f7f;
+}
+
+.button {
+    color: #257ae7;
+    height: 37px;
+    padding-top: 8px;
+    padding-left: 25px;
+    padding-right: 25px;
+    text-align: center;
+    text-decoration: none;
+    border: 1px solid #257ae7;
+    border-radius: 19px;
+    cursor: pointer;
+    display: inline-block;
+
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 18px;
+}
+
+.product-list {
+    flex-grow: 1;
+    overflow-y: auto;
+    max-height: calc(100vh - 200px);
+}
+
+.product-wrapper{
+    flex-grow: 1;
+    padding:12px 24px;
+    overflow: hidden;
+    
+}
+
+.product-details{
+    align-items: flex-start;
+    padding-top: 12px;
+    padding-bottom: 12px;
+    display: flex;
+
+}
+
+.product-image{
+    width: 60px;
+    height: 0%;
+    vertical-align: middle;
+    display: inline-block;
+}
+
+.product-name{
+    color: #1f3557;
+    font-weight: 600;
+    font-family: 'inter', sans-serif;
+    font-size: 16px;
+}
+
+.product-price{
+    color: #7f7f7f;
+    font-family: 'inter', sans-serif;
+    font-size: 16px;
+    line-height: 27px;
+}
+
+.delete-from-cart{
+    color: #7666ca;
+    font-size: 14px;
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+.product-quantity-input{
+    appearance: none;
+    background-color: #fafafa;
+    border: 1px solid #ddd;
+    border-radius: 3px;
+    width: 60px;
+    height: 38px;
+    margin-bottom: 10px;
+    padding: 8px 6px 8px 12px;
+    line-height: 20px;
+    display: block;
+}
+
+.product-price-delete{
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    margin-left: 16px;
+    margin-right: 16px;
+}
+
+.side-cart-footer{
+    border-top: 1px solid #e6e6e6;
+    flex-direction: column;
+    flex: none;
+    padding: 16px 24px 24px;
+    display: flex;
+    margin-top: auto;
+    
+    bottom:0;
+    position: fixed;
+    width: 100%;
+
+    background-color: #fff;
+}
+
+.total{
+    flex: none;
+    justify-content: space-between;
+    display: flex;
+    align-items: baseline;
+    margin-bottom: 16px;
+    
+}
+
+.hola{
+    display: flex;
+}
+
+.price{
+    font-size: 15px;
+    font-weight: 600;
+    color: #7f7f7f;
+    font-family: 'inter', sans-serif;
+    line-height: 27px;
+}
+
+.button-co{
+    background-color: #257ae7;
+    color: #fff;
+    height: 50px;
+    padding-top: 12px;
+    font-size: 16px;
+    font-weight: 600;
+    transition: background-color 2s ease;
+    text-align: center;
+
+    text-decoration: none;
+}
+
+.button-co:hover{
+    background-color: #2167c2;
+}

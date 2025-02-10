@@ -93,6 +93,7 @@ import { ClientReportsComponent } from './reportComponent/client-reports/client-
 import { MostUsedFacilitiesComponent } from './reportComponent/most-used-facilities/most-used-facilities.component';
 import { MostAttendedPetsComponent } from './reportComponent/most-attended-pets/most-attended-pets.component';
 import { InfoComponent } from './home/info/info.component';
+import { SideCartComponent } from './componentsCart/side-cart/side-cart.component';
 
 
 
@@ -171,7 +172,8 @@ import { InfoComponent } from './home/info/info.component';
     MostActiveProfessionalsComponent,
     MostUsedFacilitiesComponent,
     MostAttendedPetsComponent,
-    InfoComponent
+    InfoComponent,
+    SideCartComponent
 
 
   ],

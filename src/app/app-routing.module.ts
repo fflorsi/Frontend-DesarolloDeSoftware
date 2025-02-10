@@ -64,6 +64,7 @@ import { MostAttendedFacilitiesComponent } from './reportComponent/most-attended
 import { ProfessionalReportsComponent } from './reportComponent/professional-reports/professional-reports.component';
 import { ClientReportsComponent } from './reportComponent/client-reports/client-reports.component';
 import { InfoComponent } from './home/info/info.component';
+import { SideCartComponent } from './componentsCart/side-cart/side-cart.component';
 
 
 
@@ -247,6 +248,8 @@ export const routes: Routes = [
     {path: 'cart', component: CartComponent},
     {path: 'listOrders', component: ListOrdersComponent},
     { path: 'detailOrder/:id', component: DetailOrderComponent },
+    {path:'sidecart',component: SideCartComponent},
+
     //Contacto
     {path: 'contact', component: ContactComponent},
 

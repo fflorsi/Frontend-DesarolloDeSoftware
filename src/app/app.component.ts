@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import {jwtDecode} from 'jwt-decode'; // Cambié jwt_decode por jwtDecode
+import { CartStateService } from './services/cart-state-service.service'; // Adjust the path as necessary
 
 @Component({
   selector: 'app-root',
@@ -14,7 +15,9 @@ export class AppComponent implements OnInit {
 
   title = 'CRUDPET';
 
-  constructor(private router: Router) { }
+  constructor(
+  private router: Router, 
+  private cartStateService: CartStateService) { }
 
   ngOnInit() {
     this.checkUserLoginStatus();
@@ -70,4 +73,10 @@ export class AppComponent implements OnInit {
   hasRoute(route: string) {
     return this.router.url.includes(route);
   }
+
+  openCart() {
+    this.cartStateService.openCart(); 
+    console.log('Cart opened', this.cartStateService.openCart);
+  }
+
 }

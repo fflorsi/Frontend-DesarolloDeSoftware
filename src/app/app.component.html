@@ -40,10 +40,9 @@
           <div *ngIf="!hasRoute('productShop')">
             <li class="text"><a routerLink="/productShop">Tienda de Productos</a></li>
           </div>
-
-          <a routerLink="/cart">
-            <img src="assets/Cart.png" alt="Cart" class="cart-icon">
-          </a>
+          
+          <img alt="Cart" class="cart-icon" src="assets/Cart.png" (click)="openCart()">
+          
         </ul>
       </nav>
 
@@ -72,6 +71,8 @@
 
 <!-- Footer -->
  
+
+<app-side-cart></app-side-cart>
 
 
 <router-outlet></router-outlet>
