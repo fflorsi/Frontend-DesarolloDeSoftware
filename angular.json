@@ -79,7 +79,8 @@
               "browserTarget": "CRUDPET:build:production"
             },
             "development": {
-              "browserTarget": "CRUDPET:build:development"
+              "browserTarget": "CRUDPET:build:development",
+              "port": 4200
             }
           },
           "defaultConfiguration": "development"

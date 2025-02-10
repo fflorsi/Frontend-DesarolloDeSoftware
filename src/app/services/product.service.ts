@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { catchError, Observable, throwError } from 'rxjs';
 import { Product } from '@app/interfaces/product';
+import { environment } from 'environments/environment';
 
 @Injectable({
   providedIn: 'root'
@@ -11,7 +12,7 @@ export class ProductService {
   private myApiUrl: string;
 
   constructor(private http: HttpClient) { 
-    this.myAppUrl = 'http://localhost:3000/';
+    this.myAppUrl = environment.apiUrl;
     this.myApiUrl = 'api/products';
   }
 

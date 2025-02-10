@@ -6,6 +6,8 @@ import { Appointment } from '../interfaces/appointment'; // Importamos la interf
 import { PetService } from './pet.service';
 import { FacilityService } from './facility.service';
 import { HttpProviderService } from '@app/Service/http-provider.service';
+import { environment } from 'environments/environment';
+
 
 @Injectable({
   providedIn: 'root'
@@ -15,7 +17,7 @@ export class AppointmentService {
   private myApiUrl: string;
 
   constructor(private http: HttpClient, private _petService: PetService,private _facilityService: FacilityService,private _professionalService: HttpProviderService) { 
-    this.myAppUrl = 'http://localhost:3000/';  
+    this.myAppUrl = environment.apiUrl;  
     this.myApiUrl = 'api/appointments';  
   }
 

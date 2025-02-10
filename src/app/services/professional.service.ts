@@ -3,6 +3,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { catchError, Observable, throwError } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { Professional } from "../interfaces/professional";
+import { environment } from 'environments/environment';
 
 @Injectable({
   providedIn: 'root'
@@ -12,7 +13,7 @@ export class ProfessionalService {
   private myApiUrl: string;
 
   constructor(private http: HttpClient) {
-    this.myAppUrl = 'http://localhost:3000/';
+    this.myAppUrl = environment.apiUrl;
     this.myApiUrl = 'api/professionals';
    }
 

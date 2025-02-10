@@ -16,11 +16,11 @@ import { Client } from '@app/interfaces/client';
 export class CartComponent implements OnInit {
   items: Product[] = [];
   total: number = 0;
-  isUserLoggedIn: boolean = false; // Variable para verificar si el usuario está autenticado
+  isUserLoggedIn: boolean = false; 
   clientInfo: Client | null = null;
 
   constructor(
-    private clientService: ClientService,
+    public clientService: ClientService,
     private _cartService: CartService,
     private _orderService: OrderService,
     private router: Router,

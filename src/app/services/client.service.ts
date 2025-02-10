@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { catchError, Observable, throwError } from 'rxjs';
 import { Client } from "../interfaces/client";
+import { environment } from 'environments/environment';
 
 
 @Injectable({
@@ -15,7 +16,7 @@ export class ClientService {
   private myApiUrl: string;
 
   constructor(private http: HttpClient) { 
-    this.myAppUrl = 'http://localhost:3000/';
+    this.myAppUrl = environment.apiUrl;
     this.myApiUrl = 'api/clients';
   }
 

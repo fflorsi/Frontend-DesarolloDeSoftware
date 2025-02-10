@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { User } from '../interfaces/user';
 import { Observable } from 'rxjs';
 import { Client } from 'app/interfaces/client'
+import { environment } from 'environments/environment';
 
 export interface LoginResponse {
   msg: string;
@@ -19,7 +20,7 @@ export class UserService {
   private myApiUrl: string;
 
   constructor(private http: HttpClient) { 
-    this.myAppUrl = 'http://localhost:3000/';
+    this.myAppUrl = environment.apiUrl;
     this.myApiUrl = 'api/users';
   }
 

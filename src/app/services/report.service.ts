@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { environment } from 'environments/environment';
 import { Observable } from 'rxjs';
 
 
@@ -29,7 +30,7 @@ export class ReportService {
       private myApiUrl: string;
   
       constructor(private http: HttpClient){
-          this.myAppUrl = 'http://localhost:3000/';
+          this.myAppUrl = environment.apiUrl;
           this.myApiUrl = 'api/report';
   }
 
