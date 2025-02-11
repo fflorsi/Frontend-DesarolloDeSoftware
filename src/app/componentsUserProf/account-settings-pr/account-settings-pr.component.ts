@@ -32,7 +32,7 @@ export class AccountSettingsPrComponent implements OnInit {
   }
 
   updateUsername(): void {
-    const token = localStorage.getItem('token');
+    const token = localStorage.getItem('authToken');
     if (token) {
       const decodedToken = jwtDecode<any>(token);
       const userId = decodedToken.id;
@@ -53,7 +53,7 @@ export class AccountSettingsPrComponent implements OnInit {
   }
 
   updatePassword(): void {
-    const token = localStorage.getItem('token');
+    const token = localStorage.getItem('authToken');
     if (token) {
       const decodedToken = jwtDecode<any>(token);
       const userId = decodedToken.id;

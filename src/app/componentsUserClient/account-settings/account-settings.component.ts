@@ -33,7 +33,7 @@ export class AccountSettingsComponent implements OnInit {
 
   // Método para actualizar solo el nombre de usuario
   updateUsername(): void {
-    const token = localStorage.getItem('token');
+    const token = localStorage.getItem('authToken');
     if (token) {
       const decodedToken = jwtDecode<any>(token);
       const userId = decodedToken.id; // Obtener id desde el token
@@ -54,7 +54,7 @@ export class AccountSettingsComponent implements OnInit {
 
   // Método para actualizar solo la contraseña
   updatePassword(): void {
-    const token = localStorage.getItem('token');
+    const token = localStorage.getItem('authToken');
     if (token) {
       const decodedToken = jwtDecode<any>(token);
       const userId = decodedToken.id; // Obtener id desde el token
