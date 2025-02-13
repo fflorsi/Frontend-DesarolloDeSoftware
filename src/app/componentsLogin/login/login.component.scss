@@ -32,7 +32,7 @@
 
   
 h1 {
-    font: 'Inter', sans-serif;
+    font-family: 'Inter', sans-serif;
     font-weight: 500;
     font-size: 26px;
     height: 46px;
@@ -40,7 +40,7 @@ h1 {
 }
 
 label {
-    font: 'Inter', sans-serif;
+    font-family: 'Inter', sans-serif;
     font-weight: bold;
     font-size: 14px;
     height: 27px;
@@ -48,8 +48,8 @@ label {
 }
 
 p{
-    font: 'Inter', sans-serif;
-    font-weight: 400;
+  font-family: 'Inter', sans-serif;
+  font-weight: 400;
     font-size: 16px;
     height: 27px;
     color: #7f7f7f ;
@@ -59,7 +59,7 @@ button.btn {
     border-radius: 0; // Elimina el redondeado del botón
     background-color: #257ae7;
     width: 33vh;
-    font: 'Inter', sans-serif;
+    font-family: 'Inter', sans-serif;
     font-weight: 400;
     font-size: 16px;
 

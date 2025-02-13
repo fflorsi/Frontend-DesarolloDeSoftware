@@ -108,10 +108,32 @@ body {
 }
 
 
-.text:hover a{
-    color: #bab8c9;
-   
+.text{
+    position: relative;
 }
+
+.text a::after {
+    content: '';
+    display: block;
+    background-color: #7666ca;
+    height: 1px;
+    width: 100%;
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.3s ease-in-out, color 0.3s ease-in-out;
+}
+
+.text a:hover::after {
+    transform: scaleX(1);
+}
+
+.text a:hover {
+    color: #bab8c9;
+}
+
 .current a{
     color: #7666ca;
 }

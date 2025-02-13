@@ -65,6 +65,7 @@ import { ProfessionalReportsComponent } from './reportComponent/professional-rep
 import { ClientReportsComponent } from './reportComponent/client-reports/client-reports.component';
 import { InfoComponent } from './home/info/info.component';
 import { SideCartComponent } from './componentsCart/side-cart/side-cart.component';
+import { FooterComponent } from './footer/footer.component';
 
 
 
@@ -243,6 +244,8 @@ export const routes: Routes = [
     },
 
 
+
+
     //Carrito
     {path: 'productShop', component: ProductShopComponent},
     {path: 'cart', component: CartComponent},
@@ -253,7 +256,9 @@ export const routes: Routes = [
     //Contacto
     {path: 'contact', component: ContactComponent},
 
-    { path: '**', component: PageNotFoundComponent }
+    { path: '**', component: PageNotFoundComponent },
+
+    {path: 'footer', component: FooterComponent}
 ];
 
 @NgModule({

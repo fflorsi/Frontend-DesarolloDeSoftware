@@ -205,3 +205,14 @@ button.toast-close-button {
 .mat-dialog-container {
     z-index: 1001;
 }
+
+:root {
+    font-family: 'Inter', sans-serif;
+    font-feature-settings: 'liga' 1, 'calt' 1; /* Ajuste para Chrome */
+  }
+  
+  @supports (font-variation-settings: normal) {
+    :root {
+      font-family: 'InterVariable', sans-serif;
+    }
+  }

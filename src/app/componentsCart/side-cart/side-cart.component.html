@@ -1,7 +1,7 @@
 <div class="total-wrapper" [class.open]="isCartOpen">
     <div class="sidecart-total">
         <div class="side-cart-header">
-            <h4 class="text-header">Your Cart</h4>
+            <h4 class="text-header">Mi carrito</h4>
             <img class="img" src="../assets/close-btn.png" (click)="closeCart()">
         </div>
         <div *ngIf="items && items.length > 0; else emptyCart">
@@ -27,13 +27,13 @@
                     <p class="product-price">Subtotal</p>
                     <p class="price">{{ total | currency: 'ARS' }}</p>
                 </div>
-                <a href="/cart" class="button-co">Checkout</a>
+                <a href="/cart" class="button-co">Completar compra</a>
             </div>
         </div>
         <ng-template #emptyCart>
             <div class="side-cart-empty">
-                <h4 class="text">No items found</h4>
-                <a href="/productShop" class="button">Productos</a>
+                <h4 class="text">Sin Productos</h4>
+                <a href="/productShop" class="button">Tienda</a>
             </div>
         </ng-template>
     </div>
