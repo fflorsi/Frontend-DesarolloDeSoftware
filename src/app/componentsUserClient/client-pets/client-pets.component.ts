@@ -4,6 +4,9 @@ import { PetService } from '@app/services/pet.service';
 import { jwtDecode } from 'jwt-decode';
 import { ToastrService } from 'ngx-toastr';
 import { Pet } from '@app/interfaces/pet';
+import { TypeService } from '@app/services/type.service';
+import { Type } from '@app/interfaces/type';
+
 
 @Component({
   selector: 'app-client-pets',
@@ -12,16 +15,21 @@ import { Pet } from '@app/interfaces/pet';
 })
 export class ClientPetsComponent implements OnInit {
   petList: any[] = [];
+  availableTypes: Type[] = [];
   clientId: number | undefined;
   formPet: FormGroup;
   loading = false;
   isEditMode = false;
   petToEdit: any;
 
+  showForm = false;
+
   constructor(
     private petService: PetService,
     private fb: FormBuilder,
-    private toastr: ToastrService
+    private toastr: ToastrService,
+    private typeService: TypeService
+
   ) {
     this.formPet = this.fb.group({
       name: ['', Validators.required],
@@ -39,6 +47,23 @@ export class ClientPetsComponent implements OnInit {
     if (this.clientId) {
       this.getPetList();
     }
+
+    this.getAvailableTypes();
+  }
+
+  getAvailableTypes(): void {
+    this.loading = true;
+    this.typeService.getTypes().subscribe({
+      next: (response: any) => {
+        console.log('Tipos disponibles:', response.data);
+        this.availableTypes = response.data;
+        this.loading = false;
+      },
+      error: (err) => {
+        this.toastr.error('Error al obtener los tipos disponibles', 'Error');
+        this.loading = false;
+      }
+    });
   }
 
   getClientIdFromToken(): number | undefined {
@@ -77,6 +102,7 @@ export class ClientPetsComponent implements OnInit {
   editPet(pet: any): void {
     this.isEditMode = true;
     this.petToEdit = pet;
+    this.showForm = true;
     this.formPet.patchValue({
       name: pet.name,
       birthdate: pet.birthdate,
@@ -90,6 +116,8 @@ export class ClientPetsComponent implements OnInit {
     if (this.formPet.invalid) {
       this.toastr.error('Complete todos los campos requeridos', 'Formulario inválido');
       return;
+    }else{
+      this.showForm = false;
     }
   
     // Creamos el objeto petData a partir del formulario
@@ -160,6 +188,7 @@ export class ClientPetsComponent implements OnInit {
     this.isEditMode = false;
     this.petToEdit = null;
     this.formPet.reset();
+    this.showForm = false;
   }
 
 

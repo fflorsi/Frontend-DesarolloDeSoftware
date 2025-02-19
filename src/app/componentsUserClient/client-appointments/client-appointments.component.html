@@ -1,91 +1,91 @@
 <div class="container">
-    <h2 class="text-center mb-4">Solicitar Nuevo Turno</h2>
-  
-    <form [formGroup]="appointmentForm" (ngSubmit)="requestAppointment()">
+  <div class="header">
+      <h2 class="mb-0">Agendar Nuevo Turno</h2>
+  </div>
+
+  <form [formGroup]="appointmentForm" (ngSubmit)="requestAppointment()">
       <!-- Selección de Mascota -->
       <div class="mb-3">
-        <label for="petId" class="form-label">Mascota</label>
-        <select formControlName="petId" id="petId" class="form-select" required>
-          <option value="" disabled selected>Seleccione su mascota</option>
-          <option *ngFor="let pet of petList" [value]="pet.id">
-            {{ pet.name }}
-          </option>
-        </select>
+          <label for="petId" class="form-label">Mascota</label>
+          <select formControlName="petId" id="petId" class="form-select" required>
+              <option value="" disabled selected>Seleccione su mascota</option>
+              <option *ngFor="let pet of petList" [value]="pet.id">
+                  {{ pet.name }}
+              </option>
+          </select>
       </div>
-  
+
       <!-- Selección de Intervención -->
       <div class="mb-3">
-        <label for="facilityId" class="form-label">Intervención</label>
-        <select formControlName="facilityId" id="facilityId" class="form-select" required>
-          <option value="" disabled selected>Seleccione una intervención</option>
-          <option *ngFor="let facility of facilities" [value]="facility.id">
-            {{ facility.name }}
-          </option>
-        </select>
+          <label for="facilityId" class="form-label">Intervención</label>
+          <select formControlName="facilityId" id="facilityId" class="form-select" required>
+              <option value="" disabled selected>Seleccione una intervención</option>
+              <option *ngFor="let facility of facilities" [value]="facility.id">
+                  {{ facility.name }}
+              </option>
+          </select>
       </div>
-  
+
       <!-- Selección de Profesional -->
       <div class="mb-3">
-        <label for="professionalId" class="form-label">Profesional</label>
-        <select formControlName="professionalId" id="professionalId" class="form-select" required>
-          <option value="" disabled selected>Seleccione un profesional</option>
-          <option *ngFor="let professional of professionals" [value]="professional.id">
-            {{ professional.firstname }} {{ professional.lastname }}
-          </option>
-        </select>
+          <label for="professionalId" class="form-label">Profesional</label>
+          <select formControlName="professionalId" id="professionalId" class="form-select" required>
+              <option value="" disabled selected>Seleccione un profesional</option>
+              <option *ngFor="let professional of professionals" [value]="professional.id">
+                  {{ professional.firstname }} {{ professional.lastname }}
+              </option>
+          </select>
       </div>
-  
-      <!-- Selección de Fecha y Hora -->
-      <div class="mb-3">
-        <label for="dateTime" class="form-label">Fecha y Hora</label>
-        <input type="datetime-local" formControlName="dateTime" id="dateTime" class="form-control" required />
-      </div>
-  
+
+     <!-- Selección de Fecha y Hora -->
+<div class="mb-3">
+    <label for="dateTime" class="form-label">Fecha y Hora</label>
+    <input type="datetime-local" formControlName="dateTime" id="dateTime" class="form-control" [min]="minDateTime" required />
+</div>
+
       <!-- Botón de Enviar -->
       <div class="d-grid gap-2">
-        <button type="submit" [disabled]="appointmentForm.invalid" class="btn btn-primary">
-          Solicitar Turno
-        </button>
+          <button type="submit" [disabled]="appointmentForm.invalid" class="btn">
+              Solicitar Turno
+          </button>
       </div>
-    </form>
-  </div>
-  
+  </form>
+</div>
 
-
-  <div *ngIf="futureAppointments.length > 0; else noAppointments" class="container mt-4">
-    <h2 class="text-primary mb-3">Turnos Futuros</h2>
-    <div class="table-responsive">
-      <table class="table table-striped table-hover">
-        <thead class="table-dark">
-          <tr>
-            <th>Fecha y Hora</th>
-            <th>Mascota</th>
-            <th>Profesional</th>
-            <th>Servicio</th>
-            <th>Acciones</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr *ngFor="let appointment of futureAppointments">
-            <td>{{ appointment.dateTime | date: 'short' }}</td>
-            <td>{{ appointment.Pet?.name }}</td>
-            <td>{{ appointment.Professional?.firstname }} {{ appointment.Professional?.lastname }}</td>
-            <td>{{ appointment.Facility?.name }}</td>
-            <td>
-                <button class="btn btn-danger btn-sm" (click)="cancelAppointment(appointment.id)">
-                    <i class="fas fa-times"></i> Cancelar
-                  </button>                  
-            </td>
-          </tr>
-        </tbody>
+<div *ngIf="futureAppointments.length > 0; else noAppointments" class="container mt-4">
+  <h2 class="mb-0">Turnos Futuros</h2>
+  <div class="table-responsive">
+      <table class="table ">
+          <thead class="table">
+              <tr>
+                  <th class="title">Fecha y Hora</th>
+                  <th class="title">Mascota</th>
+                  <th class="title">Profesional</th>
+                  <th class="title">Servicio</th>
+                  <th class="title">Acciones</th>
+              </tr>
+          </thead>
+          <tbody>
+              <tr *ngFor="let appointment of futureAppointments">
+                  <td class="info">{{ appointment.dateTime | date: 'short' }}</td>
+                  <td class="info">{{ appointment.Pet?.name }}</td>
+                  <td class="info">{{ appointment.Professional?.firstname }} {{ appointment.Professional?.lastname }}</td>
+                  <td class="info">{{ appointment.Facility?.name }}</td>
+                  <td>
+                      <button class="del" (click)="cancelAppointment(appointment.id)">
+                          <i class="fas fa-times"></i> Cancelar
+                      </button>
+                  </td>
+              </tr>
+          </tbody>
       </table>
-    </div>
   </div>
-  
-  <ng-template #noAppointments>
-    <div class="alert alert-info mt-4" role="alert">
+</div>
+
+<ng-template #noAppointments>
+  <div class="alert-cont">
+  <div class="alert" role="alert">
       No hay turnos futuros para mostrar.
-    </div>
-  </ng-template>
-  
-  
+  </div>
+  </div>
+</ng-template>

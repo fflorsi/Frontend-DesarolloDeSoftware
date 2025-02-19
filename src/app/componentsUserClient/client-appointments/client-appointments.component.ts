@@ -21,6 +21,7 @@ export class ClientAppointmentComponent implements OnInit {
   facilities: any[] = [];
   futureAppointments: any[] = [];
   loading = false;
+  minDateTime:string;
 
   constructor(
     private fb: FormBuilder,
@@ -36,6 +37,9 @@ export class ClientAppointmentComponent implements OnInit {
       facilityId: [null, Validators.required],
       dateTime: [null, Validators.required]
     });
+
+    const now = new Date();
+    this.minDateTime = now.toISOString().slice(0, 16);
   }
 
   ngOnInit(): void {

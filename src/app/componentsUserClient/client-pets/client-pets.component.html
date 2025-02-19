@@ -1,68 +1,76 @@
 <div class="container mt-4">
-    <h3>{{ isEditMode ? 'Editar Mascota' : 'Mascotas del Cliente' }}</h3>
-  
-    <!-- Botón para agregar una mascota, cambia a "Actualizar" cuando está en modo de edición -->
-    <button class="btn btn-primary mb-3" (click)="formPet.reset(); isEditMode = false;">Agregar Mascota</button>
-  
-    <!-- Formulario para agregar o editar una mascota -->
-    <form [formGroup]="formPet" (ngSubmit)="savePet()">
-      <div class="form-group">
-        <label for="name">Nombre</label>
-        <input type="text" id="name" formControlName="name" class="form-control" />
-      </div>
-  
-      <div class="form-group">
-        <label for="birthdate">Fecha de Nacimiento</label>
-        <input type="date" id="birthdate" formControlName="birthdate" class="form-control" />
-      </div>
-  
-      <div class="form-group">
-        <label for="type">Tipo</label>
-        <input type="number" id="type" formControlName="type" class="form-control" />
-      </div>
-  
-      <div class="form-group">
-        <label for="breed">Raza</label>
-        <input type="text" id="breed" formControlName="breed" class="form-control" />
-      </div>
-  
-      <div class="form-group">
-        <label for="weight">Peso</label>
-        <input type="number" id="weight" formControlName="weight" class="form-control" />
-      </div>
-  
-      <button type="submit" class="btn btn-success mt-3" [disabled]="formPet.invalid">
-        {{ isEditMode ? 'Actualizar Mascota' : 'Registrar Mascota' }}
-      </button>
-    </form>
-  
-    <!-- Tabla de mascotas del cliente -->
-    <table class="table table-striped mt-4">
-      <thead>
-        <tr>
-          <th>Nombre</th>
-          <th>Tipo</th>
-          <th>Raza</th>
-          <th>Peso</th>
-          <th>Fecha de Nacimiento</th>
-          <th>Acciones</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr *ngFor="let pet of petList">
-          <td>{{ pet.name }}</td>
-          <td>{{ pet.type }}</td>
-          <td>{{ pet.breed }}</td>
-          <td>{{ pet.weight }} kg</td>
-          <td>{{ pet.birthdate | date }}</td>
-          <td>
-            <!-- Botón para editar la mascota -->
-            <button class="btn btn-warning btn-sm" (click)="editPet(pet)">Editar</button>
-            <!-- Botón para eliminar la mascota -->
-            <button class="btn btn-danger btn-sm" (click)="deletePet(pet.id)">Eliminar</button>
-          </td>
-        </tr>
-      </tbody>
-    </table>
+  <div class="header">
+    <h3 class="mb-0">{{ isEditMode ? 'Editar Mascota' : 'Mis mascotas' }}</h3>
   </div>
-  
+
+  <!-- Botón para agregar una mascota, cambia a "Actualizar" cuando está en modo de edición -->
+  <button *ngIf="!showForm" class="btn" (click)="formPet.reset(); isEditMode = false; showForm = true;">Agregar Mascota</button>
+
+  <!-- Formulario para agregar o editar una mascota -->
+  <form *ngIf="showForm" [formGroup]="formPet" (ngSubmit)="savePet()">
+    <div class="form-group">
+      <label for="name">Nombre</label>
+      <input type="text" id="name" formControlName="name" class="form-control" />
+    </div>
+
+    <div class="form-group">
+      <label for="birthdate">Fecha de Nacimiento</label>
+      <input type="date" id="birthdate" formControlName="birthdate" class="form-control" />
+    </div>
+
+    <div class="form-group">
+      <label for="type">Tipo</label>
+      <select id="type" formControlName="type" class="form-control">
+        <option *ngFor="let type of availableTypes" [value]="type.id">{{ type.name }}</option>
+      </select>
+    </div>
+
+    <div class="form-group">
+      <label for="breed">Raza</label>
+      <input type="text" id="breed" formControlName="breed" class="form-control" />
+    </div>
+
+    <div class="form-group">
+      <label for="weight">Peso</label>
+      <input type="number" id="weight" formControlName="weight" class="form-control" />
+    </div>
+
+    <button type="submit" class="btn btn-success mt-3" [disabled]="formPet.invalid">
+      {{ isEditMode ? 'Guardar' : 'Guardar' }}
+    </button>
+    <button type="button" class="btn btn-secondary mt-3" (click)="cancelEdit()">Cancelar</button>
+  </form>
+
+  <!-- Tabla de mascotas del cliente -->
+  <table class="table table-striped mt-4">
+    <thead>
+      <tr>
+        <th class="title">Nombre</th>
+        <th class="title">Tipo</th>
+        <th class="title">Raza</th>
+        <th class="title">Peso</th>
+        <th class="title">Fecha de Nacimiento</th>
+        <th class="title">Acciones</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let pet of petList">
+        <td class="info">{{ pet.name }}</td>
+        <td class="info">{{ pet.Type.name }}</td>
+        <td class="info">{{ pet.breed }}</td>
+        <td class="info">{{ pet.weight }} kg</td>
+        <td class="info">{{ pet.birthdate | date }}</td>
+        <td>
+          <!-- Botón para editar la mascota -->
+          <button class="edit" (click)="editPet(pet)">
+            <i class="fa fa-edit"></i> 
+          </button>
+          <!-- Botón para eliminar la mascota -->
+          <button class="del" (click)="deletePet(pet.id)">
+            <i class="fa fa-trash"></i>
+          </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

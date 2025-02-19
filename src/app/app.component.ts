@@ -48,7 +48,7 @@ export class AppComponent implements OnInit {
     if (this.userRole === 'professional') {
       return '/profesional-dashboard';  // Link al dashboard del profesional
     } else if (this.userRole === 'client') {
-      return '/dashboard';  // Link al dashboard del cliente
+      return '/dashboard/personal-info';  // Link al dashboard del cliente
     } else if (this.userRole === 'admin'){
       return 'menuAdmin'
     }
