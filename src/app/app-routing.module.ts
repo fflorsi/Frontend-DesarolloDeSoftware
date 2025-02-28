@@ -44,7 +44,7 @@ import { PersonalInfoComponent } from './componentsUserClient/personal-info/pers
 import { ClientPetsComponent } from './componentsUserClient/client-pets/client-pets.component';
 import { ClientAppointmentComponent } from './componentsUserClient/client-appointments/client-appointments.component';
 import { AccountSettingsComponent } from './componentsUserClient/account-settings/account-settings.component';
-import path from 'path';
+
 import { PersonalInfoPrComponent } from './componentsUserProf/personal-info-pr/personal-info-pr.component';
 import { AccountSettingsPrComponent } from './componentsUserProf/account-settings-pr/account-settings-pr.component';
 import { UpcomingAppointmentsComponent } from './componentsUserProf/upcoming-appointments/upcoming-appointments.component';
@@ -198,6 +198,7 @@ export const routes: Routes = [
         { path: 'editClient/:id', component: AddEditClientComponent },
         { path: 'detailClient/:id', component: DetailClientComponent },
         { path: 'listPets/:id', component: ListPetsComponent },
+        
   
         // Mascota
         { path: 'ViewPet/:petId', component: ViewPetComponent },
@@ -243,7 +244,7 @@ export const routes: Routes = [
       ],
     },
 
-
+    { path: 'success', component: CheckoutComponent},
 
 
     //Carrito

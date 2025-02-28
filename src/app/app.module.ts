@@ -175,7 +175,8 @@ import { FooterComponent } from './footer/footer.component';
     MostAttendedPetsComponent,
     InfoComponent,
     SideCartComponent,
-    FooterComponent
+    FooterComponent,
+    CheckoutComponent
 
 
   ],

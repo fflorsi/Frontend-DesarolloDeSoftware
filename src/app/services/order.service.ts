@@ -11,10 +11,12 @@ export class OrderService {
 
   private myAppUrl: string;
   private myApiUrl: string;
+  private paymentUrl: string
 
   constructor(private http: HttpClient) { 
     this.myAppUrl = environment.apiUrl;
     this.myApiUrl = 'api/orders';
+    this.paymentUrl = 'api/payment'
   }
 
   // Crear un nuevo pedido
@@ -51,5 +53,10 @@ export class OrderService {
 
   getPaymentStatus(paymentId: string): Observable<any> {
     return this.http.get(`${this.myApiUrl}/status/${paymentId}`);
+  }
+
+  savePayment(paymentId: string): Observable<any> {
+    console.log(paymentId)
+    return this.http.get(`${this.myAppUrl}${this.paymentUrl}/save/${paymentId}`)
   }
 }
