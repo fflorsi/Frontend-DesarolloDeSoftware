@@ -45,8 +45,8 @@ export class MostRequestedServiceComponent implements OnInit {
         datasets: [{
           label: 'Servicios Más Solicitados',
           data: chartData,
-          backgroundColor: 'rgba(54, 162, 235, 0.2)',
-          borderColor: 'rgba(54, 162, 235, 1)',
+          backgroundColor: '#240046',
+          borderColor: '#c77dff',
           borderWidth: 1
         }]
       },

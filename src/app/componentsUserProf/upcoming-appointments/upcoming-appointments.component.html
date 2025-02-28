@@ -1,36 +1,40 @@
 <div class="container mt-5">
-    <h2>Lista de Turnos Futuros</h2>
+  <div class="header">
+    <h2 class="mb-0">Lista de Turnos Futuros</h2>
+  </div>
     <div *ngIf="loading" class="spinner-border text-primary" role="status">
       <span class="visually-hidden">Cargando...</span>
     </div>
     
     <!-- Mensaje cuando no hay turnos disponibles -->
-    <div *ngIf="!loading && appointments.length === 0" class="alert alert-warning">
+    <div *ngIf="!loading && appointments.length === 0" class="alert-cont alert-warning">
+      <div class="alert">
       No hay turnos disponibles actualmente.
+      </div>
     </div>
     
-    <table class="table mt-4" *ngIf="!loading && appointments.length > 0">
+    <table class="table table-striped mt-4" *ngIf="!loading && appointments.length > 0">
       <thead>
         <tr>
-          <th scope="col">Mascota</th>
-          <th scope="col">Profesional</th>
-          <th scope="col">Servicio</th>
-          <th scope="col">Fecha y Hora</th>
-          <th scope="col">Acciones</th>
+          <th class="title" scope="col">Mascota</th>
+          <th class="title">Profesional</th>
+          <th class="title" scope="col">Servicio</th>
+          <th class="title" scope="col">Fecha y Hora</th>
+          <th class="title" scope="col">Acciones</th>
         </tr>
       </thead>
       <tbody>
         <tr *ngFor="let appointment of appointments">
-          <td>{{ appointment.Pet?.name }}</td>
-          <td>{{ appointment.Professional?.firstname }} {{ appointment.professional?.lastname }}</td>
-          <td>{{ appointment.Facility?.name }}</td>
-          <td>{{ appointment.dateTime | date: 'short' }}</td>
+          <td class="info">{{ appointment.Pet?.name }}</td>
+          <td class="info">{{ appointment.Professional?.firstname }} {{ appointment.professional?.lastname }}</td>
+          <td class="info">{{ appointment.Facility?.name }}</td>
+          <td class="info">{{ appointment.dateTime | date: 'short' }}</td>
           <td>
-              <button class="btn btn-secondary btn-sm" (click)="cancelAppointment(appointment.id)">
+              <button class="del" (click)="cancelAppointment(appointment.id)">
                 <i class="fas fa-times"></i> Rechazar
               </button>
-              <button class="btn btn-success btn-sm" (click)="markAsDone(appointment.id)" [routerLink]="'/profesional-dashboard/ViewPetPro/' + appointment.Pet?.id">
-              <i class="fas fa-check"></i> Marcar como Realizado
+              <button class="succ" (click)="markAsDone(appointment.id)" [routerLink]="'/profesional-dashboard/ViewPetPro/' + appointment.Pet?.id">
+              <i class="fas fa-check"></i> Realizado
               </button>
   
           </td>

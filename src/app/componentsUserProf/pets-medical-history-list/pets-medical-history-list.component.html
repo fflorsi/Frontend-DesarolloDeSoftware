@@ -1,22 +1,22 @@
 <app-progress-bar *ngIf="loading"></app-progress-bar>
 <div *ngIf="!loading" class="container">
-  <div class="title">
-    <h4>Listado de Mascotas</h4>
+  <div class="header">
+    <h4 class="mb-0">Listado de Mascotas</h4>
   </div>
 
-  <table class="table">
+  <table class="table table-striped mt-4">
     <thead>
       <tr>
-        <th scope="col">Nombre</th>
-        <th scope="col">Fecha de Nacimiento</th>
-        <th scope="col">Tipo</th>
-        <th scope="col">Raza</th>
-        <th scope="col">Peso (kg)</th>
+        <th class="title" scope="col">Nombre</th>
+        <th class="title" scope="col">Fecha de Nacimiento</th>
+        <th class="title" scope="col">Tipo</th>
+        <th class="title" scope="col">Raza</th>
+        <th class="title" scope="col">Peso (kg)</th>
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let pet of petList" class="table-active">
-        <td>{{ pet.name }}
+      <tr *ngFor="let pet of petList">
+        <td class="info">{{ pet.name }}
           <span class="actions">
             <button [routerLink]="['/profesional-dashboard/ViewPetPro', pet.id]" type="button" class="btn btn-info btn-sm">
               <i class="fas fa-info-circle"></i>
@@ -26,14 +26,17 @@
 
           </span>
         </td>
-        <td>{{ pet.birthdate | date:'shortDate' }}</td>
-        <td>{{ pet.Type.name }}</td>
-        <td>{{ pet.breed }}</td>
-        <td>{{ pet.weight }} kg</td>
+        <td class="info">{{ pet.birthdate | date:'shortDate' }}</td>
+        <td class="info">{{ pet.Type.name }}</td>
+        <td class="info">{{ pet.breed }}</td>
+        <td class="info">{{ pet.weight }} kg</td>
 
         
       </tr>
     </tbody>
   </table>
-  <h5 *ngIf="petList.length == 0">No se han encontrado Mascotas</h5>
+  <div *ngIf="petList.length == 0" class="alert-cont">
+    <div class="alert">
+      No se han encontrado Mascotas.
+    </div>
 </div>

@@ -58,9 +58,9 @@ export class MostActiveProfessionalsComponent implements OnInit, AfterViewInit {
           datasets: [{
             label: 'Turnos Asignados',
             data: turnsAssigned,
-            backgroundColor: 'rgba(75, 192, 192, 0.2)',
-            borderColor: 'rgba(75, 192, 192, 1)',
-            borderWidth: 1
+            backgroundColor: 'rgba(224, 170, 255, 0.54)',
+            borderColor: '#7b2cbf',
+            borderWidth: 3
           }]
         },
         options: {

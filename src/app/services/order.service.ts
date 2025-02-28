@@ -56,7 +56,7 @@ export class OrderService {
   }
 
   savePayment(paymentId: string): Observable<any> {
-    console.log(paymentId)
-    return this.http.get(`${this.myAppUrl}${this.paymentUrl}/save/${paymentId}`)
+    console.log(paymentId);
+    return this.http.post(`${this.myAppUrl}${this.paymentUrl}/save/${paymentId}`, {});
   }
 }

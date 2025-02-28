@@ -130,7 +130,7 @@ export class ClientPetsComponent implements OnInit {
     const pet: Pet = {
       name: this.formPet.value.name,
       birthdate: this.formPet.value.birthdate,
-      type: this.formPet.value.type,
+      type: Number(this.formPet.value.type),
       breed: this.formPet.value.breed,
       weight: this.formPet.value.weight,
       client_id: Number(this.clientId),  // Asegurándonos que clientId es un número
@@ -162,7 +162,7 @@ export class ClientPetsComponent implements OnInit {
         const newPetId = response.data.id;
         this.createMedicalHistory(newPetId); 
       }, (error) => {
-        this.toastr.error('Error al guardar la mascota', 'Error');
+        this.toastr.error('Error al guardar la mascota', error);
         this.loading = false;
       });
     }

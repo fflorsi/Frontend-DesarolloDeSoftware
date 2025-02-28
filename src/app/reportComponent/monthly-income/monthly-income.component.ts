@@ -26,7 +26,7 @@ export class MonthlyIncomeComponent implements OnInit {  // Asegúrate de implem
           datasets: [{
             label: 'Ingresos Mensuales',
             data: earnings,
-            borderColor: 'rgba(75, 192, 192, 1)',
+            borderColor: '#e0aaff',
             fill: false,
           }],
         },
