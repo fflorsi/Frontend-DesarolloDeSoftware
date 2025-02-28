@@ -78,7 +78,6 @@ export const routes: Routes = [
     
     {path: 'login',component: LoginComponent },
     {path: 'signIn', component: SignInComponent},
-    {path: 'checkout', component: CheckoutComponent},
     {
         path: 'dashboard',
         component: DashboardComponent,

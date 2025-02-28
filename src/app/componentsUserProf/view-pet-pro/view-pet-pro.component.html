@@ -2,11 +2,24 @@
     <div class="card-container">
       <div class="card">
         <div class="card-body">
-          <h5 class="card-title">{{ petDetail.name }}</h5>
-          <p class="card-text"><strong>Fecha de nacimiento:</strong> {{ petDetail.birthdate | date:'short' }}</p>
-          <p class="card-text"><strong>Tipo:</strong> {{ petDetail.Type.name }}</p>
-          <p class="card-text"><strong>Raza:</strong> {{ petDetail.breed }}</p>
-          <p class="card-text"><strong>Peso:</strong> {{ petDetail.weight }} kg</p>
+          <h5 class="mb-0">{{ petDetail.name }}</h5>
+          <div>
+          <p class="title"><strong>Fecha de nacimiento:</strong> </p>
+            <div class="info">{{ petDetail.birthdate | date:'short' }}</div>
+          </div>
+
+          <div>
+          <p class="title"><strong>Tipo:</strong> </p>
+          <div class="info">{{ petDetail.Type.name }}</div>
+          </div>
+          <div>
+          <p class="title"><strong>Raza:</strong> </p>
+          <div class="info">{{ petDetail.breed }}</div>
+          </div>  
+          <div>
+          <p class="title"><strong>Peso:</strong> </p>
+          <div class="info">{{ petDetail.weight }} kg</div>
+          </div>
           <div class="button-group">
             <a [routerLink]="['/EditPet/', petDetail.id]" class="btn btn-primary"><i class='fas fa-edit'></i> Editar</a>        </div>
         </div>
@@ -15,8 +28,10 @@
       <medicalHistory class ="medical-history"></medicalHistory>
   
     </div>
-    <div *ngIf="!petDetail" class="no-pets">
-      <p>No se han encontrado Mascotas</p>
+    <div *ngIf="!petDetail" class=" alert-cont no-pets">
+      <div class="alert">
+      No se han encontrado Mascotas.
+      </div>
     </div>
   </div>
   

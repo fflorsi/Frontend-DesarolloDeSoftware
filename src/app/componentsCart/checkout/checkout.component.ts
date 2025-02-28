@@ -29,7 +29,14 @@ export class CheckoutComponent implements OnInit {
   }
 
   savePayment(paymentId: string): void {
-    console.log('Se llamó xd')
-    this.orderService.savePayment(paymentId)
+    console.log('Se llamó xd');
+    this.orderService.savePayment(paymentId).subscribe(
+      response => {
+        console.log('Pago guardado con éxito:', response);
+      },
+      error => {
+        console.error('Error al guardar el pago:', error);
+      }
+    );
   }
 }

@@ -52,4 +52,10 @@ export class UserService {
   updatePassword(id: number, newPassword: string): Observable<any> {
     return this.http.post<any>(`${this.myAppUrl}${this.myApiUrl}/updatepassword/${id}`, { password: newPassword });
   }
+
+  // Método para obtener un usuario por su id
+  getUserById(id: number): Observable<User> {
+    return this.http.get<User>(`${this.myAppUrl}${this.myApiUrl}/getbyid/${id}`);
+  }
+  
 }
