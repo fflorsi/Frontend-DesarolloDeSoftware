@@ -198,7 +198,7 @@ export const routes: Routes = [
         { path: 'editClient/:id', component: AddEditClientComponent },
         { path: 'detailClient/:id', component: DetailClientComponent },
         { path: 'listPets/:id', component: ListPetsComponent },
-        
+        { path: 'success', component: CheckoutComponent},
   
         // Mascota
         { path: 'ViewPet/:petId', component: ViewPetComponent },
@@ -244,7 +244,6 @@ export const routes: Routes = [
       ],
     },
 
-    { path: 'success', component: CheckoutComponent},
 
 
     //Carrito
