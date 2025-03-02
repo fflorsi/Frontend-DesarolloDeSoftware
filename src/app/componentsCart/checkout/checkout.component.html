@@ -1,6 +1,23 @@
 <div class="checkout">
-  <h1>Gracias por tu compra!</h1>
-  <p>Tu pago ha sido procesado con éxito.</p>
-  <p><strong>ID de Pago:</strong> {{ paymentId }}</p>
-  <p><strong>Estado:</strong> {{ status }}</p>
+  <h1 class="thank-you">¡Gracias por tu compra! <i class="icon-check"></i></h1>
+  <p class="success-message">Tu pago ha sido procesado con éxito.</p>
+
+  <div *ngIf="order" class="order-details">
+    <h2>Detalles de la Orden</h2>
+    <p><strong>ID de Pago:</strong> {{ paymentId }}</p>
+    <p><strong>Total:</strong> {{ order.total | currency }}</p>
+    <p><strong>Fecha:</strong> {{ order.date | date }}</p>
+
+    <h3>Items de la Orden</h3>
+    <ul class="order-items">
+      <li *ngFor="let item of order.items" class="order-item">
+        <div class="item-card">
+          <p><strong>Producto:</strong> {{ item.product.name }}</p>
+          <p><strong>Descripción:</strong> {{ item.product.description }}</p>
+          <p><strong>Cantidad:</strong> {{ item.quantity }}</p>
+          <p><strong>Precio:</strong> {{ item.price | currency }}</p>
+        </div>
+      </li>
+    </ul>
+  </div>
 </div>

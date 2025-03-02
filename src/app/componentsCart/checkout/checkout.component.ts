@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { Order, OrderItem } from '@app/interfaces/order';
 import { CartService } from '@app/services/cart.service';
 import { OrderService } from '@app/services/order.service';
 
@@ -11,6 +12,7 @@ import { OrderService } from '@app/services/order.service';
 export class CheckoutComponent implements OnInit {
   paymentId: string | null = null;
   status: string | null = null;
+  order: Order | null = null
 
   constructor(
     private route: ActivatedRoute,
@@ -24,13 +26,13 @@ export class CheckoutComponent implements OnInit {
     });
     if (this.paymentId) {
       console.log(this.paymentId)
-        this.savePayment(this.paymentId)
+      this.savePayment(this.paymentId)
+      this.getDetail(this.paymentId)
+      this._cartService.cleanCart()
       }
-    this._cartService.cleanCart()
   }
 
   savePayment(paymentId: string): void {
-    console.log('Se llamó xd');
     this.orderService.savePayment(paymentId).subscribe(
       response => {
         console.log('Pago guardado con éxito:', response);
@@ -40,4 +42,16 @@ export class CheckoutComponent implements OnInit {
       }
     );
   }
+  getDetail(paymentId: string): void{
+    this.orderService.getOrderByPaymentId(paymentId).subscribe(
+      order => {
+        this.order = order
+        console.log('Orden obtenida:', this.order)
+      },
+      error => {
+        console.error('Error al obtener la orden:', error);
+      }
+    )
+  }
 }
+

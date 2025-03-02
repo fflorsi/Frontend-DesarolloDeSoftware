@@ -35,6 +35,11 @@ export class OrderService {
     return this.http.get<Order>(`${this.myAppUrl}${this.myApiUrl}/${id}`);
   }
 
+  // Obtener un pedido por su ID de pago
+  getOrderByPaymentId(paymentId: string): Observable<Order> {
+    return this.http.get<Order>(`${this.myAppUrl}${this.myApiUrl}/detailbypaymentid/${paymentId}`);
+  }
+
   // Obtener ganancias mensuales
   getMonthlyEarnings(): Observable<{ earnings: number }> {
     return this.http.get<{ earnings: number }>(`${this.myAppUrl}${this.myApiUrl}/monthly-earnings`);
@@ -53,7 +58,6 @@ export class OrderService {
   }
 
   savePayment(paymentId: string): Observable<any> {
-    console.log(paymentId);
     return this.http.post(`${this.myAppUrl}${this.paymentUrl}/save/${paymentId}`, {});
   }
 }
