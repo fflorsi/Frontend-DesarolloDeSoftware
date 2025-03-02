@@ -20,9 +20,6 @@ export class OrderService {
   }
 
   // Crear un nuevo pedido
-  createOrder(order: Order): Observable<{ message: string; order: Order }> {
-    return this.http.post<{ message: string; order: Order }>(`${this.myAppUrl}${this.myApiUrl}`, order);
-  }
 
   createOrderTest(orderData:any): Observable<any>{
     return this.http.post<any>('http://localhost:3000/api/payment/create', orderData)

@@ -197,7 +197,6 @@ export const routes: Routes = [
         { path: 'editClient/:id', component: AddEditClientComponent },
         { path: 'detailClient/:id', component: DetailClientComponent },
         { path: 'listPets/:id', component: ListPetsComponent },
-        { path: 'success', component: CheckoutComponent},
   
         // Mascota
         { path: 'ViewPet/:petId', component: ViewPetComponent },
@@ -251,6 +250,7 @@ export const routes: Routes = [
     {path: 'listOrders', component: ListOrdersComponent},
     { path: 'detailOrder/:id', component: DetailOrderComponent },
     {path:'sidecart',component: SideCartComponent},
+    { path: 'success', component: CheckoutComponent},
 
     //Contacto
     {path: 'contact', component: ContactComponent},

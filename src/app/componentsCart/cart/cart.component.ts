@@ -115,52 +115,8 @@ export class CartComponent implements OnInit {
     return undefined;
   }
 
-  checkout() {
-    if (!this.isUserLoggedIn) {
-      alert('Necesitas iniciar sesión para realizar la compra');
-      // Redirigir a la página de inicio de sesión
-      this.router.navigate(['/login']);  // Redirige a la ruta '/login'
-      return;
-    }
-  
-    const clientId = this.getClientIdFromToken();  // Obtener el clientId del token
-  
-    if (!clientId) {
-      alert('No se pudo obtener el cliente desde el token');
-      return;
-    }
-  
-    const orderItems: OrderItem[] = this.items.map(item => ({
-      id: item.id || 0,
-      quantity: item.quantity || 1,
-      price: item.price,
-      product: {
-        id: item.id || 0,
-        name: item.name || 'Unknown Product'
-      }
-    }));
-  
-    const order: Order = {
-      items: orderItems,
-      total: this.total,
-      clientId: clientId,  
-    };
-  
-    this._orderService.createOrder(order).subscribe({
-      next: (response) => {
-        console.log('Pedido realizado con éxito', response);
-        alert('Pedido realizado con éxito!');
-        this.cleanCart();
-      },
-      error: (error) => {
-        console.error('Error al realizar el pedido', error);
-        alert('Hubo un error al realizar el pedido');
-      }
-    });
-  }
 
-
-  checkoutTest(){
+  checkout(){
     if (!this.isUserLoggedIn) {
       alert('Necesitas iniciar sesión para realizar la compra');
       // Redirigir a la página de inicio de sesión
@@ -200,26 +156,34 @@ export class CartComponent implements OnInit {
     }
     this._orderService.createOrderTest(orderData).subscribe({
     next: (response) => {
-      const url = response.url;
-      const paymentWindow = window.open(url);
-      if (paymentWindow) {
-        // Escuchar el evento de cierre de la ventana de pago
-        const interval = setInterval(() => {
+    const url = response.url
+    const paymentWindow = window.open(url)
+
+    if (paymentWindow) {
+      const interval = setInterval(() => {
+        try {
           if (paymentWindow.closed) {
-            clearInterval(interval);
-            // Redirigir a /checkout después de que se cierre la ventana de pago
-            this.router.navigate(['/checkout']);
+            clearInterval(interval)
+            return
           }
-        }, 1000); // Verificar cada segundo si la ventana está cerrada
-      } else {
-        alert('Por favor, permite las ventanas emergentes para continuar con el pago.');
-      }
-    },
-    error: (error) => {
-      console.error('Error al realizar el pedido', error);
-      alert('Hubo un error al realizar el pedido');
+          if (paymentWindow.location.href.includes('http://localhost:4200/success')) {
+            this.cleanCart()
+            clearInterval(interval)
+          }
+        } catch (error) {
+          console.error('Error al acceder a la ventana de pago', error)
+        }
+      }, 500)
+    } else {
+      console.error('No se pudo abrir la ventana de pago. Asegúrate de que no esté bloqueada por el navegador.')
+      alert('No se pudo abrir la ventana de pago. Asegúrate de que no esté bloqueada por el navegador.')
     }
-  });
+  },
+  error: (error) => {
+    console.error('Error al realizar el pedido', error)
+    alert('Hubo un error al realizar el pedido')
+  }
+})
   }
 }
 

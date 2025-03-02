@@ -14,7 +14,8 @@ export class CheckoutComponent implements OnInit {
 
   constructor(
     private route: ActivatedRoute,
-    private orderService: OrderService) {}
+    private orderService: OrderService,
+    private _cartService: CartService) {}
 
   ngOnInit(): void {
     this.route.queryParams.subscribe(params => {
@@ -23,9 +24,9 @@ export class CheckoutComponent implements OnInit {
     });
     if (this.paymentId) {
       console.log(this.paymentId)
-        this.savePayment(this.paymentId); // Llamar a la función para guardar el pago
+        this.savePayment(this.paymentId)
       }
-      
+    this._cartService.cleanCart()
   }
 
   savePayment(paymentId: string): void {
