@@ -135,7 +135,7 @@ export class ViewMedicalHistoriesComponent implements OnInit {
   
     dialogRef.afterClosed().subscribe(result => {
       if (result) {
-        this.getMedicalHistories(); // Refrescar la historia clínica si es necesario
+        window.location.reload();
       }
     });
   }

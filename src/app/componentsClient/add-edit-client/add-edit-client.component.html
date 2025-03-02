@@ -31,7 +31,7 @@
               <span *ngIf="formClient.get('email')?.hasError('required') && formClient.get('email')?.touched">El campo Email es <strong>requerido</strong></span>
 
               <label for="birthDate">Fecha de Nacimiento:</label>
-              <input formControlName="birthDate" type="date" class="form-control mt-2" placeholder="Ingrese Fecha de Nacimiento">
+              <input formControlName="birthDate" type="date" class="form-control mt-2">
               <span *ngIf="formClient.get('birthDate')?.hasError('required') && formClient.get('birthDate')?.touched">El campo Fecha de Naciemiento es <strong>requerido</strong></span>
 
               <div class="row mt-2 text-center">

@@ -11,6 +11,8 @@ export class VaccineComponent implements OnInit {
   vaccines: any[] = [];
   selectedVaccine: any = null;
   newVaccine: any = { name: '' };
+  isAddDisabled: boolean = true;
+
 
   constructor(private httpProviderService: HttpProviderService
   ) { }
@@ -25,13 +27,25 @@ export class VaccineComponent implements OnInit {
   });
 }
 
-  addVaccine(): void {
-    this.httpProviderService.addVaccine(this.newVaccine).subscribe(vaccine => {
-      this.vaccines.push(vaccine);
-      this.newVaccine = { name: '' }; // Reset input
-      window.location.reload();
-    });
+cancelEdit() {
+  this.selectedVaccine = null;
+}
+
+addVaccine(): void {
+  if (this.newVaccine.name.trim() === '') {
+    return;
   }
+  this.httpProviderService.addVaccine(this.newVaccine).subscribe(vaccine => {
+    this.vaccines.push(vaccine);
+    this.newVaccine = { name: '' }; // Reset input
+    this.isAddDisabled = true;
+    window.location.reload();
+  });
+}
+
+onNameChange(): void {
+  this.isAddDisabled = this.newVaccine.name.trim() === '';
+}
 
   editVaccine(vaccine: any): void {
     this.selectedVaccine = { ...vaccine }; // Clonar el objeto
@@ -50,6 +64,12 @@ updateVaccine(): void {
       console.error('Error al actualizar la vacuna:', error);
 
     });
+  }
+}
+confirmDeleteVaccine(vaccineId: number) {
+  const confirmed = confirm('¿Está seguro de que desea eliminar esta vacuna?');
+  if (confirmed) {
+    this.deleteVaccine(vaccineId);
   }
 }
 

@@ -89,3 +89,15 @@ a {
     margin-left: 10px; /* Espaciado a la izquierda */
 }
 
+.error{
+    font-family: 'Inter', sans-serif;
+    color: red;
+    font-size: 12px;
+    padding: 10px;
+}
+
+select {
+    appearance: auto;
+    -webkit-appearance: menulist;
+    -moz-appearance: menulist;
+  }

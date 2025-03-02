@@ -70,9 +70,17 @@ textarea:focus {
     background-color: #4c4152; /* Color de fondo */
 }
 
+.btn-primary:hover {
+    background-color: #2b242e; 
+}
+
 /* Estilo del botón secundario */
 .btn-secondary {
     background-color: #c23131; /* Color de fondo */
+}
+
+.btn-secondary:hover {
+    background-color: #a41f1f; 
 }
 
 

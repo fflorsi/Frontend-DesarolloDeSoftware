@@ -34,21 +34,25 @@
 
 
 
-.btn{
+.btn, .btn-del{
     border: none;
     color: white;
     font-family: 'Inter', sans-serif;
     margin: 5px;
-    background-color: #4c4152;
+    padding: 4px 8px;
+    border-radius: 0.25rem;
+    font-size: 0.875rem;
 }
 
-.btn-info{
+.btn{
     background-color: #4c4152;
+
 }
-.btn-secondary{
+.btn-del{
     background-color: #c23131;
     
 }
+
 .table tbody tr:hover .actions{
     display: inline-block;
 }

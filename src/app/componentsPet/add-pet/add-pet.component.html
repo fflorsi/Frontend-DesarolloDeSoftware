@@ -44,11 +44,12 @@
             </div>
             <div class="form-group p-10 row">
               <div class="col-sm-3">
-                <label class="p-t-b-10">Tipo<span class="requiredStar">*</span></label>
+                <label for="Type" class="p-t-b-10">Tipo<span class="requiredStar">*</span></label>
               </div>
               <div class="col-sm-9">
-                <input type="text" class="form-control" id="Type" required maxlength="255"
-                  [(ngModel)]="addPetForm.Type" name="Type" #Type="ngModel">
+                <select class="form-control" id="Type" required [(ngModel)]="addPetForm.Type" name="Type" #Type="ngModel">
+                  <option *ngFor="let type of availableTypes" [value]="type.id">{{ type.name }}</option>
+                </select>
                 <div *ngIf="Type.errors && isSubmitted" class="alert alert-danger validationError">
                   <div [hidden]="!Type.errors?.['required']">
                     Tipo is required

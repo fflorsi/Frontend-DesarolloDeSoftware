@@ -1,5 +1,5 @@
 
-    <h2>Seleccionar Vacuna</h2>
+    <h2 class="title">Seleccionar Vacuna</h2>
     <div>
       <mat-list>
         <mat-list-item *ngFor="let vaccine of vaccines">
@@ -10,6 +10,6 @@
       </mat-list>
     </div>
     <div class="dialog-actions">
-      <button class="btn" mat-button color="primary" (click)="linkVaccine()">Vincular Vacuna</button>
-      <button class="btn-cancel" mat-button (click)="dialogRef.close()">Cancelar</button>
+      <button class="btn" (click)="linkVaccine()">Vincular Vacuna</button>
+      <button class="btn-cancel" (click)="dialogRef.close()">Cancelar</button>
     </div>

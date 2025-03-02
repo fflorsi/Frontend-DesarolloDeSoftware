@@ -1,4 +1,10 @@
-/* misto estilo que Estilos para el formulario de añadir/editar instalación */
+
+select {
+    appearance: auto;
+    -webkit-appearance: menulist;
+    -moz-appearance: menulist;
+  }
+
 .container {
     max-width: 70%; 
     margin: 0 auto; 
@@ -87,5 +93,13 @@ a {
     text-decoration: none; /* Sin subrayado */
     color: #fff; /* Texto blanco */
     margin-left: 10px; /* Espaciado a la izquierda */
+}
+
+
+.error{
+    font-family: 'Inter', sans-serif;
+    color: red;
+    font-size: 12px;
+    padding: 10px;
 }
 

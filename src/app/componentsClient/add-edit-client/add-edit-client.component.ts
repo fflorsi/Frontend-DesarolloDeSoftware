@@ -51,6 +51,7 @@ export class AddEditClientComponent implements OnInit {
       next: (response: any) => { // Usa 'any' para la respuesta
         const data = response.data; // Accede a 'data' directamente
         this.loading = false;
+        const birthdate = new Date(data.birthDate).toISOString().split('T')[0]; // Convertir la fecha al formato YYYY-MM-DD
         this.formClient.setValue({
           dni: data.dni,
           firstname: data.firstname,
@@ -58,7 +59,7 @@ export class AddEditClientComponent implements OnInit {
           address: data.address,
           phone: data.phone,
           email: data.email,
-          birthDate: data.birthDate
+          birthDate: birthdate
         });
       },
       error: (err) => {

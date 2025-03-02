@@ -1,117 +1,97 @@
-.btn {
-    border: none;
-    padding: 10px 15px;
-    font-size: 14px;
-    cursor: pointer;
-    background-color: #3F3B57;
-    color: #f0f0f0;
-}
-
-b{
-  font-size: 20px;
-  margin-bottom: 10px;
-  font-weight: 700;
-}
-
-
-.observations-table {
-  width: 100%;
-  border-collapse: collapse;
-  margin-top: 10px;
-}
-
-.observations-table th,
-.observations-table td {
-  border: 1px solid #ddd;
-  padding: 8px;
-  text-align: left;
-}
-
-.observations-table th {
-  background-color: #f2f2f2;
-  font-weight: bold;
-}
-
-.observations-table tr:hover {
-  background-color: #f1f1f1;
-}
-
-
-
-.vaccines-table {
-  width: 100%;
-  border-collapse: collapse;
-  margin-top: 10px;
-}
-
-.vaccines-table th,
-.vaccines-table td {
-  border: 1px solid #ddd;
-  padding: 10px;
-  text-align: left;
-}
-
-.vaccines-table th {
-  background-color: #e9ecef;
-  font-weight: bold;
-}
-
-.vaccines-table tr:hover {
-  background-color: #f8f9fa;
-}
-
-.vaccines-table td {
-  color: #495057;
-}
-
-.vaccines-table, .observations-table {
-  width: 100%; /* Asegura que la tabla ocupe todo el ancho disponible */
-  border-collapse: collapse; /* Opcional: para eliminar espacios entre celdas */
-}
-
-.vaccines-table th, .vaccines-table td,
-.observations-table th, .observations-table td {
-  border: 1px solid #ddd; /* Agrega borde a las celdas */
-  padding: 8px; /* Espaciado interno en las celdas */
-  text-align: left; /* Alineación del texto */
-}
-
-.vaccines-table th, .observations-table th {
-  background-color: #f2f2f2; /* Color de fondo para los encabezados */
-  font-weight: bold; /* Hace que el texto del encabezado sea más grueso */
-}
-
 .fixed-size {
   width: 100%;
   max-width: 600px;
   margin: auto;
 }
 
+.btn {
+    font-family: 'inter', sans-serif;
+    border: none;
+    padding: 10px;
+    font-size: 14px;
+    cursor: pointer;
+    background-color: #3F3B57;
+    color: #f0f0f0;
+}
+
+.btn:hover {
+  transform: background-color ease 0.3s;
+  background-color: #282638;
+}
+
+.title{
+  font-size: 20px;
+  padding: 10px;
+  font-weight: 700;
+  font-family: 'inter', sans-serif;
+}
+
+.sec-title{
+  font-size: 16px;
+  padding: 10px;
+  font-weight: 600;
+  font-family: 'inter', sans-serif;
+}
+
+.text{
+  font-family: 'inter', sans-serif;
+  font-size:14px;
+  padding: 10px;
+}
+
+i{
+  color:red;
+  cursor:pointer;
+}
+
+th{
+  background-color: #bbbbbb6e;
+}
+
+
+.vaccines-table tr:hover {
+  background-color: #f8f9fa;
+}
+
+
 .vaccines-table td {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  color: #495057;
 }
+
+.vaccines-table th,
+.vaccines-table td{
+  border: 1px solid #ddd;
+  padding: 8px;
+  text-align: left;
+}
+
+
 
 .vaccines-table,
 .observations-table {
   width: 100%;
   border-collapse: collapse;
-  /* Para un aspecto más limpio */
+  margin-top: 10px;
 }
 
-.vaccines-table th,
 .observations-table th,
-.vaccines-table td,
 .observations-table td {
   border: 1px solid #ddd;
   padding: 8px;
   text-align: left;
 }
 
-.mat-paginator {
-  margin-top: 16px;
+
+.observations-table tr:hover {
+  background-color: #f8f9fa;
 }
+
+
+
+//paginator va en el back
 
 .mat-paginator .mat-icon-button:hover .mat-button-wrapper {
   visibility: hidden;
@@ -120,6 +100,7 @@ b{
 .mat-paginator .mat-icon-button:hover {
   color: inherit;
 }
+
 
 .observation-item {
   display: flex;
@@ -166,7 +147,7 @@ b{
   transform: translate(-50%, -50%) !important;
   padding: 20px;
   border-radius: 8px;
-  z-index: 1000; /* Asegúrate de que el z-index sea suficientemente alto */
+  z-index: 1000;
   width: 400px;
   max-height: 90%;
   overflow-y: auto;
@@ -175,9 +156,3 @@ b{
 
 
 
-
-.unlink-vaccine {
-  margin-left: auto;
-  background-color: #e9ecef;
-  cursor: pointer;
-}

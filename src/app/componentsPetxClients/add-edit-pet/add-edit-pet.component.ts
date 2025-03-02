@@ -1,9 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators, AbstractControl, ValidationErrors } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import {Pet} from '@app/interfaces/pet';
 import { PetService } from '@app/services/pet.service';
+import { TypeService } from '@app/services/type.service';
+import { Type } from '@app/interfaces/type';
 
 @Component({
   selector: 'app-add-edit-pet',
@@ -16,19 +18,21 @@ export class AddEditPetComponent {
   id: number;
   clientId: number; // Obtenemos el clientId de la URL
   operacion: string = 'Añadir';
+  availableTypes: Type[] = [];
 
   constructor(
     private fb: FormBuilder,
     private _petService: PetService,
     private router: Router,
     private toastr: ToastrService,
-    private aRouter: ActivatedRoute
+    private aRouter: ActivatedRoute,
+    private typeService: TypeService
   ) {
     this.formPet = this.fb.group({
       name: ['', Validators.required],
       birthdate: ['', Validators.required],
       type: [null, [Validators.required, Validators.pattern('^[0-9]*$')]], // Para asegurar que es un número
-      breed: ['', Validators.required],
+      breed: ['', [Validators.required, this.noNumbersValidator]],
       weight: [null, [Validators.required, Validators.min(0)]], // Peso mínimo 0
     });
 
@@ -38,11 +42,17 @@ export class AddEditPetComponent {
   }
 
   ngOnInit(): void {
+    this.getAvailableTypes();
     console.log(this.id);
     if (this.id !== 0) {
       this.operacion = 'Editar';
       this.getPet(this.id);
     }
+  }
+
+  noNumbersValidator(control: AbstractControl): ValidationErrors | null {
+    const hasNumber = /\d/.test(control.value);
+    return hasNumber ? { hasNumber: true } : null;
   }
 
   getPet(id: number) {
@@ -51,9 +61,10 @@ export class AddEditPetComponent {
       next: (response: any) => {
         const data = response.data;
         this.loading = false;
+        const birthdate = new Date(data.birthdate).toISOString().split('T')[0]; // Convertir la fecha al formato YYYY-MM-DD
         this.formPet.setValue({
           name: data.name,
-          birthdate: data.birthdate,
+          birthdate: birthdate,
           type: data.type,
           breed: data.breed,
           weight: data.weight,
@@ -114,6 +125,20 @@ export class AddEditPetComponent {
     }, error => {
         this.toastr.error('Error al crear la historia clínica', 'Error');
     });
+}
+getAvailableTypes(): void {
+  this.loading = true;
+  this.typeService.getTypes().subscribe({
+    next: (response: any) => {
+      console.log('Tipos disponibles:', response.data);
+      this.availableTypes = response.data;
+      this.loading = false;
+    },
+    error: (err) => {
+      this.toastr.error('Error al obtener los tipos disponibles', 'Error');
+      this.loading = false;
+    }
+  });
 }
 }
 

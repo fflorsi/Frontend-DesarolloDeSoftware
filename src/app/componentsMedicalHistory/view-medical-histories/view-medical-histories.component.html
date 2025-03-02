@@ -3,19 +3,19 @@
 </div>
 
 <div *ngIf="medicalHistory" class="container fixed-size">
-  <b>Historia Clínica</b>
+  <b class="title">Historia Clínica</b>
 
   <!-- Mostrar vacunas solo si hay -->
   <div *ngIf="medicalHistory?.Vaccines?.length > 0">
     <table class="vaccines-table">
       <thead>
         <tr>
-          <th>Vacunas</th>
+          <th class="sec-title">Vacunas</th>
         </tr>
       </thead>
       <tbody>
         <tr *ngFor="let vaccine of paginatedVaccines">
-          <td>{{ vaccine.name }} <a class="unlink-vaccine" (click)="unlinkVaccine(medicalHistory.id, vaccine.id)">
+          <td class="text">{{ vaccine.name }} <a class="unlink-vaccine" (click)="unlinkVaccine(medicalHistory.id, vaccine.id)">
             <i class="fas fa-trash"></i></a></td>
         </tr>
       </tbody>

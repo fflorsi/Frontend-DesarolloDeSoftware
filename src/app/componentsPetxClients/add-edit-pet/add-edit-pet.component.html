@@ -7,28 +7,32 @@
                 <form [formGroup]="formPet" (ngSubmit)="addPet()">
                   <!-- Nombre de la Mascota -->
                     <label for="name">Nombre:</label>
-                  <input formControlName="name" type="text" class="form-control" placeholder="Ingrese Nombre de la Mascota">
-                  <span *ngIf="formPet.get('name')?.hasError('required') && formPet.get('name')?.touched">El campo Nombre es <strong>requerido</strong></span>
+                  <input  formControlName="name" type="text" class="form-control" placeholder="Ingrese Nombre de la Mascota">
+                  <span class="error" *ngIf="formPet.get('name')?.hasError('required') && formPet.get('name')?.touched">El campo Nombre es <strong>requerido</strong></span>
 
                   <!-- Fecha de Nacimiento -->
                     <label for="birthdate">Fecha de Nacimiento:</label>
-                  <input formControlName="birthdate" type="date" class="form-control mt-2" placeholder="Ingrese Fecha de Nacimiento">
-                  <span *ngIf="formPet.get('birthdate')?.hasError('required') && formPet.get('birthdate')?.touched">El campo Fecha de Nacimiento es <strong>requerido</strong></span>
+                  <input formControlName="birthdate" type="date" class="form-control mt-2" >
+                  <span class="error" *ngIf="formPet.get('birthdate')?.hasError('required') && formPet.get('birthdate')?.touched">El campo Fecha de Nacimiento es <strong>requerido</strong></span>
 
                   <!-- Tipo de Mascota -->
-                    <label for="type">Tipo de Mascota:</label>
-                  <input formControlName="type" type="number" class="form-control mt-2" placeholder="Ingrese Tipo de Mascota (1: Perro, 2: Gato, etc.)">
-                  <span *ngIf="formPet.get('type')?.hasError('required') && formPet.get('type')?.touched">El campo Tipo de Mascota es <strong>requerido</strong></span>
+                  <label for="type">Tipo de Mascota:</label>
+                  <select formControlName="type" class="form-control" id="Type">
+                    <option *ngFor="let type of availableTypes" [value]="type.id">{{ type.name }}</option>
+                  </select>
+                  <span class="error" *ngIf="formPet.get('type')?.hasError('required') && formPet.get('type')?.touched">El campo Tipo de Mascota es <strong>requerido</strong></span>
 
                   <!-- Raza -->
-                    <label for="breed">Raza:</label>
-                  <input formControlName="breed" type="text" class="form-control mt-2" placeholder="Ingrese Raza">
-                  <span *ngIf="formPet.get('breed')?.hasError('required') && formPet.get('breed')?.touched">El campo Raza es <strong>requerido</strong></span>
+                  <label for="breed">Raza:</label>
+                  <input formControlName="breed" type="text" class="form-control mt-2" placeholder="Ingrese Raza" pattern="[A-Za-z\s]+" title="La raza no puede contener números">
+                  <span class="error" *ngIf="formPet.get('breed')?.hasError('required') && formPet.get('breed')?.touched">El campo Raza es <strong>requerido</strong></span>
+                  <span class="error" *ngIf="formPet.get('breed')?.hasError('hasNumber') && formPet.get('breed')?.touched">La raza no puede contener números</span>
 
-                  <!-- Peso -->
+                    <!-- Peso -->
                     <label for="weight">Peso en kg:</label>
-                  <input formControlName="weight" type="number" class="form-control mt-2" placeholder="Ingrese Peso en kg">
-                  <span *ngIf="formPet.get('weight')?.hasError('required') && formPet.get('weight')?.touched">El campo Peso es <strong>requerido</strong></span>
+                    <input formControlName="weight" type="number" class="form-control mt-2" placeholder="Ingrese Peso en kg" min="0">
+                    <span class="error" *ngIf="formPet.get('weight')?.hasError('required') && formPet.get('weight')?.touched">El campo Peso es <strong>requerido</strong></span>
+                    <span class="error" *ngIf="formPet.get('weight')?.hasError('min') && formPet.get('weight')?.touched">El peso debe ser mayor que 0</span>
                   
                   <!-- Botones de Acción -->
                   <div class="row mt-2 text-center">

@@ -13,13 +13,37 @@ export class AccountSettingsPrComponent implements OnInit {
   newPassword: string = '';
   isChangingUsername: boolean = false;
   isChangingPassword: boolean = false;
+  currentUsername: string = '';
+  
 
   constructor(
     private userService: UserService,
     private toastr: ToastrService
   ) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.getCurrentUsername();
+  }
+
+  getCurrentUsername(): void {
+    const token = localStorage.getItem('authToken');
+    if (token) {
+      const decodedToken = jwtDecode<any>(token);
+      const userId = decodedToken.id; // Obtener id desde el token
+
+      this.userService.getUserById(userId).subscribe(
+        (user: { username: string }) => {
+          this.currentUsername = user.username;
+        },
+        (error: any) => {
+          console.error('Error al obtener el nombre de usuario actual:', error);
+        }
+      );
+    } else {
+      console.error('Token no encontrado');
+    }
+  }
+
 
   toggleChange(field: string): void {
     if (field === 'username') {
@@ -71,5 +95,10 @@ export class AccountSettingsPrComponent implements OnInit {
     } else {
       console.error('Token no encontrado');
     }
+  }
+
+  cancelChange() {
+    this.isChangingUsername = false;
+    this.isChangingPassword = false;
   }
 }

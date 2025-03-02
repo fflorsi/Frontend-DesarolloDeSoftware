@@ -8,15 +8,15 @@
         <strong>Dirección:</strong> {{ clientData.address }}<br>
         <strong>Teléfono:</strong> {{ clientData.phone }}<br>
         <strong>Email:</strong> {{ clientData.email }}<br>
-        <strong>Fecha de Nacimiento:</strong> {{ clientData.birthDate}}
+        <strong>Fecha de Nacimiento:</strong> {{ clientData.birthDate | date:'dd/MM/yyyy' }}<br>
       </p>
     </div>
     <div class="row mt-2 text-center">
         <div class="col lg-6">  
-            <button routerLink="/editClient/{{clientData.id}}" type="button" class="btn btn-info btn-sm" >Editar</button>
+            <button routerLink="/editClient/{{clientData.id}}" type="button" class="btn">Editar</button>
         </div>
         <div class="col lg-6">             
-            <button (click)="deleteClient(clientData.id!)" type="button" class="btn btn-danger btn-sm ms-2">Eliminar</button>
+            <button (click)="deleteClient(clientData.id!)" type="button" class="btn-del">Eliminar</button>
         </div>
       </div>
     </div>
