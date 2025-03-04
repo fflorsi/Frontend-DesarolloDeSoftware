@@ -27,22 +27,23 @@ export class CheckoutComponent implements OnInit {
     if (this.paymentId) {
       console.log(this.paymentId)
       this.savePayment(this.paymentId)
-      this.getDetail(this.paymentId)
       this._cartService.cleanCart()
       }
   }
 
-  savePayment(paymentId: string): void {
-    this.orderService.savePayment(paymentId).subscribe(
+  async savePayment(paymentId: string): Promise<void> {
+    await this.orderService.savePayment(paymentId).subscribe(
       response => {
         console.log('Pago guardado con éxito:', response);
+        this.getDetail(paymentId)
       },
       error => {
         console.error('Error al guardar el pago:', error);
+        this.getDetail(paymentId)
       }
     );
   }
-  getDetail(paymentId: string): void{
+   getDetail(paymentId: string): void{
     this.orderService.getOrderByPaymentId(paymentId).subscribe(
       order => {
         this.order = order
