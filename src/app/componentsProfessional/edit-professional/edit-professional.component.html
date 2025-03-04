@@ -8,37 +8,37 @@
           <!-- DNI -->
           <label for="dni">DNI:</label>
           <input id="dni" type="text" class="form-control" formControlName="dni" required maxlength="255">
-          <span *ngIf="formProfessional.get('dni')?.errors?.required && formProfessional.get('dni')?.touched">El campo DNI es <strong>requerido</strong></span>
+          <span class="error" *ngIf="formProfessional.get('dni')?.errors?.required && formProfessional.get('dni')?.touched">El campo DNI es <strong>requerido</strong></span>
 
           <!-- Apellido -->
           <label for="lastname">Apellido:</label>
           <input id="lastname" type="text" class="form-control mt-2" formControlName="lastname" required maxlength="255">
-          <span *ngIf="formProfessional.get('lastname')?.errors?.required && formProfessional.get('lastname')?.touched">El campo Apellido es <strong>requerido</strong></span>
+          <span class="error" *ngIf="formProfessional.get('lastname')?.errors?.required && formProfessional.get('lastname')?.touched">El campo Apellido es <strong>requerido</strong></span>
 
           <!-- Nombre -->
           <label for="firstname">Nombre:</label>
           <input id="firstname" type="text" class="form-control mt-2" formControlName="firstname" required maxlength="255">
-          <span *ngIf="formProfessional.get('firstname')?.errors?.required && formProfessional.get('firstname')?.touched">El campo Nombre es <strong>requerido</strong></span>
+          <span class="error" *ngIf="formProfessional.get('firstname')?.errors?.required && formProfessional.get('firstname')?.touched">El campo Nombre es <strong>requerido</strong></span>
 
           <!-- Dirección -->
           <label for="address">Dirección:</label>
           <input id="address" type="text" class="form-control mt-2" formControlName="address" required maxlength="255">
-          <span *ngIf="formProfessional.get('address')?.errors?.required && formProfessional.get('address')?.touched">El campo Dirección es <strong>requerido</strong></span>
+          <span  class="error" *ngIf="formProfessional.get('address')?.errors?.required && formProfessional.get('address')?.touched">El campo Dirección es <strong>requerido</strong></span>
 
           <!-- Teléfono -->
           <label for="phone">Teléfono:</label>
           <input id="phone" type="text" class="form-control mt-2" formControlName="phone" required maxlength="255">
-          <span *ngIf="formProfessional.get('phone')?.errors?.required && formProfessional.get('phone')?.touched">El campo Teléfono es <strong>requerido</strong></span>
+          <span class="error" *ngIf="formProfessional.get('phone')?.errors?.required && formProfessional.get('phone')?.touched">El campo Teléfono es <strong>requerido</strong></span>
 
           <!-- Email -->
           <label for="email">Email:</label>
           <input id="email" type="email" class="form-control mt-2" formControlName="email" required maxlength="255">
-          <span *ngIf="formProfessional.get('email')?.errors?.required && formProfessional.get('email')?.touched">El campo Email es <strong>requerido</strong></span>
+          <span class="error" *ngIf="formProfessional.get('email')?.errors?.required && formProfessional.get('email')?.touched">El campo Email es <strong>requerido</strong></span>
 
           <!-- Fecha de Nacimiento -->
           <label for="birthDate">Fecha de Nacimiento:</label>
           <input id="birthDate" type="date" class="form-control mt-2" formControlName="birthDate" required>
-          <span *ngIf="formProfessional.get('birthDate')?.errors?.required && formProfessional.get('birthDate')?.touched">El campo Fecha de Nacimiento es <strong>requerido</strong></span>
+          <span class="error" *ngIf="formProfessional.get('birthDate')?.errors?.required && formProfessional.get('birthDate')?.touched">El campo Fecha de Nacimiento es <strong>requerido</strong></span>
 
           <!-- Botones de Acción -->
           <div class="row mt-2 text-center">

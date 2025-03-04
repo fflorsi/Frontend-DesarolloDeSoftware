@@ -50,6 +50,7 @@ export class EditProfessionalComponent implements OnInit {
         const data = response.data;
         console.log('Datos del profesional:', data);
         this.loading = false;
+        const birthdate = new Date(data.birthDate).toISOString().split('T')[0];
         this.formProfessional.setValue({
           dni: data.dni,
           lastname: data.lastname,
@@ -57,7 +58,7 @@ export class EditProfessionalComponent implements OnInit {
           address: data.address,
           phone: data.phone,
           email: data.email,
-          birthDate: data.birthDate,
+          birthDate: birthdate,
         });
       },
       error: (err) => {

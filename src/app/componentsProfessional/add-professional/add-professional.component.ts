@@ -19,12 +19,17 @@ export class AddProfessionalComponent implements OnInit {
   operacion: string = 'Añadir';
   tempPassword: string = ''
 
+  modalData = {
+    email: '',
+    tempPassword: ''
+  };
+
   constructor(
     private fb: FormBuilder,
     private _professionalService: ProfessionalService,
     private router: Router,
     private toastr: ToastrService,
-    private aRouter: ActivatedRoute
+    private aRouter: ActivatedRoute,
   ) {
     this.formProfessional = this.fb.group({
       dni: ['', Validators.required],
@@ -69,7 +74,6 @@ export class AddProfessionalComponent implements OnInit {
       }
     });
   }
-
   addProfessional() {
     if (this.formProfessional.invalid) {
       this.toastr.error('Por favor, complete todos los campos requeridos', 'Formulario inválido');
@@ -86,7 +90,6 @@ export class AddProfessionalComponent implements OnInit {
       birthDate: this.formProfessional.value.birthDate,
     };
 
-
     this.loading = true;
     this._professionalService.saveProfessional(professional).subscribe(
       response => {
@@ -97,19 +100,32 @@ export class AddProfessionalComponent implements OnInit {
 
         // Mostrar la contraseña temporal en la interfaz de usuario
         this.tempPassword = response.data.user.tempPassword;
-        this.toastr.info(`La contraseña temporal es: ${this.tempPassword}`, 'Información',{
-          timeOut: 5000
-        });
-
+        this.modalData.email = professional.email;
+        this.modalData.tempPassword = this.tempPassword;
+        this.openModal();
         this.loading = false;
-        this.router.navigate(['/viewAllProfessionals']);
+        //this.router.navigate(['/viewAllProfessionals']);
       },
-      error => {
-        console.error('Error al crear el profesional:', error);
+      err => {
+        console.error('Error al crear el profesional:', err);
         this.loading = false;
         this.toastr.error('No se pudo crear el profesional', 'Error');
       }
     );
-    }
-
   }
+
+  openModal() {
+    const modal = document.getElementById("tempPasswordModal");
+    if (modal) {
+      modal.style.display = "block";
+    }
+  }
+
+  closeModal() {
+    const modal = document.getElementById("tempPasswordModal");
+    if (modal) {
+      modal.style.display = "none";
+    }
+    this.router.navigate(['/viewAllProfessionals']);
+  }
+}
