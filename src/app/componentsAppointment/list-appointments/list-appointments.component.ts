@@ -25,7 +25,7 @@ export class ListAppointmentsComponent implements OnInit {
   getAppointments(): void {
     this._appointmentService.getAllAppointmentsWithDetails().subscribe(
       data => {
-        console.log(data);
+        (data);
         this.appointments = data;
         this.sortAppointmentsByDateTime(); 
         this.loading = false;
