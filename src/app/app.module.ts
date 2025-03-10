@@ -95,6 +95,12 @@ import { MostAttendedPetsComponent } from './reportComponent/most-attended-pets/
 import { InfoComponent } from './home/info/info.component';
 import { SideCartComponent } from './componentsCart/side-cart/side-cart.component';
 import { FooterComponent } from './footer/footer.component';
+import { MatIconModule } from '@angular/material/icon';
+import { MatSelectModule } from '@angular/material/select';
+import { MatOptionModule } from '@angular/material/core';
+import { DatePipe } from '@angular/common';
+
+
 
 
 
@@ -200,11 +206,14 @@ import { FooterComponent } from './footer/footer.component';
     MatNativeDateModule,
     MatListModule,
     MatCheckboxModule,
-    MatExpansionModule 
+    MatExpansionModule,
+    MatIconModule,
+    MatSelectModule,
+    MatOptionModule
   ],
-  providers: [
+  providers: [ DatePipe,
     { provide: HTTP_INTERCEPTORS, useClass: AddTokenInterceptor, multi: true }
-  ],
+  ],  
   bootstrap: [AppComponent]
 })
 export class AppModule {}

@@ -44,6 +44,11 @@ i{
   cursor:pointer;
 }
 
+.obs{
+  color:#3F3B57;
+  cursor:pointer;
+}
+
 th{
   background-color: #bbbbbb6e;
 }
@@ -146,13 +151,14 @@ th{
   left: 50% !important;
   transform: translate(-50%, -50%) !important;
   padding: 20px;
-  border-radius: 8px;
   z-index: 1000;
   width: 400px;
   max-height: 90%;
   overflow-y: auto;
 
 }
+
+
 
 
 

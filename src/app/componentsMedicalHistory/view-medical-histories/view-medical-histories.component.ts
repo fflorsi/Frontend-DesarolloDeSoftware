@@ -190,8 +190,9 @@ openEditObservationDialog(observation: any): void {
         data: { observation },
         disableClose: true,
         autoFocus: true,
-        panelClass: ['custom-dialog', 'centered-dialog'],
+        panelClass: ['custom-dialog', 'centered-dialog', 'custom-dialog-container'],
         backdropClass: 'custom-backdrop'
+        
     });
 
     dialogRef.afterClosed().subscribe(result => {

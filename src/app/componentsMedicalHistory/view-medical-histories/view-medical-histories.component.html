@@ -33,27 +33,27 @@
       <table class="observations-table">
         <thead>
           <tr>
-            <th>Id</th>
-            <th>Observación</th>
-            <th>Fecha</th>
-            <th>Profesional</th>
+            <th class="sec-title">Id</th>
+            <th class="sec-title">Observación</th>
+            <th class="sec-title">Fecha</th>
+            <th class="sec-title">Profesional</th>
           </tr>
         </thead>
         <tbody>
           <tr *ngFor="let observation of paginatedObservations">
-            <td>{{observation.id}}</td>
+            <td class="text">{{observation.id}}</td>
             <td>
               <div class="observation-item">
-                <span>{{ observation?.description?.length > 50 ? (observation.description | slice:0:20) + '...' : observation.description }}</span>
+                <span class="text">{{ observation?.description?.length > 50 ? (observation.description | slice:0:20) + '...' : observation.description }}</span>
                 <div class="observation-actions">
-                  <a class="edit-observation" (click)="openEditObservationDialog(observation)"><i class="fas fa-edit"></i></a>
-                  <a class="show-observation" (click)="openShowObservationDialog(observation)"><i class="fas fa-eye"></i></a>
+                  <a class="edit-observation" (click)="openEditObservationDialog(observation)"><i class="obs fas fa-edit"></i></a>
+                  <a class="show-observation" (click)="openShowObservationDialog(observation)"><i class="obs fas fa-eye"></i></a>
                   <a class="delete-observation" (click)="openDeleteObservationDialog(observation)"><i class="fas fa-trash"></i></a>
                 </div>
               </div>
             </td>
-            <td>{{ observation.createdAt | date: 'shortDate' || 'Fecha no disponible' }}</td>
-            <td>{{ observation.professionalData?.lastname + ', ' + observation.professionalData?.firstname  || 'Profesional no disponible' }}</td>
+            <td class="text">{{ observation.createdAt | date: 'shortDate' || 'Fecha no disponible' }}</td>
+            <td class="text">{{ observation.professionalData?.lastname + ', ' + observation.professionalData?.firstname  || 'Profesional no disponible' }}</td>
           </tr>
         </tbody>
       </table>

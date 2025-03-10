@@ -17,9 +17,9 @@ export class ProfessionalService {
     this.myApiUrl = 'api/professionals';
    }
 
-   getProfessionals(): Observable<Professional[]> {
-     return this.http.get<Professional[]>(`${this.myAppUrl}${this.myApiUrl}`);
-   }
+  getProfessionals(): Observable<Professional[]> {
+    return this.http.get<Professional[]>(`${this.myAppUrl}${this.myApiUrl}`);
+  }
 
    public deleteProfessionalById(id: number): Observable<void> {
      return this.http.delete<void>(`${this.myAppUrl}${this.myApiUrl}/${id}`);
