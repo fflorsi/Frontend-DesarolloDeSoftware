@@ -48,7 +48,6 @@ export class FacilityShopComponent implements OnInit {
   }
 
   filterFacilities() {
-   Llama al servicio para buscar facilities por nombre
     this._facilityService.searchFacilitiesByName(this.searchTerm).subscribe((response: any) => {
       this.listFacilities = response.data;
       this.setPaginatedFacilities(); // Actualiza la paginación
