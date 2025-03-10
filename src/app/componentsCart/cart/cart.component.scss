@@ -1,0 +1,151 @@
+* {
+  box-sizing: border-box;
+}
+
+h2{
+  font-family: 'inter', sans-serif;
+  font-size: 26px;
+  line-height: 46px;
+  color: #393939;
+  font-weight: 500;
+  letter-spacing: 0.45px;
+}
+
+
+.cart-container {
+  display: flex;
+  background-color: whitesmoke;
+  padding: 20px;
+  align-items: center;
+}
+
+.order-details {
+  background-color: #ffffff;
+  padding: 20px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  width: 60%;
+  margin-right: 50px;
+}
+
+.buttons{
+  display: flex;
+  flex-direction: column;
+  margin-top: 20px;
+}
+
+.order-summary {
+  width: 30%;
+  background-color: #ffffff;
+  padding: 20px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  margin-bottom: 20px;
+}
+
+.btn{
+  border-radius:none;
+  border:none;
+  font-family: 'inter', sans-serif;
+  font-size: 16px;
+  line-height: 27px;
+  color:white;
+  font-weight: 600;
+  padding:10px;
+  margin-top: 20px;
+}
+
+.btn-warning{
+  background-color: #7666CA
+}
+
+.btn-success{
+  background-color: #257ae7;
+}
+
+.total-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.total-title {
+  font-family: 'inter', sans-serif;
+  font-size: 16px;
+  line-height: 27px;
+  color: #7f7f7f;
+  font-weight: 400;
+}
+
+
+.items-in-order {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+  font-family: 'inter', sans-serif;
+}
+
+.product-price-delete {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+}
+
+.product-details {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+
+.product-name, .product-price, .total{
+  font-size: 16px;
+  line-height: 27px;
+  font-weight: bold;
+  color: #7f7f7f;
+}
+
+.product-quantity{
+  font-size: 14px;
+  line-height: 20px;
+  font-weight: 400;
+  color: #7f7f7f;
+}
+
+.product-image {
+  width: 110px;
+  height: 70px;
+  margin-right: 10px;
+}
+
+.delete-from-cart {
+  cursor: pointer;
+  color:#7666CA;
+  font-size: 14px;
+  text-decoration: underline;
+}
+
+.quantity-control button {
+  border-radius: 5px;
+  border: none;
+  font-family: 'inter', sans-serif;
+  font-size: 16px;
+  line-height: 27px;
+  color: white;
+  font-weight: 600;
+  padding: 5px 10px;
+  margin: 0 5px;
+  background-color: #7666CA;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  transition: background-color 0.3s, transform 0.3s;
+}
+
+.quantity-control button:hover {
+  background-color: #4c4280;
+  transform: translateY(-2px);
+}
+
+.separator {
+  border: 0;
+  height: 4px;
+  background: #ddd;
+}

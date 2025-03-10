@@ -1,0 +1,38 @@
+<div class="cart-container">
+  <div class="order-details">
+    <h2>Productos en el carrito</h2>
+    <hr class="separator">
+    <div *ngFor="let item of items" class="items-in-order">
+      <img src="..\assets\top-view-pet-accessories-yllow.jpg" class="product-image">
+      <div class="product-details">
+        <p class="product-name">{{ item.name }}</p>
+        <p class="product-quantity">Cantidad: {{ item.quantity || 1 }}</p>
+        <div class="quantity-control d-flex">
+          <button (click)="increaseQuantity(item)" class="btn btn-sm btn-primary mr-2">+</button>
+          <button (click)="decreaseQuantity(item)" class="btn btn-sm btn-primary">-</button>
+        </div>
+      </div>
+      <div class="product-price-delete">
+        <p class="product-price">{{ item.price * (item.quantity || 1) | currency: 'ARS' }}</p>
+        <p class="delete-from-cart" (click)="deleteProduct(item.id)">Eliminar</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="order-summary">
+    <h2>Resumen de la orden</h2>
+    <hr class="separator">
+    <div class="total-container">
+      <div class="total-title">
+        <p>Total</p>
+      </div>
+      <div class="total">
+        <p>{{ total | currency: 'ARS'}}</p>
+      </div>
+    </div>
+    <div class="buttons">
+      <button (click)="cleanCart()" class="btn btn-warning btn-sm mr-3">Vaciar Carrito</button>
+      <button (click)="checkout()" class="btn btn-success btn-sm">Realizar Compra</button>
+    </div>
+  </div>
+</div>

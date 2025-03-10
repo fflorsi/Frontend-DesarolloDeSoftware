@@ -1,0 +1,153 @@
+.footer{
+    position:absolute;
+    bottom:0;
+}
+.paw-image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 1;
+    width: 70%;
+}
+
+.dog-image {
+    position: relative;
+    z-index: 2;
+    width: 70%;
+}
+
+.hero-section {
+    position: relative; /* Necesario para posicionar el pseudo-elemento */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 50px 10px;
+    background-color: #E7E0F4;
+    margin: 0 auto;
+    height: 550px; /* Ajusta la altura mínima para ocupar toda la pantalla menos la navbar */
+    
+}
+
+
+.hero-content {
+    order: 1; /* Asegura que el texto aparezca primero en móviles */
+    max-width: 100%;
+    text-align: center; /* Asegura que el texto esté alineado al centro en móviles */
+}
+
+.hero-content h1 {
+    padding-top:20px;
+    color: #3f3b57;
+ 
+    line-height: 1.2;
+    font-family: 'inter', sans-serif;
+    font-weight: 700;
+    font-size: 78px;
+}
+
+.hero-content p {
+    font-size: 16px;
+    color: #5D5D5D;
+    margin-top: 10px;
+    font-weight: 600;
+}
+
+.badge {
+    display: inline-block;
+    background-color: #D6C9F3;
+    color: #3C3257;
+    padding: 8px 15px;
+    border-radius: 25px;
+    font-size: 14px;
+    margin-bottom: 20px;
+    
+}
+
+.hero-image {
+    order: 2; /* Asegura que la imagen aparezca después del texto en móviles */
+    max-width: 100%;
+    text-align: center; /* Asegura que la imagen esté alineada al centro en móviles */
+    position: relative;
+}
+
+.hero-image img {
+    max-width: 100%;
+    height: auto;
+}
+
+
+.button-arrow-box {
+    padding-top: 10px;
+    background-color: #ada7cd;
+    border-radius: 50px 50px 50px 50px;
+    width: 77px; //como esta rotada este es el largo
+    height: 47px;
+    background-image: url('../../assets/next.png');
+    background-repeat: no-repeat;
+    background-size: 25px;
+    background-position: center;
+    transform: rotate(90deg);
+    position: relative;
+    top: 0%;
+    bottom: 0%;
+    left: 0%;
+    right: 0%;
+    margin-right: 10px;
+    transition: transform 0.3s ease;
+    animation: moveArrow 5s linear infinite;
+  }
+  
+  .button-arrow-box:hover {
+    transform: translateY(10px) rotate(90deg);
+  }
+
+  //como está dada vuelta no queda top y bottom si no left y right
+
+    @keyframes moveArrow {
+        0% {
+        background-position: center right;
+        }
+        50% {
+            background-position: center left;
+        }
+        100% {
+            background-position: center right;
+        }
+    }
+
+
+
+@media (min-width: 768px) {
+    .hero-section {
+        flex-direction: row;
+        padding: 100px 20px;
+    }
+
+    .hero-content {
+        order: 0; /* Restablece el orden del texto en pantallas más grandes */
+        max-width: 50%;
+        text-align: left; /* Asegura que el texto esté alineado a la izquierda en pantallas más grandes */
+    }
+    
+
+    .hero-content h1 {
+        font-size: 97px;
+        line-height: 77px;
+    }
+
+    .hero-image {
+        order: 0; /* Restablece el orden de la imagen en pantallas más grandes */
+        max-width: 50%;
+        text-align: left; /* Asegura que la imagen esté alineada a la izquierda en pantallas más grandes */
+        }
+
+}
+
+@media (max-width: 768px) {
+    .badge {
+        display: none;
+    }
+}
+
+

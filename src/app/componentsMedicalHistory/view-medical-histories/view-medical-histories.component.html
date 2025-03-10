@@ -1,0 +1,72 @@
+<div *ngIf="!medicalHistory" class="no-mh fixed-size">
+  <p>No se han encontrado Datos</p>
+</div>
+
+<div *ngIf="medicalHistory" class="container fixed-size">
+  <b class="title">Historia Clínica</b>
+
+  <!-- Mostrar vacunas solo si hay -->
+  <div *ngIf="medicalHistory?.Vaccines?.length > 0">
+    <table class="vaccines-table">
+      <thead>
+        <tr>
+          <th class="sec-title">Vacunas</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let vaccine of paginatedVaccines">
+          <td class="text">{{ vaccine.name }} <a class="unlink-vaccine" (click)="unlinkVaccine(medicalHistory.id, vaccine.id)">
+            <i class="fas fa-trash"></i></a></td>
+        </tr>
+      </tbody>
+    </table>
+    <div class="paginator-container">
+      <mat-paginator [length]="totalVaccines" [pageSize]="pageSize" (page)="onVaccinePageChange($event)" aria-label="paginador de vacunas"></mat-paginator>
+    </div>
+  </div>
+
+  <button id="link-vaccine" class="btn btn-primary" (click)="openLinkVaccineDialog()">Vincular Vacuna</button>
+
+  <!-- Mostrar observaciones solo si hay -->
+  <div *ngIf="medicalHistory?.observations?.length > 0">
+    <div class="observations-container">
+      <table class="observations-table">
+        <thead>
+          <tr>
+            <th class="sec-title">Id</th>
+            <th class="sec-title">Observación</th>
+            <th class="sec-title">Fecha</th>
+            <th class="sec-title">Profesional</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let observation of paginatedObservations">
+            <td class="text">{{observation.id}}</td>
+            <td>
+              <div class="observation-item">
+                <span class="text">{{ observation?.description?.length > 50 ? (observation.description | slice:0:20) + '...' : observation.description }}</span>
+                <div class="observation-actions">
+                  <a class="edit-observation" (click)="openEditObservationDialog(observation)"><i class="obs fas fa-edit"></i></a>
+                  <a class="show-observation" (click)="openShowObservationDialog(observation)"><i class="obs fas fa-eye"></i></a>
+                  <a class="delete-observation" (click)="openDeleteObservationDialog(observation)"><i class="fas fa-trash"></i></a>
+                </div>
+              </div>
+            </td>
+            <td class="text">{{ observation.createdAt | date: 'shortDate' || 'Fecha no disponible' }}</td>
+            <td class="text">{{ observation.professionalData?.lastname + ', ' + observation.professionalData?.firstname  || 'Profesional no disponible' }}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="paginator-container">
+      <mat-paginator [length]="totalObservations" [pageSize]="pageSize" (page)="onPageChange($event)" aria-label="paginador"></mat-paginator>
+    </div>
+  </div>
+
+  <div *ngIf="medicalHistory?.observations?.length === 0" class="no-observations">
+    <p>No hay observaciones registradas.</p>
+  </div>
+  <button id="new-observation" class="btn btn-primary" (click)="openCreateObservationDialog()">Nueva observación</button>
+</div>
+
+

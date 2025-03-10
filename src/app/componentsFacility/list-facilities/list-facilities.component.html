@@ -1,0 +1,42 @@
+<div class="container">
+    <div class="title">
+        <h4>Listado de Servicios</h4>
+        <button type="button" class="btn btn-primary" routerLink="/addFacility">Añadir nueva instalación</button>
+    </div>
+    <div class="search-container"><input class="search-input" type="text" [(ngModel)]="searchTerm" (input)="filterFacilities()" placeholder="Buscar por nombre" /></div>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">Nombre</th>
+                <th scope="col">Descripción</th>
+                <th scope="col">Precio</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let item of paginatedFacilities">
+                <td>
+                    {{item.name}}
+                    <span class="actions">
+                        <button routerLink="/editFacility/{{item.id}}" type="button" class="btn btn-info btn-sm">
+                            <i class="fas fa-edit"></i>
+                        </button>
+                        <button (click)="deleteFacility(item.id!)" type="button" class="btn btn-secondary btn-sm ms-2">
+                            <i class="fas fa-trash"></i>
+                        </button>
+                        <button routerLink="/detailFacility/{{item.id}}" type="button" class="btn btn-info btn-sm">
+                            <i class="fas fa-info-circle"></i>
+                        </button>
+                    </span>
+                </td>
+                <td>{{item.description}}</td>
+                <td>{{item.price | currency}}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <mat-paginator [length]="listFacilities.length" [pageSize]="7" showFirstLastButtons aria-label="Select page" (page)="handlePageEvent($event)">
+    </mat-paginator>
+
+    <h5 *ngIf="listFacilities.length == 0" class="no-data">No hay instalaciones para mostrar</h5>
+</div>

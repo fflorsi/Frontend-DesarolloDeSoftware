@@ -1,0 +1,13 @@
+<div>
+  <h2>Cliente: {{ client.firstname }}</h2>
+  <h3>Mascotas:</h3>
+  <div class="cards-container">
+    <div *ngFor="let pet of pets" class="card">
+      <div class="card-details">
+        <p class="text-title">{{ pet.name }}</p>
+        <p class="text-body">{{ pet.type }}</p>
+      </div>
+      <button class="card-button">More info</button>
+    </div>
+  </div>
+</div>

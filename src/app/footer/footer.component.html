@@ -1,0 +1,63 @@
+<div class="footer-container">
+    <div class="footer-column">
+        <a href="/" >
+            <img src="..\assets\logo.png" alt="logo" class="footer-logo">
+        </a>
+    </div>
+
+    <div class="footer-middle">
+        <div class="menu">
+            <div class="footer-title">Compañía</div>
+            <div class="footer-item"><a href="/">Inicio</a></div>
+            <div class="footer-item"><a href="/about">Sobre nosotros</a></div>
+            <div class="footer-item"><a href="/productShop">Tienda</a></div>
+            <div class="footer-item"><a href="/FacilityShop">Servicios</a></div>
+            <div class="footer-item"><a href="/contact">Contactanos</a></div>
+        </div>
+    
+
+        <div class="menu">
+            <div class="footer-title">Páginas</div>
+            <div class="footer-item"><a href="/***">404</a></div>
+            <div class="footer-item"><a href="/cart">Carrito</a></div>
+            <div class="footer-item"><a href="/login">Iniciar sesión</a></div>
+            <div class="footer-item"><a href="/signIn">Registrarse</a></div>
+        </div>
+
+        <div class="menu">
+            <div class="footer-title">DIRECCION</div>
+            <div class="footer-text">Zeballos 1400,</div>
+            <div class="footer-text">Rosario, Santa Fe,</div>
+            <div class="footer-text">Argentina</div>
+            <div><a href="https://www.google.com/maps" class="link">Ver en mapa</a></div>
+
+            <div class="footer-title">Contacto</div>
+            <div class="link"><a href="tel:+543413000000" class="link">+54 341 300 0000</a></div>
+            <div class="link"><a href="mailto:info@company.com" class="link">info&#64;company.com</a></div>
+        </div>
+
+
+
+    </div>
+
+    <div class="newsletter">
+        <div class="footer-title">Newsletter</div>
+        <div class="footer-text">Mantengase informado sobre nuestras últimas noticias y promociones</div>
+        <div class="footer-form">
+            <form (ngSubmit)="onSubmit()">
+                <input class="text-field" maxlength="256" name="email-2" placeholder="Email" type="email" [formControl]="email" required pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$">
+                <button class="footer-button" type="submit"></button>
+            </form>
+            <div class="form-error" *ngIf="email.invalid && (email.dirty || email.touched)" tabindex="-1" aria-label="Email error">
+                <div class="form-fail" tabindex="-1"><div class="error-message">Por favor, ingrese un email válido.</div></div>
+            </div>
+            <div class="form-fail" *ngIf="showError" tabindex="-1" aria-label="Footer Form error">
+                <div class="error-message">¡Ups! Algo salió mal al enviar el formulario.</div>
+            </div>
+            <div class="form-done" tabindex="-1" aria-label="Footer Form success">
+                <div class="succes-message">¡Gracias! ¡Tu email ha sido recibido!</div>
+            </div>
+        </div>
+    </div>
+
+</div>

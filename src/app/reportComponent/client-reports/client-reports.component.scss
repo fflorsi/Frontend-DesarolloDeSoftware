@@ -1,0 +1,19 @@
+.reports-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); /* Dos columnas */
+    gap: 20px; /* Espacio entre tarjetas */
+  }
+  
+  .report-card {
+    background-color: #fff;
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    /* Puedes añadir un tamaño fijo para controlar mejor el tamaño de las tarjetas */
+    min-height: 350px; 
+  }
+  

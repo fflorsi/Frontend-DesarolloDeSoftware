@@ -1,0 +1,44 @@
+<app-progress-bar *ngIf="loading"></app-progress-bar>
+<div *ngIf="!loading" class="container">
+    <div class="title">
+        <h4>Listado de Mascotas de {{ clientData.firstname }} {{ clientData.lastname }}</h4>
+        <div class="ms-auto">
+            <button type="button" class="btn btn-primary me-2" routerLink="/addPet/{{clientData.id}}">Añadir nueva Mascota</button>
+            <button type="button" class="btn" routerLink="/listClients">Regresar</button>
+        </div>
+    </div>
+<table class="table">
+    <thead>
+      <tr>
+        <th scope="col">Nombre</th>
+        <th scope="col">Fecha de Nacimiento</th>
+        <th scope="col">Tipo</th>
+        <th scope="col">Raza</th>
+        <th scope="col">Peso (kg)</th>
+        <th scope="col">Solicitar Turno</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let item of listPets" class="table-active">
+        <td>{{item.name}}
+          <span class="actions">
+            <button routerLink="/editPet/{{item.id}}/{{clientData.id}}" type="button" class="btn btn-info btn-sm">
+                <i class="fas fa-edit"></i>
+            </button>
+            <button (click)="deletePet(item.id!)" type="button" class="btn btn-secondary btn-sm ms-2">
+                <i class="fas fa-trash"></i>
+            </button>
+        </span>
+        </td>
+
+        <td>{{item.birthdate | date:'shortDate' }}</td>
+        <td>{{item.Type.name}}</td>
+        <td>{{item.breed}}</td>
+        <td>{{item.weight}} kg</td>
+        <td> <button type="button" class="btn btn-info" routerLink="/newAppointment/{{item.id}}">Nuevo Turno</button></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 *ngIf="listPets.length==0">No hay mascotas para mostrar</h5>
+</div> 
+

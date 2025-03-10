@@ -1,0 +1,27 @@
+
+<div class="header">
+    <h1 class="title">Servicios</h1>
+    <p class="subtitle">Encuentra aquí todos los servicios que podemos hacer por tu mascota</p>
+    <div class="search-container"><input class="search-input" type="text" [(ngModel)]="searchTerm" (input)="filterFacilities()" placeholder="Buscar por nombre" /></div>
+</div>
+
+
+
+<ul class="container">
+    <li *ngFor="let item of paginatedFacilities">
+        <a class="card" href="#">
+            <img src="../assets/close-up-veterinary-doctor-taking-care-pet.jpg" class="card_image" />
+            <div class="card_overlay">
+                <div class="card_header">
+                    <h3 class="card_title">{{item.name}}</h3>
+                    <span class="card_price">{{item.price | currency:'ARS'}}</span>
+                </div>
+                <p class="card_description">{{item.description}}</p>
+            </div>
+        </a>
+    </li>
+</ul>
+<mat-paginator [length]="listFacilities.length" [pageSize]="6" showFirstLastButtons aria-label="Select page" (page)="handlePageEvent($event)">
+</mat-paginator>
+
+<h5 *ngIf="listFacilities.length == 0" class="no-data">No hay servicios para mostrar</h5>

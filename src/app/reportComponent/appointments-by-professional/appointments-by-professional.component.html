@@ -1,0 +1,9 @@
+<div class="container">
+  <h2>Citas por Mes</h2>
+  <div *ngIf="appointmentsData.length > 0">
+    <canvas id="appointmentsChart"></canvas>
+  </div>
+  <div *ngIf="appointmentsData.length === 0">
+    <p>No hay citas para este profesional en el período seleccionado.</p>
+  </div>
+</div>

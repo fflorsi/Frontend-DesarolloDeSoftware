@@ -1,0 +1,24 @@
+<div class="checkout">
+  <div class="checkout-header">
+  <h2 class="thank-you">¡Gracias por tu compra! </h2>
+  <p class="success-message">Tu pago ha sido procesado con éxito.</p>
+  </div>
+
+  <h2 class="detail">Detalles de la Orden</h2>
+  <div *ngIf="order" class="order-details">
+    <p><strong>ID de Pago:</strong> {{ paymentId }}</p>
+    <p><strong>Total:</strong> {{ order.total | currency }}</p>
+    <p><strong>Fecha:</strong> {{ order.date | date }}</p>
+    <h3 class="detail">Items de la Orden</h3>
+    <ul class="order-items">
+      <li *ngFor="let item of order.items" class="order-item">
+        <div class="item-card">
+          <p><strong>Producto:</strong> {{ item.product.name }}</p>
+          <p><strong>Descripción:</strong> {{ item.product.description }}</p>
+          <p><strong>Cantidad:</strong> {{ item.quantity }}</p>
+          <p><strong>Precio:</strong> {{ item.price | currency }}</p>
+        </div>
+      </li>
+    </ul>
+  </div>
+</div>

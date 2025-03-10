@@ -1,0 +1,164 @@
+.fixed-size {
+  width: 100%;
+  max-width: 600px;
+  margin: auto;
+}
+
+.btn {
+    font-family: 'inter', sans-serif;
+    border: none;
+    padding: 10px;
+    font-size: 14px;
+    cursor: pointer;
+    background-color: #3F3B57;
+    color: #f0f0f0;
+}
+
+.btn:hover {
+  transform: background-color ease 0.3s;
+  background-color: #282638;
+}
+
+.title{
+  font-size: 20px;
+  padding: 10px;
+  font-weight: 700;
+  font-family: 'inter', sans-serif;
+}
+
+.sec-title{
+  font-size: 16px;
+  padding: 10px;
+  font-weight: 600;
+  font-family: 'inter', sans-serif;
+}
+
+.text{
+  font-family: 'inter', sans-serif;
+  font-size:14px;
+  padding: 10px;
+}
+
+i{
+  color:red;
+  cursor:pointer;
+}
+
+.obs{
+  color:#3F3B57;
+  cursor:pointer;
+}
+
+th{
+  background-color: #bbbbbb6e;
+}
+
+
+.vaccines-table tr:hover {
+  background-color: #f8f9fa;
+}
+
+
+.vaccines-table td {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: #495057;
+}
+
+.vaccines-table th,
+.vaccines-table td{
+  border: 1px solid #ddd;
+  padding: 8px;
+  text-align: left;
+}
+
+
+
+.vaccines-table,
+.observations-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 10px;
+}
+
+.observations-table th,
+.observations-table td {
+  border: 1px solid #ddd;
+  padding: 8px;
+  text-align: left;
+}
+
+
+.observations-table tr:hover {
+  background-color: #f8f9fa;
+}
+
+
+
+//paginator va en el back
+
+.mat-paginator .mat-icon-button:hover .mat-button-wrapper {
+  visibility: hidden;
+}
+
+.mat-paginator .mat-icon-button:hover {
+  color: inherit;
+}
+
+
+.observation-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 8px;
+  width: 100%;
+}
+
+.observation-actions {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+.observation-actions {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+.observation-actions a:hover {
+  background-color: #e9ecef;
+  cursor: pointer;
+}
+
+
+
+::ng-deep .custom-backdrop {
+  position: fixed; 
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5) !important; 
+  z-index: 0; 
+  pointer-events: all; 
+}
+
+::ng-deep .custom-dialog {
+  position: fixed !important;
+  top: 50% !important;
+  left: 50% !important;
+  transform: translate(-50%, -50%) !important;
+  padding: 20px;
+  z-index: 1000;
+  width: 400px;
+  max-height: 90%;
+  overflow-y: auto;
+
+}
+
+
+
+
+

@@ -1,0 +1,36 @@
+.list-group-item {
+    background-color: #332A7B;
+    color: white;
+    display: flex;
+    align-items: center;
+    border: none;
+    position: relative;
+  }
+  
+  .list-group-item.active {
+    background-color: #332A7B;
+    color: white;
+  }
+  
+  .list-group-item.active::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 10px;
+    background-color: white;
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+  }
+  
+  .list-group-item .icon {
+    margin-right: 10px;
+    width: 20px;
+    height: 20px;
+  }
+  
+  .list-group-item:hover {
+    background-color: #7666cA;
+    transition: background-color 1s ease;
+  }
