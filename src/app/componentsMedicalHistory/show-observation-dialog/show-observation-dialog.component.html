@@ -1,1 +1,18 @@
-<p>show-observation-dialog works!</p>
+<div class="observation-dialog">
+  <div class="dialog-header">
+    <h2 class="title">Detalles de la Observación</h2>
+    <button mat-icon-button class="close-button" (click)="close()">
+      <mat-icon>close</mat-icon>
+    </button>
+  </div>
+  <mat-dialog-content>
+    <p class="text"><strong>Descripción:</strong>{{ data?.observation?.description }}</p>
+    <div class="observation-metadata">
+      <p class="text"><strong>Fecha:</strong> {{ data?.observation?.createdAt | date:'shortDate'}}</p>
+      <p class="text"><strong>Profesional:</strong> {{ data?.observation?.professionalData?.lastname + ', ' + data?.observation?.professionalData?.firstname  || 'Profesional no disponible' }}</p>
+    </div>
+  </mat-dialog-content>
+  <mat-dialog-actions>
+    <button mat-button class="btn" (click)="close()">Aceptar</button>
+  </mat-dialog-actions>
+</div>
