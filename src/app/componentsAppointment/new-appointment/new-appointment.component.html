@@ -1,0 +1,42 @@
+<form [formGroup]="appointmentForm" (ngSubmit)="requestAppointment()" class="container mt-4">
+    <div class="row mb-4">
+        <div class="col-12">
+          <h2>Agregar Turno para la Mascota: <strong>{{ pet?.name }}</strong></h2>
+        </div>
+      </div>
+    <div class="row mb-3">
+      <label for="professionalId" class="col-sm-2 col-form-label">Profesional</label>
+      <div class="col-sm-10">
+        <select formControlName="professionalId" class="form-select" required>
+          <option *ngFor="let professional of professionals" [value]="professional.id">
+            {{ professional.firstname }} {{ professional.lastname }}
+          </option>
+        </select>
+      </div>
+    </div>
+  
+    <div class="row mb-3">
+      <label for="facilityId" class="col-sm-2 col-form-label">Servicio</label>
+      <div class="col-sm-10">
+        <select formControlName="facilityId" class="form-select" required>
+          <option *ngFor="let facility of facilities" [value]="facility.id">
+            {{ facility.name }}
+          </option>
+        </select>
+      </div>
+    </div>
+  
+    <div class="row mb-3">
+      <label for="dateTime" class="col-sm-2 col-form-label">Fecha y hora</label>
+      <div class="col-sm-10">
+        <input type="datetime-local" formControlName="dateTime" class="form-control" required>
+      </div>
+    </div>
+  
+    <div class="row mb-3">
+      <div class="col-sm-10 offset-sm-2">
+        <button type="submit" class="btn btn-primary" [disabled]="appointmentForm.invalid">Solicitar Turno</button>
+      </div>
+    </div>
+  </form>
+  

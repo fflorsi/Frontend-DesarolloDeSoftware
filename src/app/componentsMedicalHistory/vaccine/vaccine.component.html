@@ -1,0 +1,41 @@
+<div class="container">
+  <div>
+    <h2 class = "title">Gestión de Vacunas</h2>
+  </div>
+  <div class="container-">
+    <div *ngIf="!selectedVaccine">
+      <h4 class = "title">Añadir Vacuna</h4>
+    <input class="vaccine-input" [(ngModel)]="newVaccine.name" (ngModelChange)="onNameChange()" placeholder="Nombre de la vacuna" />
+    <button  type="button" class="btn btn-info" (click)="addVaccine()" [disabled]="isAddDisabled">Añadir nueva vacuna</button>
+  </div>
+    <div *ngIf="selectedVaccine">
+      <h4 class = "title">Editar Vacuna</h4>
+      <input class="vaccine-input" [(ngModel)]="selectedVaccine.name" placeholder="Nombre de la vacuna" />
+      <button type="button" class="btn btn-info" (click)="updateVaccine()">Actualizar</button>
+      <button type="button" class="btn btn-secondary" (click)="cancelEdit()">Cancelar</button>
+    </div>
+  </div>
+  <table class ="table ">
+    <thead>
+      <tr>
+        <th class = "sec-title" scope="col">Nombre</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let vaccine of vaccines">
+        <td class="text">{{ vaccine.name }}
+          <span class="actions">
+            <button (click)="editVaccine(vaccine)" type="button" class="btn btn-info btn-sm">
+              <i class="fas fa-edit"></i>
+            </button>
+            <button (click)="confirmDeleteVaccine(vaccine.id)" type="button" class="btn btn-secondary btn-sm ms-2">
+              <i class="fas fa-trash"></i>
+            </button>
+          </span>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="no-data" *ngIf="vaccines.length==0">No hay vacunas para mostrar</h5>
+  
+  </div>

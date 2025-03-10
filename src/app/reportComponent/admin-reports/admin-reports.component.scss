@@ -1,0 +1,51 @@
+/* Estilos generales para el Panel de Reportes */
+.admin-reports {
+  margin: 20px;
+}
+
+.dashboard-title {
+  text-align: center;
+  font-size: 2em;
+  margin-bottom: 20px;
+  font-family: 'inter',sans-serif;
+}
+
+.reports-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+
+.report-card {
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  padding: 20px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.report-card-large {
+  grid-column: span 3; /* Hace que el gráfico ocupe todo el ancho */
+}
+
+.chart-container {
+  width: 100%;
+  height: 400px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.summary-stats {
+  margin-bottom: 20px;
+  font-size: 1.2em;
+}
+
+.summary-stats p {
+  margin: 10px 0;
+}
+
+/* Estilo para el gráfico */
+canvas {
+  width: 100% !important; /* Asegura que el gráfico ocupe todo el contenedor */
+  height: 400px !important; /* Ajusta la altura del gráfico */
+}

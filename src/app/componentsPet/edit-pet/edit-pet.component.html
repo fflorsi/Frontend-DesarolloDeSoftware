@@ -1,0 +1,52 @@
+<app-progress-bar *ngIf="loading"></app-progress-bar>
+<div class="container">
+  <div *ngIf="!loading" class="row mt-1">
+    <div class="col-lg-4 offset-lg-4">
+      <h2>{{operacion}} Mascota</h2>
+      <div class="card-body">
+        <form [formGroup]="formPet" (ngSubmit)="onSubmit()">
+          <!-- Nombre de la Mascota -->
+          <label for="name">Nombre:</label>
+          <input formControlName="name" type="text" class="form-control" [placeholder]="formPet.get('name')?.value || 'Ingrese Nombre de la Mascota'">
+          <span class="error" *ngIf="formPet.get('name')?.hasError('required') && formPet.get('name')?.touched">El campo Nombre es <strong>requerido</strong></span>
+
+          <!-- Fecha de Nacimiento -->
+          <label for="birthdate">Fecha de Nacimiento:</label>
+          <input formControlName="birthdate" type="date" class="form-control mt-2">
+          <span class="error" *ngIf="formPet.get('birthdate')?.hasError('required') && formPet.get('birthdate')?.touched">El campo Fecha de Nacimiento es <strong>requerido</strong></span>
+
+          <!-- Tipo de Mascota -->
+          <label for="type">Tipo de Mascota:</label>
+          <select formControlName="type" class="form-control" id="Type">
+            <option *ngFor="let type of availableTypes" [value]="type.id">{{ type.name }}</option>
+          </select>
+          <span class="error" *ngIf="formPet.get('type')?.hasError('required') && formPet.get('type')?.touched">El campo Tipo de Mascota es <strong>requerido</strong></span>
+
+          <!-- Raza -->
+          <label for="breed">Raza:</label>
+          <input formControlName="breed" type="text" class="form-control mt-2" placeholder="Ingrese Raza" pattern="[A-Za-z\s]+" title="La raza no puede contener números">
+          <span class="error" *ngIf="formPet.get('breed')?.hasError('required') && formPet.get('breed')?.touched">El campo Raza es <strong>requerido</strong></span>
+          <span class="error" *ngIf="formPet.get('breed')?.hasError('hasNumber') && formPet.get('breed')?.touched">La raza no puede contener números</span>
+
+          <!-- Peso -->
+          <label for="weight">Peso en kg:</label>
+          <input formControlName="weight" type="number" class="form-control mt-2" [placeholder]="formPet.get('weight')?.value || 'Ingrese Peso en kg'" min="0">
+          <span class="error" *ngIf="formPet.get('weight')?.hasError('required') && formPet.get('weight')?.touched">El campo Peso es <strong>requerido</strong></span>
+          <span class="error" *ngIf="formPet.get('weight')?.hasError('min') && formPet.get('weight')?.touched">El peso debe ser mayor que 0</span>
+
+
+
+          <label for="client_id">ID del Cliente:</label>
+          <input formControlName="client_id" type="text" class="form-control mt-2" disabled>
+
+          <!-- Botones de Acción -->
+          <div class="row mt-2 text-center">
+            <div class="col-lg-6">
+              <button [disabled]="formPet.invalid" type="submit" class="btn btn-primary" routerLink="/ViewAllPet" >Aceptar</button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,83 @@
+<header *ngIf="!hasRoute('login') && !hasRoute('signIn')"  id="header-sticky" class="header">
+  <div class="container">
+    <div class="header-content">
+      <!-- Logo Start (Icono al lado del texto) -->
+      <div class="logo">
+        <a href="/" class="logo-link">
+          <img src="assets/logo.png" alt="Logo" class="logo">
+        </a>
+      </div>
+
+
+      <!-- Navegación -->
+      <nav class="main-nav" [class.menu-open]="menuOpen">
+        <ul>
+          <div *ngIf="hasRoute('Home')">
+            <li class="text current"><a href="/">Inicio</a></li>
+          </div>
+          <div *ngIf="!hasRoute('Home')">
+            <li class="text"><a href="/">Inicio</a></li>
+          </div>
+
+          <div *ngIf="hasRoute('FacilityShop')">
+            <li class="text current"><a href="/FacilityShop">Servicios</a></li>
+          </div>
+          <div *ngIf="!hasRoute('FacilityShop')">
+            <li class="text"><a href="/FacilityShop">Servicios</a></li>
+          </div>
+
+          <div *ngIf="hasRoute('contact')">
+            <li class="text current"><a href="/contact">Contactanos</a></li>
+          </div>
+          <div *ngIf="!hasRoute('contact')">
+            <li class="text"><a href="/contact">Contactanos</a></li>
+          </div>
+
+          <div *ngIf="hasRoute('productShop')">
+            <li class="text current"><a routerLink="/productShop">Tienda de Productos</a></li>
+          </div>
+
+          <div *ngIf="!hasRoute('productShop')">
+            <li class="text"><a routerLink="/productShop">Tienda de Productos</a></li>
+          </div>
+          
+          <img alt="Cart" class="cart-icon" src="assets/Cart.png" (click)="openCart()">
+          
+        </ul>
+      </nav>
+
+
+      <div class="menu-icon" (click)="toggleMenu()">
+        &#9776; 
+      </div>
+      <div class="nav-button-box">
+        <a class="wa-button w-button">3482-234-974</a>
+      </div>
+    </div>
+    <div class="login-button">
+      
+      <a *ngIf="!isUserLoggedIn" routerLink="/login" class="login-btn" >
+        <img class="img" src="assets/login.png">
+      </a>      
+      <a *ngIf="isUserLoggedIn" [routerLink]="getDashboardLink()" class="login-btn">
+        <img class="img" src="assets/dashboard-48.png">
+      </a>
+      <a *ngIf="isUserLoggedIn" (click)="logout()" class="logout-btn">
+        <img class="img" src="assets/logout.png">
+      </a>
+    </div>
+  </div>
+</header>
+
+
+
+
+<app-side-cart></app-side-cart>
+
+<router-outlet></router-outlet>
+
+<!-- Footer -->
+<div class="footer" *ngIf="!hasRoute('login') && !hasRoute('signIn')">
+  <footer></footer>
+</div>
+

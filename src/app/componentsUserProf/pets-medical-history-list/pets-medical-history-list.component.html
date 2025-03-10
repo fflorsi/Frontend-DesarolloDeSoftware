@@ -1,0 +1,42 @@
+<app-progress-bar *ngIf="loading"></app-progress-bar>
+<div *ngIf="!loading" class="container">
+  <div class="header">
+    <h4 class="mb-0">Listado de Mascotas</h4>
+  </div>
+
+  <table class="table table-striped mt-4">
+    <thead>
+      <tr>
+        <th class="title" scope="col">Nombre</th>
+        <th class="title" scope="col">Fecha de Nacimiento</th>
+        <th class="title" scope="col">Tipo</th>
+        <th class="title" scope="col">Raza</th>
+        <th class="title" scope="col">Peso (kg)</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let pet of petList">
+        <td class="info">{{ pet.name }}
+          <span class="actions">
+            <button [routerLink]="['/profesional-dashboard/ViewPetPro', pet.id]" type="button" class="btn btn-info btn-sm">
+              <i class="fas fa-info-circle"></i>
+            </button>
+            
+              
+
+          </span>
+        </td>
+        <td class="info">{{ pet.birthdate | date:'shortDate' }}</td>
+        <td class="info">{{ pet.Type.name }}</td>
+        <td class="info">{{ pet.breed }}</td>
+        <td class="info">{{ pet.weight }} kg</td>
+
+        
+      </tr>
+    </tbody>
+  </table>
+  <div *ngIf="petList.length == 0" class="alert-cont">
+    <div class="alert">
+      No se han encontrado Mascotas.
+    </div>
+</div>

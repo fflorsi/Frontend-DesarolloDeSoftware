@@ -1,0 +1,47 @@
+<app-progress-bar *ngIf="loading"></app-progress-bar>
+<div *ngIf="!loading" class="container">
+  <div class="title">
+    <h4>Listado de Mascotas</h4>
+  </div>
+
+  <table class="table">
+    <thead>
+      <tr>
+        <th scope="col">Nombre</th>
+        <th scope="col">Fecha de Nacimiento</th>
+        <th scope="col">Tipo</th>
+        <th scope="col">Raza</th>
+        <th scope="col">Peso (kg)</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let pet of petList" class="table-active">
+        <td>{{ pet.name }}
+          <span class="actions">
+            
+            <button routerLink="/EditPet/{{pet.id}}" type="button" class="btn">
+              <i class="fas fa-edit"></i>
+            </button>
+            
+            <button routerLink="/ViewPet/{{ pet.id }}" type="button" class="btn">
+              <i class="fas fa-info-circle"></i>
+            </button>
+
+            <button (click)="deletePet(pet.id!)" type="button" class="btn-del">
+              <i class="fas fa-trash"></i>
+            </button>
+
+
+          </span>
+        </td>
+        <td>{{ pet.birthdate | date:'shortDate' }}</td>
+        <td>{{ pet.Type.name }}</td>
+        <td>{{ pet.breed }}</td>
+        <td>{{ pet.weight }} kg</td>
+
+        
+      </tr>
+    </tbody>
+  </table>
+  <h5 *ngIf="petList.length == 0">No se han encontrado Mascotas</h5>
+</div>
