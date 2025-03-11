@@ -25,7 +25,14 @@
     </div>
   </div>
 
+  <div *ngIf="medicalHistory?.Vaccines?.length === 0" class="alert-cont">
+    <div class="alert" role="alert">
+      No hay Vacunas asociadas.
+    </div>
+  </div>
   <button id="link-vaccine" class="btn btn-primary" (click)="openLinkVaccineDialog()">Vincular Vacuna</button>
+
+
 
   <!-- Mostrar observaciones solo si hay -->
   <div *ngIf="medicalHistory?.observations?.length > 0">
@@ -63,10 +70,13 @@
     </div>
   </div>
 
-  <div *ngIf="medicalHistory?.observations?.length === 0" class="no-observations">
-    <p>No hay observaciones registradas.</p>
+  <div *ngIf="medicalHistory?.observations?.length === 0" class="alert-cont">
+    <div class="alert" role="alert">
+      No hay observaciones registradas.
+  </div>
   </div>
   <button id="new-observation" class="btn btn-primary" (click)="openCreateObservationDialog()">Nueva observación</button>
 </div>
+
 
 

@@ -49,16 +49,25 @@ export class LoginComponent implements OnInit {
           const decodedToken = jwtDecode<any>(token);
           const userRole = decodedToken.role;
           console.log(userRole)
+
           
           // Redirigir según el rol del usuario
           if (userRole === 'client') {
-            this.router.navigate(['/dashboard']);
+            this.router.navigate(['/dashboard/personal-info']).then(() => {
+              window.location.reload();
+            });
           } else if (userRole === 'professional') {
-            this.router.navigate(['/profesional-dashboard']);
+            this.router.navigate(['/profesional-dashboard/personal-info-pr']).then(() => {
+              window.location.reload();
+            });
           } else if (userRole === 'admin') {
-            this.router.navigate(['/menuAdmin']); // Redirigir al dashboard de administrador
+            this.router.navigate(['/menuAdmin']).then(() => {
+              window.location.reload();
+            });
           } else {
-            this.router.navigate(['/unauthorized']);
+            this.router.navigate(['/unauthorized']).then(() => {
+              window.location.reload();
+            });
           }
         } catch (error) {
           console.error('Error al decodificar el token:', error);

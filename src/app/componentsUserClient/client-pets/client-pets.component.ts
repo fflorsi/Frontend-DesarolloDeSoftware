@@ -93,7 +93,6 @@ export class ClientPetsComponent implements OnInit {
         this.loading = false;
       },
       error: (err) => {
-        this.toastr.error('Error al obtener la lista de mascotas', 'Error');
         this.loading = false;
       }
     });
@@ -103,9 +102,11 @@ export class ClientPetsComponent implements OnInit {
     this.isEditMode = true;
     this.petToEdit = pet;
     this.showForm = true;
+    const birthdate = new Date(pet.birthdate).toISOString().split('T')[0];
+
     this.formPet.patchValue({
       name: pet.name,
-      birthdate: pet.birthdate,
+      birthdate: birthdate,
       type: pet.type,
       breed: pet.breed,
       weight: pet.weight,

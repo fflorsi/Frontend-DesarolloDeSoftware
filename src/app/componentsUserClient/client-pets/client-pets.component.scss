@@ -78,3 +78,24 @@
     transition: 2s ease;
     background-color: #3f0000;
 }
+
+
+
+.alert-cont {
+  background-color: #f8d7da;
+  border: 1px solid #f5c6cb;
+  border-radius: 5px;
+  margin-top: 10px;
+  padding: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.alert {
+  font-size: 14px;
+  line-height: 22px;
+  font-family: 'Inter', sans-serif;
+  color: #721c24;
+  text-align: center;
+}

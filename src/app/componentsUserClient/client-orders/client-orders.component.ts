@@ -43,6 +43,7 @@ export class ClientOrdersComponent implements OnInit {
   }
 
 
+
   fetchOrders(clientId: number): void {
     this._orderService.getAllOrdersByClientId(clientId).subscribe({
       next: (data) => {

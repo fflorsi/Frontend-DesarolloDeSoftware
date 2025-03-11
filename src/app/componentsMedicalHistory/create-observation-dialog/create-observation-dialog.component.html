@@ -1,28 +1,28 @@
-<h2>Crear Nueva Observación</h2>
+<h2 class="title">Crear Nueva Observación</h2>
 <mat-dialog-content>
   <mat-form-field class="form">
-    <label>Observación</label>
+    <label class="sub-title">Observación</label>
     <textarea matInput [(ngModel)]="observationText"></textarea>
   </mat-form-field>
 
-<mat-expansion-panel [expanded]="isExpanded" (opened)="isExpanded = true" (closed)="isExpanded = false">
-  <mat-expansion-panel-header>
-    <mat-panel-title>
-      {{ professionalId ? (getProfessionalFullName(professionalId) || 'Profesionales') : 'Profesionales' }}
-    </mat-panel-title>
-  </mat-expansion-panel-header>
-
-  <div class="professionals-list">
-    <div *ngFor="let professional of professionals">
-      <button mat-button (click)="selectProfessional(professional.id); closeAccordion()">
-        {{ professional.firstname}} {{professional.lastname}}
-      </button>
-    </div>
-  </div>
-</mat-expansion-panel>
+  <label class="sub-title" for="professional">Profesional</label>
+  <mat-expansion-panel [(expanded)]="panelOpenState">
+    <mat-expansion-panel-header>
+      {{ selectedProfessionalName || data?.observation?.professionalData?.lastname + ', ' + data?.observation?.professionalData?.firstname }}
+      <mat-icon (click)="panelOpenState = !panelOpenState" class="arrow-icon"></mat-icon>
+    </mat-expansion-panel-header>
+    <mat-list>
+      <mat-list-item *ngFor="let professional of professionals">
+        <mat-checkbox [checked]="selectedProfessionalId === professional.id" (change)="selectProfessional(professional)">
+          {{ professional.lastname + ', ' + professional.firstname }}
+        </mat-checkbox>
+      </mat-list-item>
+    </mat-list>
+  </mat-expansion-panel>
 
 </mat-dialog-content>
 <mat-dialog-actions class="dialog-actions">
-  <button class="btn-cancel" mat-button (click)="onCancel()">Cancelar</button>
   <button class="btn" mat-button (click)="onSubmit()" cdkFocusInitial>Crear</button>
+  <button class="btn-cancel" mat-button (click)="onCancel()">Cancelar</button>
+
 </mat-dialog-actions>

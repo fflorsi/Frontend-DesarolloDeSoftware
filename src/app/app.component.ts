@@ -1,6 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
 import { Router } from '@angular/router';
-import {jwtDecode} from 'jwt-decode'; // Cambié jwt_decode por jwtDecode
+import { jwtDecode } from 'jwt-decode'; // Cambié jwt_decode por jwtDecode
 import { CartStateService } from './services/cart-state-service.service'; // Adjust the path as necessary
 
 @Component({
@@ -16,8 +16,10 @@ export class AppComponent implements OnInit {
   title = 'CRUDPET';
 
   constructor(
-  private router: Router, 
-  private cartStateService: CartStateService) { }
+    private router: Router, 
+    private cartStateService: CartStateService,
+    private cdr: ChangeDetectorRef // Inyectar ChangeDetectorRef
+  ) { }
 
   ngOnInit() {
     this.checkUserLoginStatus();
@@ -31,7 +33,7 @@ export class AppComponent implements OnInit {
       try {
         // Decodificar el token
         const decodedToken: any = jwtDecode(token);
-        this.userRole = decodedToken.role || ''; // Guardamos el rol
+        this.userRole = decodedToken.role || ''; 
       } catch (error) {
         console.error('Error al decodificar el token:', error);
         this.isUserLoggedIn = false;
@@ -41,16 +43,17 @@ export class AppComponent implements OnInit {
       console.log('No token found, user is not logged in');
     }
   }
-  
 
   // Método para obtener el enlace correcto al dashboard
   getDashboardLink() {
     if (this.userRole === 'professional') {
-      return '/profesional-dashboard';  // Link al dashboard del profesional
+
+      return '/profesional-dashboard/personal-info-pr';  // Link al dashboard del profesional
     } else if (this.userRole === 'client') {
       return '/dashboard/personal-info';  // Link al dashboard del cliente
-    } else if (this.userRole === 'admin'){
-      return 'menuAdmin'
+    } else if (this.userRole === 'admin') {
+
+      return 'menuAdmin';
     }
     return '/';  
   }
@@ -59,8 +62,8 @@ export class AppComponent implements OnInit {
     localStorage.removeItem('authToken');
     this.isUserLoggedIn = false;
     this.router.navigate(['/Home']);
+    this.cdr.detectChanges(); // Detectar cambios para actualizar la vista después de cerrar sesión
   }
-  
 
   toggleMenu() {
     this.menuOpen = !this.menuOpen;
@@ -78,5 +81,4 @@ export class AppComponent implements OnInit {
     this.cartStateService.openCart(); 
     console.log('Cart opened', this.cartStateService.openCart);
   }
-
 }
