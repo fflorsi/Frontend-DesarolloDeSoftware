@@ -34,3 +34,47 @@
     background-color: #7666cA;
     transition: background-color 1s ease;
   }
+
+
+
+
+@media (max-width: 768px) {
+  .container {
+    padding: 0; 
+  }
+
+  .row {
+    flex-direction: column; 
+  }
+
+  .col-md-3 {
+    width: 100%; 
+  }
+
+  .col-md-9 {
+    width: 100%; 
+  }
+
+  .list-group {
+    flex-direction: column; 
+  }
+
+  .list-group-item {
+    width: 100%;
+    text-align: center; 
+  }
+
+  .list-group-item .icon {
+    margin-right: 0; 
+    width: 40px; 
+    height: 40px; 
+  }
+
+  .card {
+    width: 100%; 
+  }
+
+  .card-body {
+    padding: 20px; 
+  }
+}

@@ -17,7 +17,7 @@
 }
 
 .hero-section {
-    position: relative; /* Necesario para posicionar el pseudo-elemento */
+    position: relative; 
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -25,7 +25,7 @@
     padding: 50px 10px;
     background-color: #E7E0F4;
     margin: 0 auto;
-    height: 550px; /* Ajusta la altura mínima para ocupar toda la pantalla menos la navbar */
+    height: 550px; 
     
 }
 
@@ -125,9 +125,9 @@
     }
 
     .hero-content {
-        order: 0; /* Restablece el orden del texto en pantallas más grandes */
+        order: 0; 
         max-width: 50%;
-        text-align: left; /* Asegura que el texto esté alineado a la izquierda en pantallas más grandes */
+        text-align: left; 
     }
     
 
@@ -137,17 +137,62 @@
     }
 
     .hero-image {
-        order: 0; /* Restablece el orden de la imagen en pantallas más grandes */
+        order: 0;
         max-width: 50%;
-        text-align: left; /* Asegura que la imagen esté alineada a la izquierda en pantallas más grandes */
+        text-align: left; 
         }
 
 }
 
+
 @media (max-width: 768px) {
+    .hero-section {
+        flex-direction: column;
+        padding: 20px 10px;   
+        height: auto; 
+    }
+
+    .hero-content {
+        order: 1;  
+        max-width: 100%;       
+        text-align: center; 
+        padding: 10px; 
+    }
+        
+
+    .hero-content h1 {
+        font-size: 36px; 
+        
+        line-height: 1.2;
+    }
+
+    .hero-content p {
+        font-size: 14px; 
+        margin-bottom: 10px;
+    }
+
+    .hero-image {
+        order: 2; 
+        max-width: 100%;
+        text-align: center; 
+        margin-top: 20px; 
+    }
+
+    .hero-image img {
+        max-width: 80%; 
+        height: auto;
+    }
+
     .badge {
-        display: none;
+        display: none; 
+    }
+
+    .button-arrow-box {
+        width: 50px; 
+        height: 30px;
+        background-size: 20px;
+        margin-top: 20px; 
     }
 }
 
-
+    

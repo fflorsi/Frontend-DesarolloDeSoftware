@@ -42,18 +42,18 @@ export class PersonalInfoComponent implements OnInit {
       return undefined;
     }
 
-  fetchClientInfo(clientId: number): void {
-    this.clientService.getClientDetailById(clientId).subscribe(
-      (response: any) => {  
-        this.clientInfo = response.data; 
-        console.log("Objeto cliente devuelto: ", this.clientInfo)
-      },
-      (error) => {
-        console.error('Error fetching client data', error);
-      }
-    );
-  }
-
+    fetchClientInfo(clientId: number): void {
+      this.clientService.getClientDetailById(clientId).subscribe(
+        (response: any) => {  
+          this.clientInfo = response.data; 
+          console.log("Objeto cliente devuelto: ", this.clientInfo);
+        },
+        (error) => {
+          console.error('Error fetching client data', error);
+        }
+      );
+    }
+    
   toggleEditMode(): void {
     this.isEditing = !this.isEditing;
   }

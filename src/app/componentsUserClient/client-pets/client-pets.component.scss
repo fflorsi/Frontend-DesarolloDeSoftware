@@ -99,3 +99,54 @@
   color: #721c24;
   text-align: center;
 }
+
+
+@media (max-width: 768px) {
+  .container {
+    padding: 0 10px;
+  }
+
+  .header {
+    text-align: center;
+  }
+
+  .mb-0 {
+    font-size: 18px; 
+  }
+
+  .btn, .del, .edit {
+    width: 100%; 
+    margin-top: 10px; 
+    font-size: 16px; 
+  }
+
+  .form-group {
+    width: 100%; 
+    margin-bottom: 10px; 
+  }
+
+  .form-control {
+    width: 100%; 
+    font-size: 16px; 
+  }
+
+  table {
+    width: 100%; 
+    font-size: 14px; 
+  }
+
+  th, td {
+    text-align: center; 
+    padding: 10px; 
+  }
+
+  .alert-cont {
+    padding: 10px;
+    text-align: center; 
+  }
+
+  .alert {
+    font-size: 14px;
+    text-align: center; 
+  }
+}

@@ -68,3 +68,60 @@ button.btn {
 .form-floating + .form-floating {
     margin-bottom: 1rem; 
 }
+
+
+@media (max-width: 768px) {
+  .wrapper {
+    flex-direction: column; 
+    height: auto; 
+    padding: 20px;
+    padding-top:200px;
+  }
+
+  .image-container {
+    display: none;
+  }
+
+  .image-container img {
+    display: none;
+  }
+
+  .body {
+    width: 100%; 
+    padding-right: 0;
+    max-width: none; 
+    padding: 0 20px; 
+  }
+
+  h1 {
+    font-size: 24px; 
+    text-align: center; 
+  }
+
+  .form-floating {
+    width: 100%; 
+    margin-bottom: 1rem; 
+  }
+
+  .form-floating input {
+    font-size: 16px; 
+  }
+
+  .d-grid {
+    width: 100%; 
+  }
+
+  button.btn {
+    width: 100%; 
+    font-size: 16px; 
+  }
+
+  p {
+    font-size: 14px; 
+    text-align: center; 
+  }
+
+  p a {
+    font-size: 14px; 
+  }
+}

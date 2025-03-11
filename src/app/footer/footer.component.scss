@@ -204,3 +204,73 @@ a{
     display: none;
 }
 
+
+// ...existing code...
+
+@media (max-width: 768px) {
+    .footer-container {
+        flex-direction: column; 
+        padding: 20px 10px; 
+        align-items: center;
+    }
+
+    .footer-column {
+        width: 100%; 
+        text-align: center; 
+        margin-bottom: 20px;
+    }
+
+    .footer-middle {
+        display: flex;
+        flex-direction: column; 
+        width: 100%; 
+        align-items: center; 
+    }
+
+    .menu {
+        width: 100%; 
+        margin-bottom: 20px; 
+        text-align: center; 
+    }
+
+    .footer-title {
+        font-size: 16px; 
+    }
+
+    .footer-item a {
+        font-size: 14px; 
+        line-height: 1.5; 
+    }
+
+    .footer-text {
+        font-size: 14px; 
+    }
+
+    .newsletter {
+        width: 100%; 
+        text-align: center; 
+        margin-top: 20px; 
+    }
+
+    .text-field {
+        width: 80%; 
+        margin-bottom: 10px; 
+    }
+
+    .footer-button {
+        width: 80px; 
+        height: 50px; 
+        
+    }
+
+    .form-fail {
+        margin-top: 10px; 
+        padding: 10px; 
+        display: block; 
+    }
+
+    .succes-message {
+        font-size: 14px; 
+        padding: 10px;
+    }
+}

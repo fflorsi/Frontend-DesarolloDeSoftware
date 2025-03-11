@@ -139,18 +139,19 @@ body {
 }
 
 
+// ...existing code...
 
 @media (max-width: 768px) {
     .main-nav {
         display: none;
         flex-direction: column;
         width: 100%;
-        background-color: rgba(250, 249, 246, 0.95); /* Fondo semitransparente */
+        background-color: rgba(250, 249, 246, 0.95); 
         position: absolute;
         top: 60px;
         left: 0;
         z-index: 1000;
-        padding: 20px; /* Espaciado interno */
+        padding: 20px; 
     }
 
     .main-nav.menu-open {
@@ -159,18 +160,19 @@ body {
 
     .main-nav ul {
         flex-direction: column;
-        gap: 10px; /* Espaciado entre elementos del menú */
+        gap: 10px; 
     }
 
     .main-nav a {
-        padding: 10px 20px; /* Espaciado interno de los enlaces */
-        font-size: 16px; /* Tamaño de fuente más grande */
-        border-radius: 5px; /* Bordes redondeados */
-        transition: background-color 0.3s; /* Transición suave para el fondo */
+        padding: 10px; 
+        font-size: 16px; 
+        border-radius: 10px; 
+        transition: background-color 0.3s; 
+        font-family: 'inter', sans-serif;
     }
 
     .main-nav a:hover {
-        background-color: #E6E3FA; /* Fondo al pasar el mouse */
+        background-color: #E6E3FA; 
     }
 
     .menu-icon {
@@ -187,5 +189,12 @@ body {
 
     .wa-button {
         display: none;
+    }
+
+    .login-button {
+        display: flex;
+        justify-content: flex-end;
+        margin-left: auto; 
+        margin-right: 40px; 
     }
 }

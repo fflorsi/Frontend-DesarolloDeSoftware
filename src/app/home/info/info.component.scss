@@ -107,3 +107,56 @@ a{
   bottom: 0;
   }
 
+
+@media (max-width: 768px) {
+  .contact-link {
+      grid-template-columns: 1fr; 
+      gap: 20px;
+      padding: 10px; 
+  }
+
+  .contact-item {
+      flex-direction: row; 
+      align-items: center; 
+      gap: 10px; 
+  }
+
+  .contact-item h3 {
+      font-size: 18px; 
+      margin-bottom: 5px; 
+  }
+
+  .contact-item p {
+      font-size: 14px; 
+      margin-top: 0; 
+  }
+
+  .menu-section {
+      margin-top: 20px;
+      height: auto; 
+  }
+
+  .menu-items {
+      width: 100%;
+      padding: 10px; 
+  }
+
+  .menu-items a {
+      font-size: 24px; 
+  }
+
+  a{
+    line-height: normal;
+  }
+
+  .img-container {
+      width: 100%; 
+      height: 50vh;
+      position: relative; 
+      margin-top: 20px; 
+  }
+
+  .text{
+    padding:10px;
+  }
+}

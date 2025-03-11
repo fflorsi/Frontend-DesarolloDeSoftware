@@ -133,3 +133,67 @@ input{
 .search-button:hover {
     background-color: #4c4152;
 }
+
+@media (max-width: 768px) {
+    .header {
+        padding: 20px 0; 
+        text-align: center; 
+    }
+
+    .header h1 {
+        font-size: 32px; 
+    }
+
+    .header p {
+        font-size: 14px; 
+        margin-top: 10px;
+    }
+
+    .search-container {
+        margin-top: 10px;
+    }
+
+    .search-input {
+        width: 80%; 
+        padding: 8px; 
+        font-size: 14px; 
+    }
+
+    .container {
+        flex-direction: column;
+        padding: 0 10px;
+    }
+
+    .card {
+        width: 100%; 
+        margin: 10px 0; 
+    }
+
+    .card_image {
+        height: auto; 
+    }
+
+    .card_overlay {
+        padding: 10px; 
+        transform: translate3d(0, 0, 0); 
+    }
+
+    .card_title {
+        font-size: 18px; 
+        transform: translate3d(0, 0, 0); 
+    }
+
+    .card_price {
+        font-size: 16px; 
+    }
+
+    .card_description {
+        font-size: 14px; 
+    }
+
+    .no-data {
+        font-size: 16px; 
+        text-align: center; 
+        margin-top: 20px; 
+    }
+}

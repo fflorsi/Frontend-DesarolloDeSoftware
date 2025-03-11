@@ -183,3 +183,84 @@ li {
   display: block;
 
 }
+
+@media (max-width: 768px) {
+  .header {
+      padding: 20px 0; 
+      background-size: 50vh; 
+      background-position: center; 
+  }
+
+  .header h2 {
+      font-size: 24px; 
+      height: auto; 
+  }
+
+  .header h1 {
+      font-size: 28px; 
+      height: auto; 
+  }
+
+  .header p {
+      font-size: 14px; 
+      height: auto; 
+  }
+
+  .container {
+      padding: 0 10px; 
+  }
+
+  ul {
+      flex-direction: column; 
+      margin: 0;
+  }
+
+  li {
+      margin: 10px 0; 
+  }
+
+  .card {
+      width: 100%; 
+      margin: 10px 0; 
+  }
+
+  .card_img {
+      height: auto; 
+      filter: blur(5px); 
+  }
+
+  .card_overlay {
+      padding: 20px; 
+      display: flex; 
+      justify-content: center; 
+      align-items: center; 
+      flex-direction: column; 
+  }
+
+  .card_header {
+      padding: 10px; 
+  }
+
+  .card_category {
+      font-size: 12px; 
+      padding: 5px 10px; 
+  }
+
+  .card_title {
+      font-size: 16px; }
+
+  .card_description {
+      font-size: 14px; 
+    }
+
+  .card_price {
+      font-size: 14px; 
+  }
+
+  .add-to-cart-btn {
+      width: 80px; 
+      height: 80px;
+      font-size: 12px; 
+      display: block; 
+  }
+}
