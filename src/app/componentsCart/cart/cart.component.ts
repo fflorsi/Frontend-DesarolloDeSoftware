@@ -30,8 +30,6 @@ export class CartComponent implements OnInit {
     this._cartService.items$.subscribe(items => {
       this.items = items;
       this.total = this._cartService.totalCart();
-      console.log('Productos en el carrito:', this.items);
-      console.log('Total del carrito:', this.total);
     });
 
     // Verificar si el usuario está logueado

@@ -3,6 +3,7 @@ import { ActivatedRoute } from '@angular/router';
 import { Order, OrderItem } from '@app/interfaces/order';
 import { CartService } from '@app/services/cart.service';
 import { OrderService } from '@app/services/order.service';
+import { jwtDecode } from 'jwt-decode';
 
 @Component({
   selector: 'app-checkout',
@@ -32,17 +33,24 @@ export class CheckoutComponent implements OnInit {
   }
 
   async savePayment(paymentId: string): Promise<void> {
-    await this.orderService.savePayment(paymentId).subscribe(
-      response => {
-        console.log('Pago guardado con éxito:', response);
-        this.getDetail(paymentId)
-      },
-      error => {
-        console.error('Error al guardar el pago:', error);
-        this.getDetail(paymentId)
-      }
+    const clientId = this.getClientIdFromToken();
+    
+    if (clientId === undefined) {
+        throw new Error("El ID del cliente no está disponible");
+    }
+
+    await this.orderService.savePayment(paymentId, clientId).subscribe(
+        response => {
+            console.log('Pago guardado con éxito:', response);
+            this.getDetail(paymentId);
+        },
+        error => {
+            console.error('Error al guardar el pago:', error);
+            this.getDetail(paymentId);
+        }
     );
-  }
+}
+
    getDetail(paymentId: string): void{
     this.orderService.getOrderByPaymentId(paymentId).subscribe(
       order => {
@@ -54,5 +62,20 @@ export class CheckoutComponent implements OnInit {
       }
     )
   }
+
+  getClientIdFromToken(): number | undefined {
+      const token = localStorage.getItem('authToken');
+      if (token) {
+        try {
+          const decodedToken = jwtDecode<{ clientId?: number }>(token);
+          return decodedToken.clientId;
+        } catch (error) {
+          console.error('Error al decodificar el token:', error);
+        }
+      } else {
+        console.error('Token no encontrado en localStorage.');
+      }
+      return undefined;
+    }
 }
 

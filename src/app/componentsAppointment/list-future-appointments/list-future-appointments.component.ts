@@ -40,7 +40,6 @@ export class ListFutureAppointmentsComponent implements OnInit {
     const newState = 'cancelled';  // Estado de "cancelado"
     this._appointmentService.updateAppointmentState(id, newState).subscribe({
       next: (response) => {
-        console.log(`Turno cancelado correctamente.`);
         this.getFutureAppointments();
       },
       error: (error) => {
@@ -59,9 +58,6 @@ export class ListFutureAppointmentsComponent implements OnInit {
     const newState = 'done';  // Estado de "recibido"
     this._appointmentService.updateAppointmentState(id, newState).subscribe({
       next: (response) => {
-        console.log(`Turno recibido correctamente.`);
-        //this.petId= this.appointment.pet?.id
-        //this.router.navigate(['/ViewPet/:petId'])
       },
       error: (error) => {
         console.error(`Error al marcar el turno con ID ${id} como recibido:`, error);

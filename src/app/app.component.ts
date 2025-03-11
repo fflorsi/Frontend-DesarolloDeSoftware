@@ -40,7 +40,6 @@ export class AppComponent implements OnInit {
       }
     } else {
       this.isUserLoggedIn = false;
-      console.log('No token found, user is not logged in');
     }
   }
 
@@ -79,6 +78,5 @@ export class AppComponent implements OnInit {
 
   openCart() {
     this.cartStateService.openCart(); 
-    console.log('Cart opened', this.cartStateService.openCart);
   }
 }

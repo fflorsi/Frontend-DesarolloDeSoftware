@@ -17,7 +17,7 @@ export class FacilityShopComponent implements OnInit {
     pageIndex: 0,
     pageSize: 6
   };
-  searchTerm: string = ''; // Nuevo campo para el término de búsqueda
+  searchTerm: string = '';
 
   constructor(private _facilityService: FacilityService, private toastr: ToastrService) { }
 
@@ -29,7 +29,6 @@ export class FacilityShopComponent implements OnInit {
     this.loading = true;
 
     this._facilityService.getFacilities().subscribe((response: any) => {
-      console.log('Respuesta del servidor:', response);
       this.listFacilities = response.data;
       this.loading = false;
       this.setPaginatedFacilities();
@@ -49,7 +48,6 @@ export class FacilityShopComponent implements OnInit {
   }
 
   filterFacilities() {
-    // Llama al servicio para buscar facilities por nombre
     this._facilityService.searchFacilitiesByName(this.searchTerm).subscribe((response: any) => {
       this.listFacilities = response.data;
       this.setPaginatedFacilities(); // Actualiza la paginación

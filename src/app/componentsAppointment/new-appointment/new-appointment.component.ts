@@ -59,7 +59,6 @@ export class NewAppointmentComponent implements OnInit {
           const resultData = data.body.data;
           if (Array.isArray(resultData)) {
             this.professionals = resultData;
-            console.log('Profesionales obtenidos:', this.professionals);
           } else {
             console.error('Se esperaba un array, pero se obtuvo:', resultData);
           }
@@ -78,7 +77,6 @@ export class NewAppointmentComponent implements OnInit {
   loadPet(){
     this._petService.getPetDetailById(this.petId).subscribe({next: (response: any) => {  
       this.pet = response.data;  
-      console.log(this.pet);  
   },
   error: (error) => {
       console.error('Error fetching client data', error);
@@ -95,7 +93,6 @@ export class NewAppointmentComponent implements OnInit {
 
       this._appointmentService.createAppointment(appointmentData).subscribe({
         next: (response) => {
-          console.log('Turno solicitado correctamente:', response);
           this.toastr.success('Turno solicitado correctamente', 'Éxito', {
             timeOut: 3000, 
           });
