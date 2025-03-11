@@ -23,7 +23,6 @@ export class ViewProfessionalComponent implements OnInit {
     this._professionalService.getProfessionalDetailById(professionalId).subscribe(
       (response: any) => {
         this.professionalDetail = response.data;
-        console.log(this.professionalDetail);
       },
       (error) => {
         console.error('Error fetching professional data', error);

@@ -37,7 +37,6 @@ export class HomeComponent implements OnInit {
         }
       },
       (reason) => {
-        console.log('Modal dismissed:', reason);
       }
     );
   }
@@ -48,8 +47,6 @@ export class HomeComponent implements OnInit {
         if (data && data.body && data.body.ownerData) {
           const client = data.body.ownerData;
           const pets = data.body.petData;
-          console.log('Client:', client);
-          console.log('Pets:', pets);
           this.router.navigate(['ViewClientPet'], { state: { client, pets } });
         } else {
           this.toastr.error('Cliente no encontrado', 'Error');

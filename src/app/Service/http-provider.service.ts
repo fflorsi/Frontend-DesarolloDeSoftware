@@ -54,7 +54,6 @@ export class HttpProviderService {
     const headers = new HttpHeaders({
       'Content-Type': 'application/json'
     });
-    console.log(`Fetching details for pet ID: ${id}`);
     return this.http.get<Pet>(`${httpLink.getPetDetailById}/${id}`, { headers });
   }
 
@@ -76,7 +75,6 @@ export class HttpProviderService {
   const headers = new HttpHeaders({
     'Content-Type': 'application/json'
   });
-  console.log(`Fetching details for pet ID: ${model}`);
   return this.http.get<any>(`${httpLink.getMedicalHistories}/${model}`, { headers });
   }
 
@@ -129,7 +127,6 @@ export class HttpProviderService {
     });
     return this.http.get<any[]>(httpLink.getAllProfessional, { headers, observe: 'response' }).pipe(
       tap((response: any) => {
-        console.log('Respuesta del backend para getAllProfessional:', response);
       })
     );
   }
@@ -142,7 +139,6 @@ export class HttpProviderService {
 
     return this.http.delete(`${httpLink.deleteProfessionalById}/${id}`, { headers, observe: 'response' }).pipe(
       tap(response => {
-        console.log('Profesional eliminado:', response);
       }),
     );
   }
@@ -161,7 +157,6 @@ export class HttpProviderService {
 
 
   public addProfessional(professionalData: any): Observable<any> {
-  console.log(professionalData);
   const headers = new HttpHeaders({
     'Content-Type': 'application/json'
   });
@@ -174,7 +169,6 @@ export class HttpProviderService {
   const headers = new HttpHeaders({
     'Content-Type': 'application/json'
   });
-  console.log(`Fetching details for professional ID: ${id}`);
   return this.http.get<any>(`${httpLink.getProfessionalDetailById}/${id}`, { headers }).pipe(
     tap((response) => console.log('Respuesta de la API:', response)));
   }

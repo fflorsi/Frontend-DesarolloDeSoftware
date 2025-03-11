@@ -35,7 +35,6 @@ export class AddEditFacilityComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    console.log(this.id);
     if (this.id !== 0) {
       this.operacion = 'Editar';
       this.getFacility(this.id);

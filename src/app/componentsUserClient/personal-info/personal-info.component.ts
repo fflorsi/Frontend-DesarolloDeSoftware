@@ -27,11 +27,9 @@ export class PersonalInfoComponent implements OnInit {
 
   getClientIdFromToken(): number | undefined {
       const token = localStorage.getItem('authToken');
-      console.log(token)
       if (token) {
         try {
           const decodedToken = jwtDecode<{ clientId?: number }>(token);
-          console.log('Decoded Token:', decodedToken);  // Ver contenido del token
           return decodedToken.clientId;
         } catch (error) {
           console.error('Error al decodificar el token:', error);
@@ -46,7 +44,6 @@ export class PersonalInfoComponent implements OnInit {
       this.clientService.getClientDetailById(clientId).subscribe(
         (response: any) => {  
           this.clientInfo = response.data; 
-          console.log("Objeto cliente devuelto: ", this.clientInfo);
         },
         (error) => {
           console.error('Error fetching client data', error);
@@ -62,7 +59,6 @@ export class PersonalInfoComponent implements OnInit {
     if (this.clientInfo && this.clientInfo.id !== undefined) {
       this.clientService.updateClient(this.clientInfo.id, this.clientInfo).subscribe(
         (response) => {
-          console.log('Información del cliente actualizada', response);
           this.isEditing = false; // Salir del modo de edición después de guardar
         },
         (error) => {

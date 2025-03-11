@@ -69,7 +69,6 @@ export class NewAppointmentComponent implements OnInit {
 
   loadFacilities(): void {
     this._facilityService.getFacilities().subscribe((response: any) => {
-      console.log('Respuesta del servidor:', response); 
       this.facilities = response.data;
     });
   }

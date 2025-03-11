@@ -96,7 +96,6 @@ export class ClientAppointmentComponent implements OnInit {
 
     loadFacilities(): void {
       this._facilityService.getFacilities().subscribe((response: any) => {
-        console.log('Respuesta del servidor:', response); 
         this.facilities = response.data;
       });
     }
@@ -122,7 +121,6 @@ export class ClientAppointmentComponent implements OnInit {
     
         this._appointmentService.createAppointment(appointmentData).subscribe({
           next: (response) => {
-            console.log('Turno solicitado correctamente:', response);
             this.toastr.success('Turno solicitado correctamente', 'Éxito', {
               timeOut: 3000, 
             });
@@ -143,7 +141,6 @@ export class ClientAppointmentComponent implements OnInit {
     const newState = 'cancelled';  // Estado de "cancelado"
     this._appointmentService.updateAppointmentState(id, newState).subscribe({
       next: (response) => {
-        console.log(`Turno cancelado correctamente.`);
         this.getFutureAppointments();
       },
       error: (error) => {

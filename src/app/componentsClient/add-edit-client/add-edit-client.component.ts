@@ -38,7 +38,6 @@ export class AddEditClientComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    console.log(this.id);
     if (this.id !== 0) {
       this.operacion = 'Editar';
       this.getClient(this.id);
@@ -89,7 +88,6 @@ export class AddEditClientComponent implements OnInit {
     this.loading = true;
     if (this.id !== 0) {
       this._clientService.updateClient(this.id, client).subscribe(() => {
-        console.log(this.id);
         this.toastr.info(`El cliente ${client.firstname} ${client.lastname} fue actualizado con éxito`, 'Cliente actualizado');
         this.loading = false;
         this.router.navigate(['/listClients']);

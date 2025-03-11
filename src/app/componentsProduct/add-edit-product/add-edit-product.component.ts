@@ -36,7 +36,6 @@ export class AddEditProductComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    console.log(this.id);
     if (this.id !== 0) {
       this.operacion = 'Editar';
       this.getProduct(this.id);
@@ -82,7 +81,6 @@ export class AddEditProductComponent implements OnInit {
     this.loading = true;
     if (this.id !== 0) {
       this._productService.updateProduct(this.id, product).subscribe(() => {
-        console.log(this.id);
         this.toastr.info(`El producto ${product.description} ${product.price} fue actualizado con éxito`, 'Producto actualizado');
         this.loading = false;
         this.router.navigate(['/listProducts']);

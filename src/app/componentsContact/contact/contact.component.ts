@@ -27,7 +27,6 @@ export class ContactComponent {
       .then((result: EmailJSResponseStatus) => {
         this.successMessage = "El mensaje se ha enviado con éxito!";
         this.errorMessage = '';
-        console.log(result.text);
       })
       .catch((error) => {
         this.errorMessage = "No pudimos enviar el mensaje, intenta de nuevo.";

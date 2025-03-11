@@ -51,14 +51,12 @@ export class CartComponent implements OnInit {
       try {
         // Decodificar el token
         const decodedToken: any = jwtDecode(token);
-        console.log('Decoded Token:', decodedToken);
       } catch (error) {
         console.error('Error al decodificar el token:', error);
         this.isUserLoggedIn = false;
       }
     } else {
       this.isUserLoggedIn = false;
-      console.log('No token found, user is not logged in');
     }
   }
 
@@ -66,7 +64,6 @@ export class CartComponent implements OnInit {
     this.clientService.getClientDetailById(clientId).subscribe(
       (response: any) => {  
         this.clientInfo = response.data; 
-        console.log("Objeto cliente devuelto en el carrito: ", this.clientInfo)
       },
       (error) => {
         console.error('Error fetching client data', error);

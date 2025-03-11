@@ -42,7 +42,6 @@ export class EditPetComponent implements OnInit {
 
   ngOnInit(): void {
     this.getAvailableTypes();
-    console.log(this.id);
     if (this.id !== 0) {
       this.operacion = 'Editar';
       this.getPetDetail(this.id);
@@ -59,7 +58,6 @@ export class EditPetComponent implements OnInit {
     this._petService.getPetDetailById(this.id).subscribe({
       next: (response: any) => {
           const data = response.data;
-          console.log('Datos de la mascota:', data);
           this.loading = false;
           const birthdate = new Date(data.birthdate).toISOString().split('T')[0]; // Convertir la fecha al formato YYYY-MM-DD
           this.formPet.setValue({
@@ -104,7 +102,6 @@ savePet() {
     this.loading = true;
     this.typeService.getTypes().subscribe({
       next: (response: any) => {
-        console.log('Tipos disponibles:', response.data);
         this.availableTypes = response.data;
         this.loading = false;
       },

@@ -68,7 +68,6 @@ export class PersonalInfoPrComponent implements OnInit {
     if (this.professionalInfo && this.professionalInfo.id !== undefined) {
       this.professionalService.updateProfessional(this.professionalInfo.id, this.professionalInfo).subscribe(
         (response) => {
-          console.log('Información del profesional actualizada', response);
           this.isEditing = false; // Salir del modo de edición después de guardar
         },
         (error) => {

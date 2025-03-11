@@ -34,9 +34,7 @@ export class ListClientsComponent implements OnInit, AfterViewInit {
     this.loading = true;
     this._clientService.getClients().subscribe(
       (response: any) => {
-        console.log('Respuesta del servidor:', response);
         this.listClients = response.data;
-        console.log(this.listClients)
         this.filteredClients = this.listClients;
         this.loading = false;
         this.setPaginatedClients();
@@ -53,7 +51,6 @@ export class ListClientsComponent implements OnInit, AfterViewInit {
       const startIndex = this.paginator.pageIndex * this.paginator.pageSize;
       const endIndex = startIndex + this.paginator.pageSize;
       this.paginatedClients = this.filteredClients.slice(startIndex, endIndex);
-      console.log('Clientes paginados:', this.paginatedClients);
     }
   }
 
@@ -79,11 +76,9 @@ export class ListClientsComponent implements OnInit, AfterViewInit {
     }
 
     this.loading = true;
-    console.log(this.searchQuery);
     this._clientService.searchClientsbyDNS(this.searchQuery).subscribe(
       (data: Client[]) => {
         this.listClients = data;
-        console.log(data);
         this.filteredClients = data; // Actualiza los clientes filtrados
       
         if (this.paginator) {

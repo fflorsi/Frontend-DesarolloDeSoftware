@@ -20,7 +20,6 @@ export class CartService {
   }
 
   addToCart(product: Product) {
-    console.log('Producto recibido en el carrito:', product);
   
     const existingProduct = this.items.find(item => item.id === product.id);
   
@@ -32,14 +31,12 @@ export class CartService {
       }
     } else if (product.stock > 0) {
       this.items.push({ ...product, quantity: 1 });
-      console.log('Producto agregado:', { ...product, quantity: 1 });
     } else {
       alert('Product out of stock');
     }
   
     this.itemsSubject.next(this.items);  // Actualiza el observable
     this.saveCart();  // Guarda el carrito en localStorage
-    console.log('Estado actualizado del carrito:', this.items);
   }
 
   deleteProduct(id: number) {

@@ -38,12 +38,10 @@ export class AddEditPetComponent {
 
     this.id = aRouter.snapshot.paramMap.get('id') ? Number(aRouter.snapshot.paramMap.get('id')) : 0;
     this.clientId = aRouter.snapshot.paramMap.get('idClient') ? Number(aRouter.snapshot.paramMap.get('idClient')) : 0;
-    console.log('ID del cliente:', this.clientId);
   }
 
   ngOnInit(): void {
     this.getAvailableTypes();
-    console.log(this.id);
     if (this.id !== 0) {
       this.operacion = 'Editar';
       this.getPet(this.id);
@@ -83,7 +81,6 @@ export class AddEditPetComponent {
         return;
     }
     
-    console.log('Datos enviados:', this.formPet.value);
     const pet: Pet = {
         name: this.formPet.value.name,
         birthdate: this.formPet.value.birthdate,
@@ -92,7 +89,6 @@ export class AddEditPetComponent {
         weight: this.formPet.value.weight,
         client_id: this.clientId, 
     };
-    console.log(pet);
     this.loading = true;
     if (this.id !== 0) {
         // Actualizar mascota existente
@@ -130,7 +126,6 @@ getAvailableTypes(): void {
   this.loading = true;
   this.typeService.getTypes().subscribe({
     next: (response: any) => {
-      console.log('Tipos disponibles:', response.data);
       this.availableTypes = response.data;
       this.loading = false;
     },

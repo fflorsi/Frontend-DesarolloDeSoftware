@@ -28,7 +28,6 @@ export class ViewAllPetComponent implements OnInit {
   getPetList() {
     this.loading = true;
     this._petService.getPets().subscribe((response: any) => {
-      console.log('Respuesta del servidor:', response);
       this.petList = response.data;
       this.loading = false;
     });

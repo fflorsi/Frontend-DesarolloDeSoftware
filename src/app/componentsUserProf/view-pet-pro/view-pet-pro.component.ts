@@ -20,11 +20,9 @@ export class ViewPetProComponent {
 
   getPetDetailById(): void {
     this.petId = Number(this.route.snapshot.paramMap.get('petId'));
-    console.log(this.petId);     
     this.httpProvider.getPetDetailById(this.petId).subscribe({
         next: (response: any) => {  
             this.petDetail = response.data;  
-            console.log(this.petDetail); 
         },
         error: (error) => {
             console.error('Error fetching client data', error);

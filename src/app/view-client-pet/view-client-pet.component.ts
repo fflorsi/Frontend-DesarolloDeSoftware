@@ -18,7 +18,5 @@ export class ViewClientPetComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    console.log('Client:', this.client);
-    console.log('Pets:', this.pets);
   }
 }

@@ -27,7 +27,6 @@ constructor(private _clientService: ClientService,
     this._clientService.getClientDetailById(clientId).subscribe(
       (response: any) => {  
           this.clientData = response.data;  
-          console.log(this.clientData);  
       },
       (error) => {
           console.error('Error fetching client data', error);
@@ -35,7 +34,6 @@ constructor(private _clientService: ClientService,
   );
   this._petService.getPetsByClient(clientId).subscribe((response:any) =>{
       this.listPets = response.data;
-      console.log(this.listPets); 
       this.loading = false;
     }
 

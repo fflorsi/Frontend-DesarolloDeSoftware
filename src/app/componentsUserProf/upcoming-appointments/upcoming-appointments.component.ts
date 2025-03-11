@@ -29,7 +29,6 @@ export class UpcomingAppointmentsComponent {
     const token = localStorage.getItem('authToken');
     if (token) {
       const decodedToken: any = jwtDecode(token);
-      console.log(decodedToken)
       this.professionalId = decodedToken.professionalId;
     } else {
       console.error('No se encontró el token');
@@ -41,7 +40,6 @@ export class UpcomingAppointmentsComponent {
     this._appointmentService.getFutureAppointmentsWithDetailsByProfessionalId(this.professionalId).subscribe(
       (data) => {
         this.appointments = data;
-        console.log(this.appointments)
         this.loading = false;
       },
       (error) => {
@@ -55,7 +53,6 @@ export class UpcomingAppointmentsComponent {
     const newState = 'cancelled';
     this._appointmentService.updateAppointmentState(id, newState).subscribe({
       next: () => {
-        console.log(`Turno cancelado correctamente.`);
         this.getFutureAppointments();
       },
       error: (error) => {
@@ -68,7 +65,6 @@ export class UpcomingAppointmentsComponent {
     const newState = 'done';
     this._appointmentService.updateAppointmentState(id, newState).subscribe({
       next: () => {
-        console.log(`Turno recibido correctamente.`);
         this.getFutureAppointments();
       },
       error: (error) => {

@@ -36,7 +36,6 @@ export class ListOrdersComponent implements OnInit {
     this._orderService.getMonthlyEarnings().subscribe({
       next: (data: any) => {
         this.monthlyEarnings = data.earnings;
-        console.log(data.earnings); 
         this.loading = false;  
       },
       error: (err) => {

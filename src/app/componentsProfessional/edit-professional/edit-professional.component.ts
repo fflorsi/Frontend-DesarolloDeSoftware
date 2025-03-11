@@ -36,7 +36,6 @@ export class EditProfessionalComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    console.log(this.id);
     if (this.id !== 0) {
       this.operacion = 'Editar';
       this.getProfessionalDetail(this.id);
@@ -48,7 +47,6 @@ export class EditProfessionalComponent implements OnInit {
     this._professionalService.getProfessionalDetailById(this.id).subscribe({
       next: (response: any) => {
         const data = response.data;
-        console.log('Datos del profesional:', data);
         this.loading = false;
         const birthdate = new Date(data.birthDate).toISOString().split('T')[0];
         this.formProfessional.setValue({

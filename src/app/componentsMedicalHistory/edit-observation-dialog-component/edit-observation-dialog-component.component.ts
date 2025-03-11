@@ -50,7 +50,6 @@ export class EditObservationDialogComponent implements OnInit {
       next: (response: any) => {
         if (response && Array.isArray(response.data)) {
           this.professionals = response.data;
-          console.log('Profesionales cargados:', this.professionals); 
         } else {
           console.error('Error: la API no devolvió un array válido', response);
           this.professionals = [];
@@ -67,7 +66,6 @@ export class EditObservationDialogComponent implements OnInit {
 
   selectProfessional(professional: Professional): void {
     this.form.patchValue({ professional: professional.id });
-    console.log('Profesional seleccionado:', professional);
     this.selectedProfessionalName = `${professional.firstname} ${professional.lastname}`;
     if (professional.id !== undefined) {
       this.selectedProfessionalId = professional.id;
@@ -87,7 +85,6 @@ export class EditObservationDialogComponent implements OnInit {
         ...this.form.value,
         createdAt: this.form.get('createdAt')?.value ? this.form.get('createdAt')?.value.toISOString() : this.data.observation.createdAt,
       };
-      console.log('Form Data:', formData); // Log formData for debugging
       this.dialogRef.close(formData);
     } else {
       console.error('El formulario no es válido', this.form.errors);

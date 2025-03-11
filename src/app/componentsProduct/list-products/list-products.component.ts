@@ -24,7 +24,6 @@ export class ListProductsComponent implements OnInit {
     this.loading = true;
 
     this._productService.getProduct().subscribe((response: any) => {
-      console.log('Respuesta del servidor:', response);
       this.listProducts = response.data;
       this.loading = false;
     });

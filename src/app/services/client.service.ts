@@ -53,7 +53,6 @@ export class ClientService {
   }
 
   public searchClientsbyDNS(searchString: string): Observable<Client[]> {
-    console.log(searchString)
     return this.http.get<Client[]>(`${this.myAppUrl}${this.myApiUrl}/search/${searchString}`);
   }
 

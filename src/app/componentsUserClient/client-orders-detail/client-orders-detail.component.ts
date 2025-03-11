@@ -29,7 +29,6 @@ export class ClientOrdersDetailComponent implements OnInit {
     this.orderService.getOrderById(id).subscribe({
       next: (data) => {
         this.order = data;
-        console.log('Order loaded:', this.order);  
       },
       error: (err) => {
         console.error('Error loading order:', err); 

@@ -29,7 +29,6 @@ export class ProductShopComponent implements OnInit {
 
   loadProducts() {
     this._productService.getProduct().subscribe((response: any) => {
-      console.log('Respuesta del servidor:', response);
       this.products = response.data;
       this.setPaginatedProducts(); // Llama a setPaginatedProducts después de cargar los productos
     },
@@ -39,7 +38,6 @@ export class ProductShopComponent implements OnInit {
   }
 
   addToCart(product: Product) {
-    console.log('Producto recibido en el componente:', product);
     this._cartService.addToCart(product); // Llamar al método corregido en el servicio
     this._toastrService.success('Producto añadido al carrito');
 

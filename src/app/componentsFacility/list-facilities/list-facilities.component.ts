@@ -28,7 +28,6 @@ export class ListFacilitiesComponent implements OnInit{
     this.loading=true;
 
     this._facilityService.getFacilities().subscribe((response: any) => {
-      console.log('Respuesta del servidor:', response); // Para ver la estructura completa
       this.listFacilities = response.data; // Accede al array a través de response.data
       this.setPaginatedFacilities();
       this.loading = false;

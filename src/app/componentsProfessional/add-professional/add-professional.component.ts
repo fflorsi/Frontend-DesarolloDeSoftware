@@ -45,7 +45,6 @@ export class AddProfessionalComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    console.log(this.id);
     if (this.id !== 0) {
       this.operacion = 'Editar';
       this.getProfessional(this.id);
@@ -93,8 +92,7 @@ export class AddProfessionalComponent implements OnInit {
     this.loading = true;
     this._professionalService.saveProfessional(professional).subscribe(
       response => {
-        console.log(response.message);
-        console.log(response.data);
+
 
         this.toastr.success(`El profesional ${professional.firstname} ${professional.lastname} fue registrado con éxito`, 'Profesional registrado');
 

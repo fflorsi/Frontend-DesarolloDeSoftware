@@ -23,7 +23,6 @@ export class DetailFacilityComponent {
     this._facilityService.getFacilityById(facilityId).subscribe(
         (response: any) => {  
             this.facilityData = response.data;  
-            console.log(this.facilityData);  
         },
         (error) => {
             console.error('Error fetching facility data', error);

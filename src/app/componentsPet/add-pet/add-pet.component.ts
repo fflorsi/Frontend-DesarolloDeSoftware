@@ -55,7 +55,6 @@ export class AddPetComponent implements OnInit {
     this.loading = true;
     this.typeService.getTypes().subscribe({
       next: (response: any) => {
-        console.log('Tipos disponibles:', response.data);
         this.availableTypes = response.data;
         this.loading = false;
       },

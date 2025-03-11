@@ -35,7 +35,6 @@ export class AppointmentsByProfessionalComponent implements OnInit {
       (data: any[]) => {
         if (data && data.length > 0) {
           this.appointmentsData = data
-          console.log('Citas:', this.appointmentsData)
           this.createChart()
         } else {
           console.warn('No se encontraron citas para este profesional.')

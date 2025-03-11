@@ -9,7 +9,6 @@ export class ErrorService {
   constructor(private toastr: ToastrService) {}
 
   msjError(e: HttpErrorResponse) {
-    console.log('Error recibido:', e); 
     if (e.error.msg) {
       this.toastr.error(e.error.msg, 'Error');
     } else {

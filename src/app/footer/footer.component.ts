@@ -17,7 +17,6 @@ export class FooterComponent implements OnInit {
   onSubmit() {
     if (this.email.valid) {
       // Handle valid email submission
-      console.log('Email submitted:', this.email.value);
       this.showError = true;
     } else {
       // Show error message

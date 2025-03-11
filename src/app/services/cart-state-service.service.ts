@@ -10,11 +10,9 @@ export class CartStateService {
 
   openCart() {
     this.cartOpenSubject.next(true);
-    console.log('Cart opened jeje');
   }
 
   closeCart() {
     this.cartOpenSubject.next(false);
-    console.log('Cart closed');
   }
 }

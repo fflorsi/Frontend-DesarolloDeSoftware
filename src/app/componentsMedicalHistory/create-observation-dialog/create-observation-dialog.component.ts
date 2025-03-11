@@ -38,7 +38,6 @@ export class CreateObservationDialogComponent {
     this.httpProvider.getProfessionals().subscribe({
       next: (response: any) => {
         this.professionals = response.data || [];
-        console.log(this.professionals);
       },
       error: (error: any) => {
         console.error('Error fetching professionals', error);
@@ -62,7 +61,6 @@ export class CreateObservationDialogComponent {
 
     this.httpProvider.createObservation(newObservation).subscribe({
       next: (response) => {
-        console.log('Observación creada exitosamente:', response);
         this.dialogRef.close(response);
       },
       error: (error) => {

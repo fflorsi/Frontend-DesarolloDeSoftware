@@ -55,7 +55,6 @@ export class ClientPetsComponent implements OnInit {
     this.loading = true;
     this.typeService.getTypes().subscribe({
       next: (response: any) => {
-        console.log('Tipos disponibles:', response.data);
         this.availableTypes = response.data;
         this.loading = false;
       },
@@ -68,11 +67,9 @@ export class ClientPetsComponent implements OnInit {
 
   getClientIdFromToken(): number | undefined {
     const token = localStorage.getItem('authToken');
-    console.log(token)
     if (token) {
       try {
         const decodedToken = jwtDecode<{ clientId?: number }>(token);
-        console.log('Decoded Token:', decodedToken);  // Ver contenido del token
         return decodedToken.clientId;
       } catch (error) {
         console.error('Error al decodificar el token:', error);
@@ -136,9 +133,6 @@ export class ClientPetsComponent implements OnInit {
       weight: this.formPet.value.weight,
       client_id: Number(this.clientId),  // Asegurándonos que clientId es un número
     };
-
-
-    console.log('Datos de la mascota:', petData); // Verifica que el objeto esté correcto
   
     this.loading = true;
   

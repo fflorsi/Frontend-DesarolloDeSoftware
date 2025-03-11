@@ -26,7 +26,6 @@ export class CheckoutComponent implements OnInit {
       this.status = params['status'];
     });
     if (this.paymentId) {
-      console.log(this.paymentId)
       this.savePayment(this.paymentId)
       this._cartService.cleanCart()
       }
@@ -41,7 +40,6 @@ export class CheckoutComponent implements OnInit {
 
     await this.orderService.savePayment(paymentId, clientId).subscribe(
         response => {
-            console.log('Pago guardado con éxito:', response);
             this.getDetail(paymentId);
         },
         error => {
@@ -55,7 +53,6 @@ export class CheckoutComponent implements OnInit {
     this.orderService.getOrderByPaymentId(paymentId).subscribe(
       order => {
         this.order = order
-        console.log('Orden obtenida:', this.order)
       },
       error => {
         console.error('Error al obtener la orden:', error);

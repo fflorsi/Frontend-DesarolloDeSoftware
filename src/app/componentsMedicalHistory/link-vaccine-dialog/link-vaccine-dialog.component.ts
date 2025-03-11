@@ -38,7 +38,6 @@ export class LinkVaccineDialogComponent {
     selectedIds.forEach(id => {
       this.httpProvider.linkVaccineToMedicalHistory(this.data.medicalHistoryId, Number(id)).subscribe({
         next: (response: any) => {
-          console.log('Vaccine linked successfully:', response);
         },
         error: (error: any) => {
           console.error('Error linking vaccine:', error);

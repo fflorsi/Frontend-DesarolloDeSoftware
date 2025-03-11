@@ -26,13 +26,11 @@ export class SideCartComponent implements OnInit {
     this._cartService.items$.subscribe(items => {
       this.items = items;
       this.total = this._cartService.totalCart();
-      console.log('Productos en el carrito:', this.items);
-      console.log('Total del carrito:', this.total);
+
     });
     
     this.cartStateService.cartOpen$.subscribe(isOpen => {
       this.isCartOpen = isOpen;
-      console.log('Estado del carrito:', this.isCartOpen);
     });
   }
 

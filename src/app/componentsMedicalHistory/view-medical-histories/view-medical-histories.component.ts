@@ -57,7 +57,6 @@ export class ViewMedicalHistoriesComponent implements OnInit {
             this.medicalHistory.observations = [];
           }
 
-          console.log('Medical history details:', this.medicalHistory);
         } else {
           console.error('No data found in response:', response);
           this.medicalHistory = null; // Asegúrate de establecerlo como null si no hay datos
@@ -68,7 +67,6 @@ export class ViewMedicalHistoriesComponent implements OnInit {
         this.medicalHistory = null; // Establece como null si hay un error
       },
       complete: () => {
-        console.log('Fetch medical history details complete');
       }
     });
   }
@@ -78,9 +76,7 @@ export class ViewMedicalHistoriesComponent implements OnInit {
       next: (response: any) => {
         if (response && response.data) {
           this.medicalHistory.observations = response.data;
-          console.log(typeof(this.medicalHistory.observations))
-          console.log(this.medicalHistory.observations.length)
-          console.log(this.medicalHistory.observations)
+
           this.totalObservations = this.medicalHistory.observations.length;
           this.updatePaginatedObservations();
         } else {
@@ -93,8 +89,7 @@ export class ViewMedicalHistoriesComponent implements OnInit {
         this.medicalHistory.observations = []; // Establece como vacío si hay un error
       },
       complete: () => {
-        console.log('Fetch observations complete');
-        console.log(this.medicalHistory.observations)
+
       }
     });
   }
@@ -199,7 +194,6 @@ openEditObservationDialog(observation: any): void {
         if (result) {
             this.httpProvider.updateObservation(result).subscribe({
                 next: (response: any) => {
-                    console.log('Observation updated successfully:', response);
                     const medicalHistoryId = this.medicalHistory.id;
                     this.getObservations(medicalHistoryId);
                 },
@@ -229,7 +223,6 @@ openDeleteObservationDialog(observation: any): void {
     if (result) {
       this.httpProvider.deleteObservation(observation.id).subscribe({
         next: () => {
-          console.log('Observation deleted successfully');
           // Actualizar la lista de observaciones
           const medicalHistoryId = this.medicalHistory.id;
           this.getObservations(medicalHistoryId);
@@ -246,7 +239,6 @@ openDeleteObservationDialog(observation: any): void {
 unlinkVaccine(medicalHistoryId: number, vaccineId: number): void {
   this.httpProvider.unlinkVaccine(medicalHistoryId, vaccineId).subscribe({
     next: (response: any) => {
-      console.log('Vaccine unlinked successfully:', response);
       this.getMedicalHistories();
     },
     error: (error) => {

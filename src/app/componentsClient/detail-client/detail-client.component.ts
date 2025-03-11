@@ -23,13 +23,11 @@ export class DetailClientComponent {
     this._clientService.getClientDetailById(clientId).subscribe(
         (response: any) => {  
             this.clientData = response.data;  
-            console.log(this.clientData);  
         },
         (error) => {
             console.error('Error fetching client data', error);
         }
     );
-    console.log("Objeto cliente devuelto: ", this.clientData)
 }
 
   deleteClient(id: number) {

@@ -83,7 +83,6 @@ export class AccountSettingsComponent implements OnInit {
 
       this.userService.updatePassword(userId, this.newPassword).subscribe(
         (response) => {
-          console.log('Contraseña actualizada:', response);
           this.isChangingPassword = false; // Cerrar formulario
         },
         (error) => {

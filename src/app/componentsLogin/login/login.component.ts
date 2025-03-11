@@ -48,7 +48,6 @@ export class LoginComponent implements OnInit {
         try {
           const decodedToken = jwtDecode<any>(token);
           const userRole = decodedToken.role;
-          console.log(userRole)
 
           
           // Redirigir según el rol del usuario
