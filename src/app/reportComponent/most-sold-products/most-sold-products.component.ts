@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { Chart, CategoryScale, LinearScale, Title, Tooltip, Legend, BarController, BarElement } from 'chart.js';
 import { ReportService } from '@app/services/report.service';
 
-// Registrar los componentes de Chart.js
 Chart.register(CategoryScale, LinearScale, Title, Tooltip, Legend, BarController, BarElement);
 
 @Component({
@@ -24,8 +23,8 @@ export class MostSoldProductsComponent implements OnInit {
     this._reportService.getMostSoldProducts().subscribe(
       (data: any[]) => {
         if (data && data.length > 0) {
-          this.products = data; // Ahora estamos recibiendo un array directamente
-          this.createChart(this.products); // Crear el gráfico con los datos
+          this.products = data; 
+          this.createChart(this.products); 
         } else {
           console.warn('No se encontraron productos más vendidos.');
         }
@@ -37,30 +36,26 @@ export class MostSoldProductsComponent implements OnInit {
   }
 
   createChart(data: any) {
-    // Si ya existe un gráfico, lo destruimos
+ 
     if (this.chart) {
       this.chart.destroy();
-      this.chart = null; // Limpiamos la referencia
+      this.chart = null; 
     }
 
-    // Eliminamos el canvas del DOM y lo volvemos a crear
+
     const canvasElement = document.getElementById('mostSoldProductsChartCanvas');
     if (canvasElement) {
-      canvasElement.remove(); // Eliminamos el canvas anterior si existe
+      canvasElement.remove(); 
     }
 
-    // Creamos un nuevo canvas dinámicamente
     const newCanvas = document.createElement('canvas');
-    newCanvas.id = 'mostSoldProductsChartCanvas'; // Asignamos un nuevo ID para el canvas
-    document.getElementById('mostSoldProductsChart')?.appendChild(newCanvas); // Insertamos el nuevo canvas en el contenedor
+    newCanvas.id = 'mostSoldProductsChartCanvas'; 
+    document.getElementById('mostSoldProductsChart')?.appendChild(newCanvas); 
 
-    // Nuevas referencias después de crear el canvas
     const ctx = newCanvas.getContext('2d');
     if (ctx) {
-      const labels = data.map((item: any) => item.product.name); // Nombres de productos
-      const chartData = data.map((item: any) => item.totalQuantity); // Cantidades vendidas
-
-      // Crear el nuevo gráfico
+      const labels = data.map((item: any) => item.product?.name); 
+      const chartData = data.map((item: any) => item.totalQuantity)
       this.chart = new Chart(ctx, {
         type: 'bar',
         data: {

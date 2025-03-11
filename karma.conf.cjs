@@ -31,9 +31,6 @@ module.exports = function (config) {
     singleRun: false,
     restartOnFileChange: true,
     files: [
-      // Aquí incluimos todos los archivos relevantes para Karma, no solo el archivo de prueba individual
-      'src/**/*.ts',             // Incluye todos los archivos TypeScript
-      'src/**/*.spec.ts'         // Incluye todos los archivos de prueba (espec)
     ]
   });
 };

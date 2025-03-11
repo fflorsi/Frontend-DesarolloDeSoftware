@@ -11,22 +11,22 @@ import {jwtDecode} from 'jwt-decode';
 export class AppointmentsByProfessionalComponent implements OnInit {
   professionalId!: number;
   chart: any;
-  appointmentsData: any[] = []; // Para almacenar las citas
+  appointmentsData: any[] = []; 
 
   constructor(private reportService: ReportService) { }
 
   ngOnInit(): void {
-    this.getProfessionalIdFromToken(); // Obtener el ID del profesional
-    this.getAppointments(); // Traer las citas del profesional
+    this.getProfessionalIdFromToken(); 
+    this.getAppointments(); 
   }
 
   getProfessionalIdFromToken(): void {
-    const token = localStorage.getItem('authToken');
+    const token = localStorage.getItem('authToken')
     if (token) {
-      const decodedToken: any = jwtDecode(token);
-      this.professionalId = decodedToken.professionalId;
+      const decodedToken: any = jwtDecode(token)
+      this.professionalId = decodedToken.professionalId
     } else {
-      console.error('No se encontró el token');
+      console.error('No se encontró el token')
     }
   }
 
@@ -34,15 +34,15 @@ export class AppointmentsByProfessionalComponent implements OnInit {
     this.reportService.getAppointmentsByProfessional(this.professionalId).subscribe(
       (data: any[]) => {
         if (data && data.length > 0) {
-          this.appointmentsData = data;
-          console.log('Citas:', this.appointmentsData);
-          this.createChart(); 
+          this.appointmentsData = data
+          console.log('Citas:', this.appointmentsData)
+          this.createChart()
         } else {
-          console.warn('No se encontraron citas para este profesional.');
+          console.warn('No se encontraron citas para este profesional.')
         }
       },
       error => {
-        console.error('Error al obtener las citas:', error);
+        console.error('Error al obtener las citas:', error)
       }
     );
   }
@@ -52,14 +52,14 @@ export class AppointmentsByProfessionalComponent implements OnInit {
       this.chart.destroy(); 
     }
   
-    setTimeout(() => {  // Retraso para asegurar que el canvas se haya renderizado
-      const canvasElement = document.getElementById('appointmentsChart');
+    setTimeout(() => {  
+      const canvasElement = document.getElementById('appointmentsChart')
       if (canvasElement) {
-        const ctx = (canvasElement as HTMLCanvasElement).getContext('2d');
+        const ctx = (canvasElement as HTMLCanvasElement).getContext('2d')
         if (ctx) {
           // Extraer los meses y el conteo de citas
           const months = this.appointmentsData.map((item: any) => item.date);
-          const appointmentsCount = this.appointmentsData.map((item: any) => item.count);
+          const appointmentsCount = this.appointmentsData.map((item: any) => item.count)
   
           this.chart = new Chart(ctx, {
             type: 'bar',
@@ -84,9 +84,9 @@ export class AppointmentsByProfessionalComponent implements OnInit {
             }
           });
         } else {
-          console.error('No se pudo obtener el contexto 2D para el canvas.');
+          console.error('No se pudo obtener el contexto 2D para el canvas.')
         }
       }
-    }, 100);  // Retardo de 100ms
+    }, 100);  
   }
 }

@@ -29,7 +29,7 @@ export class RegisteredClientsAndPetsComponent implements OnInit {
 
   getData(): void {
     this.reportService.getRegisteredClientsAndPets().subscribe((response) => {
-      console.log('Datos recibidos:', response);  // Verificar la respuesta
+      console.log('Datos recibidos:', response);  
       this.totalClients = response.totalClients;
       this.totalPets = response.totalPets;
       this.monthlyData = response.monthlyData;

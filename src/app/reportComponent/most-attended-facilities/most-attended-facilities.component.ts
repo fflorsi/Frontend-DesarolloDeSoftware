@@ -52,11 +52,11 @@ export class MostAttendedFacilitiesComponent implements OnInit {
       if (canvasElement) {
         const ctx = (canvasElement as HTMLCanvasElement).getContext('2d');
         if (ctx) {
-          // Extraer datos para el gráfico
-          const facilityNames = this.facilitiesData.map((item: any) => item.Facility.name);
-          const attendedCount = this.facilitiesData.map((item: any) => item.attendedCount);
+      
+          const facilityNames = this.facilitiesData.map((item: any) => item.Facility.name)
+          const attendedCount = this.facilitiesData.map((item: any) => item.attendedCount)
   
-          // Eliminar el gráfico existente antes de crear uno nuevo
+   
           if (this.chart) {
             this.chart.destroy();
           }
@@ -68,7 +68,7 @@ export class MostAttendedFacilitiesComponent implements OnInit {
               datasets: [{
                 label: 'Facilities Más Atendidas',
                 data: attendedCount,
-                backgroundColor: ['#FF6384', '#36A2EB', '#FFCE56', '#4BC0C0', '#FF9F40'], // Colores personalizados
+                backgroundColor: ['#FF6384', '#36A2EB', '#FFCE56', '#4BC0C0', '#FF9F40'], 
                 hoverBackgroundColor: ['#FF6384', '#36A2EB', '#FFCE56', '#4BC0C0', '#FF9F40']
               }]
             },
@@ -86,11 +86,11 @@ export class MostAttendedFacilitiesComponent implements OnInit {
             }
           });
         } else {
-          console.error('No se pudo obtener el contexto 2D para el canvas.');
+          console.error('No se pudo obtener el contexto 2D para el canvas.')
         }
       } else {
-        console.error('No se encontró el elemento canvas con el ID facilitiesChart.');
+        console.error('No se encontró el elemento canvas con el ID facilitiesChart.')
       }
-    }, 0);  // 0 ms de delay
+    }, 0); 
   }
 }

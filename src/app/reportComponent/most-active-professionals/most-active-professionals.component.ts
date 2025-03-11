@@ -1,5 +1,5 @@
 import { Component, OnInit, AfterViewInit } from '@angular/core';
-import { ReportService, MostActiveProfessionalsResponse } from '@app/services/report.service';  // Importar las interfaces
+import { ReportService, MostActiveProfessionalsResponse } from '@app/services/report.service';  
 import { Chart } from 'chart.js';
 
 @Component({
@@ -9,7 +9,7 @@ import { Chart } from 'chart.js';
 })
 export class MostActiveProfessionalsComponent implements OnInit, AfterViewInit {
 
-  mostActiveProfessionals: MostActiveProfessionalsResponse['mostActiveProfessionals'] = [];  
+  mostActiveProfessionals: MostActiveProfessionalsResponse['mostActiveProfessionals'] = []
   chart: any;
 
   constructor(private reportService: ReportService) {}
@@ -35,7 +35,7 @@ export class MostActiveProfessionalsComponent implements OnInit, AfterViewInit {
         }
       },
       (error) => {
-        console.error('Error al obtener los profesionales más activos:', error);
+        console.error('Error al obtener los profesionales más activos:', error)
       }
     );
   }
@@ -46,10 +46,10 @@ export class MostActiveProfessionalsComponent implements OnInit, AfterViewInit {
     }
 
     if (this.mostActiveProfessionals && this.mostActiveProfessionals.length > 0) {
-      const professionalNames = this.mostActiveProfessionals.map(prof => prof.professionalName);
-      const turnsAssigned = this.mostActiveProfessionals.map(prof => prof.turnsAssigned);
+      const professionalNames = this.mostActiveProfessionals.map(prof => prof.professionalName)
+      const turnsAssigned = this.mostActiveProfessionals.map(prof => prof.turnsAssigned)
 
-      const ctx = document.getElementById('professionalChart') as HTMLCanvasElement;
+      const ctx = document.getElementById('professionalChart') as HTMLCanvasElement
 
       this.chart = new Chart(ctx, {
         type: 'bar',

@@ -36,6 +36,7 @@
     "sequelize": "^6.37.5"
   },
   "devDependencies": {
+    "@angular-builders/custom-webpack": "^18.0.0",
     "@angular-devkit/build-angular": "^18.2.14",
     "@angular/cli": "^18.2.12",
     "@angular/compiler-cli": "^18.2.12",

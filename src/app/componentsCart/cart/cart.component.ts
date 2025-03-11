@@ -7,6 +7,7 @@ import { Order, OrderItem } from '@app/interfaces/order';
 import { Router } from '@angular/router';
 import { ClientService } from '@app/services/client.service';
 import { Client } from '@app/interfaces/client';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-cart',
@@ -24,6 +25,8 @@ export class CartComponent implements OnInit {
     private _cartService: CartService,
     private _orderService: OrderService,
     private router: Router,
+    private toastr: ToastrService
+    
   ) {}
 
   ngOnInit() {
@@ -116,9 +119,8 @@ export class CartComponent implements OnInit {
 
   checkout(){
     if (!this.isUserLoggedIn) {
-      alert('Necesitas iniciar sesión para realizar la compra');
-      // Redirigir a la página de inicio de sesión
-      this.router.navigate(['/login']);  // Redirige a la ruta '/login'
+      this.toastr.warning('Debes iniciar sesión para continuar con la compra', 'Iniciar Sesión');
+      this.router.navigate(['/login']);  
       return;
     }
 

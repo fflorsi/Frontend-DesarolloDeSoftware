@@ -11,7 +11,7 @@ import { jwtDecode } from 'jwt-decode';
 export class ClientMonthlySpendingComponent implements OnInit {
   clientId!: number;
   chart: any;
-  spendingData: any[] = []; // Datos del gasto mensual
+  spendingData: any[] = []; 
 
   constructor(private reportService: ReportService) {}
 
@@ -76,10 +76,10 @@ export class ClientMonthlySpendingComponent implements OnInit {
             }
           });
         } else {
-          console.error('No se pudo obtener el contexto 2D para el canvas.');
+          console.error('No se pudo obtener el contexto 2D para el canvas.')
         }
       } else {
-        console.error('No se encontró el elemento canvas con el ID spendingChart.');
+        console.error('No se encontró el elemento canvas con el ID spendingChart.')
       }
     }, 0);
   }

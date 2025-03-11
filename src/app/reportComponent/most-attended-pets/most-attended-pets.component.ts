@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Chart } from 'chart.js';
-import { ReportService } from '@app/services/report.service'; // Asegúrate de tener el servicio que hace la petición
+import { ReportService } from '@app/services/report.service'; 
 import { jwtDecode } from 'jwt-decode';
 
 @Component({
@@ -55,14 +55,14 @@ export class MostAttendedPetsComponent implements OnInit {
 
     if (ctx) {
       this.chart = new Chart(ctx, {
-        type: 'bar',  // Gráfico de barras
+        type: 'bar',  
         data: {
-          labels: petNames,  // Nombres de las mascotas
+          labels: petNames, 
           datasets: [{
             label: 'Atenciones Recibidas',
-            data: attentionCounts,  // Cantidad de atenciones
-            backgroundColor: 'rgba(75, 192, 192, 0.2)', // Color de las barras
-            borderColor: 'rgba(75, 192, 192, 1)',  // Color del borde
+            data: attentionCounts,  
+            backgroundColor: 'rgba(75, 192, 192, 0.2)', 
+            borderColor: 'rgba(75, 192, 192, 1)',  
             borderWidth: 1
           }]
         },

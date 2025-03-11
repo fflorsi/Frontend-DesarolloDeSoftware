@@ -2,8 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Chart, CategoryScale, LinearScale, Title, Tooltip, Legend, BarController, BarElement } from 'chart.js';
 import { ReportService } from '@app/services/report.service';
 
-// Registrar los componentes de Chart.js
-Chart.register(CategoryScale, LinearScale, Title, Tooltip, Legend, BarController, BarElement);
+Chart.register(CategoryScale, LinearScale, Title, Tooltip, Legend, BarController, BarElement)
 
 @Component({
   selector: 'app-most-requested-service',
@@ -20,7 +19,6 @@ export class MostRequestedServiceComponent implements OnInit {
     this.getMostRequestedServices();
   }
 
-  // Función para obtener los servicios más solicitados desde el backend
   getMostRequestedServices() {
     this._reportService.getMostRequestedService().subscribe(
       (data: any) => {
@@ -33,13 +31,12 @@ export class MostRequestedServiceComponent implements OnInit {
     );
   }
 
-  // Crear gráfico con los datos recibidos
   createChart(data: any) {
     const labels = data.map((item: any) => item.name);  
     const chartData = data.map((item: any) => item.totalAppointments);  
 
     this.chart = new Chart('most-req-comp', {
-      type: 'bar',  // Tipo de gráfico
+      type: 'bar',  
       data: {
         labels: labels,
         datasets: [{

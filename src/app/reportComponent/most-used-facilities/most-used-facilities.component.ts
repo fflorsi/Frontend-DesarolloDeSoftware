@@ -1,9 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { Chart, PieController, ArcElement, Tooltip, Legend } from 'chart.js'; // Importar lo necesario
+import { Chart, PieController, ArcElement, Tooltip, Legend } from 'chart.js'; 
 import { ReportService } from '@app/services/report.service'; 
 import { jwtDecode } from 'jwt-decode';
 
-// Registrar el tipo de gráfico 'pie' y otros elementos
 Chart.register(PieController, ArcElement, Tooltip, Legend);
 
 @Component({
@@ -16,7 +15,7 @@ export class MostUsedFacilitiesComponent implements OnInit {
   chart: any; 
   mostUsedFacilities: any[] = [
 
-  ]; // Datos de las instalaciones más usadas
+  ]; 
 
   constructor(private reportService: ReportService) {}
 
@@ -40,7 +39,7 @@ export class MostUsedFacilitiesComponent implements OnInit {
     this.reportService.getMostUsedFacilitiesByClient(this.clientId).subscribe(
       (data: any[]) => {
         this.mostUsedFacilities = data;
-        this.createChart(); // Creamos el gráfico una vez que tengamos los datos
+        this.createChart(); 
       },
       error => {
         console.error('Error al obtener las facilities:', error);
@@ -48,7 +47,7 @@ export class MostUsedFacilitiesComponent implements OnInit {
     );
   }
   createChart(): void {
-    // Primero, destruimos el gráfico anterior si existe
+ 
     if (this.chart) {
       this.chart.destroy();
     }
@@ -62,12 +61,12 @@ export class MostUsedFacilitiesComponent implements OnInit {
           const chartLabels = this.mostUsedFacilities.map((facility) => facility.facilityName);
 
           this.chart = new Chart(ctx, {
-            type: 'pie',  // Cambiar a pie para un gráfico de torta
+            type: 'pie',  
             data: {
               labels: chartLabels,
               datasets: [{
                 data: chartData,
-                backgroundColor: ['#FF5733', '#33FF57', '#3357FF', '#FF33A6'],  // Colores del gráfico
+                backgroundColor: ['#FF5733', '#33FF57', '#3357FF', '#FF33A6'],  
                 hoverBackgroundColor: ['#FF5733', '#33FF57', '#3357FF', '#FF33A6']
               }]
             },
@@ -93,6 +92,6 @@ export class MostUsedFacilitiesComponent implements OnInit {
       } else {
         console.error('No se encontró el elemento canvas con el ID facilityPieChart.');
       }
-    }, 0);  // Usamos setTimeout para asegurarnos que el DOM esté completamente cargado
+    }, 0);  
   }
 }
