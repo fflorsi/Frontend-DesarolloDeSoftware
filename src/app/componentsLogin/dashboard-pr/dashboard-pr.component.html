@@ -1,0 +1,44 @@
+<div class="container mt-4">
+    <div class="row">
+      <!-- Dashboard Menu -->
+      <div class="col-md-3">
+        <nav class="list-group">
+          <a routerLink="personal-info-pr" routerLinkActive="active"
+             class="list-group-item list-group-item-action">
+             <img src="assets/personal-info.png" alt="Información Personal" class="icon">
+            Información Personal
+          </a>
+          <a routerLink="upcoming-appointments" routerLinkActive="active"
+             class="list-group-item list-group-item-action">
+             <img src="assets/calendar.png" alt="Turnos" class="icon">
+            Próximos Turnos
+          </a>
+          <a routerLink="pets-medical-history-list" routerLinkActive="active"
+             class="list-group-item list-group-item-action">
+             <img src="assets/petpaw.png" alt="Mascotas" class="icon">
+            Historias Clínicas
+          </a>
+          <a routerLink="professional-reports" routerLinkActive="active"
+             class="list-group-item list-group-item-action">
+             <img src="assets/report.png" alt="Reportes" class="icon">
+            Reportes
+          </a>
+          <a routerLink="account-settings-pr" routerLinkActive="active"
+             class="list-group-item list-group-item-action">
+             <img src="assets/configuration.png" alt="Ajustes" class="icon">
+            Ajustes
+          </a>
+        </nav>
+      </div>
+  
+      <!-- Dashboard Content -->
+      <div class="col-md-9">
+        <div class="card">
+          <div class="card-body">
+            <router-outlet></router-outlet>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  

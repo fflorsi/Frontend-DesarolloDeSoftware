@@ -1,0 +1,110 @@
+/* Estilos para el formulario de añadir/editar instalación */
+.container {
+    max-width: 70%; 
+    margin: 0 auto; 
+    padding: 40px; 
+    background-color: #ffffff; 
+    border-radius: 8px; 
+}
+
+h2 {
+    font-family: 'Inter', sans-serif; 
+    font-weight: bold; 
+    margin-bottom: 20px; 
+    color: #333; 
+}
+
+
+.form-group {
+    margin-bottom: 20px; 
+}
+
+
+label {
+    font-family: 'Inter', sans-serif; 
+    font-weight: bold; 
+    margin-bottom: 5px; 
+    display: block; }
+
+
+/* Estilos para los inputs y textarea */
+input[type="text"],
+input[type="number"],
+textarea {
+    width: 100%; /* Ancho completo */
+    padding: 10px; /* Espaciado interno */
+    border: 1px solid #ddd; /* Borde gris claro */
+    border-radius: 4px; /* Bordes redondeados */
+    font-family: 'Inter', sans-serif; /* Fuente Inter */
+    font-size: 14px; /* Tamaño de fuente */
+    transition: border-color 0.3s; /* Transición suave para el borde */
+}
+
+/* Cambiar el borde al enfocar */
+input:focus,
+textarea:focus {
+    border-color: #4c4152; /* Color de borde al enfocar */
+    outline: none; /* Sin contorno */
+}
+
+/* Mensajes de error */
+.text-danger {
+    font-family: 'Inter', sans-serif; /* Fuente Inter */
+    font-size: 12px; /* Tamaño de fuente pequeño */
+    margin-top: 5px; /* Espaciado superior */
+}
+
+/* Botones */
+.btn {
+    border: none; /* Sin borde */
+    color: white; /* Texto blanco */
+    font-family: 'Inter', sans-serif; /* Fuente Inter */
+    padding: 10px 15px; /* Espaciado interno */
+    border-radius: 4px; /* Bordes redondeados */
+    cursor: pointer; /* Cursor de puntero */
+    transition: background-color 0.3s; /* Transición suave para el fondo */
+}
+
+/* Estilo del botón primario */
+.btn-primary {
+    background-color: #70597c; /* Color de fondo */
+}
+.btn-primary:hover {
+    background-color: #4c4152; /* Color de fondo */
+}
+
+/* Estilo del botón secundario */
+.btn-secondary {
+    background-color: #c23131; /* Color de fondo */
+}
+
+.btn-secondary:hover {
+    background-color: #752020; /* Color de fondo */
+}
+
+
+/* Estilo para el botón de carga */
+.btn:disabled {
+    background-color: #999; /* Color de fondo cuando está deshabilitado */
+    cursor: not-allowed; /* Cursor de no permitido */
+}
+
+/* Estilo del enlace de cancelar */
+a {
+    text-decoration: none; /* Sin subrayado */
+    color: #fff; /* Texto blanco */
+    margin-left: 10px; /* Espaciado a la izquierda */
+}
+
+.error{
+    font-family: 'Inter', sans-serif;
+    color: red;
+    font-size: 12px;
+    padding: 10px;
+}
+
+select {
+    appearance: auto;
+    -webkit-appearance: menulist;
+    -moz-appearance: menulist;
+  }

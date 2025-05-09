@@ -1,0 +1,41 @@
+<h2 class="title">Editar Observación</h2>
+<form [formGroup]="form" (ngSubmit)="onSubmit()">
+  <mat-dialog-content>
+    <mat-form-field>
+      <label class="sub-title" for="description">Descripción</label>
+      <textarea class="text" matInput formControlName="description" placeholder="Observación" (input)="adjustHeight($event)"></textarea>
+    </mat-form-field>
+
+    <div class="container" [ngClass]="{'expanded-container': isCalendarOpen}">
+      <label class="sub-title" for="date">Fecha</label>
+      <div class="input-group">
+        <input class="form-control" [placeholder]="form.get('createdAt')?.value | date: 'dd/MM/yyyy'" formControlName="createdAt" readonly
+          name="dp" ngbDatepicker #d="ngbDatepicker" formControlName="createdAt" [autoClose]="false">
+        <div class="input-group-append">
+          <button class="btn-outline-secondary calendar" (click)="toggleCalendar(d)" type="button">
+            <i class="fa fa-calendar"></i>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <label class="sub-title" for="professional">Profesional</label>
+    <mat-expansion-panel [(expanded)]="panelOpenState">
+      <mat-expansion-panel-header>
+        {{ selectedProfessionalName || data?.observation?.professionalData?.lastname + ', ' + data?.observation?.professionalData?.firstname }}
+        <mat-icon (click)="panelOpenState = !panelOpenState" class="arrow-icon"></mat-icon>
+      </mat-expansion-panel-header>
+      <mat-list>
+        <mat-list-item *ngFor="let professional of professionals">
+          <mat-checkbox [checked]="selectedProfessionalId === professional.id" (change)="selectProfessional(professional)">
+            {{ professional.lastname + ', ' + professional.firstname }}
+          </mat-checkbox>
+        </mat-list-item>
+      </mat-list>
+    </mat-expansion-panel>
+  </mat-dialog-content>
+  <mat-dialog-actions class="dialog-actions">
+    <button class="btn-cancel" (click)="onCancel()">Cancelar</button>
+    <button class="btn" type="submit">Guardar</button>
+  </mat-dialog-actions>
+</form>

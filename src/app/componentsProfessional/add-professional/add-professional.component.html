@@ -1,0 +1,65 @@
+<app-progress-bar *ngIf="loading"></app-progress-bar>
+<div class="container">
+  <div *ngIf="!loading" class="row mt-1">
+    <div class="col-lg-4 offset-lg-4">
+      <h2>{{operacion}} Profesional</h2>
+      <form [formGroup]="formProfessional" (ngSubmit)="addProfessional()">
+        <!-- DNI -->
+        <label for="dni">DNI:</label>
+        <input formControlName="dni" type="text" class="form-control" placeholder="Ingrese DNI">
+        <span class="error" *ngIf="formProfessional.get('dni')?.hasError('required') && formProfessional.get('dni')?.touched">El campo DNI es <strong>requerido</strong></span>
+
+        <!-- Nombre -->
+        <label for="firstname">Nombre:</label>
+        <input formControlName="firstname" type="text" class="form-control mt-2" placeholder="Ingrese nombre">
+        <span class="error" *ngIf="formProfessional.get('firstname')?.hasError('required') && formProfessional.get('firstname')?.touched">El campo Nombre es <strong>requerido</strong></span>
+
+        <!-- Apellido -->
+        <label for="lastname">Apellido:</label>
+        <input formControlName="lastname" type="text" class="form-control mt-2" placeholder="Ingrese Apellido">
+        <span class="error" *ngIf="formProfessional.get('lastname')?.hasError('required') && formProfessional.get('lastname')?.touched">El campo Apellido es <strong>requerido</strong></span>
+
+        <!-- Dirección -->
+        <label for="address">Dirección:</label>
+        <input formControlName="address" type="text" class="form-control mt-2" placeholder="Ingrese Dirección">
+        <span class="error" *ngIf="formProfessional.get('address')?.hasError('required') && formProfessional.get('address')?.touched">El campo Dirección es <strong>requerido</strong></span>
+
+        <!-- Teléfono -->
+        <label for="phone">Teléfono:</label>
+        <input formControlName="phone" type="text" class="form-control mt-2" placeholder="Ingrese nro de Teléfono">
+        <span class="error" *ngIf="formProfessional.get('phone')?.hasError('required') && formProfessional.get('phone')?.touched">El campo nro de Teléfono es <strong>requerido</strong></span>
+
+        <!-- Email -->
+        <label for="email">Correo:</label>
+        <input formControlName="email" type="text" class="form-control mt-2" placeholder="Ingrese Email">
+        <span class="error" *ngIf="formProfessional.get('email')?.hasError('required') && formProfessional.get('email')?.touched">El campo Email es <strong>requerido</strong></span>
+
+        <!-- Fecha de Nacimiento -->
+        <label for="birthDate">Fecha de Nacimiento:</label>
+        <input formControlName="birthDate" type="date" class="form-control mt-2" placeholder="Ingrese Fecha de Nacimiento">
+        <span class="error" *ngIf="formProfessional.get('birthDate')?.hasError('required') && formProfessional.get('birthDate')?.touched">El campo Fecha de Nacimiento es <strong>requerido</strong></span>
+
+        <!-- Botones de Acción -->
+        <div class="row mt-2 text-center">
+          <div class="col-lg-6">
+            <button [disabled]="formProfessional.invalid" type="submit" class="btn btn-primary">Aceptar</button>
+          </div>
+          <div class="col-lg-6">
+            <button type="button" class="btn btn-secondary" routerLink="/viewAllProfessionals">Volver</button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+<!-- Modal -->
+<div id="tempPasswordModal" class="modal">
+  <div class="modal-content">
+    <span class="close" (click)="closeModal()">&times;</span>
+    <h1 class="title">Información de la Cuenta</h1>
+    <p class="text"><strong>Usuario:</strong> {{modalData.email}}</p>
+    <p class="text"><strong>Contraseña Temporal:</strong> {{modalData.tempPassword}}</p>
+    <button class="btn-mod" (click)="closeModal()">OK</button>
+  </div>
+</div>

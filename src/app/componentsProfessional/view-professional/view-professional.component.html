@@ -1,0 +1,29 @@
+<div class="container mt-1">
+  <div class="row mt-1">
+    <div class="card">
+      <h5 class="card-title">{{ professionalDetail?.firstname }} {{ professionalDetail?.lastname }}</h5>
+      <h6 class="card-subtitle">DNI: {{ professionalDetail?.dni }}</h6>
+      <div class="card-body">
+        <p class="card-text">
+          <strong>Dirección:</strong> {{ professionalDetail?.address }}<br>
+          <strong>Teléfono:</strong> {{ professionalDetail?.phone }}<br>
+          <strong>Email:</strong> {{ professionalDetail?.email }}<br>
+          <strong>Id:</strong> {{ professionalDetail?.id }}
+        </p>
+      </div>
+      <div class="row mt-2 text-center">
+        <div class="col lg-6">
+          <a [routerLink]="['/EditProfessional', professionalDetail?.id]" class="btn">Editar</a>
+        </div>
+        <div class="col lg-6">
+          <a routerLink="/viewAllProfessionals" class="btn-del">
+            Atrás
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div *ngIf="!professionalDetail" class="no-professionals">
+    <p>No se han encontrado Profesionales</p>
+  </div>
+</div>

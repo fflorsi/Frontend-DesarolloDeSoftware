@@ -1,0 +1,65 @@
+<div class="wrapper">
+  <div *ngIf="!loading" class="body">
+    <h1>Registrarse</h1>
+    <div class="row">
+      <!-- Información del Usuario -->
+      <div class="col-md-6">
+        <h4>Detalles del Usuario</h4>
+        <div class="form-floating mb-3">
+          <input type="text" [(ngModel)]="username" class="form-control" placeholder="Ingrese el nombre de Usuario">
+          <label>Usuario</label>
+        </div>
+        <div class="form-floating mb-3">
+          <input type="password" [(ngModel)]="password" class="form-control" placeholder="Ingrese la Contraseña">
+          <label>Contraseña</label>
+        </div>
+        <div class="form-floating mb-3">
+          <input type="password" [(ngModel)]="confirmPassword" class="form-control"
+            placeholder="Verificar la Contraseña">
+          <label>Repetir contraseña</label>
+        </div>
+      </div>
+
+      <!-- Información del Cliente -->
+      <div class="col-md-6">
+        <h4>Detalles del Cliente</h4>
+        <div class="form-floating mb-3">
+          <input type="text" [(ngModel)]="dniClient" class="form-control" placeholder="Ingrese el DNI">
+          <label>DNI</label>
+        </div>
+        <div class="form-floating mb-3">
+          <input type="text" [(ngModel)]="firstnameClient" class="form-control" placeholder="Ingrese el Nombre">
+          <label>Nombre</label>
+        </div>
+        <div class="form-floating mb-3">
+          <input type="text" [(ngModel)]="lastnameClient" class="form-control" placeholder="Ingrese el Apellido">
+          <label>Apellido</label>
+        </div>
+        <div class="form-floating mb-3">
+          <input type="text" [(ngModel)]="addressClient" class="form-control" placeholder="Ingrese la Dirección">
+          <label>Dirección</label>
+        </div>
+        <div class="form-floating mb-3">
+          <input type="tel" [(ngModel)]="phoneClient" class="form-control" placeholder="Ingrese el Teléfono">
+          <label>Teléfono</label>
+        </div>
+        <div class="form-floating mb-3">
+          <input type="email" [(ngModel)]="emailClient" class="form-control" placeholder="Ingrese el Email">
+          <label>Email</label>
+        </div>
+        <div class="form-floating mb-3">
+          <input type="date" [(ngModel)]="birthDateClient" class="form-control"
+            placeholder="Ingrese la Fecha de Nacimiento">
+          <label>Fecha de Nacimiento</label>
+        </div>
+      </div>
+    </div>
+
+    <div class="d-grid gap-2">
+      <button type="button" (click)="addUser()" class="btn btn-primary btn-lg">Aceptar</button>
+    </div>
+    <a [routerLink]="['/login']" class="back-button">Volver</a>
+  </div>
+
+  <app-spinner *ngIf="loading"></app-spinner>
+</div>

@@ -1,0 +1,66 @@
+:host {
+  display: block;
+}
+
+::ng-deep .mat-dialog-container {
+  position: relative;
+  z-index: 1100;
+  background-color: #f8f9fa;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  font-family: 'inter', sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 70vh; /* Centra verticalmente */
+  font-family: 'Inter', sans-serif;
+}
+
+mat-dialog-content {
+  margin: 20px 0;
+  max-height: 80vh;
+  overflow-y: auto;
+}
+
+
+.dialog-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.close-button {
+  margin-left: auto;
+}
+
+
+.title{
+  font-size: 24px;
+  font-weight: 700;
+  font-family: 'inter', sans-serif;
+  padding-top:20px;
+  padding-left: 70px;
+}
+
+.text{
+  font-size: 16px;
+  font-family: 'inter', sans-serif;
+
+}
+
+.btn{
+  font-family: 'inter', sans-serif;
+  margin-left:170px;
+  background-color: #3F3B57;
+  color: white !important;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 7px;  
+  cursor: pointer;
+}
+
+.btn:hover{
+  transition: background-color ease 2s;
+  background-color: #3F3B57
+}

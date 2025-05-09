@@ -1,0 +1,84 @@
+
+
+.title{
+    padding-top: 20px;
+
+}
+
+h2 {
+    color: #000;
+    font-size: 1.5rem;
+    font-weight: 500;
+    margin-bottom: 1rem;
+    font-family: 'inter', sans-serif;
+    padding: 0 1rem;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+    backface-visibility: hidden;
+    transform: translateZ(0);
+}
+
+.dialog-container {
+    background-color: #f9f9f9;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 1rem;
+}
+
+.dialog-actions {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 1rem;
+    padding: 0 1rem;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+    backface-visibility: hidden;
+    transform: translateZ(0);
+    padding-bottom: 20px;
+
+}
+
+.mat-list-item {
+    padding: 0.5rem 0;
+}
+
+.mat-checkbox .items {
+    font-family: 'inter', sans-serif;
+    font-size: 1rem;
+}
+
+.btn, .btn-cancel {
+    font-family: 'inter', sans-serif;
+    font-weight: 600;
+    padding: 10px 20px;
+    color: white;
+    border-radius: 7px;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+    backface-visibility: hidden;
+    transform: translateZ(0);
+    cursor: pointer;
+    border: none;
+}
+
+.btn {
+    background-color: #7666CA;
+
+}
+
+.btn-cancel {
+    background-color: red;
+}
+
+.btn:hover {
+    transition: background-color 0.3s ease;
+    background-color: #463c77
+}
+
+.btn-cancel:hover {
+    transition: background-color 0.3s ease;
+    background-color: darkred;
+}

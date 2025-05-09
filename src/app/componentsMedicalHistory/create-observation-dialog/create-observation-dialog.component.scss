@@ -1,0 +1,60 @@
+.title {
+    font-size: 24px;
+    font-weight: bold;
+    padding-left: 100px;
+    padding-top: 20px;
+    font-family: 'inter', sans-serif;
+  }
+
+  .sub-title {
+    font-size: 18px;
+    font-weight: bold;
+    font-family: 'inter', sans-serif;
+  }
+  
+.form{
+    display: flex;
+    padding: 20px;
+    flex-direction: column;
+    position: relative;
+}
+
+.dialog-actions{
+    padding:10px;
+    justify-content: space-between;
+    color: white;
+}
+
+.btn-cancel, .btn{
+    color: white;
+    padding: 2px;
+    border-radius: 4px;
+    border:none;
+    font-family: 'inter', sans-serif;
+  }
+
+.btn{
+    background-color: #4c4152;
+  }
+  
+  .btn:hover{
+    transition: background-color 0.3s ease;
+    background-color: #3a2f3b;
+  }
+  
+  .btn-cancel{
+    background-color: #c23131;
+    margin-right: 5px;
+  
+  }
+  
+  .btn-cancel:hover{
+    transition: background-color 0.3s ease;
+    background-color: #a31f1f;
+  }
+  
+
+.professionals-list {
+    max-height: 150px; // Altura máxima para el scroll
+    overflow-y: auto; // Permitir scroll vertical
+}
