@@ -1,12 +1,194 @@
-<div class="container">
-  <h2 class="text">Clientes y Mascotas Registradas</h2>
-  
-  <div class="summary-stats">
-    <p class="text"><strong>Total Clientes Registrados:</strong> {{ totalClients }}</p>
-    <p class="text"><strong>Total Mascotas Registradas:</strong> {{ totalPets }}</p>
+<div class="analytics-container">
+  <div class="header-section">
+    <h1 class="main-title">📊 Análisis de Clientes y Mascotas Registradas</h1>
+    <p class="subtitle">Análisis estadístico avanzado con tendencias y pronósticos</p>
   </div>
-  
-  <div class="chart-container">
-    <canvas id="clientsPetsChart" width="400" height="200"></canvas> 
+
+  <!-- Loading State -->
+  <div *ngIf="isLoading" class="loading-container">
+    <div class="spinner"></div>
+    <p>Procesando datos y generando análisis estadístico...</p>
+  </div>
+
+  <!-- Main Content -->
+  <div *ngIf="!isLoading" class="content-wrapper">
+    
+    <!-- Key Metrics Summary -->
+    <div class="metrics-grid">
+      <div class="metric-card clients">
+        <div class="metric-icon">👥</div>
+        <div class="metric-content">
+          <h3>Total Clientes</h3>
+          <p class="metric-value">{{ totalClients | number }}</p>
+        </div>
+      </div>
+      
+      <div class="metric-card pets">
+        <div class="metric-icon">🐾</div>
+        <div class="metric-content">
+          <h3>Total Mascotas</h3>
+          <p class="metric-value">{{ totalPets | number }}</p>
+        </div>
+      </div>
+
+      <div class="metric-card ratio" *ngIf="totalClients > 0">
+        <div class="metric-icon">📈</div>
+        <div class="metric-content">
+          <h3>Ratio Mascotas/Cliente</h3>
+          <p class="metric-value">{{ (totalPets / totalClients) | number:'1.2-2' }}</p>
+        </div>
+      </div>
+
+      <div class="metric-card correlation" *ngIf="analytics">
+        <div class="metric-icon">🔗</div>
+        <div class="metric-content">
+          <h3>Correlación</h3>
+          <p class="metric-value">{{ analytics.correlation | number:'1.2-2' }}</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Data Visualization -->
+    <div class="chart-section">
+      <h2>📈 Tendencias Temporales</h2>
+      <div class="chart-container">
+        <canvas id="clientsPetsChart"></canvas>
+      </div>
+    </div>
+
+    <!-- Statistical Analysis -->
+    <div class="analytics-section" *ngIf="analytics">
+      <h2>🔬 Análisis Estadístico Avanzado</h2>
+      
+      <div class="stats-grid">
+        <!-- Client Statistics -->
+        <div class="stats-card">
+          <h3>📊 Estadísticas de Clientes</h3>
+          <div class="stat-items">
+            <div class="stat-item">
+              <span class="stat-label">Promedio:</span>
+              <span class="stat-value">{{ analytics.clientStats.mean | number:'1.2-2' }}</span>
+            </div>
+            <div class="stat-item">
+              <span class="stat-label">Mediana:</span>
+              <span class="stat-value">{{ analytics.clientStats.median | number }}</span>
+            </div>
+            <div class="stat-item">
+              <span class="stat-label">Desviación Estándar:</span>
+              <span class="stat-value">{{ analytics.clientStats.standardDeviation | number:'1.2-2' }}</span>
+            </div>
+            <div class="stat-item trend-item">
+              <span class="stat-label">Tendencia:</span>
+              <span class="stat-value trend" [style.color]="getTrendColor(analytics.clientStats.trend)">
+                {{ getTrendIcon(analytics.clientStats.trend) }} 
+                {{ analytics.clientStats.trend === 'increasing' ? 'Creciente' : 
+                   analytics.clientStats.trend === 'decreasing' ? 'Decreciente' : 'Estable' }}
+              </span>
+            </div>
+            <div class="stat-item">
+              <span class="stat-label">Tasa de Crecimiento:</span>
+              <span class="stat-value growth-rate" 
+                    [class.positive]="analytics.clientStats.growthRate > 0"
+                    [class.negative]="analytics.clientStats.growthRate < 0">
+                {{ analytics.clientStats.growthRate | number:'1.2-2' }}%
+              </span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Pet Statistics -->
+        <div class="stats-card">
+          <h3>🐾 Estadísticas de Mascotas</h3>
+          <div class="stat-items">
+            <div class="stat-item">
+              <span class="stat-label">Promedio:</span>
+              <span class="stat-value">{{ analytics.petStats.mean | number:'1.2-2' }}</span>
+            </div>
+            <div class="stat-item">
+              <span class="stat-label">Mediana:</span>
+              <span class="stat-value">{{ analytics.petStats.median | number }}</span>
+            </div>
+            <div class="stat-item">
+              <span class="stat-label">Desviación Estándar:</span>
+              <span class="stat-value">{{ analytics.petStats.standardDeviation | number:'1.2-2' }}</span>
+            </div>
+            <div class="stat-item trend-item">
+              <span class="stat-label">Tendencia:</span>
+              <span class="stat-value trend" [style.color]="getTrendColor(analytics.petStats.trend)">
+                {{ getTrendIcon(analytics.petStats.trend) }} 
+                {{ analytics.petStats.trend === 'increasing' ? 'Creciente' : 
+                   analytics.petStats.trend === 'decreasing' ? 'Decreciente' : 'Estable' }}
+              </span>
+            </div>
+            <div class="stat-item">
+              <span class="stat-label">Tasa de Crecimiento:</span>
+              <span class="stat-value growth-rate"
+                    [class.positive]="analytics.petStats.growthRate > 0"
+                    [class.negative]="analytics.petStats.growthRate < 0">
+                {{ analytics.petStats.growthRate | number:'1.2-2' }}%
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Forecast Section -->
+      <div class="forecast-section">
+        <h3>🔮 Pronóstico para el Próximo Período</h3>
+        <div class="forecast-grid">
+          <div class="forecast-item">
+            <div class="forecast-icon">👥</div>
+            <div class="forecast-content">
+              <span class="forecast-label">Clientes Estimados:</span>
+              <span class="forecast-value">{{ analytics.forecast.clients | number }}</span>
+            </div>
+          </div>
+          <div class="forecast-item">
+            <div class="forecast-icon">🐾</div>
+            <div class="forecast-content">
+              <span class="forecast-label">Mascotas Estimadas:</span>
+              <span class="forecast-value">{{ analytics.forecast.pets | number }}</span>
+            </div>
+          </div>
+        </div>
+        <p class="forecast-note">
+          📝 <strong>Nota:</strong> Los pronósticos se basan en análisis de regresión lineal de datos históricos.
+        </p>
+      </div>
+
+      <!-- Correlation Analysis -->
+      <div class="correlation-section">
+        <h3>🔗 Análisis de Correlación</h3>
+        <div class="correlation-info">
+          <div class="correlation-value">
+            <span class="correlation-number">{{ analytics.correlation | number:'1.3-3' }}</span>
+          </div>
+          <div class="correlation-interpretation">
+            <p *ngIf="analytics.correlation > 0.7" class="strong-positive">
+              🟢 <strong>Correlación fuerte positiva:</strong> El aumento de clientes se correlaciona fuertemente con el aumento de mascotas.
+            </p>
+            <p *ngIf="analytics.correlation > 0.3 && analytics.correlation <= 0.7" class="moderate-positive">
+              🟡 <strong>Correlación moderada positiva:</strong> Existe una relación positiva moderada entre clientes y mascotas.
+            </p>
+            <p *ngIf="analytics.correlation >= -0.3 && analytics.correlation <= 0.3" class="weak">
+              ⚪ <strong>Correlación débil:</strong> La relación entre clientes y mascotas es débil o inexistente.
+            </p>
+            <p *ngIf="analytics.correlation < -0.3" class="negative">
+              🔴 <strong>Correlación negativa:</strong> Existe una relación inversa entre clientes y mascotas.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Data Quality Information -->
+    <div class="data-info">
+      <h3>ℹ️ Información del Dataset</h3>
+      <div class="data-details">
+        <span class="data-item">📅 Períodos analizados: {{ monthlyData.length }}</span>
+        <span class="data-item">🔄 Última actualización: {{ getCurrentDate() | date:'short' }}</span>
+        <span class="data-item">🎯 Metodología: Análisis estadístico descriptivo y regresión lineal</span>
+      </div>
+    </div>
   </div>
 </div>

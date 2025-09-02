@@ -2,22 +2,142 @@
   <div class="image-container">
     <img src="assets/top-view-pet-accessories.jpg" alt="Pet Accessories">
   </div>
+  
   <div class="body" *ngIf="!loading">
-    <h1>Iniciar Sesión</h1>
-    <div class="form-floating mb-3 mt-3">
-      <input type="text" [(ngModel)]="username" class="form-control" placeholder="Ingrese el nombre de Usuario">
-      <label>Usuario</label>
+    <div class="login-header">
+      <h1>🔐 Iniciar Sesión</h1>
+      <p class="subtitle">Accede a tu cuenta de forma segura</p>
     </div>
-    <div class="form-floating">
-      <input type="password" [(ngModel)]="password" class="form-control" placeholder="Ingrese la Contraseña">
-      <label>Contraseña</label>
+
+    <!-- Account Locked Warning -->
+    <div class="alert alert-danger" *ngIf="isAccountLocked">
+      <i class="fas fa-lock"></i>
+      <strong>Cuenta Temporalmente Bloqueada</strong>
+      <p>Tu cuenta ha sido bloqueada por seguridad debido a múltiples intentos fallidos.</p>
+      <p>Tiempo restante: {{ getRemainingLockoutTime() }}</p>
     </div>
-    <div class="d-grid gap-2">
-      <button type="button" class="btn btn-primary btn-lg" (click)="login()">Aceptar</button>
+
+    <!-- Login Form -->
+    <form (ngSubmit)="login()" #loginForm="ngForm" novalidate>
+      <!-- Username Field -->
+      <div class="form-group">
+        <div class="form-floating mb-3 mt-3">
+          <input 
+            type="text" 
+            [(ngModel)]="username" 
+            (input)="onUsernameChange()"
+            name="username"
+            class="form-control"
+            [class.is-invalid]="usernameErrors.length > 0"
+            [class.is-valid]="submitted && usernameErrors.length === 0 && username.length > 0"
+            placeholder="Ingrese el nombre de Usuario"
+            [disabled]="isAccountLocked"
+            autocomplete="username"
+            maxlength="50"
+            required>
+          <label>👤 Usuario</label>
+        </div>
+        <div class="invalid-feedback" *ngFor="let error of usernameErrors">
+          {{ error }}
+        </div>
+      </div>
+
+      <!-- Password Field -->
+      <div class="form-group">
+        <div class="form-floating password-container">
+          <input 
+            [type]="showPassword ? 'text' : 'password'" 
+            [(ngModel)]="password" 
+            (input)="onPasswordChange()"
+            name="password"
+            class="form-control"
+            [class.is-invalid]="passwordErrors.length > 0"
+            [class.is-valid]="submitted && passwordErrors.length === 0 && password.length > 0"
+            placeholder="Ingrese la Contraseña"
+            [disabled]="isAccountLocked"
+            autocomplete="current-password"
+            maxlength="100"
+            required>
+          <label>🔑 Contraseña</label>
+          <button 
+            type="button" 
+            class="password-toggle-btn"
+            (click)="togglePasswordVisibility()"
+            [disabled]="isAccountLocked"
+            tabindex="-1">
+            <i [class]="showPassword ? 'fas fa-eye-slash' : 'fas fa-eye'"></i>
+          </button>
+        </div>
+        <div class="invalid-feedback" *ngFor="let error of passwordErrors">
+          {{ error }}
+        </div>
+      </div>
+
+      <!-- Remember Me Checkbox -->
+      <div class="form-check mb-3">
+        <input 
+          type="checkbox" 
+          [(ngModel)]="rememberMe" 
+          name="rememberMe"
+          class="form-check-input" 
+          id="rememberMe"
+          [disabled]="isAccountLocked">
+        <label class="form-check-label" for="rememberMe">
+          Recordar mi usuario
+        </label>
+      </div>
+
+      <!-- Login Attempts Warning -->
+      <div class="alert alert-warning" *ngIf="loginAttempts > 0 && loginAttempts < maxLoginAttempts && !isAccountLocked">
+        <i class="fas fa-exclamation-triangle"></i>
+        Intentos de inicio de sesión: {{ loginAttempts }}/{{ maxLoginAttempts }}
+      </div>
+
+      <!-- Submit Button -->
+      <div class="d-grid gap-2">
+        <button 
+          type="submit" 
+          class="btn btn-primary btn-lg enhanced-btn"
+          [disabled]="!isFormValid || loading"
+          [class.loading]="loading">
+          <span *ngIf="!loading">
+            <i class="fas fa-sign-in-alt"></i> Iniciar Sesión
+          </span>
+          <span *ngIf="loading">
+            <i class="fas fa-spinner fa-spin"></i> Verificando...
+          </span>
+        </button>
+      </div>
+    </form>
+
+    <!-- Additional Links -->
+    <div class="additional-links">
+      <p class="register-link">
+        ¿No tienes cuenta?
+        <a [routerLink]="['/signIn']" class="enhanced-link">Registrarse</a>
+      </p>
+      
+      <div class="security-info">
+        <small class="text-muted">
+          <i class="fas fa-shield-alt"></i>
+          Tu sesión está protegida con autenticación segura
+        </small>
+      </div>
     </div>
-    <p class="mt-3">No tienes cuenta?
-      <a [routerLink]="['/signIn']">Registrar</a>
-    </p>
+
+    <!-- Form Validation Summary -->
+    <div class="alert alert-info validation-summary" *ngIf="submitted && !isFormValid && !isAccountLocked">
+      <h6><i class="fas fa-info-circle"></i> Por favor, corrige los siguientes errores:</h6>
+      <ul class="mb-0">
+        <li *ngFor="let error of usernameErrors">{{ error }}</li>
+        <li *ngFor="let error of passwordErrors">{{ error }}</li>
+      </ul>
+    </div>
   </div>
-  <app-spinner *ngIf="loading"></app-spinner>
+
+  <!-- Loading Spinner -->
+  <div class="loading-container" *ngIf="loading">
+    <app-spinner></app-spinner>
+    <p class="loading-text">Verificando credenciales...</p>
+  </div>
 </div>
